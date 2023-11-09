@@ -357,7 +357,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
 
         # check if there is no collision between qubits_of_interest and neighbors_of_interest
         # (if there is, then the method_name won't be consistent)
-        if len(qrem_utils.lists_intersection(qubits_of_interest, neighbors_of_interest)) != 0:
+        if len(utils.lists_intersection(qubits_of_interest, neighbors_of_interest)) != 0:
             print(qubits_of_interest, neighbors_of_interest)
             raise ValueError('Qubits of interest and neighbors overlap')
 
