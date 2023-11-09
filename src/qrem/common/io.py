@@ -83,8 +83,7 @@ def save(dictionary_to_save: dict,
     if isinstance(directory,str):
         directory = Path(directory)
 
-    if verbose_log:
-        printer.qprint("Saving pickled file to: ", str(dir))
+   
 
 
     if directory :
@@ -93,6 +92,9 @@ def save(dictionary_to_save: dict,
     else:
         dir = Path.home().joinpath("qrem_results")
         dir.mkdir(mode=0o777, exist_ok=True) 
+
+    if verbose_log:
+        printer.qprint("Saving pickled file to: ", str(dir))
     
     # original_umask = os.umask(0)
     # os.umask(original_umask)
