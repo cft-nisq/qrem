@@ -458,7 +458,7 @@ class MarginalsAnalyzerBase(MarginalsAnalyzerInterface):
             input_marginal = ''.join([input_state_bitstring[x] for x in subset])
             #JT: computations of the marginal is perfored
             if subset not in dictionary_marginals_now.keys():
-                self.compute_unnormalized_marginals([input_state_bitstring], [subset])
+                #self.compute_unnormalized_marginals([input_state_bitstring], [subset])
                 #my addition
                 dictionary_marginals_now = self.compute_unnormalized_marginals([input_state_bitstring], [subset])[input_state_bitstring]
             if input_marginal not in marginal_dict_now.keys():

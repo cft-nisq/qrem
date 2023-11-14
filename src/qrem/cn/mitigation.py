@@ -226,7 +226,7 @@ def mitigate_marginal_state_dependent(marginal: Tuple, results_dictionary: Dict[
     mitigated_marginal_probability_distribution = probability.compute_marginal_of_probability_distribution(mitigated_clusters_marginal_probability_distribution,[unordered_qubits_in_marginal_list.index(qubit) for qubit in marginal])
 
     if ensure_proper_probability_distribution:
-        if not povmtools.is_valid_probability_vector(mitigated_marginal_probability_distribution):
+        if not probability.is_valid_probability_vector(mitigated_marginal_probability_distribution):
            mitigated_marginal_probability_distribution = povmtools.find_closest_prob_vector_l2(mitigated_marginal_probability_distribution).flatten()
 
     
