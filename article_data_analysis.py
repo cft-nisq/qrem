@@ -87,10 +87,6 @@ with open(DATA_DIRECTORY + FILE_NAME_MARGINALS_IBM, 'rb') as filein:
 marginals_dictionary_ibm =marginals_dictionary_ibm['marginals_dictionary']
         
 
-number_of_qubits= 79
-
-
-
 DATA_DIRECTORY_RIG = '/media/tuzjan/T7/work_tuzjan/experiments_rigetti/'
 
 FILE_NAME_RESULTS_RIG =  'rigetti_results.pkl'
@@ -136,145 +132,62 @@ with open(DATA_DIRECTORY_RIG + FILE_NAME_MARGINALS_RIG, 'rb') as filein:
 
 
 
-#mitigation_simulation_data =execute_characterization_workflow(results_dictionary=results_dictionary,marginals_dictionary=marginals_dictionary,number_of_benchmark_circuits=300,return_old_mitigation_data=True,data_directory=data_directory, ground_states_list=gs_list)
-
-
-#file_name_mitigation_data = 'DDOT_characterization_data_2023-09-02 q127.pkl'
-
-
-
 
 
 qprint("DATA LOADED")
 
 if __name__ == "__main__":
-    #characterization_routine_results_dictionary_ibm = execute_characterization_workflow(results_dictionary=results_dictionary_ibm,marginals_dictionary=marginals_dictionary_ibm,number_of_benchmark_circuits=300,ground_states_list=circuits_ground_states_preparation_collection_ibm,return_old_mitigation_data=True,data_directory=DATA_DIRECTORY,coherence_witnesses_list=list(coherence_witness_circuits_ibm),perform_noise_model_reconstruction=True,name_id='IBM_Cusco')
+    
+    qprint("CHARACTERIZATION STARTS")
+    
+    characterization_routine_results_dictionary_ibm = execute_characterization_workflow(results_dictionary=results_dictionary_ibm,marginals_dictionary=marginals_dictionary_ibm,number_of_benchmark_circuits=300,ground_states_list=circuits_ground_states_preparation_collection_ibm,return_old_mitigation_data=True,data_directory=DATA_DIRECTORY,coherence_witnesses_list=list(coherence_witness_circuits_ibm),perform_noise_model_reconstruction=True,name_id='IBM_Cusco')
  
     characterization_routine_results_dictionary_rig = execute_characterization_workflow(results_dictionary=results_dictionary_rig,marginals_dictionary=marginals_dictionary_rig['marginals_dictionary'],number_of_benchmark_circuits=50,ground_states_list=circuits_ground_states_preparation_collection_rig,return_old_mitigation_data=True,data_directory=DATA_DIRECTORY,coherence_witnesses_list=list(coherence_witness_circuits_rig),perform_noise_model_reconstruction=True,name_id = 'Rigetti_Aspen-M-3')
 
 
+    qprint("CHARACTERIZATION ENDS")
 
+   
 
+    #################################################################################
+    #### Mitigation routine starts                                 ##################
+    #################################################################################
 
-    
-
-#################################################################################
-#### Mitigation routine starts                                 ##################
-#################################################################################
-
-
-
-
-
-
-
-    #qprint("MITIGATION STARTS")
+    qprint("MITIGATION STARTS")
 
           
-    #noise_models_mitigated_energy_dictionary_ibm = estimate_mitigated_energy_over_noise_models(results_dictionary=characterization_routine_results_dictionary_ibm['benchmarks_results_dictionary'],hamiltonians_dictionary=hamiltonians_dictionary_ibm,noise_models_list=characterization_routine_results_dictionary_ibm['noise_models_list'],return_marginals=False)
+    noise_models_mitigated_energy_dictionary_ibm = estimate_mitigated_energy_over_noise_models(results_dictionary=characterization_routine_results_dictionary_ibm['benchmarks_results_dictionary'],hamiltonians_dictionary=hamiltonians_dictionary_ibm,noise_models_list=characterization_routine_results_dictionary_ibm['noise_models_list'],return_marginals=False)
 
-    #noise_models_mitigated_energy_dictionary_rig = estimate_mitigated_energy_over_noise_models(results_dictionary=characterization_routine_results_dictionary_rig['benchmarks_results_dictionary'],hamiltonians_dictionary=hamiltonians_dictionary_rig,noise_models_list=characterization_routine_results_dictionary_rig['noise_models_list'],return_marginals=False)
+    noise_models_mitigated_energy_dictionary_rig = estimate_mitigated_energy_over_noise_models(results_dictionary=characterization_routine_results_dictionary_rig['benchmarks_results_dictionary'],hamiltonians_dictionary=hamiltonians_dictionary_rig,noise_models_list=characterization_routine_results_dictionary_rig['noise_models_list'],return_marginals=False)
 
-    #qprint("MITIGATION ENDS")
+    qprint("MITIGATION ENDS")
 
-#################################################################################
-#### Mitigation error is computed                                 ###############
-#################################################################################
 
-    #number_of_qubits_ibm=127
-    #noise_models_mitigated_energy_dictionary_error_ibm = compute_mitigation_errors(mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_ibm,hamiltonian_energy_dictionary=energy_dictionary_ibm,number_of_qubits=number_of_qubits_ibm)
 
-    #number_of_qubits_rig=79
-    #noise_models_mitigated_energy_dictionary_error_rig = compute_mitigation_errors(mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_rig,hamiltonian_energy_dictionary=energy_dictionary_rig,number_of_qubits=number_of_qubits_rig)
+    #data_dictionary = io.load('/media/tuzjan/T7/work_tuzjan/tests/2023-11-16 qibm_rig.pkl')
 
+    #characterization_routine_results_dictionary_ibm= data_dictionary['characterization_dictionary_ibm' ]
+
+    #characterization_routine_results_dictionary_rig= data_dictionary['characterization_dictionary_rig' ]
+
+    #noise_models_mitigated_energy_dictionary_rig=data_dictionary['noise_models_mitigated_energy_dictionary_rig']
+
+    #noise_models_mitigated_energy_dictionary_ibm=data_dictionary['noise_models_mitigated_energy_dictionary_ibm']
+
+
+
+
+    ####################################################################################### 
+    #### Result of mitigation is saved                                                  ###
+    #######################################################################################
+
+    dictionary_to_save ={'characterization_dictionary_ibm' : characterization_routine_results_dictionary_ibm ,
+                        'characterization_dictionary_rig' : characterization_routine_results_dictionary_rig,
+                        'noise_models_mitigated_energy_dictionary_ibm' : noise_models_mitigated_energy_dictionary_ibm,
+                        'noise_models_mitigated_energy_dictionary_rig' : noise_models_mitigated_energy_dictionary_rig
+                       }
     
-
-
-
-####################################################################################### 
-#### Mean of mitigation error for different noise models is computed and displayed  ###
-#######################################################################################
-
-
-#mitigation_routines.compute_mitigation_error_median_mean(noise_models_mitigated_energy_dictionary_error)
-    """
-    JT:
-    Here NEW MITIGATION routine is run, however it is implemented differently (marginals for clusters are mitigated, and then necessary tensor products are computed). This is added for tests purposes.
-
-    It returns:
-
-    noise_models_mitigated_energy_dictionary_product - dictionary with mitigated energy for the generated sets of Hamiltonians and input states 
-
-    noise_models_marginals_dictionary_product - dictionary with mitigated marginals distribution 
-
-    """
-
-
-#noise_models_mitigated_energy_dictionary_product = mitigation_routines.estimate_mitigated_energy_over_noise_models(results_dictionary=benchmarks_results_dictionary,hamiltonians_dictionary=hamiltonians_dictionary,noise_models_list=noise_model_list,product_mitigation=True,return_marginals=False)
-
-
-
-    #dictionary_to_save ={'characterization_dictionary_ibm' : characterization_routine_results_dictionary_ibm ,
-    #                    'characterization_dictionary_rig' : characterization_routine_results_dictionary_rig,
-    #                    'noise_models_mitigated_energy_dictionary_ibm' : noise_models_mitigated_energy_dictionary_ibm,
-    #                    'noise_models_mitigated_energy_dictionary_rig' : noise_models_mitigated_energy_dictionary_rig
-                       
-
-                        
-    #                    }
-    
-    #name_string = str(date.today()) + " q" + 'ibm_rig'
-
-    #io.save(dictionary_to_save=dictionary_to_save,custom_filename=name_string,directory='/media/tuzjan/T7/work_tuzjan/tests')
-
-    data_dictionary = io.load('/media/tuzjan/T7/work_tuzjan/tests/2023-11-16 qibm_rig.pkl')
-
-    characterization_routine_results_dictionary_ibm= data_dictionary['characterization_dictionary_ibm' ]
-
-    characterization_routine_results_dictionary_rig= data_dictionary['characterization_dictionary_rig' ]
-
-    noise_models_mitigated_energy_dictionary_rig=data_dictionary['noise_models_mitigated_energy_dictionary_rig']
-
-    noise_models_mitigated_energy_dictionary_ibm=data_dictionary['noise_models_mitigated_energy_dictionary_ibm']
-
-
-
-
-        
-
-    
-
-
-
-
-
-
-
-#################################################################################
-#### Mitigation error is computed                                 ###############
-#################################################################################
-
-
-#noise_models_mitigated_energy_dictionary_error = mitigation_routines.compute_mitigation_errors(mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary,hamiltonian_energy_dictionary=energy_dictionary,number_of_qubits=number_of_qubits)
-
-#noise_models_mitigated_energy_product_dictionary_error = mitigation_routines.compute_mitigation_errors(mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_product,hamiltonian_energy_dictionary=energy_dictionary,number_of_qubits=number_of_qubits)
-
-
-####################################################################################### 
-#### Mean of mitigation error for different noise models is computed and displayed  ###
-#######################################################################################
-
-
-#mitigation_routines.compute_mitigation_error_mean(noise_models_mitigated_energy_dictionary_error,'Mitigation error mean ')
-
-#mitigation_routines.compute_mitigation_error_mean(noise_models_mitigated_energy_product_dictionary_error,'Mitigation error mean product ')
-
-
-
-
-####################################################################################### 
-#### Result of mitigation is saved                                                  ###
-#######################################################################################
+    io.save(dictionary_to_save=dictionary_to_save,custom_filename="ARTICLE_ANALYSIS",directory='/media/tuzjan/T7/work_tuzjan/tests')
 
 
 
@@ -325,4 +238,4 @@ if __name__ == "__main__":
 
   
                                             
- 
+    qprint("PLOTS GENERATED")

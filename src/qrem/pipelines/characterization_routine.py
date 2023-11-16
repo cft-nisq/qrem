@@ -536,9 +536,9 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
 
         dictionary_to_save = {'marginals_dictionary':marginals_dictionary}
         file_name_marginals = experiment_type+ '_marginals_workflow_' + name_string +'.pkl'
-        io.save(dictionary_to_save=dictionary_to_save,
-                                directory=data_directory,
-                                custom_filename=file_name_marginals)
+        #io.save(dictionary_to_save=dictionary_to_save,
+        #                        directory=data_directory,
+        #                        custom_filename=file_name_marginals)
         
    
 
@@ -563,9 +563,9 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
 
     file_name_POVMs  = 'DDOT_POVMs_PLS_workflow_' + name_string +'.pkl'
 
-    io.save(dictionary_to_save=dictionary_to_save,
-                                directory=data_directory,
-                                custom_filename=file_name_POVMs)
+    #io.save(dictionary_to_save=dictionary_to_save,
+    #                            directory=data_directory,
+    #                            custom_filename=file_name_POVMs)
     
   
 
@@ -604,9 +604,9 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
                      }
 
     file_name_errors  = 'DDOT_correlations_workflow_' + name_string +'.pkl'
-    io.save(dictionary_to_save=dictionary_to_save,
-                                directory=data_directory,
-                                custom_filename=file_name_errors)
+    #io.save(dictionary_to_save=dictionary_to_save,
+    #                            directory=data_directory,
+    #                            custom_filename=file_name_errors)
 
 
 
@@ -738,9 +738,9 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
        
         
     file_name_mitigation_data  = 'DDOT_characterization_data_' + name_string +'.pkl'
-    io.save(dictionary_to_save=characterization_data_dictionary,
-                                directory=data_directory,
-                                custom_filename=file_name_mitigation_data)
+    #io.save(dictionary_to_save=characterization_data_dictionary,
+    #                            directory=data_directory,
+    #                            custom_filename=file_name_mitigation_data)
 
     
     return characterization_data_dictionary
