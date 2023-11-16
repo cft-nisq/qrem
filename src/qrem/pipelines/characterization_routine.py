@@ -25,6 +25,7 @@ from typing import Dict, Tuple, List
 from qrem.functions_qrem import functions_data_analysis as fdt
 
 from qrem.noise_model_generation.CN.NoiseModelGenerator import NoiseModelGenerator
+from qrem.functions_qrem import functions_coherence_analysis as fca
 
 import qrem.common.math as qrem_math
 from qrem.common.printer import qprint, qprint_array
@@ -39,6 +40,26 @@ from qrem.common.printer import qprint
 
 
 import statistics 
+
+def change_dictionary_format(noise_matrix:Dict) -> Dict:
+
+    new_format ={}
+    
+    for key, matrix in noise_matrix.items():
+
+        if key != 'averaged':
+            
+        
+                   
+            new_index = [int(character) for character in key]
+        
+            new_format[tuple(new_index)] = matrix
+        
+        else:
+
+            new_format[key] = matrix
+
+    return new_format
 
 
 def change_state_dependent_noise_matrix_format(noise_matrix:Dict) -> Dict:
@@ -360,10 +381,42 @@ def perform_noise_model_reconstruction_routine(results_dictionary:Dict[str,Dict[
 
         noise_model.set_noise_matrices_dictionary(noise_matrices_dictionary=new_noise_matrix_dictionary)
 
+       
+
+        for cluster, noise_matrix in noise_model.noise_matrices.items():
+
+            noise_model.noise_matrices[cluster] = change_dictionary_format(noise_matrix=noise_matrix)
+
             
         noise_model_list.append(noise_model)
 
     return noise_model_list
+
+
+def perform_POVMs_errors_and_correlation_coefficients_computation(results_dictionary:Dict,marginals_dictionary:Dict,POVMs_dictionary:Dict,distances_types:List = [('worst_case','classical')] ):
+
+    noise_analyzer = InitialNoiseAnalyzer(results_dictionary=results_dictionary,
+                                      marginals_dictionary=marginals_dictionary,
+                                      POVM_dictionary=POVMs_dictionary
+                                        )
+    
+    number_of_qubits = len(next(iter(results_dictionary.keys()))) 
+
+    qubits_subset =[(qi,) for qi in range(number_of_qubits)]
+    
+    noise_analyzer.compute_errors_POVMs(qubits_subsets=qubits_subset,distances_types=distances_types)
+
+    distances_types_correlations = [('worst_case', 'classical')]#,('worst_case', 'quantum'),('average case', 'classical'),('average case', 'quantum') ]
+
+       
+    
+    noise_analyzer.compute_correlations_data_pairs(qubit_indices=range(number_of_qubits),
+                                              distances_types=distances_types_correlations)
+
+    correlations_data = noise_analyzer.correlations_data
+
+    return {'POVMs_error_dictionary': noise_analyzer._errors_data_POVMs, 'correlations_data_dictionary' : correlations_data}
+
 
 
 
@@ -492,21 +545,17 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
     characterization_data_dictionary = divide_data_into_characterization_benchmark_coherence_witness_data(results_dictionary=results_dictionary,marginals_dictionary=marginals_dictionary,ground_states_list=ground_states_list,coherence_witnesses_list=coherence_witnesses_list)
 
     characterization_marginals_dictionary = characterization_data_dictionary['characterization_marginals_dictionary']
+    
     characterization_results_dictionary = characterization_data_dictionary['characterization_results_dictionary']
 
     benchmarks_results_dictionary = characterization_data_dictionary['benchmarks_results_dictionary']
-    benchmarks_marginals_dictionary = characterization_data_dictionary['benchmarks_marginals_dictionary']  
-
     
-
+    benchmarks_marginals_dictionary = characterization_data_dictionary['benchmarks_marginals_dictionary']  
 
     #noise matrices are computes, new object is created to prevent data to be overwritten 
     all_two_qubits_subsets = qrem_math.get_k_local_subsets(number_of_qubits, 2,True)
-
-    
-
+ 
     characterization_POVMs_dictionary, characterization_matrices_dictionary = compute_reduced_POVMs_and_noise_matrices(results_dictionary=characterization_results_dictionary,marginals_dictionary=characterization_marginals_dictionary,subset_of_qubits=all_two_qubits_subsets,experiment_type='DDOT')
-
     
     qprint('REDUCED POVMS COMPUTATION FINISHED')    
    
@@ -514,24 +563,41 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
 
     file_name_POVMs  = 'DDOT_POVMs_PLS_workflow_' + name_string +'.pkl'
 
-
     io.save(dictionary_to_save=dictionary_to_save,
                                 directory=data_directory,
                                 custom_filename=file_name_POVMs)
     
-    noise_analyzer = InitialNoiseAnalyzer(results_dictionary=characterization_results_dictionary,
-                                      marginals_dictionary=characterization_marginals_dictionary,
-                                      POVM_dictionary=characterization_POVMs_dictionary
-                                              )
+  
+
+    noise_analysis_dictionary =  perform_POVMs_errors_and_correlation_coefficients_computation(results_dictionary=characterization_results_dictionary,marginals_dictionary=characterization_marginals_dictionary,POVMs_dictionary=characterization_POVMs_dictionary) 
+
+    correlations_data = noise_analysis_dictionary['correlations_data_dictionary']
+
+    POVMs_distances_dictionary = noise_analysis_dictionary['POVMs_error_dictionary']
+
+
+   
+
+
+   
+    if name_id == 'IBM_Cusco':
+        settings_list=['2','3','4','5']
+
+    elif name_id == 'Rigetti_Aspen-M-3':
+        settings_list=['2','3']
+        
+    coherence_bound_dictionary = fca.compute_coherence_indicator(marginals_dictionary=characterization_data_dictionary['coherence_witnesses_marginals_dictionary'],subset_list=[(i, j) for i in range(number_of_qubits) for j in range(i + 1, number_of_qubits)],settings_list=settings_list)
+
+
+
+ 
+
+    
+      
     
 
     #here we compute only worst case classical distance, others can be added
-    distances_types_correlations = [('worst_case', 'classical')]#,('worst_case', 'quantum'),('average case', 'classical'),('average case', 'quantum') ]
-        
-    noise_analyzer.compute_correlations_data_pairs(qubit_indices=range(number_of_qubits),
-                                              distances_types=distances_types_correlations)
-
-    correlations_data = noise_analyzer.correlations_data
+   
 
     dictionary_to_save = {'correlations_data':correlations_data,
                       
@@ -556,9 +622,9 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
 
     #clustering starts 
 
-    clustering_functions_parameters = {'sizes_clusters':[2],'distance_type':'worst_case','correlations_type': 'classical','alpha_hyperparameters': [0] }
+    clustering_functions_parameters = {'sizes_clusters':[2,3,4],'distance_type':'worst_case','correlations_type': 'classical','alpha_hyperparameters': [0] }
     
-    all_clusters_sets_neighbors_dictionary = perform_clustering_routine(results_dictionary = characterization_results_dictionary,marginals_dictionary = characterization_marginals_dictionary, noise_matrices_dictionary = characterization_matrices_dictionary ,correlations_data = correlations_data, number_of_qubits=127,clustering_functions_parameters = clustering_functions_parameters)
+    all_clusters_sets_neighbors_dictionary = perform_clustering_routine(results_dictionary = characterization_results_dictionary,marginals_dictionary = characterization_marginals_dictionary, noise_matrices_dictionary = characterization_matrices_dictionary ,correlations_data = correlations_data, number_of_qubits=number_of_qubits,clustering_functions_parameters = clustering_functions_parameters)
     
     
 
@@ -590,7 +656,7 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
         #noise models data are saved in a list of CNModelData 
         
       
-        noise_model_list = perform_noise_model_reconstruction_routine(results_dictionary=characterization_results_dictionary,number_of_qubits=127,all_clusters_sets_neighbors_dictionary=all_clusters_sets_neighbors_dictionary)
+        noise_model_list = perform_noise_model_reconstruction_routine(results_dictionary=characterization_results_dictionary,number_of_qubits=number_of_qubits,all_clusters_sets_neighbors_dictionary=all_clusters_sets_neighbors_dictionary)
 
         characterization_data_dictionary['noise_models_list'] = noise_model_list
     
@@ -645,12 +711,25 @@ def execute_characterization_workflow(results_dictionary:Dict[str, Dict[str, int
         show_progress_bar=True)
 
         characterization_data_dictionary['correction_matrices'] = correction_matrices
+
+        characterization_data_dictionary['correlation_coefficients_dictionary'] = correlations_data
+        
+        characterization_data_dictionary['POVMs_dictionary']= characterization_POVMs_dictionary
+        
+        characterization_data_dictionary['POVMs_distances_dictionary']=POVMs_distances_dictionary
+
+        
         characterization_data_dictionary['correction_indices'] = correction_indices
+        
         characterization_data_dictionary['mitigation_data_dictionary'] = mitigation_data_dictionary
+        
         characterization_data_dictionary['all_clusters_sets_dictionary'] = all_clusters_sets_dictionary
+        
         characterization_data_dictionary['noise_matrices_dictionary_old'] = noise_matrices_dictionary_old
+        
         characterization_data_dictionary['all_clusters_sets_neighbors_dictionary'] = all_clusters_sets_neighbors_dictionary
 
+        characterization_data_dictionary['coherence_bound_dictionary']  = coherence_bound_dictionary
 
 
 

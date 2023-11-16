@@ -74,7 +74,7 @@ def compute_pauli_marginals(marginals_dictionary, subsets_list):
 
 
 
-def compute_coherence_indicator(marginals_dictionary, subset_list):
+def compute_coherence_indicator(marginals_dictionary, subset_list,settings_list=['2','3','4','5']):
     """
     Computation of coherence indicator 
 
@@ -85,23 +85,16 @@ def compute_coherence_indicator(marginals_dictionary, subset_list):
     """
     Creation of overlap dicitionary for the Pauli case
     """
-    #settings_list = ['2','3','4','5']
-    #for rigetti
-    settings_list = ['2','3']
+   
 
     overlap_dictionary={}
+    settings_list_coherence_indicator = []
     for i in settings_list:
         for j in settings_list:
             overlap_dictionary[i+j] = Overlap(i,j)
+            settings_list_coherence_indicator.append(i+j)
 
-    # generation of aplphabet corresponding to pairs od input states
-    settings_list = []
-    #for i in range(2, 6):
-    #    for j in range(2, 6):
-    #for rigetti
-    for i in range(2,4):
-        for j in range(2,4):
-            settings_list.append(str(i) + str(j))
+   
 
     # dictionary storing values of coherence indicator
     indicator_dic = {}
@@ -112,14 +105,14 @@ def compute_coherence_indicator(marginals_dictionary, subset_list):
         tvd_value = []
         tvd_settings = []
 
-        for i in range(len(settings_list)):
-            for j in range(i + 1, len(settings_list)):
-                s1 = settings_list[i]
-                s2 = settings_list[j]
+        for i in range(len(settings_list_coherence_indicator)):
+            for j in range(i + 1, len(settings_list_coherence_indicator)):
+                s1 = settings_list_coherence_indicator[i]
+                s2 = settings_list_coherence_indicator[j]
                 indicator = math.compute_TVD(elements[0][s1] / elements[1][s1], elements[0][s2] / elements[1][s2])
                 indicator = indicator / (compute_indicator_normalization(2, s1, s2, overlap_dictionary))
                 tvd_value.append(indicator)
-                tvd_settings.append((settings_list[i], settings_list[j]))
+                tvd_settings.append((settings_list_coherence_indicator[i], settings_list_coherence_indicator[j]))
         indicator_dic[keys] = [tvd_value, tvd_settings]
 
     return  indicator_dic
