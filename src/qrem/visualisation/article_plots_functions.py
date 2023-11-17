@@ -116,7 +116,7 @@ def create_coherence_bound_histogram(coherence_bound_dictionary_ibm:Dict, cohere
         plt.savefig()
     plt.clf()
 
-def create_error_mitigation_histogram(noise_models_mitigated_energy_dictionary:Dict,energy_dictionary:Dict,number_of_qubits:int, plot_title ='', path_to_save =None):
+def create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary:Dict,noise_models_predicted_energy_dictionary:Dict,energy_dictionary:Dict,number_of_qubits:int, plot_title ='', path_to_save =None):
     
     noise_models_mitigated_energy_dictionary_error= compute_mitigation_errors(noise_models_mitigated_energy_dictionary['corrected_energy'],hamiltonian_energy_dictionary=energy_dictionary,number_of_qubits=number_of_qubits)
     
@@ -139,8 +139,13 @@ def create_error_mitigation_histogram(noise_models_mitigated_energy_dictionary:D
 
     #raw error computation
     raw_errors_list = []
+    error_prediction_best_cn =[]
+    error_tpm = []  
+    tpm_clusters = tuple(next(iter(noise_models_predicted_energy_dictionary["predicted_energy"].keys() ))) 
     for key, hamiltonian_energy_dictionary in energy_dictionary.items():
         raw_errors_list.append(abs(hamiltonian_energy_dictionary['energy_raw']-hamiltonian_energy_dictionary['energy_ideal'])/number_of_qubits)
+        error_prediction_best_cn.append(abs(hamiltonian_energy_dictionary['energy_raw']- noise_models_predicted_energy_dictionary["predicted_energy"][minimal_median_cluster_assignment][key]["predicted_energy"])/number_of_qubits)
+        error_tpm.append(abs(hamiltonian_energy_dictionary['energy_raw']- noise_models_predicted_energy_dictionary["predicted_energy"][tpm_clusters][key]["predicted_energy"])/number_of_qubits)
 
     
     #histogram is drawn 
@@ -149,7 +154,6 @@ def create_error_mitigation_histogram(noise_models_mitigated_energy_dictionary:D
     raw_error_color = color_map(0.1) 
     w = (max(raw_errors_list) -min(best_cn_model_error_list))/60
     bins_new=np.arange(min(best_cn_model_error_list), max(raw_errors_list) + w, w) 
-    print(w)
     plt.hist(product_model_error_list,bins=bins_new,alpha=0.5,color = color_product_model)
     plt.hist(best_cn_model_error_list ,bins=bins_new,alpha=0.5, color = color_cn_best_model)
     plt.hist(raw_errors_list , bins=bins_new,alpha=0.5, color = raw_error_color )
@@ -161,7 +165,28 @@ def create_error_mitigation_histogram(noise_models_mitigated_energy_dictionary:D
   
 
     if path_to_save:
-        plt.savefig(path_to_save)
+        plt.savefig(path_to_save+"error_mitigation_histogram")
+    else:
+        plt.savefig()
+    plt.clf()
+
+       #histogram is drawn 
+    color_product_model = color_map(0.45)#0.45
+    color_cn_best_model = color_map(0.99)
+    raw_error_color = color_map(0.1) 
+    w = (max(raw_errors_list) -min(best_cn_model_error_list))/60
+    bins_new=np.arange(min(best_cn_model_error_list), max(raw_errors_list) + w, w) 
+    plt.hist(error_tpm,bins=bins_new,alpha=0.5,color = color_product_model)
+    plt.hist(error_prediction_best_cn ,bins=bins_new,alpha=0.5, color = color_cn_best_model)
+    plt.ylim(0, 80)
+    labels= ["TPM","CN model locality " +str(len(max(minimal_median_cluster_assignment, key=len))), "$\Delta E_{EST}(H)$"]
+    plt.legend(labels)
+    plt.title("Histogram of $\Delta E_{PRED}(H)$ " + plot_title)
+
+  
+
+    if path_to_save:
+        plt.savefig(path_to_save+"error_prediction_histogram")
     else:
         plt.savefig()
     plt.clf()

@@ -9,6 +9,7 @@ from tqdm import tqdm
 
 from qrem.functions_qrem import povmtools
 from qrem.functions_qrem import ancillary_functions as anf
+from qrem.noise_simulation.CN import functions_sampling as fus
 
 import re
 
@@ -161,6 +162,22 @@ def get_energy_from_bitstring_diagonal_global(bitstring: str,
     return energy
 """
 
+def get_noisy_energy_product_noise_model(input_state,
+                                         noise_matrices_dictionary,
+                                         weights_dictionary_tuples,
+                                         needed_pairs=None):
+    pairs_marginals_noisy = fus.calculate_pairs_marginals_from_tensor_model_fixed_input(
+        input_state=input_state,
+        noise_matrices_dictionary=noise_matrices_dictionary,
+        needed_pairs=needed_pairs,
+        get_also_1q_marginals=True)
+
+    energy_modeled_exact = estimate_energy_from_marginals(
+        weights_dictionary=weights_dictionary_tuples,
+        marginals_dictionary=pairs_marginals_noisy)
+
+    return energy_modeled_exact
+
 def estimate_energy_from_counts_dictionary(counts_dictionary: Dict[str, int],
                                            weights_dictionary: Dict[Tuple[int], float],
                                            additional_multipliers=None,
@@ -280,6 +297,7 @@ def estimate_energy_from_counts_dictionary_alternative(counts_dictionary: Dict[s
     # print(t1-t0)
     # print('hej')
     return energy
+
 
 def merge_multiple_counts_dictionaries(counts_dictionaries_list: List[Dict[str, int]]) -> Dict[
     str, int]:

@@ -1,10 +1,8 @@
 import pickle
 from qrem.pipelines.characterization_routine import execute_characterization_workflow
 from  qrem.pipelines.mitigation_functions import estimate_mitigated_energy_over_noise_models
-from  qrem.pipelines.mitigation_functions import compute_mitigation_errors, compute_mitigation_error_median_mean 
-
+from qrem.pipelines.mitigation_functions import compute_noisy_energy_over_noise_models
 from qrem.visualisation import article_plots_functions as apf
-
 import numpy as np
 from qrem.functions_qrem import functions_benchmarks as fun_ben
 from qrem.functions_qrem import ancillary_functions as anf
@@ -175,6 +173,13 @@ if __name__ == "__main__":
     #noise_models_mitigated_energy_dictionary_ibm=data_dictionary['noise_models_mitigated_energy_dictionary_ibm']
 
 
+    noise_models_predicted_energy_dictionary_ibm = compute_noisy_energy_over_noise_models(results_dictionary=characterization_routine_results_dictionary_ibm['benchmarks_results_dictionary'],hamiltonians_dictionary=hamiltonians_dictionary_ibm,noise_models_list=characterization_routine_results_dictionary_ibm['noise_models_list'])
+
+    noise_models_predicted_energy_dictionary_rig = compute_noisy_energy_over_noise_models(results_dictionary=characterization_routine_results_dictionary_rig['benchmarks_results_dictionary'],hamiltonians_dictionary=hamiltonians_dictionary_rig,noise_models_list=characterization_routine_results_dictionary_rig['noise_models_list'])
+
+
+
+
 
 
     ####################################################################################### 
@@ -184,7 +189,10 @@ if __name__ == "__main__":
     dictionary_to_save ={'characterization_dictionary_ibm' : characterization_routine_results_dictionary_ibm ,
                         'characterization_dictionary_rig' : characterization_routine_results_dictionary_rig,
                         'noise_models_mitigated_energy_dictionary_ibm' : noise_models_mitigated_energy_dictionary_ibm,
-                        'noise_models_mitigated_energy_dictionary_rig' : noise_models_mitigated_energy_dictionary_rig
+                        'noise_models_mitigated_energy_dictionary_rig' : noise_models_mitigated_energy_dictionary_rig,
+                        'noise_models_predicted_energy_dictionary_rig': noise_models_predicted_energy_dictionary_rig,
+                        'noise_models_predicted_energy_dictionary_ibm':noise_models_predicted_energy_dictionary_ibm
+
                        }
     
     io.save(dictionary_to_save=dictionary_to_save,custom_filename="ARTICLE_ANALYSIS",directory='/media/tuzjan/T7/work_tuzjan/tests')
@@ -216,7 +224,7 @@ if __name__ == "__main__":
     apf.create_coherence_bound_histogram(coherence_bound_dictionary_ibm=characterization_routine_results_dictionary_ibm['coherence_bound_dictionary'],coherence_bound_dictionary_rigetti=characterization_routine_results_dictionary_rig['coherence_bound_dictionary'],path_to_save='/media/tuzjan/T7/work_tuzjan/tests/coherence_bound_histogram')
 
     ######################################################################### 
-    #### Fig 6 Error mitigation histogram                                 ###
+    #### Fig 6 Error mitigation an Error prediction histogram             ###
     #########################################################################
 
 
@@ -227,14 +235,11 @@ if __name__ == "__main__":
 
 
 
-    apf.create_error_mitigation_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_ibm,energy_dictionary=energy_dictionary_ibm,number_of_qubits=127,path_to_save = '/media/tuzjan/T7/work_tuzjan/tests/error_mitigation_histogram_ibm')
+    apf.create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_ibm,noise_models_predicted_energy_dictionary=noise_models_predicted_energy_dictionary_ibm,energy_dictionary=energy_dictionary_ibm,number_of_qubits=127,path_to_save = '/media/tuzjan/T7/work_tuzjan/tests/ibm')
 
-    apf.create_error_mitigation_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_rig,energy_dictionary=energy_dictionary_rig,number_of_qubits=79,path_to_save = '/media/tuzjan/T7/work_tuzjan/tests/error_mitigation_histogram_rigetti')
+    apf.create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_rig,noise_models_predicted_energy_dictionary=noise_models_predicted_energy_dictionary_rig,energy_dictionary=energy_dictionary_rig,number_of_qubits=79,path_to_save = '/media/tuzjan/T7/work_tuzjan/tests/rig')
 
-    ######################################################################### 
-    #### Fig 7 Error prediction histogram                                 ###
-    #########################################################################
-    
+
 
   
                                             
