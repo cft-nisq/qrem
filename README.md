@@ -13,6 +13,11 @@ This package provides a versatile set of tools for the characterization and miti
 
 This package is released now as an alpha version, to gather feedback while it undergoes final adjustments prior to the first release. As it is under heavy development, existing functionalities might change, while new functionalities and notebooks are expected to be added in the future.
 
+
+## Documentation
+
+Current documentation (work in progress) is available [here](https://cft-nisq.github.io/qrem/index.html)
+
 ## Introduction
 
 The two current main functionalities are:
