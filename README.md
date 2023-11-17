@@ -33,7 +33,6 @@ The two current main functionalities are:
 
 * mitigation based on noise model provided by user ( currently available is CN, CTMP is under development)
 
-**Jupyter notebooks with example usage will be available after 7.04.2023 together with source code via package git repository on github**
 
 ## Installation
 
