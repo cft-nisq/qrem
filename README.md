@@ -1,44 +1,116 @@
 # QREM - Quantum Readout Errors Mitigation
 
-This package provides a versatile set of tools for the characterization and mitigation of readout noise in NISQ devices. Standard characterization approaches become infeasible with the growing size of a device, since the number of circuits required to perform tomographic reconstruction of a measurement process grows exponentially in the number of qubits. In QREM  we use efficient techniques that circumvent those problems by focusing on reconstructing local properties of the readout noise.
+This code accompanies the paper **[Efficient reconstruction, benchmarking and validation of cross-talk models in readout noise in near-term quantum devices](https://arxiv.org/)**. 
 
-<img src="http://quantin.pl/wp-content/uploads/2023/03/washington_26_04_2022_worst_case_classical_threshold_2.png"
-  alt="Plot of correlation coefficients determined in characterization on device layout"
-  title="Plot of correlation coefficients determined in characterization on device layout"
-  style="display: inline-block
-  margin: 0 auto
-  max-width: 400px"/>
+The purpose of this git  branch is to keep the exact codebase that was used for development of the article, while the qrem package will continue to be updtated in its main branch [here](https://github.com/cft-nisq/qrem).
 
-## Status of development
+For the main README.md file with the description of the package look [here](https://github.com/cft-nisq/qrem#readme)
 
-This package is released now as an alpha version, to gather feedback while it undergoes final adjustments prior to the first release. As it is under heavy development, existing functionalities might change, while new functionalities and notebooks are expected to be added in the future.
+## Usage
 
-## Introduction
+In order to perform analysis the following steps needed to be taken:
 
-The two current main functionalities are:
+1. Clone the repository and set up the project.
 
-### **Noise characterization**
+    ```bash
+    git clone git@github.com:cft-nisq/qrem.git
+    ```
 
-* experiment design
-* hardware experiment implementation and data processing (on devices supported by qiskit/pyquil)
-* readout noise characterisation
-* learning of noise models
+    or - of you already have an installation:
 
-### **Noise mitigation**
+    ```bash
+    git pull
+    ```
 
-* mitigation based on noise model provided by user ( currently available is CN, CTMP is under development)
+2. Make sure that you have Python newer than 3.9.0 and newest version of pip. If not - best to upgrade both before proceeding further.
 
-**Jupyter notebooks with example usage will be available after 7.04.2023 together with source code via package git repository on github**
+3. We suggest first to create a separate virtual environment using venv. From qrem main repository  path create a new venv:
 
-## Installation
+    ```bash
+    python -m venv venv_qrem
 
-The best way to install this package is to use pip (see [pypi website](https://pypi.org/project/qrem/)):
+    (on most Linux/MacOS installations of python use python3)
 
-```console
-pip install qrem
-```
+    python3 -m venv venv_qrem
+    ```
 
-This method will automatically install all required dependecies (see [below for list of dependecies](#dependencies)).
+4. Activate your virtual environment. To do that on Windows, run (still beeing in QREM_SECRET_DEVELOPMENT folder):
+
+    ```bash
+    On windows:
+    ---------------
+    .\venv_qrem\Scripts\activate
+
+    On Linux or MacOS run:
+    ---------------
+    source venv_qrem/bin/activate
+    ```
+
+    If the command does not work, you need to fix execution permission on the file located in  *\venv_qrem\Scripts\activate* or *source venv_qrem/bin/activate*. The method is specific for OS - should be easy to find in google.
+
+5. Now you have two options. You can install QREM package in a developer (editable) mode so it will be easy for you to modify the package code, or you can install qrem traditionally, from pip. We suggest OPTION 1 (the qrem package version on pypi will be updated in the future).
+
+   1. OPTION 1 *Installing qrem in editable/dev mode*
+
+      1. Upgrade pip (if it is not upgraded):
+
+          ```bash
+          On windows:
+          ---------------
+          .\venv_qrem\Scripts\python.exe -m pip  install --upgrade pip
+
+          
+          On Linux or MacOS run:
+          ---------------
+          venv_xxxx/Scripts/python3 pip install --upgrade pip
+          ```
+
+      2. Install qrem package in development mode from local:
+
+          ```bash
+          On windows:
+          ---------------
+          pip install --editable .
+
+          On Linux or MacOS run:
+          ---------------
+          pip3 install --editable .
+          ```
+
+   2. OPTION 2 *Installing qrem from pypi*
+
+      ```bash
+      On windows:
+      ---------------
+      pip install qrem
+
+      On Linux or MacOS run:
+      ---------------
+      pip3 install qrem
+      ```
+
+6. Download experimental data available online [here](https://drive.google.com/drive/folders/14Jh3gJUbiipVLVoWSugJ4uYcZpZWd9XS?usp=drive_link)
+
+7. Set paths to experimental data in the article_data_analysis.py:
+
+    * **DATA_DIRECTORY**: directory with experimental data
+
+    * **FILE_NAME_RESULTS_IBM** and **FILE_NAME_RESULTS_RIG**: files with raw experimental results, on Google drive linked above *RESULTS_IBM_CUSCO.pkl* and *RESULTS_RIGETTI_ASPEN-M-3.pkl*
+
+    * **FILE_NAME_GROUND_STATES_LIST_IBM** and **FILE_NAME_GROUND_STATES_LIST_RIG**: files with ground states used in benchmarks, on Google drive linked above  *IBM_CUSCO_GROUND_STATES_LIST.pkl* and *RIGETTI-ASPEN-M-3_GROUND_STATES_LIST,pkl *
+ 
+    * **COHERENCE_WITNESS_CIRCUITS_PATH_IBM** and **COHERENCE_WITNESS_CIRCUITS_PATH_RIG**: files with states used to compute Coherence Strength, on Google drive linked above *IBM_CUSCO_COHERENCE_WITNESS_CIRCUITS.PKL* and *RIGETTI-ASPEN-M-3_COHERENCE_WITNESS_CIRCUITS.PKL*
+
+    * **FILE_NAME_HAMILTONIANS_IBM** and **FILE_NAME_HAMILTONIANS_RIG** iles with storing Hamiltonians used in benchmarks, on Google drive linked above *IBM_CUSCO_HAMILTONIANS_DICTIONARY.pkl* AND *RIGETTI-ASPEN-M-3_HAMILTONIANS_DICTIONARY.pkl*
+
+    * **FILE_NAME_MARGINALS_IBM** and **FILE_NAME_MARGINALS_RIG**: Optionally pre-processed files with 2-qubit marginal data can be loaded, on Google drive linked above *IBM_CUSCO_HAMILTONIANS_DICTIONARY.pkl* AND *RIGETTI-ASPEN-M-3_HAMILTONIANS_DICTIONARY.pkl*. This data can by omitted and, after suitable modification of the code, recomputed in the script
+
+
+4. Specify output path where the results will be saved
+
+5. Run the script **article_data_analysis.py** - or jupyter notebook (link coming soon). By default the script performs analysis experimental data for IBM an Rigetti. Note that generation of Fig 4. is by default disabled, since it requires [Manim package](https://www.manim.community/), which is cumbersome to set up and for purpose of this article was run on Windows machine.
+
+If you would run into any issue with running the script or any suggestions, don't hesitate to contact us at [nisq.devices@cft.edu.pl](mailto:nisq.devices@cft.edu.pl).
 
 
 ## Dependencies
@@ -69,17 +141,3 @@ For **qrem** package to work properly, the following libraries should be present
 Dependecies for visualizations:
 
 * "manim >= 0.17.2"
-  
-## References
-
-**The workflow of this package is mainly based on works**:
-  
-[1] Filip B. Maciejewski, Zoltán Zimborás, Michał Oszmaniec, "Mitigation of readout noise in near-term quantum devices by classical post-processing based on detector tomography", [Quantum 4, 257 (2020)](https://quantum-journal.org/papers/q-2020-04-24-257/)
-
-[2] Filip B. Maciejewski, Flavio Baccari, Zoltán Zimborás, Michał Oszmaniec, "Modeling and mitigation of cross-talk effects in readout noise with applications to the Quantum Approximate Optimization Algorithm", [Quantum 5, 464 (2021)](https://quantum-journal.org/papers/q-2021-06-01-464/)
-
-**Further references:**
-
-[3]. Sergey Bravyi, Sarah Sheldon, Abhinav Kandala, David C. Mckay, Jay M. Gambetta, Mitigating measurement errors in multi-qubit experiments, [Phys. Rev. A 103, 042605 (2021)](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.103.042605)
-  
-[4]. Flavio Baccari, Christian Gogolin, Peter Wittek, and Antonio Acín, Verifying the output of quantum optimizers with ground-state energy lower bounds, [Phys. Rev. Research 2, 043163 (2020)](https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.043163)
