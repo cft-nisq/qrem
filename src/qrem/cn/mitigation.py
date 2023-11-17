@@ -236,7 +236,7 @@ def mitigate_marginal_state_dependent(marginal: Tuple, results_dictionary: Dict[
 
 #correct this to allow for a results dictionary that has more than one setting
 
-def mitigate_marginals(marginals_list: List[Tuple], results_dictionary: Dict[str, Dict[str, int]], noise_model: type[CNModelData] ,ensure_proper_probability_distribution = True, check_inverse_noise_matrix_norm:bool = True, threshold:float = 100, state_independent_mitigation:bool = False )->Dict[str, Dict[tuple[int], np.array]]:
+def mitigate_marginals(marginals_list: List[Tuple], results_dictionary: Dict[str, Dict[str, int]], noise_model: type[CNModelData] ,ensure_proper_probability_distribution = True, check_inverse_noise_matrix_norm:bool = False, threshold:float = 100, state_independent_mitigation:bool = False )->Dict[str, Dict[tuple[int], np.array]]:
 
     """
     A  function performing CN noise model based mitigation for marginal probability distributions specified by a marginals list.
