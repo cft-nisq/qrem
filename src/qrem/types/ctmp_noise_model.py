@@ -7,17 +7,21 @@ from qrem.ctmp.model import rates_from_exp_results
 import qrem.ctmp.modeltools.ground_state_estimation as gsa
 
 class CTMPModelData(DataStructureBase):
-
     """The CTMP model as described in Bravyi et al.
 
-    n - the number of qubits
-    rates - the list of error types, where each error = (i, j in, out, rate), with:
+    Parameters
+    ----------
+    n: int
+        the number of qubits
+    rates: list
+        the list of error types, where each error = (i, j in, out, rate), with:
         i, j - qubits on which the error acts (i=j - one qubit error)
         in, out - input and output bits of the error
         rate - the rate of the given error
         e.g. (0, 2, "00", "11", 0.6) is the error flipping 0_0... --> 1_1...
         (1, 1, "0", "1", 0.6) is the error flipping _0_... -> _1_...
-    gamma - CTMP noise strength as in eq. (13); if None, it will be estimated heuristically
+    gamma: float
+        CTMP noise strength as in eq. (13); if None, it will be estimated heuristically
 
     """
 

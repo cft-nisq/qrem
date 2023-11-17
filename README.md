@@ -38,10 +38,8 @@ The best way to install this package is to use pip (see [pypi website](https://p
 pip install qrem
 ```
 
-This method will automatically install all required dependecies (see [below for list of dependecies](#deps_list)).
+This method will automatically install all required dependecies (see [below for list of dependecies](#dependencies)).
 
-
-<a id="deps_list"></a>
 
 ## Dependencies
 

@@ -2,17 +2,17 @@
 ```
 
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 2
+:caption: Table of Contents
 :hidden:
 
-example.ipynb
 changelog.md
 contributing.md
 conduct.md
 autoapi/index
 ```
-# Thumbnails gallery
+<!-- # Thumbnails gallery
 
 ```{nbgallery}
 example.ipynb
-```
+``` -->

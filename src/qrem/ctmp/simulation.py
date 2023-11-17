@@ -4,13 +4,13 @@ from typing import Dict, Tuple, List
 import numpy as np
 import random
 
-"""Generates a sample according to the stochastic matrix exp(Gt) of the  CTMP model 
-acting on a classical input state by using Gillespie's algorithm. Default t=1.
-"""
 
 def generate_sample(CTMP_model: CTMPModelData,
                     input_state: str,
                     t: float=1) -> str:
+    """Generates a sample according to the stochastic matrix exp(Gt) of the  CTMP model 
+    acting on a classical input state by using Gillespie's algorithm. Default t=1.
+    """
     if len(input_state) != CTMP_model.n:
         raise Exception("Input state size and model size do not match")
     time = 0

@@ -1,8 +1,19 @@
 #ORGANIZATION - dont know what is the purpose of this file (MO) - (PP): important for defining initialization for packages/subpackages in python (think of every folder as a package/subpackage, when you import it __init__.py is run)
+"""**qrem*** module is the main module of the whole package.
+It contains all qrem code after refactoring into version 1.0.0. Currently it holds
+most important data structures and common functions used in the freamework. The main subpackages are: \n\n
+- **common**: contains all common functions, utilities, connection to quantum backends etc. used throughout whole qrem package\n
+- **cn**: csubpackage containing cluster-neighbours approach implementation \n
+- **ctmp**: Mitigation procedure as described in Bravyi et al. \n
+-** pipelines**: scripts containing executions of most common characterisation/mitigation routines from data generation, sending to quantum machine down to characterization and mitigation. \n
+- **types**: most important data holder classess used throughout the package \n
+""" 
+
+
 from importlib.metadata import version
 from dotenv import load_dotenv
 
-from qrem.common.printer import qprint, errprint, warprint
+from qrem.common.printer import qprint
 from qrem.common.config import QremConfigLoader
 #-----------------------
 # [1] read version from installed package and provide in __version__ variable

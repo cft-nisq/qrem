@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 from qrem.functions_qrem import povmtools
 from qrem.functions_qrem.povmtools import reorder_probabilities
-from qrem.types import CircuitCollection
+from qrem.types.circuit_collection import CircuitCollection
 
 
 # ORGANIZE: this needs exception handling and securing against bad data

@@ -58,6 +58,7 @@ dependencies = [
   "sympy >= 1.11.0",
   "pyquil >= 4.0.3",
   "configargparse >= 1.5.0",
+  "python-dotenv >= 1.0.0",
 ]
 
 [project.optional-dependencies]

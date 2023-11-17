@@ -11,16 +11,16 @@ basis_dict = {0 : "00", 1 : "11", 2: "01", 3 : "10"}
 # reverse basis dictionary
 rbd = {v: k for k, v in basis_dict.items()}
 
-"""Calibrates the error rates to experimental results, as described in the paper. Return a list of model
-rates in the format as in CTMPModelData class.
-
-exp_results - dictionary of experimental results in the form {input string: dict of output counts}
-e.g. {"001" : {"000" : 56, "001" : 333, ...}}
-n - number of qubits
-
-The function assumes that experimental results are complete, i.e. suffice to determine the model rates.
-"""
 def rates_from_exp_results(exp_results: Dict[str, Dict[str, int]], n: int) -> List[Tuple]:
+    """Calibrates the error rates to experimental results, as described in the paper. Return a list of model
+    rates in the format as in CTMPModelData class.
+
+    exp_results - dictionary of experimental results in the form {input string: dict of output counts}
+    e.g. {"001" : {"000" : 56, "001" : 333, ...}}
+    n - number of qubits
+
+    The function assumes that experimental results are complete, i.e. suffice to determine the model rates.
+    """
     # todo: check if the input set is complete
     pairs = list(combinations(range(0, n), 2))
     rates = []
