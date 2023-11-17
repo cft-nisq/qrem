@@ -530,29 +530,29 @@ class CNModelData(DataStructureBase):
 
     
    
-from qrem.functions_qrem import ancillary_functions as anf
+# from qrem.functions_qrem import ancillary_functions as anf
 
-def t1(test_model:type[CNModelData]):
-    # Test of json export
+# def t1(test_model:type[CNModelData]):
+#     # Test of json export
 
     
-    json_dict_test = test_model.to_json()
+#     json_dict_test = test_model.to_json()
 
-    new_model =CNModelData(number_of_qubits=5)
+#     new_model =CNModelData(number_of_qubits=5)
 
-    new_model.import_json(json_dict_test)
+#     new_model.import_json(json_dict_test)
 
-def t2(test_model:type[CNModelData]):
-    # Test of pickle export
+# def t2(test_model:type[CNModelData]):
+#     # Test of pickle export
 
  
-    pickle_data = test_model.export_pickle("test_data")
+#     pickle_data = test_model.export_pickle("test_data")
 
-    new_model =CNModelData(number_of_qubits=5)
+#     new_model =CNModelData(number_of_qubits=5)
 
-    new_model.import_pickle("test_data")
+#     new_model.import_pickle("test_data")
 
-    print(new_model.clusters_tuple)
+#     print(new_model.clusters_tuple)
 
     
 

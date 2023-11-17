@@ -61,6 +61,8 @@ For **qrem** package to work properly, the following libraries should be present
 * "pyquil >= 3.0.0",
 * "pyquil-for-azure-quantum",
 * "ipykernel >= 6.1.0",
+* "configargparse >= 1.5.0",
+* "python-dotenv >= 1.0.0",
 
 ## Optional dependencies
 

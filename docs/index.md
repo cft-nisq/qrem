@@ -6,7 +6,7 @@
 :hidden:
 Home <self>
 qrem package API <autoapi/qrem/index>
-API Documentation Full <autoapi/index>
+full code API (+deprecated) <autoapi/index>
 ```
 
 ```{toctree}

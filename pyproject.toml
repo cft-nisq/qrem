@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qrem"
-version = "0.1.5"
+version = "0.1.4"
 authors = [
   { name = "Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec", email = "oszmaniec@cft.edu.pl" },
 ]
@@ -68,11 +68,19 @@ test = ["pytest-cov ~=3.0.0"]
 #[project.scripts]
 #my-script = "my_package.module:function"
 
-# [project.urls]
-# "Homepage" = "https://github.com/cft-nisq/qrem"
-# "Bug Tracker" = "https://github.com/cft-nisq/qrem/issues"
-# "Documentation" = "https://github.com/cft-nisq/qrem/docs"
-# "Tutorials" = "https://github.com/cft-nisq/qrem/tutorials"
+[project.urls]
+"Homepage" = "https://github.com/cft-nisq/qrem"
+"Documentation" = "https://cft-nisq.github.io/qrem/index.html"
+#"Tutorials" = "https://github.com/cft-nisq/qrem/tutorials"
+
+[tool.setuptools]
+# ...
+# By default, include-package-data is true in pyproject.toml, so you do
+# NOT have to specify this line.
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["src"] # list of folders that contain the packages (["."] by default)
+
+[tool.setuptools.package-data]
+mypkg = ["*.txt", "*.ini"]
