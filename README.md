@@ -9,6 +9,6 @@ in readout noise in near-term quantum devices"](arxiv link). In order to perform
 
 3. Set paths to experimental data in the article_data_analysis.py
 
-5. Specify path where the results will be saved 
+4. Specify path where the results will be saved 
 
-4. Run the script article_data_analysis.py. By default the script performs analysis experimental data for IBM an Rigetti. Note that generation of Fig 4. since it requires Manim package, and is by default disabled.
+5. Run the script article_data_analysis.py. By default the script performs analysis experimental data for IBM an Rigetti. Note that generation of Fig 4. since it requires Manim package, and is by default disabled.

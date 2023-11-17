@@ -1,5 +1,5 @@
 """
-@authors: Filip Maciejewski, Oskar Słowik, Tomek Rybotycki
+@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Tomasz Rybotycki, Michał Oszmaniec
 @contact: filip.b.maciejewski@gmail.com
 
 References:

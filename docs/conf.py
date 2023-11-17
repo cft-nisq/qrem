@@ -7,8 +7,8 @@
 # -- Project information -----------------------------------------------------
 
 project = u"qrem"
-copyright = u"2023, Piotr Podziemski"
-author = u"Piotr Podziemski"
+copyright = u"2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec"
+author = u"Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec"
 
 # -- General configuration ---------------------------------------------------
 

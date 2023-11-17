@@ -1,5 +1,5 @@
 """
-@author: Filip Maciejewski
+@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
 @contact: filip.b.maciejewski@gmail.com
 """
 # DELETE THIS FILE -- talk with Jan what is inside (not sure if this is a real test)

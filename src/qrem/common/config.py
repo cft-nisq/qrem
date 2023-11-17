@@ -53,8 +53,8 @@ common_path = Path(__file__).resolve().parent
 class QremConfigLoader:
     config_parser = None
 
-    """ processes config specific for QREM """
     def load(cmd_args=None, default_path=str(Path(common_path,'default.ini')) , as_dict=False):
+        """ processes config file specific for QREM """
 
         common_path = Path(__file__).resolve().parent   
 
@@ -162,6 +162,7 @@ class QremConfigLoader:
         return config
     
     def values():
+        """ Return summary of configuration values """
         print("----------")
         if QremConfigLoader.config_parser is not None:
             qprint("Configuration values:")
@@ -170,6 +171,7 @@ class QremConfigLoader:
             errprint("ERROR: Config not defined") 
 
     def help():
+        """ Print help for preparation of the config file """
         print("----------")
         if QremConfigLoader.config_parser is not None:
             qprint("Configuration help:")
