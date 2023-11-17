@@ -195,7 +195,6 @@ def simulate_noise_results_dictionary(results_dictionary: Dict[str, Dict[str, in
 
 
 
-
 def simulate_noise_results_dictionary_old(results_dictionary: Dict[str, Dict[str, int]],
                             noise_model:type[CNModelData],
                             neighborhoods_tuples: Optional[Dict[Tuple[int], List[int]]]={}

@@ -232,6 +232,92 @@ def estimate_mitigated_energy_over_noise_models(results_dictionary,hamiltonians_
     return results_dictionary
 
 
+def compute_noisy_energy_over_noise_models(results_dictionary,hamiltonians_dictionary,noise_models_list):
+
+    noise_models_prediction_results_dictionary = {}
+
+    for noise_model in noise_models_list:
+
+        noise_models_prediction_results_dictionary[noise_model.clusters_tuple] = compute_noisy_energy_for_hamiltonians_set(results_dictionary=results_dictionary,hamiltonians_dictionary=hamiltonians_dictionary,noise_model=noise_model)
+        
+        
+         
+   
+    noise_models_predicted_energy_dictionary ={}
+   
+    results_dictionary = {}
+    
+    for key, entry in noise_models_prediction_results_dictionary.items():
+        noise_models_predicted_energy_dictionary[key] = entry['predicted_energy']
+    
+    
+    results_dictionary['predicted_energy'] = noise_models_predicted_energy_dictionary
+ 
+
+
+    
+    return results_dictionary
+
+
+def compute_noisy_energy_for_hamiltonians_set(results_dictionary:dict[str,dict[str,int]], hamiltonians_dictionary:dict[str,dict] ,noise_model:type[CNModelData] ):
+
+  
+
+   
+
+    prediction_results_dictionary = {}
+  
+    prediction_results_dictionary[ 'predicted_energy']= {hamiltonian_index : 0 for hamiltonian_index in  hamiltonians_dictionary.keys()} 
+    for state, hamiltoanian_index in tqdm(zip(results_dictionary.keys(), hamiltonians_dictionary.keys()),total=len(list(results_dictionary.keys()))):
+        
+       
+       
+        prediction_results_dictionary['predicted_energy'][hamiltoanian_index]  =  compute_noise_energy_for_hamiltonian(hamiltonian_dictionary= hamiltonians_dictionary[hamiltoanian_index],noise_model=noise_model,input_state=state ) 
+        
+    
+
+   
+       
+    return prediction_results_dictionary 
+
+
+
+def compute_noise_energy_for_hamiltonian( hamiltonian_dictionary:dict[str,dict], noise_model:type[CNModelData],input_state):
+    
+  
+    
+    
+    weights_dictionary=hamiltonian_dictionary['weights_dictionary']
+    #mitigation is performed 
+    
+    predicted_energy = compute_noisy_energy_prediction(noise_model=noise_model,weights_dictionary=weights_dictionary,input_state=input_state)
+    
+    return {'predicted_energy':predicted_energy} 
+
+
+
+def compute_noisy_energy_prediction(noise_model: type[CNModelData],weights_dictionary:Dict,input_state):
+        
+       
+
+        needed_pairs = [x for x in weights_dictionary.keys() if len(x) == 2]
+        energies_dictionary_now={}
+        errors_dictionary_now = {}
+       
+
+        noise_matrices_dictionary_model = {cluster: noise_model.noise_matrices[cluster]['averaged']
+                                                   for cluster in list(noise_model.clusters_neighborhoods.keys())}
+
+        predicted_energy = fdt.get_noisy_energy_product_noise_model(input_state=input_state,
+                                                                            noise_matrices_dictionary=noise_matrices_dictionary_model,
+                                                                            needed_pairs=needed_pairs,
+                                                                            weights_dictionary_tuples=weights_dictionary)
+
+        
+        
+        return predicted_energy
+
+
 def simulate_noisy_experiment( noise_model: type[CNModelData], number_of_circuits: int, number_of_shots: int, number_of_benchmark_circuits:int, data_directory: str ,name_id: str = '',save_data: bool = False,return_ideal_experiment_data: bool = False):
 
     number_of_qubits = noise_model.number_of_qubits  
