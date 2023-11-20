@@ -33,7 +33,6 @@ The two current main functionalities are:
 
 * mitigation based on noise model provided by user ( currently available is CN, CTMP is under development)
 
-
 ## Installation
 
 The best way to install this package is to use pip (see [pypi website](https://pypi.org/project/qrem/)):
@@ -43,7 +42,6 @@ pip install qrem
 ```
 
 This method will automatically install all required dependecies (see [below for list of dependecies](#dependencies)).
-
 
 ## Dependencies
 
