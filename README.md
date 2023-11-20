@@ -1,6 +1,8 @@
 # QREM - Quantum Readout Errors Mitigation
 
-This package provides a versatile set of tools for the characterization and mitigation of readout noise in NISQ devices. Standard characterization approaches become infeasible with the growing size of a device, since the number of circuits required to perform tomographic reconstruction of a measurement process grows exponentially in the number of qubits. In QREM  we use efficient techniques that circumvent those problems by focusing on reconstructing local properties of the readout noise.
+This package provides a versatile set of tools for the characterization and mitigation of readout noise in NISQ devices. Standard characterization approaches become infeasible with the growing size of a device, since the number of circuits required to perform tomographic reconstruction of a measurement process grows exponentially in the number of qubits. In QREM  we use efficient techniques that circumvent those problems by focusing on reconstructing local properties of the readout noise. 
+
+You can find article based on initial version of this package [here - http://arxiv.org/abs/2311.10661](http://arxiv.org/abs/2311.10661) and the corresponding code used at the moment of writning the article [here](https://github.com/cft-nisq/qrem/tree/article-eff).
 
 <img src="http://quantin.pl/wp-content/uploads/2023/03/washington_26_04_2022_worst_case_classical_threshold_2.png"
   alt="Plot of correlation coefficients determined in characterization on device layout"

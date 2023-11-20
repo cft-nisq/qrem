@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qrem"
-version = "0.1.5"
+version = "0.1.6"
 authors = [
   { name = "Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec", email = "oszmaniec@cft.edu.pl" },
 ]
@@ -70,8 +70,9 @@ test = ["pytest-cov ~=3.0.0"]
 
 [project.urls]
 "Homepage" = "https://github.com/cft-nisq/qrem"
+"GitHub" = "https://github.com/cft-nisq/qrem"
 "Documentation" = "https://cft-nisq.github.io/qrem/index.html"
-#"Tutorials" = "https://github.com/cft-nisq/qrem/tutorials"
+"Article" = "http://arxiv.org/abs/2311.10661"
 
 [tool.setuptools]
 # ...

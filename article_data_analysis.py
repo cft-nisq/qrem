@@ -162,7 +162,7 @@ if __name__ == "__main__":
 
                        }
     
-    io.save(dictionary_to_save=dictionary_to_save,custom_filename="ARTICLE_ANALYSIS",directory='/media/tuzjan/T7/work_tuzjan/tests')
+    io.save(dictionary_to_save=dictionary_to_save,custom_filename="ARTICLE_ANALYSIS",directory=DATA_DIRECTORY + '/tests')
 
 
 
@@ -170,13 +170,13 @@ if __name__ == "__main__":
     #### Fig 3  Distance to projective measurements                       ###
     #########################################################################
 
-    apf.create_POVMs_distance_histogram(POVMs_errors_ibm=characterization_routine_results_dictionary_ibm['POVMs_distances_dictionary'],POVMs_errors_rig=characterization_routine_results_dictionary_rig['POVMs_distances_dictionary'],path_to_save='/media/tuzjan/T7/work_tuzjan/tests/POVMs_distances_histogram')
+    apf.create_POVMs_distance_histogram(POVMs_errors_ibm=characterization_routine_results_dictionary_ibm['POVMs_distances_dictionary'],POVMs_errors_rig=characterization_routine_results_dictionary_rig['POVMs_distances_dictionary'],path_to_save=DATA_DIRECTORY + '/tests/POVMs_distances_histogram')
 
     ######################################################################### 
     #### Fig 3 histogram correlations coefficients                        ###
     #########################################################################
 
-    apf.create_correlations_distance_histogram(correlations_coefficients_matrix_ibm=characterization_routine_results_dictionary_ibm['correlations_data']['worst_case']['classical'],correlations_coefficients_matrix_rig=characterization_routine_results_dictionary_rig['correlations_data']['worst_case']['classical'],path_to_save='/media/tuzjan/T7/work_tuzjan/tests/correlations_coefficients_histogram')
+    apf.create_correlations_distance_histogram(correlations_coefficients_matrix_ibm=characterization_routine_results_dictionary_ibm['correlations_data']['worst_case']['classical'],correlations_coefficients_matrix_rig=characterization_routine_results_dictionary_rig['correlations_data']['worst_case']['classical'],path_to_save= DATA_DIRECTORY + '/tests/correlations_coefficients_histogram')
 
     ######################################################################### 
     #### Fig 4 (Only Windows ) cCorrelation coefficients                  ###
@@ -188,7 +188,7 @@ if __name__ == "__main__":
     #### Fig 5 Coherence Histogram                                        ###
     #########################################################################
 
-    apf.create_coherence_bound_histogram(coherence_bound_dictionary_ibm=characterization_routine_results_dictionary_ibm['coherence_bound_dictionary'],coherence_bound_dictionary_rigetti=characterization_routine_results_dictionary_rig['coherence_bound_dictionary'],path_to_save='/media/tuzjan/T7/work_tuzjan/tests/coherence_bound_histogram')
+    apf.create_coherence_bound_histogram(coherence_bound_dictionary_ibm=characterization_routine_results_dictionary_ibm['coherence_bound_dictionary'],coherence_bound_dictionary_rigetti=characterization_routine_results_dictionary_rig['coherence_bound_dictionary'],path_to_save=DATA_DIRECTORY + '/tests/coherence_bound_histogram')
 
     ######################################################################### 
     #### Fig 6 Error mitigation an Error prediction histogram             ###
@@ -202,9 +202,9 @@ if __name__ == "__main__":
 
 
 
-    apf.create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_ibm,noise_models_predicted_energy_dictionary=noise_models_predicted_energy_dictionary_ibm,energy_dictionary=energy_dictionary_ibm,number_of_qubits=127,path_to_save = '/media/tuzjan/T7/work_tuzjan/tests/ibm')
+    apf.create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_ibm,noise_models_predicted_energy_dictionary=noise_models_predicted_energy_dictionary_ibm,energy_dictionary=energy_dictionary_ibm,number_of_qubits=127,path_to_save = DATA_DIRECTORY + 'tests/ibm')
 
-    apf.create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_rig,noise_models_predicted_energy_dictionary=noise_models_predicted_energy_dictionary_rig,energy_dictionary=energy_dictionary_rig,number_of_qubits=79,path_to_save = '/media/tuzjan/T7/work_tuzjan/tests/rig')
+    apf.create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary=noise_models_mitigated_energy_dictionary_rig,noise_models_predicted_energy_dictionary=noise_models_predicted_energy_dictionary_rig,energy_dictionary=energy_dictionary_rig,number_of_qubits=79,path_to_save = DATA_DIRECTORY + 'tests/rig')
 
 
 
