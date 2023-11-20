@@ -1,6 +1,6 @@
 # QREM - Quantum Readout Errors Mitigation
 
-This code accompanies the paper **[Efficient reconstruction, benchmarking and validation of cross-talk models in readout noise in near-term quantum devices](https://arxiv.org/)**. 
+This code accompanies the paper **[Efficient reconstruction, benchmarking and validation of cross-talk models in readout noise in near-term quantum devices](http://arxiv.org/abs/2311.10661)**.
 
 The purpose of this git  branch is to keep the exact codebase that was used for development of the article, while the qrem package will continue to be updtated in its main branch [here](https://github.com/cft-nisq/qrem).
 

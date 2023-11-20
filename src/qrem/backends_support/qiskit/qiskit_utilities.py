@@ -6,7 +6,7 @@ import numpy as np
 from tqdm import tqdm
 import qiskit
 from qiskit import Aer, IBMQ
-from qiskit.providers.ibmq.job.ibmqjob import JobStatus
+from qiskit.providers.jobstatus import JobStatus
 
 from qrem.functions_qrem.povmtools import reorder_probabilities
 from qrem.functions_qrem import ancillary_functions as anf

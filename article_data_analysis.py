@@ -162,7 +162,7 @@ if __name__ == "__main__":
 
                        }
     
-    io.save(dictionary_to_save=dictionary_to_save,custom_filename="ARTICLE_ANALYSIS",directory='/media/tuzjan/T7/work_tuzjan/tests')
+    io.save(dictionary_to_save=dictionary_to_save,custom_filename="ARTICLE_ANALYSIS",directory=DATA_DIRECTORY)
 
 
 
