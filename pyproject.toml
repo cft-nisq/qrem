@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qrem"
-version = "0.1.4"
+version = "0.1.7"
 authors = [
   { name = "Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec", email = "oszmaniec@cft.edu.pl" },
 ]
@@ -55,6 +55,7 @@ dependencies = [
   "matplotlib >= 3.6.0",
   "seaborn >= 0.12.0",
   "networkx >= 0.12.0, < 3.0",
+  "colorama >= 0.4.6",
   "sympy >= 1.11.0",
   "pyquil >= 4.0.3",
   "configargparse >= 1.5.0",
