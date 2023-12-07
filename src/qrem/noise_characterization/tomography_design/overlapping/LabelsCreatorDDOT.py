@@ -23,9 +23,9 @@ from scipy.special import binom as binomial_coefficient
 from tqdm import tqdm
 
 from qrem.noise_characterization.tomography_design.overlapping.LabelsBaseDDOT import LabelsBaseDDOT
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 
-import qrem.common.math as qrem_math
+from qrem.common import convert, math as qrem_math
 from qrem.common.printer import qprint
 
 class LabelsCreatorDDOT(LabelsBaseDDOT):
@@ -80,7 +80,7 @@ class LabelsCreatorDDOT(LabelsBaseDDOT):
                 [2 ** len(subset_now) for subset_now in subsets_list]))
 
         dictionary_symbols_counting = {
-            anf.get_qubits_keystring(subset_list): np.zeros(2 ** len(subset_list),
+            convert.qubit_indices_to_keystring(subset_list): np.zeros(2 ** len(subset_list),
                                                        dtype=int) for
             subset_list in self._subsets}
 
@@ -115,7 +115,7 @@ class LabelsCreatorDDOT(LabelsBaseDDOT):
 
     def add_dictionary_subsets_symbols_counting_template(self):
         dictionary_symbols_counting = {
-            anf.get_qubits_keystring(subset_list): np.zeros(2 ** len(subset_list),
+            convert.qubit_indices_to_keystring(subset_list): np.zeros(2 ** len(subset_list),
                                                        dtype=int) for
             subset_list in self._subsets}
 
@@ -139,7 +139,7 @@ class LabelsCreatorDDOT(LabelsBaseDDOT):
         for subset_index in subsets_range:
             for circuit in circuits_list:
 
-                qubits_key = anf.get_qubits_keystring(self._subsets[subset_index])
+                qubits_key = convert.qubit_indices_to_keystring(self._subsets[subset_index])
                 subset_circuit_identifier = int(
                     ''.join([str(circuit[qubit_index]) for qubit_index in
                              self._subsets[subset_index]]),2)
@@ -158,7 +158,7 @@ class LabelsCreatorDDOT(LabelsBaseDDOT):
         t0 = time.time()
         zero_subsets = 0
         for subset in self._subsets:
-            subset_counts = self._dictionary_symbols_counting[anf.get_qubits_keystring(subset)]
+            subset_counts = self._dictionary_symbols_counting[convert.qubit_indices_to_keystring(subset)]
             zero_subsets += len(subset_counts) - np.count_nonzero(subset_counts)
 
         self._circuits_properties_dictionary['absent_elements_amount'] = zero_subsets
@@ -170,7 +170,7 @@ class LabelsCreatorDDOT(LabelsBaseDDOT):
 
         big_list = []
         for subset in self._subsets:
-            big_list += list(self._dictionary_symbols_counting[anf.get_qubits_keystring(subset)])
+            big_list += list(self._dictionary_symbols_counting[convert.qubit_indices_to_keystring(subset)])
 
         minimal_amount, maximal_amount = min(big_list), max(big_list)
 
@@ -202,7 +202,7 @@ class LabelsCreatorDDOT(LabelsBaseDDOT):
         self._circuits_list = []
 
         dictionary_symbols_counting = {
-            anf.get_qubits_keystring(subset_list): np.zeros(2 ** len(subset_list),
+            convert.qubit_indices_to_keystring(subset_list): np.zeros(2 ** len(subset_list),
                                                        dtype=int) for
             subset_list in self._subsets}
 

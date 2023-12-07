@@ -1,6 +1,8 @@
 """
-@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
-@contact: filip.b.maciejewski@gmail.com
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 
 import copy
@@ -11,9 +13,9 @@ import picos
 from scipy import optimize as scopt
 
 
-from qrem.functions_qrem import ancillary_functions as anf
-from qrem.functions_qrem import povmtools
-from qrem.noise_mitigation.expected_values.CRS.scipy_optimizers_wrappers import \
+ 
+from qrem.common import povmtools
+from qrem.common.scipy_optimizers_wrappers import \
     wrapper_scipy_optimize as scop_wrapper
 # from qiskit.quantum_info import partial_trace as qiskit_partial_trace
 # from qiskit.quantum_info import DensityMatrix as qiskit_DM
@@ -304,7 +306,7 @@ def __solve_subproblem_average_case(povm_2q_input,
 
 
 def calculate_correlations_coefficients_average_case(povm_2q):
-    full_register = anf.get_classical_register_bitstrings(qubit_indices=range(4),
+    full_register = povmtools.get_classical_register_bitstrings(qubit_indices=range(4),
                                                           quantum_register_size=4,
                                                           )
 

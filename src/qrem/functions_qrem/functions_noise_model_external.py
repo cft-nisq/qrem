@@ -13,7 +13,7 @@ import re
 from typing import Dict
 import matplotlib.pyplot as plt
 
-from qrem.functions_qrem.quantum_ancillary_functions import get_energy_from_bitstring_diagonal
+from qrem.functions_qrem import functions_data_analysis as fda
 
 
 
@@ -309,8 +309,8 @@ def bravyi_algorithm_1_cond_prob(s, O, G_dict, delta_par, lambda_par):
             sign = 1.0
         else:
             sign = -1.0
-        sum_xi += sign * get_energy_from_bitstring_diagonal(x, O)
-        print(get_energy_from_bitstring_diagonal(x, O))
+        sum_xi += sign * fda.get_energy_from_bitstring_diagonal_local(x, O)
+        print(fda.get_energy_from_bitstring_diagonal_local(x, O))
     return c_l1_norm * sum_xi / T
 
 #TODO: finish this with Filip's sampling and s as a dict with counts, not a list
@@ -334,8 +334,8 @@ def bravyi_algorithm_1(s, O, G_dict, delta_par, lambda_par):
             sign = 1.0
         else:
             sign = -1.0
-        sum_xi += sign * get_energy_from_bitstring_diagonal(x, O)
-        print(get_energy_from_bitstring_diagonal(x, O))
+        sum_xi += sign * fda.get_energy_from_bitstring_diagonal_local(x, O)
+        print(fda.get_energy_from_bitstring_diagonal_local(x, O))
     return c_l1_norm * sum_xi / T
 
 
@@ -798,8 +798,8 @@ def bravyi_algorithm_1_local(s, O, local_B_dict, delta_par):
             sign = 1.0
         else:
             sign = -1.0
-        sum_xi += sign * get_energy_from_bitstring_diagonal(x, O)
-        #print(get_energy_from_bitstring_diagonal(x, O))
+        sum_xi += sign * fda.get_energy_from_bitstring_diagonal_local(x, O)
+        #print(fda.get_energy_from_bitstring_diagonal_local(x, O))
     return c_l1_norm * sum_xi / T
 
 '''

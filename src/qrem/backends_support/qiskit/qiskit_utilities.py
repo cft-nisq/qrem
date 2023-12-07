@@ -8,9 +8,8 @@ import qiskit
 from qiskit import Aer, IBMQ
 from qiskit.providers.jobstatus import JobStatus
 
-from qrem.functions_qrem.povmtools import reorder_probabilities
-from qrem.functions_qrem import ancillary_functions as anf
-from qrem.functions_qrem import povmtools
+from qrem.common.povmtools import reorder_probabilities
+from qrem.common import povmtools
 
 from qrem.common import io
 from qrem.common.printer import qprint

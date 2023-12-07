@@ -2,30 +2,28 @@ import random
 import numpy as np
 from typing import List
 
-#TODO TUZJAN Docstrings, typehints
 
 def divide_qubits_in_the_clusters(qubits_indices:List, clusters_specification:List[List])->List[tuple]:
     '''A function used to divide qubits into clusters 
 
-    Parameters: 
+    Parameters
     ----------
 
-        qubits_indices: list
-            a list of qubits indices defined upon ..... 
+    qubits_indices: list
+        a list of qubits indices defined upon ..... 
 
-        clusters_specification: list
-            - a nested list containing description of clusters to be created:
+    clusters_specification: list
+        - a nested list containing description of clusters to be created:
 
-                structure of the list [[element_1, element_2], ...]:
-                    element_1 - integer encoding locality of a cluster
-                    element_2 - number of clusters of given locality
-                
-                e.g. [[3,1],[2,2]] encodes 1 3 qubits cluster and two 2 qubits clusters
+            structure of the list [[element_1, element_2], ...]:
+                element_1 - integer encoding locality of a cluster
+                element_2 - number of clusters of given locality
+            
+            e.g. [[3,1],[2,2]] encodes 1 3 qubits cluster and two 2 qubits clusters
 
     Returns
     -------        
     cluster_list : 
-    
         list with qubits assigned to clusters
 
               
@@ -49,6 +47,7 @@ def divide_qubits_in_the_clusters(qubits_indices:List, clusters_specification:Li
     return tuple(cluster_list)
 
 
+# Deprecated
 
 """
 A function creating a string of outcomes from measurement statistics

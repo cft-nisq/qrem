@@ -97,7 +97,7 @@ class SeparableCircuitsCreator(SDKHandlerBase):
         """
         :param SDK_name: see parent class' description
         :param experiment_name: see class' description
-        #TODO FBM: check how important is that
+        #FBM: check how important is that
         :param qubit_indices: see class' description
         :param descriptions_of_circuits: see class' description
         :param number_of_repetitions: each circuit in circuit_labels will be implemented
@@ -108,7 +108,7 @@ class SeparableCircuitsCreator(SDKHandlerBase):
                                         with number_of_repetitions = 3
                                         will implement 6 circuits [0,1,0].
 
-        #TODO FBM: check if this is used
+        #FBM: check if this is used
         :param quantum_register_size: is used by method _create_circuit in parent class
         :param classical_register_size: is used by method _create_circuit in parent class
         """
@@ -129,7 +129,7 @@ class SeparableCircuitsCreator(SDKHandlerBase):
                          add_barriers=add_barriers,
                          pyquil_compilation_method=pyquil_compilation_method)
 
-        # TODO FBM, JT: maybe modify to include more than Pauli
+        # FBM, JT: maybe modify to include more than Pauli
         if self._experiment_name.lower() in ['ddot',
                                              'ddt',
                                              'classical_states',
@@ -158,7 +158,7 @@ class SeparableCircuitsCreator(SDKHandlerBase):
     def circuit_labels_dictionary(self) -> Dict[str, int]:
         return self._circuit_labels
 
-    # TODO FBM: opisac to lepiej i dodac ze to konkretnie dla Pauliego
+    # FBM: opisac to lepiej i dodac ze to konkretnie dla Pauliego
     def __circuits_interpreter_DDOT(self,
                                     circuit_label_list,
                                     circuit_object,
@@ -168,7 +168,7 @@ class SeparableCircuitsCreator(SDKHandlerBase):
         based on the passed circuit_label_list and qubit_indices, specifying what gates should be applied to what qubits.
         """
 
-        # TODO FBM: make sure qreg does not need to be passed
+        # FBM: make sure qreg does not need to be passed
         # [X] This loop goes through all passed circuits and translates them to qiskit format, into variable circuit_object
         if self._SDK_name.upper() in ['QISKIT']:
             for qubit_index in range(len(circuit_label_list)):
@@ -212,7 +212,7 @@ class SeparableCircuitsCreator(SDKHandlerBase):
                     circuit_object += RX(MemoryReference(f'rz-{0}_q-{qubit_index}', qubit_index))
         return circuit_object
 
-    # TODO FBM: opisac to lepiej i dodac ze to konkretnie dla Pauliego
+    # FBM: opisac to lepiej i dodac ze to konkretnie dla Pauliego
     def __circuits_interpreter_QDOT(self,
                                     circuit_label_list,
                                     circuit_object,
@@ -222,7 +222,7 @@ class SeparableCircuitsCreator(SDKHandlerBase):
                 qubit_now = qubit_indices[qubit_index]
                 label_now = circuit_label_list[qubit_index]
 
-                # TODO FBM: make sure qreg does not need to be passed
+                # FBM: make sure qreg does not need to be passed
                 if int(label_now) == 0:
                     circuit_object.id(qubit_now)
                 elif int(label_now) == 1:

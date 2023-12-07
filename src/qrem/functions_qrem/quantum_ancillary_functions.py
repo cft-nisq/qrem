@@ -1,11 +1,13 @@
 """
-@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
-@contact: filip.b.maciejewski@gmail.com
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 import qutip
 import numpy as np
 from typing import Optional, Union, List, Tuple,Dict
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 
 def _embed_1q_operator(number_of_qubits:int,
                        local_operator:np.ndarray,
@@ -43,19 +45,56 @@ def embed_operator_in_bigger_hilbert_space(number_of_qubits:int,
                                      global_indices).full()
 
 
-#(PP) TODO_MO This function is defined around 4-5 times, with differing implementations. We need to unpack it together and simplify
-def get_energy_from_bitstring_diagonal(bitstring: List[str],
-                                       weights_dict: Dict[Tuple[int], float]
-                                       ):
-    energy = 0
-    for qubits_tuple, hamiltonian_coefficient in weights_dict.items():
-        marginal_bitstring = [int(bitstring[q]) for q in qubits_tuple]
-        parity = (-1)**(np.count_nonzero(marginal_bitstring))
-        energy += parity * hamiltonian_coefficient
+# #(PP) TODO_MO This function is defined around 4-5 times, with differing implementations. We need to unpack it together and simplify
+# def get_energy_from_bitstring_diagonal(bitstring: List[str],
+#                                        weights_dict: Dict[Tuple[int], float]
+#                                        ):
+#     energy = 0
+#     for qubits_tuple, hamiltonian_coefficient in weights_dict.items():
+#         marginal_bitstring = [int(bitstring[q]) for q in qubits_tuple]
+#         parity = (-1)**(np.count_nonzero(marginal_bitstring))
+#         energy += parity * hamiltonian_coefficient
 
-    return energy
+#     return energy
 
 
+# def get_energy_from_bitstring_diagonal(bitstring: str,
+#                                        weights_dict: Dict[str, float]
+#                                        ):
+#     energy = 0
+#     for qubits_string, hamiltonian_coefficient in weights_dict.items():
+#         qubit_indices = [int(q) for q in re.findall(r'\d+', qubits_string)]
+#         marginal_bitstring = [int(bitstring[q]) for q in qubit_indices]
+#         parity = (-1) ** (np.count_nonzero(marginal_bitstring))
+#         energy += parity * hamiltonian_coefficient
+
+#     return energy
+
+
+# #(PP) Hamiltonian w stylu Isinga
+# def get_energy_from_bitstring_diagonal_local(bitstring: str,
+#                                              weights_dictionary: Dict[Tuple[int], float],
+#                                              additional_multipliers=None
+#                                              ):
+#     """Calculates the energy corresponding to a state (encoded in bistring) and a Hamiltonian
+#     (encoded in weights and additional_multipliers)"""
+#     if isinstance(bitstring,list):
+#         bitstring = ''.join(bitstring)
+
+#     bitstring_getitem = bitstring.__getitem__
+
+#     parities = {qubit_indices: (-1) ** list(map(bitstring_getitem, qubit_indices)).count('1') for qubit_indices in weights_dictionary.keys()}
+
+#     energy = 0
+#     for qubit_indices, hamiltonian_coefficient in weights_dictionary.items():
+#         # marginal_bitstring = [int(bitstring[q]) for q in qubit_indices]
+#         # parity = (-1) ** (np.count_nonzero(marginal_bitstring))
+#         local_energy = parities[qubit_indices] * hamiltonian_coefficient
+#         if additional_multipliers is not None:
+#             local_energy *= additional_multipliers[qubit_indices]
+#         energy += local_energy
+
+#     return energy
 
 #(PP) not used - commented out
 # def get_plus_state(N):

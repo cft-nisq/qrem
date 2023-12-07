@@ -5,7 +5,7 @@
 
 import copy
 
-from qrem.functions_qrem import povmtools
+from qrem.common import povmtools
 from qrem.common import convert
 
 def get_neighborhood_treshold_statitsical_pairs(number_of_samples,
@@ -23,7 +23,7 @@ def get_neighborhood_treshold_statitsical_pairs(number_of_samples,
 # def rename_clusters(clusters, true_indices):
 #     proper_clusters = {}
 #     for key, value in clusters.items():
-#         indices_enum_key = convert.get_qubit_indices_from_keystring(key)
+#         indices_enum_key = convert.keystring_to_qubit_indices(key)
 #         indices_enum_value = value
 
 #         key_true = ''.join(['q%s' % true_indices[qi] for qi in indices_enum_key])
@@ -41,7 +41,7 @@ def cut_subset_sizes(clusters_neighbourhoods_dict,
 
     for cluster, neighbours in clusters_neighbourhoods_dict.items():
         correlations_now = []
-        cluster_inds = convert.get_qubit_indices_from_keystring(cluster)
+        cluster_inds = convert.keystring_to_qubit_indices(cluster)
         for ni in neighbours:
             for ci in cluster_inds:
                 correlations_now.append([ni, correlations_table[ci, ni]])

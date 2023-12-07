@@ -1,9 +1,10 @@
 """
-@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
-@contact: filip.b.maciejewski@gmail.com
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 import numpy as np
-from qrem.functions_qrem import functions_standarized_directories as dirs, ancillary_functions as anf
 import networkx as nx
 
 

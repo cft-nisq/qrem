@@ -1,6 +1,8 @@
 """
-@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
-@contact: filip.b.maciejewski@gmail.com
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 from braket.circuits import Circuit, Gate, Instruction, circuit, Observable
 import numpy as np

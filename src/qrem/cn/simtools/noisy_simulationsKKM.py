@@ -3,7 +3,7 @@ import pickle
 from tqdm import tqdm
 import numpy as np
 
-import qrem.common.providers.ibmutils.data_converters
+import qrem.providers.ibmutils.data_converters
 
 
 
@@ -11,9 +11,9 @@ import qrem.common.providers.ibmutils.data_converters
 from qrem.cn import simulation as cnsimulation 
 from qrem.usecases.mitigation import create_mitigation_data_KKM as mitigation_routines 
 from qrem.functions_qrem import functions_benchmarks as fun_ben
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 from qrem.functions_qrem import functions_data_analysis as fdt
-from qrem.types import cn_noise_model 
+from qrem.qtypes import cn_noise_model 
 from datetime import date
 import statistics
 

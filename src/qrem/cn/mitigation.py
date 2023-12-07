@@ -1,18 +1,18 @@
 import operator
 from functools import reduce
-from qrem.types import CNModelData
+from qrem.qtypes import CNModelData
 from typing import Dict, Tuple, List
 import numpy as np
 from qrem.common import probability
 from qrem.common import math
-from qrem.functions_qrem import povmtools 
+from qrem.common import povmtools 
 from qrem.functions_qrem import functions_data_analysis as fda
 
 
 
 
 
-#TODO mitigate_single_marginal
+#TODO JT mitigate_single_marginal
 
 def mitigate_marginal(marginal: Tuple, results_dictionary: Dict[str, Dict[str, int]], noise_model:type[CNModelData],threshold:float,ensure_proper_probability_distribution:bool = False, check_inverse_noise_matrix_norm:bool = True ) ->np.array:
     
@@ -110,12 +110,12 @@ def mitigate_marginal(marginal: Tuple, results_dictionary: Dict[str, Dict[str, i
 
     if ensure_proper_probability_distribution:
         if not probability.is_valid_probability_vector(mitigated_marginal_probability_distribution):
-           mitigated_marginal_probability_distribution = povmtools.find_closest_prob_vector_l2(mitigated_marginal_probability_distribution).flatten()
+           mitigated_marginal_probability_distribution = probability.find_closest_prob_vector_l2(mitigated_marginal_probability_distribution).flatten()
 
     
     return mitigated_marginal_probability_distribution
 
-
+#for neighbours 
 def mitigate_marginal_state_dependent(marginal: Tuple, results_dictionary: Dict[str, Dict[str, int]], noise_model:type[CNModelData],threshold:float,ensure_proper_probability_distribution:bool = False, check_inverse_noise_matrix_norm:bool = True ) ->np.array:
     
     """
@@ -227,7 +227,7 @@ def mitigate_marginal_state_dependent(marginal: Tuple, results_dictionary: Dict[
 
     if ensure_proper_probability_distribution:
         if not probability.is_valid_probability_vector(mitigated_marginal_probability_distribution):
-           mitigated_marginal_probability_distribution = povmtools.find_closest_prob_vector_l2(mitigated_marginal_probability_distribution).flatten()
+           mitigated_marginal_probability_distribution = probability.find_closest_prob_vector_l2(mitigated_marginal_probability_distribution).flatten()
 
     
     return mitigated_marginal_probability_distribution
@@ -236,7 +236,7 @@ def mitigate_marginal_state_dependent(marginal: Tuple, results_dictionary: Dict[
 
 #correct this to allow for a results dictionary that has more than one setting
 
-def mitigate_marginals(marginals_list: List[Tuple], results_dictionary: Dict[str, Dict[str, int]], noise_model: type[CNModelData] ,ensure_proper_probability_distribution = True, check_inverse_noise_matrix_norm:bool = False, threshold:float = 100, state_independent_mitigation:bool = False )->Dict[str, Dict[tuple[int], np.array]]:
+def mitigate_marginals(marginals_list: List[Tuple], results_dictionary: Dict[str, Dict[str, int]], noise_model: type[CNModelData] ,ensure_proper_probability_distribution = True, check_inverse_noise_matrix_norm:bool = True, threshold:float = 2000, state_independent_mitigation:bool = True )->Dict[str, Dict[tuple[int], np.array]]:
 
     """
     A  function performing CN noise model based mitigation for marginal probability distributions specified by a marginals list.
@@ -299,7 +299,6 @@ def mitigate_marginals(marginals_list: List[Tuple], results_dictionary: Dict[str
   
     
 #MOVE TO CNModelData class   
-
 def get_marginal_inverse_noise_matrix(noise_model : type[CNModelData], clusters_in_marginal_list:List[Tuple])-> np.array:
 
     """
@@ -416,7 +415,7 @@ def mitigate_marginal_product(marginal: Tuple, results_dictionary: Dict[str, Dic
         final_marginal = final_marginal.flatten()
         if ensure_proper_probability_distribution:
             if not probability.is_valid_probability_vector(final_marginal):
-                final_marginal = povmtools.find_closest_prob_vector_l2(final_marginal)
+                final_marginal = probability.find_closest_prob_vector_l2(final_marginal)
                 final_marginal = final_marginal.flatten()
 
 

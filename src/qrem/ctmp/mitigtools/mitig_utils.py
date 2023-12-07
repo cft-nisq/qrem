@@ -1,7 +1,7 @@
 import numpy as np
 from qrem.ctmp.mitigtools.observables_utils import convert, random_element, sample, evaluate, delta
-from qrem.functions_qrem import povmtools
-from qrem.types import CTMPModelData
+from qrem.common import povmtools
+from qrem.qtypes import CTMPModelData
 from typing import Dict, Tuple, List, Union
 from qrem.common import probability
 
@@ -46,5 +46,5 @@ def _mitigate(model: CTMPModelData,
     if mode == "marginal" and proj:
         result = result / result.sum() # normalize to sum 1
         if not probability.is_valid_probability_vector(result):
-            result = povmtools.find_closest_prob_vector_l2(result).flatten()
+            result = probability.find_closest_prob_vector_l2(result).flatten()
     return result

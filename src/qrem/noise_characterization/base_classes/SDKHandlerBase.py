@@ -31,7 +31,7 @@ class SDKHandlerBase:
 
         self.pyquil_compilation_method = pyquil_compilation_method
 
-        # TODO FBM: very temporary
+        # FBM: very temporary
         if isinstance(descriptions_of_circuits, list) and temporary_helper_argument:
             self._circuits_labels_list = descriptions_of_circuits
             circuits_labels_strings_list = [''.join([str(symbol) for symbol in symbols_list]) for
@@ -81,7 +81,7 @@ class SDKHandlerBase:
                           quantum_register=None):
 
         1
-        # TODO FBM: finish this
+        # FBM: finish this
 
 #
     def __create_circuit_qiskit(self,

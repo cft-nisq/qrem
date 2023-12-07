@@ -3,12 +3,14 @@ import sys
 import os
 import numpy as np
 import pickle
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 from qrem.common import math
 from typing import List, Dict, Optional, Callable, Tuple
 
 
-
+##########################################################
+# TODO PP THIS FUNCTION WILL GO TO CHARACTERISATION MODULE
+##########################################################
 
 
 def Overlap(s1:str,s2:str):

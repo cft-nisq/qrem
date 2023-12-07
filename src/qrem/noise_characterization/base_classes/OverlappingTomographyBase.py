@@ -6,7 +6,6 @@ import numpy as np
 from scipy.special import binom 
 from tqdm import tqdm
 
-from qrem.functions_qrem import ancillary_functions as anf
 from qrem.noise_characterization.base_classes.overlapping_estimation_base import OverlappingEstimationBase
 from qrem.noise_characterization.tomography_design.overlapping import overlapping_tomography_functions as otf
 
@@ -103,7 +102,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
 
         #deleted redundant "not private" version of this dictionary
         self._dictionary_symbols_counting = {
-            anf.get_qubits_keystring(subset): np.zeros(self._number_of_symbols ** len(subset),
+            convert.qubit_indices_to_keystring(subset): np.zeros(self._number_of_symbols ** len(subset),
                                                        dtype=int) for 
             subset in self._subsets}
 
@@ -148,7 +147,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
 
     def add_dictionary_subsets_symbols_counting_template(self):
         dictionary_symbols_counting = {
-            anf.get_qubits_keystring(subset_list): np.zeros(self._number_of_symbols ** len(subset_list),
+            convert.qubit_indices_to_keystring(subset_list): np.zeros(self._number_of_symbols ** len(subset_list),
                                                        dtype=int) for
             subset_list in self._subsets}
 
@@ -179,7 +178,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
 
         for subset_index in subsets_range:
             for circuit in circuits_list:
-                qubits_key = anf.get_qubits_keystring(self._subsets[subset_index])
+                qubits_key = convert.qubit_indices_to_keystring(self._subsets[subset_index])
 
                 subset_symbols_now = [circuit[qubit_index] for qubit_index in self._subsets[subset_index]]
 
@@ -206,7 +205,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
         t0 = time.time()
         zero_subsets = 0
         for subset in self._subsets:
-            subset_counts = self._dictionary_symbols_counting[anf.get_qubits_keystring(subset)]
+            subset_counts = self._dictionary_symbols_counting[convert.qubit_indices_to_keystring(subset)]
             zero_subsets += len(subset_counts) - np.count_nonzero(subset_counts)
 
         self._circuits_properties_dictionary['absent_elements_amount'] = zero_subsets
@@ -217,7 +216,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
     def get_absent_symbol_indices(self):
         zero_subsets = {}
         for subset in tqdm(self._subsets):
-            subset_counts = self._dictionary_symbols_counting[anf.get_qubits_keystring(subset)]
+            subset_counts = self._dictionary_symbols_counting[convert.qubit_indices_to_keystring(subset)]
             stuff_now = []
             for index in range(len(subset_counts)):
                 if subset_counts[index]==0:
@@ -230,7 +229,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
 
         big_list = []
         for subset in self._subsets:
-            big_list += list(self._dictionary_symbols_counting[anf.get_qubits_keystring(subset)])
+            big_list += list(self._dictionary_symbols_counting[convert.qubit_indices_to_keystring(subset)])
 
         minimal_amount, maximal_amount = min(big_list), max(big_list)
 
@@ -264,7 +263,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
 
 #changed argument in this comprehension
         dictionary_symbols_counting = {
-            anf.get_qubits_keystring(subset): np.zeros(self._number_of_symbols ** len(subset),
+            convert.qubit_indices_to_keystring(subset): np.zeros(self._number_of_symbols ** len(subset),
                                                        dtype=int) for
             subset in self._subsets}
 
@@ -497,7 +496,7 @@ class OverlappingTomographyBase(OverlappingEstimationBase):
                                   number_of_circuits=None):
 
         if number_of_circuits is None:
-            #TODO FBM: add probabilistic bounds
+            #FBM: add probabilistic bounds
             raise ValueError()
 
 

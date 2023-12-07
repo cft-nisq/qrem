@@ -3,7 +3,7 @@ This code is used for Quantum Detector Tomography (QDOT) and not Quantum/Diagona
 It is not used in the current workflow (2023.01.12). Analogous code for qiskit is used in Tutorials in directory OldStuff
 """
 
-from qrem.functions_qrem import povmtools
+from qrem.common import povmtools, qmath
 import numpy as np
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 import itertools
@@ -19,7 +19,7 @@ def get_list_of_lists_indices_qdt(qubits_indices, unitaries_amount):
     From list of qubit indices and number of unitaries, prepare set of names for circuits for tomography of
     detectors.
 
-    # TODO FBM: Maybe GeneralTensor could be used for it?
+    # FBM: Maybe GeneralTensor could be used for it?
     # TR: It now is -- check it out ;)
 
     :param qubits_indices: (list of ints) labels of qubits for QDT
@@ -83,8 +83,8 @@ def get_list_of_lists_indices_qdt(qubits_indices, unitaries_amount):
     for i in np.arange(1, qubits_number):
         list_of_gates = list(itertools.product(list_of_gates, single_qubit_unitaries[i]))
 
-    # TODO FBM: this code could end here if I knew how to flatten list of itertools.product() s in a simple manner.
-    #  Without next steps the list is a very nested tuple of tuples
+    # FBM: this code could end here if I knew how to flatten list of itertools.product() s in a simple manner.
+    # Without next steps the list is a very nested tuple of tuples
 
     def flatten(container):
         # lame flattener
@@ -175,10 +175,10 @@ def detector_tomography_circuits(qubit_indices,
                 # TODO: this might not be necessary anymore, it's an old code, I had some problems long time ago with
                 #  those guys because qiskit compiler went crazy if I defined identity or x gate using u3 unitary.
                 if povmtools.check_if_projector_is_in_computational_basis(
-                        povmtools.get_density_matrix(probe_kets[u_now_index])):
-                    if povmtools.get_density_matrix(probe_kets[u_now_index])[0][0] == 1:
+                        qmath.get_density_matrix(probe_kets[u_now_index])):
+                    if qmath.get_density_matrix(probe_kets[u_now_index])[0][0] == 1:
                         circuit.i(qreg[q_now_index])
-                    elif povmtools.get_density_matrix(probe_kets[u_now_index])[1][1] == 1:
+                    elif qmath.get_density_matrix(probe_kets[u_now_index])[1][1] == 1:
                         circuit.x(qreg[q_now_index])
                     else:
                         raise ValueError('error')

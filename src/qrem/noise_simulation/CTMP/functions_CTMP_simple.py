@@ -6,10 +6,9 @@ from tqdm import tqdm
 
 import numpy as np
 
-from qrem.functions_qrem import ancillary_functions as anf, quantum_ancillary_functions as quanf
-from qrem.functions_qrem import functions_data_analysis as fda
-from qrem.functions_qrem import functions_probabilities as fun_prob
+from qrem.functions_qrem import quantum_ancillary_functions as quanf
 from qrem.noise_model_generation.CTMP import functions_CTMP as ctmp_fun
+from qrem.functions_qrem import functions_data_analysis as fda
 # from qrem.noise_simulation.CTMP.functions_CTMP_conditional import *
 
 from qrem.common import convert, math
@@ -147,7 +146,7 @@ def sample_from_CTMP_noise_model_simple_method(global_input_state,
                                                number_of_samples):
     """
 
-    Please note that this method requires setting value of CTMP normalization (gamma parameter from Ref.[#TODO FBM: add ref])
+    Please note that this method requires setting value of CTMP normalization (gamma parameter from Ref.[#FBM: add ref])
     to sum of error rates, which might be prohibitively big.
 
     :param global_input_state:
@@ -191,7 +190,7 @@ def estimate_corrected_energy_CTMP_simple(input_state,
 
     energy_modeled_ctmp_sampled = 0
     for output_state, number_of_times in noisy_counts_dictionary_sampled_ctmp.items():
-        energy_modeled_ctmp_sampled += number_of_times * quanf.get_energy_from_bitstring_diagonal(
+        energy_modeled_ctmp_sampled += number_of_times * fda.get_energy_from_bitstring_diagonal_local(
             bitstring=output_state,
             weights_dict=weights_dictionary_tuples)
     energy_modeled_ctmp_sampled /= number_of_samples_ctmp
@@ -225,7 +224,7 @@ def estimate_corrected_energy_CTMP_simple(input_state,
 # # qprint_array(global_generator_matrix)
 # global_noise_matrix = sc.linalg.expm(global_generator_matrix)
 #
-# classical_register = anf.get_classical_register_bitstrings(range(number_of_qubits))
+# classical_register = povmtools.get_classical_register_bitstrings(range(number_of_qubits))
 #
 # input_state = classical_register[-1]
 #
@@ -247,6 +246,6 @@ def estimate_corrected_energy_CTMP_simple(input_state,
 #
 # # print(noisy_distro_exact)
 # # print(noisy_distro_sampled)
-# from qrem.functions_qrem import povmtools
-# print(povmtools.calculate_total_variation_distance(noisy_distro_exact,noisy_distro_sampled))
+# from qrem.common import povmtools
+# print(qrem.probability.calculate_total_variation_distance(noisy_distro_exact,noisy_distro_sampled))
 # # print(noisy_distro_sampled)

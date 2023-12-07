@@ -34,9 +34,9 @@ import numpy as np
 from qrem.common.io import date_time_formatted
 from qrem.common.printer import qprint, errprint, warprint
 from qrem.common.experiment import tomography as tomography
-from qrem.types import CircuitCollection
+from qrem.qtypes import CircuitCollection
 from qrem.common.constants import CIRCUIT_DATA_TYPE as c_type
-from qrem.common.providers import aws_braket
+from qrem.providers import aws_braket
 # ----------------------------------------------------------------
 # this are the parameters of running qrem in future / maybe move to config[GENERAL]?:
 # you will be able to run it asa command
@@ -103,13 +103,14 @@ def run( cmd_args=CONFIG_PATH, verbose_log = True,idle_run = False):
     #[4] Generate circuits
     # ----------------------------------------------------------------
     #[4.0] Setup circuit collection object
-    qrem_circuit_collection = CircuitCollection(EXPERIMENT_NAME)
+    qrem_circuit_collection = CircuitCollection()
+    qrem_circuit_collection.experiment_name = EXPERIMENT_NAME
+    qrem_circuit_collection.device = "" #TODO SET DEVICE
     qrem_circuit_collection.load_config(config=config)
     qrem_circuit_collection.qubit_indices = good_qubits_indices
     qrem_circuit_collection.metadata = METADATA
 
     #[4.1] TODO (PP) finish implementation of generate_circuits, so you know how many shots per circuit you need
-    # - TODO (PP) initialize with config object
     qrem_circuit_collection.circuits, _, theoretical_total_circuit_count, theoretical_number_of_shots = tomography.generate_circuits(   number_of_qubits = number_of_qubits,
                                                                             experiment_type = config.experiment_type, 
                                                                             k_locality = config.k_locality,

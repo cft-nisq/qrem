@@ -1,3 +1,17 @@
+"""
+Combinatorial Quantum Circuit Generation Submodule
+
+This module contains functions for generating and completing quantum circuits for quantum experiments, particularly in quantum tomography. It provides methods to generate combinatorial circuits, complete circuits based on missing symbols in given subsets, and find optimal partitions of qubit subsets for circuit analysis. The functions support various types of quantum experiments and are designed to handle different quantum tomography methods.
+
+Functions
+---------
+    generate_combinatorial_circuits: 
+        Generates a set of combinatorial circuits for a given quantum experiment.
+    complete_on_subset: 
+        Completes a set of circuits by adding missing symbols in specified subsets.
+    find_partition: 
+        Finds an optimal partition of qubit subsets for circuit analysis.
+"""
 import numpy as np
 import math
 import qrem.common.constants as constants
@@ -13,6 +27,30 @@ from typing import List, Dict, Optional, Callable, Tuple
 def generate_combinatorial_circuits(experiment_type: str,
                                number_of_qubits: int,
                                subset_locality: int, symbols:Optional[List] = None)-> np.array:
+    """
+    Generates a set of combinatorial circuits for quantum tomography experiments.
+
+    Parameters
+    ----------
+    experiment_type : str
+        The type of quantum experiment (e.g., DDOT, QDOT) which defines the set of symbols used for encoding gates.
+    number_of_qubits : int
+        The number of qubits involved in the experiment.
+    subset_locality : int
+        The number of qubits on which each circuit acts.
+    symbols : List, optional
+        A list of symbols to be used in the circuits. If None, defaults to a range based on the number of symbols for the experiment.
+
+    Returns
+    -------
+    np.array
+        An array of generated quantum circuits, each circuit represented as a list of symbols.
+
+    Raises
+    ------
+    ValueError
+        If the provided experiment type is not recognized.
+    """    
     try:
         number_of_symbols = constants.EXPERIMENT_TYPE_SYMBLOS[experiment_type.lower()]
     except:
@@ -46,7 +84,30 @@ def generate_combinatorial_circuits(experiment_type: str,
     return np.array(circuits,dtype = constants.CIRCUIT_DATA_TYPE)
 
 def complete_on_subset(experiment_type: str, circuit_list: List, subset: Tuple, absent_symbols: List):
+    """
+    Completes a given set of circuits by adding circuits with absent symbols for a specified subset of qubits.
 
+    Parameters
+    ----------
+    experiment_type : str
+        The type of quantum experiment, dictating the encoding of gates.
+    circuit_list : List
+        The list of existing quantum circuits.
+    subset : Tuple
+        A tuple of qubits for which absent symbols need to be added.
+    absent_symbols : List
+        A list of symbols absent in the subset that need to be included in the new circuits.
+
+    Returns
+    -------
+    List
+        An updated list of quantum circuits, including the newly added circuits covering the absent symbols.
+
+    Raises
+    ------
+    ValueError
+        If the provided experiment type is not recognized.
+    """
     try:
         number_of_symbols = constants.EXPERIMENT_TYPE_SYMBLOS[experiment_type.lower()]
     except:
@@ -65,6 +126,25 @@ def complete_on_subset(experiment_type: str, circuit_list: List, subset: Tuple, 
     return new_circuit_list
 
 def find_partition(subset_list, n):
+    """
+    Finds an optimal partition of a list of qubit subsets for circuit analysis.
+
+    Parameters
+    ----------
+    subset_list : List
+        A list of subsets of qubits to be partitioned.
+    n : int
+        The total number of qubits in the experiment.
+
+    Returns
+    -------
+    List
+        A list of subsets that form an optimal partition for circuit analysis.
+
+    Notes
+    -----
+    The function aims to find a partition that evenly distributes the qubits across the subsets, ensuring efficient analysis.
+    """    
     subset = subset_list[0]
     k = len(subset)
     p = int(n/k)

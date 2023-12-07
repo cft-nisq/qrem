@@ -1,11 +1,13 @@
 """
-@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
-@contact: filip.b.maciejewski@gmail.com
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 from typing import List
 import numpy as np
 
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 
 from qrem.common.printer import qprint
 from qrem.common import convert

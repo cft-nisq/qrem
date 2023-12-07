@@ -9,15 +9,15 @@ from matplotlib import pyplot as plt
 from matplotlib import rc
 
 from qrem.functions_qrem import functions_distances as fun_dist
-from qrem.functions_qrem import povmtools
-from qrem.functions_qrem.povmtools import get_enumerated_rev_map_from_indices
+from qrem.common import povmtools
+from qrem.common.povmtools import get_enumerated_rev_map_from_indices
 from qrem.noise_characterization.tomography_design.overlapping.DOTMarginalsAnalyzer import \
     DOTMarginalsAnalyzer
 
 from qrem.common.printer import qprint
 
 class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
-    # TODO FBM, JM: think whether graphical features should be here or in some child class
+    # FBM, JM: think whether graphical features should be here or in some child class
     """
 
     """
@@ -40,7 +40,7 @@ class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
                  coherence_data=None
                  ) -> None:
 
-        # TODO FBM, JT: clean this up, perhaps too many arguments for initial noise analyzer
+        # FBM, JT: clean this up, perhaps too many arguments for initial noise analyzer
 
         super().__init__(results_dictionary_ddot=results_dictionary,
                          bitstrings_right_to_left=bitstrings_right_to_left,
@@ -419,7 +419,7 @@ class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
                 qi_mapped, qj_mapped = mapping[qi], mapping[qj]
                 if qj > qi:
 
-                    # TODO FBM: ADJUST FOR FULL QDT
+                    # FBM: ADJUST FOR FULL QDT
                     lam_i_j = self.get_noise_matrix_dependent((qi,),
                                                               (qj,))
                     lam_j_i = self.get_noise_matrix_dependent((qj,),
@@ -472,7 +472,7 @@ class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
 #Mocomm we never use this method, I suggest to delate it
     def compute_1q_errors(self,
                           qubit_indices=None):
-        # TODO FBM: add statistical errors
+        # FBM: add statistical errors
         if qubit_indices is None:
             qubit_indices = self._qubit_indices
 
@@ -490,13 +490,13 @@ class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
 
 #MOcomm - not sure if needed I suggest delating
 #    def print_properties(self):
-#        # TODO FBM, OS: add this
+#        # FBM, OS: add this
 #
 #        return None
 
 #MOcomm - not sure if needed I suggest delating
 #    def draw_noise_model(self):
-#        # TODO FBM, JM: add this
+#        # FBM, JM: add this
 #
 #        return None
 
@@ -629,7 +629,7 @@ class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
         # error_insert_string = 'coherent'
         axis.set_xlabel(f'Error {error_insert_string} [\%]',
                         fontsize=self._plotting_properties['fontsize_labels'])
-        # TODO FBM: putting by hand
+        # FBM: putting by hand
         # axis.set_xlabel(f'Coherent error [\%]', fontsize=self._plotting_properties['fontsize_labels'])
 
         if cumulative:
@@ -799,7 +799,7 @@ class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
                                                              additional_string_title,
                                                              errors_type=errors_type)
         else:
-            # TODO FBM: make it smarter
+            # FBM: make it smarter
             if plottype.upper() == 'BARPLOT':
                 figure_pyplot = self.__draw_1q_errors_barplot(
                     additional_string_title=additional_string_title,
@@ -1034,7 +1034,7 @@ class InitialNoiseAnalyzer(DOTMarginalsAnalyzer):
 
         additional_string_title = additional_string_title.replace('_', '-')
 
-        # TODO FBM, JM: Think whether to do some more plot options
+        # FBM, JM: Think whether to do some more plot options
 
         if plottype.lower() in ['heatmap']:
 

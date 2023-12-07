@@ -49,7 +49,7 @@ class MarginalsAnalyzerBase(MarginalsAnalyzerInterface):
 
     """
 
-    # TODO FBM: add coarse-graining functions_qrem for marginals_dictionary as class methods
+    # FBM: add coarse-graining functions_qrem for marginals_dictionary as class methods
 
     def __init__(self,
                  results_dictionary: Dict[str, Dict[str, int]],
@@ -206,7 +206,7 @@ class MarginalsAnalyzerBase(MarginalsAnalyzerInterface):
         :param subsets_dictionary: list of subsets_list of qubits for which marginals_dictionary should be calculated
         """
 
-        #TODO FBM: update class property
+        #FBM: update class property
 
         if isinstance(experiment_keys,str):
             experiment_keys = [experiment_keys]
@@ -274,8 +274,8 @@ class MarginalsAnalyzerBase(MarginalsAnalyzerInterface):
                               show_progress_bar = True) -> None:
 
         """
-        #TODO FBM: add multiprocessing for this task
-        #TODO FBM: change subsets_list to be dictionary
+        #FBM: add multiprocessing for this task
+        #FBM: change subsets_list to be dictionary
         Implements self.compute_marginals for all experimental keys.
 
         :param subsets_dictionary: list of subsets of qubits for which marginals_dictionary should be calculated
@@ -371,7 +371,7 @@ class MarginalsAnalyzerBase(MarginalsAnalyzerInterface):
             for subset, marginals_dictionary_local in marg_dict.items():
 
                 # if subset not in self._marginals_dictionary[experiment_key].keys():
-                # TODO FBM: perhaps consider addition instead of replacement
+                # FBM: perhaps consider addition instead of replacement
                 self._marginals_dictionary[experiment_key][subset] = marginals_dictionary_local
                 # else:
                 #
@@ -474,7 +474,7 @@ class MarginalsAnalyzerBase(MarginalsAnalyzerInterface):
     def get_averaged_marginal_for_subset(self,
                                          subset: Tuple[int]):
 
-        #TODO FBM: I think it does not work here, different format
+        #FBM: I think it does not work here, different format
         #JT: Well said, it does not work indeed :)
 
         #marginals_dictionary = self._marginals_dictionary

@@ -6,12 +6,13 @@ import numpy as np
 from tqdm import tqdm
 
 
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 from qrem.noise_characterization.base_classes.marginals_analyzer_base import MarginalsAnalyzerBase
 
 import qrem.common.math as qrem_math
-from qrem.common import utils
+from qrem.common import utils, convert
 from qrem.common.printer import qprint, qprint_array
+import qrem.common. utils as qrem_utils
 
 
 #(PP): DELETE, should be removed from package everywhere it is used (no human input needed rule)
@@ -111,8 +112,8 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
 
         if noise_matrices_dictionary is None:
             noise_matrices_dictionary = {}
-            # TODO FBM: Make sure whether this helps in anything
-            # TODO FBM: (because we anyway perform checks in the functions later)
+            # FBM: Make sure whether this helps in anything
+            # FBM: (because we anyway perform checks in the functions later)
             if marginals_dictionary is not None:
                 for experiment_key, dictionary_of_marginals in marginals_dictionary.items():
                     for marginal_key in dictionary_of_marginals.keys():
@@ -158,7 +159,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
         for input_state, probability_vector in results_dictionary.items():
             numbers_input = [int(x) for x in list(input_state)]
 
-            #TODO FBM: this should never happen, right? Control it
+            #FBM: this should never happen, right? Control it
             if np.any(np.array(numbers_input) > 1):
                 continue
 
@@ -195,7 +196,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
         reversed_enumerated = utils.map_index_to_order(all_neighbors)
         averaging_normalization = int(2 ** (len(all_neighbors) - len(qubits_to_be_left)))
 
-        states_after_averaging = anf.get_classical_register_bitstrings(range(len(qubits_to_be_left)),
+        states_after_averaging = povmtools.get_classical_register_bitstrings(range(len(qubits_to_be_left)),
                                                                        len(qubits_to_be_left), False)
         averaged_dimension = list(matrices_cluster.values())[0].shape[0]
 
@@ -230,7 +231,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
            and updates the class's property self.marginals_dictionary
         """
 
-        # TODO FBM: Perhaps add possibility of using existing marginals_dictionary for bigger subset that includes target subset
+        # FBM: Perhaps add possibility of using existing marginals_dictionary for bigger subset that includes target subset
         #
 
         # subset_key = 'q' + 'q'.join([str(s) for s in subset])
@@ -319,9 +320,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
                 return self._compute_noise_matrix_averaged(subset)
         else:
             return self._compute_noise_matrix_averaged(subset)
-
-    #(PP) this function uses self.get_qubits_keystring which I think was NEVER DEFINED? Also scan of repo did not return any results...
-    #BUG WARNING
+#BUG WARNING
     def _compute_noise_matrix_dependent(self,
                                         qubits_of_interest: Tuple[int],
                                         neighbors_of_interest: Union[Tuple[int], None]) \
@@ -347,7 +346,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
         # If there are no all_neighbors,
         # then this corresponds to averaging over all qubits except qubits_of_interest
         if len(neighbors_of_interest) == 0 or neighbors_of_interest is None:
-            cluster_tuple_now = anf.get_qubits_keystring(qubits_of_interest)
+            cluster_tuple_now = convert.qubit_indices_to_keystring(qubits_of_interest)
             cluster_tuple_now = tuple(qubits_of_interest)
             if 'averaged' in self._noise_matrices_dictionary[cluster_tuple_now].keys():
                 return {'averaged': self._noise_matrices_dictionary[cluster_tuple_now]['averaged']}
@@ -362,7 +361,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
             raise ValueError('Qubits of interest and neighbors overlap')
 
         # first, get averaged noise matrix on qubits of interest and all_neighbors of interest
-        # TODO FBM: make sure that qubit indices are correct (I think they are)
+        # FBM: make sure that qubit indices are correct (I think they are)
         qubits_of_interest = list(qubits_of_interest)
         neighbors_of_interest = list(neighbors_of_interest)
         all_qubits = sorted(qubits_of_interest + neighbors_of_interest)
@@ -476,7 +475,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
 
         """
 
-        # cluster_key = anf.get_qubits_keystring(qubits_of_interest)
+        # cluster_key = convert.qubit_indices_to_keystring(qubits_of_interest)
 
         cluster_key = tuple(qubits_of_interest)
         if cluster_key not in self._noise_matrices_dictionary.keys():
@@ -490,7 +489,7 @@ class DOTMarginalsAnalyzer(MarginalsAnalyzerBase):
                 # if not qrem_math.is_matrix_stochastic(self._noise_matrices_dictionary[cluster_key]['averaged']):
                 #     qprint('Bug is here')
                 #     print(cluster_key, neighbors_key)
-                #     # TODO FBM: SOMETHING IS BROKEN
+                #     # FBM: SOMETHING IS BROKEN
                 #     self._noise_matrices_dictionary[cluster_key][
                 #         'averaged'] = self._compute_noise_matrix_averaged(qubits_of_interest)
                 #     if not qrem_math.is_matrix_stochastic(self._noise_matrices_dictionary[cluster_key]['averaged']):

@@ -8,7 +8,7 @@ from itertools import chain
 
 import matplotlib.pyplot as plt
 import networkx as nx
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 
 # ORGANIZE - out of the non deprecated/ for deletion functions this is only used below in print_partition
 def create_undirected_nxgraph_from_partition(partition,

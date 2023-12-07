@@ -18,7 +18,7 @@ Quantum 5, 464 (2021).
 from typing import Optional, List, Dict, Union
 
 import numpy as np
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 from qrem.noise_characterization.tomography_design.overlapping import overlapping_tomography_functions as otf
 
 class LabelsBaseDDOT:
@@ -52,10 +52,6 @@ class LabelsBaseDDOT:
     @circuits_list.setter
     def circuits_list(self, circuits_list: List[List[int]]) -> None:
         self._circuits_list = circuits_list
-    # @staticmethod
-    # def get_qubits_keystring(qubits_list):
-    #     #TODO FBM: outdated, change it
-    #     anf.get_qubits_keystring(list_of_qubits=qubits_list)
 
     def get_random_circuit(self,
                            number_of_qubits:int=None)->List[int]:
@@ -108,7 +104,7 @@ class LabelsBaseDDOT:
                               number_of_circuits: int,
                               locality: int,
                               desired_accuracy: float = 0.005):
-        # TODO FBM finish
+        # FBM finish
 
         1
 

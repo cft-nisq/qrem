@@ -1,11 +1,27 @@
-"""qrem.common.printer module contains all helpful functions for logging and console printouts.
-For now it contains only console printing capabilities. 
-In future it will be a choice - either you will be able to log output into a specified log path, print on console or both,
-
-Current contents of this module contain:
-- pretty text print and array print for preview
-
 """
+QREM Printer Module
+===================
+
+qrem.common.printer module contains helpful functions for logging and console printouts.
+
+For now, it contains only console printing capabilities. In the future, it may provide options to log output to a specified log path, print on the console, or both.
+
+Current contents of this module include:
+- `round_matrix_for_print`: Round a matrix with specified decimal precision while handling Python artifacts.
+- `zeros_to_dots_for_print`: Replace zeros with dots in a matrix for printing.
+- `qprint`: Print colored text with optional additional information.
+- `warprint`: Wrapper for `qprint` with a default color of 'YELLOW'.
+- `errprint`: Wrapper for `qprint` with a default color of 'RED'.
+- `qprint_array`: Print a human-readable representation of an array.
+
+
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
+"""
+
+
 import copy
 
 from colorama import Fore, Style
@@ -20,19 +36,28 @@ import pandas as pd
 def round_matrix_for_print(matrix_to_be_rounded: npt.NDArray,
                  decimal: int=3) -> npt.NDArray:
     """
-    This function rounds matrix in a nice way.
-    "Nice" means that it removes funny Python artifacts such as "-0.", "0j" etc.
+    Round a matrix with specified decimal precision while handling Python artifact ssuch as "-0.", "0j" etc.
 
     Parameters
     ----------
-    matrix_to_be_rounded: npt.NDArray
-    decimal: int
+    matrix_to_be_rounded : npt.NDArray
+        The matrix to be rounded.
+    decimal : int, optional
+        The number of decimal places to round to (default is 3).
 
     Returns
     -------
     npt.NDArray
-    """
+        The rounded matrix.
 
+    Examples
+    --------
+    >>> matrix = np.array([[0.123456, -0.0], [1.2345678, 0.0]])
+    >>> round_matrix_for_print(matrix)
+    array([[0.123, 0.   ],
+           [1.235, 0.   ]])
+
+    """
     data_type = type(matrix_to_be_rounded[0, 0])
 
     first_dimension = matrix_to_be_rounded.shape[0]
@@ -72,17 +97,28 @@ def round_matrix_for_print(matrix_to_be_rounded: npt.NDArray,
 
 def zeros_to_dots_for_print(matrix, rounding_decimal = 3) -> npt.NDArray:
     """
-    This function changes zeros into dots in printing; values are treated as 0 with rounding_decimal significant digits ( default is 3) 
+    Replace zeros with dots in a matrix for printing.
 
     Parameters
     ----------
-    matrix: npt.NDArray
-    rounding_decimal: int
+    matrix : npt.NDArray
+        The matrix to be printed.
+    rounding_decimal : int, optional
+        The number of decimal places to consider as zero (default is 3).
 
     Returns
     -------
     npt.NDArray
-    """
+        The matrix with zeros replaced by dots.
+
+    Examples
+    --------
+    >>> matrix = np.array([[0.001, 0.0], [0.0, 0.002]])
+    >>> zeros_to_dots_for_print(matrix)
+    array([['0.001', '.'],
+           ['.', '0.002']], dtype='<U32')
+
+    """   
     m = matrix.shape[0]
     n = matrix.shape[1]
 
@@ -99,18 +135,26 @@ def zeros_to_dots_for_print(matrix, rounding_decimal = 3) -> npt.NDArray:
     return B
 
 def qprint(colored_string: str, stuff_to_print = '', color='CYAN', print_floors=False) -> None:
-    """A bit fancier print function that uses colors for output. 
-    Should be extended/changed to have also logging capabilities
+    """Print colored text with optional additional information.
+    FUTURE: Should be extended/changed to have also logging capabilities
 
     Parameters
     ----------
-    colored_string: str
-        colored_string is printed with color
-    stuff_to_print: str
-        stuff_to_print is printed without color, after colored_string
-    color: str
-        color, you can use 'red','green','blue',or 'cyan' currently
-    """
+    colored_string : str
+        The main text to be printed with color.
+    stuff_to_print : str or any, optional
+        Additional information to be printed without color (default is '').
+    color : {'CYAN', 'RED', 'YELLOW', 'GREEN', 'BLUE'}, optional
+        The color for the main text (default is 'CYAN').
+    print_floors : bool, optional
+        Whether to print floor separators (default is False).
+
+    Examples
+    --------
+    >>> qprint("Hello, World!", color='GREEN')
+    >>> qprint("Error:", "Something went wrong", color='RED')
+
+    """    
     if print_floors:
         print("_________________________")
 
@@ -142,24 +186,65 @@ def qprint(colored_string: str, stuff_to_print = '', color='CYAN', print_floors=
         print("_________________________")
 
 def warprint(colored_string: str, stuff_to_print = '', color='YELLOW', print_floors=False) -> None:
+    """
+    Warning print helper function. Wrapper for qprint with a default color of 'YELLOW'.
+
+    Parameters
+    ----------
+    colored_string : str
+        The main text to be printed with color.
+    stuff_to_print : str or any, optional
+        Additional information to be printed without color (default is '').
+    color : {'CYAN', 'RED', 'YELLOW', 'GREEN', 'BLUE'}, optional
+        The color for the main text (default is 'YELLOW').
+    print_floors : bool, optional
+        Whether to print floor separators (default is False).
+
+    Examples
+    --------
+    >>> warprint("Warning:", "This is a warning")
+
+    """
     qprint(colored_string=colored_string , stuff_to_print = stuff_to_print, color=color, print_floors=print_floors)
 
 def errprint(colored_string: str, stuff_to_print = '', color='RED', print_floors=False) -> None:
+    """
+    Print helper function for printing errors. Wrapper for qprint with a default color of 'RED'.
+
+    Parameters
+    ----------
+    colored_string : str
+        The main text to be printed with color.
+    stuff_to_print : str or any, optional
+        Additional information to be printed without color (default is '').
+    color : {'CYAN', 'RED', 'YELLOW', 'GREEN', 'BLUE'}, optional
+        The color for the main text (default is 'RED').
+    print_floors : bool, optional
+        Whether to print floor separators (default is False).
+
+    Examples
+    --------
+    >>> errprint("Error:", "Something went wrong")
+
+    """
     qprint(colored_string=colored_string , stuff_to_print = stuff_to_print, color=color, print_floors=print_floors)
 
 def qprint_array(arrray_to_print, rounding_decimal:int=3):
     """
-    This function prints array in a human-readable format, removing artifacts such as "-0.", "0j" etc.
-    Matrix is rounded up to rounding_decimal significant digits
+    Print a human-readable representation of an array.
 
     Parameters
     ----------
-    arrray_to_print: npt.NDArray
-    rounding_decimal: int
+    array_to_print : npt.NDArray
+        The array to be printed.
+    rounding_decimal : int, optional
+        The number of decimal places for rounding (default is 3).
 
-    Returns
-    -------
-    npt.NDArray
+    Examples
+    --------
+    >>> array = np.array([[0.123456, -0.0], [1.2345678, 0.0]])
+    >>> qprint_array(array)
+
     """
 
     pd.set_option('display.max_columns', None)

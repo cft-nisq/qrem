@@ -1,10 +1,14 @@
-"""qrem.common.convert module contains helper functions, that allow to convert between various formats used to describe circuit labels, 
+"""
+Convert Module for QREM
+=======================
+
+qrem.common.convert module contains helper functions, that allow to convert between various formats used to describe circuit labels, 
 bitstrings, quantum registers etc.
 """
 import numpy as np
-from typing import List, Optional, Iterable
+from typing import List, Optional, Iterable, Dict
 from qrem.common import utils
-
+import re
 from qrem.common.constants import CIRCUIT_DATA_TYPE as c_type
 
 
@@ -49,8 +53,8 @@ def bitstring_to_ndarray(bitstring: str, reverse = False) -> np.ndarray:
 
 def ndarray_to_bitstring(bitarray: np.ndarray, reverse = False) -> str:
     if reverse:
-        return np.array2string(np.flip(bitarray),separator="")[1:-1]
-    return np.array2string(bitarray,separator="")[1:-1]
+        return np.array2string(np.flip(bitarray),separator="", max_line_width=9999)[1:-1]
+    return np.array2string(bitarray,separator="", max_line_width=9999)[1:-1]
 
 #dit-strings
 def integer_to_ditstring(integer, base, number_of_dits):
@@ -144,7 +148,7 @@ if __name__ == "__main__":
 # QBIT INDICIES
 # =======================================================================================
 #MOVE_TO >> core.utils
-def get_qubit_indices_from_keystring(qubits_string: str,
+def keystring_to_qubit_indices(qubits_string: str,
                                   with_q: Optional[bool] = False) -> List[int]:
     """Return list of qubit indices from the string of the form "q0q1q22q31"
     :param qubits_string (string): string which has the form of "q" followed by qubit index
@@ -169,3 +173,95 @@ def get_qubit_indices_from_keystring(qubits_string: str,
         qubits = [int(s) for s in numbers]
 
     return qubits
+
+
+def qubit_indices_to_keystring(list_of_qubits: List[int]) -> str:
+    """ from subset of qubit indices get the string that labels this subset
+        using convention 'q5q6q12...' etc.
+    :param list_of_qubits: labels of qubits
+
+    :return: string label for qubits
+
+     NOTE: this function is "inverse operation" to keystring_to_qubit_indices.
+    """
+
+    if list_of_qubits is None:
+        return None
+    return 'q' + 'q'.join([str(s) for s in list_of_qubits])
+
+def qubits_keystring_to_tuple(qubits_string):
+    return tuple(keystring_to_qubit_indices(qubits_string))
+    
+
+
+
+def change_state_dependent_noise_matrix_format(noise_matrix:Dict) -> Dict:
+
+    """
+    .. note:: Deprecated in QREM 0.1.5
+          Function transforming representation of noise matrices. Used to translate results obtained with QREM versions < 0.1.5 
+     
+    """
+
+    state_dependent_noise_matrix_in_new_format = {}
+
+
+    for key in noise_matrix.keys():
+        
+        if key != 'averaged':
+            
+        
+            for neighbors_state, state_noise_matrix in noise_matrix[key].items():
+        
+                new_index = [int(character) for character in neighbors_state]
+        
+                state_dependent_noise_matrix_in_new_format[tuple(new_index)] = state_noise_matrix
+            
+        elif key == 'averaged':
+
+            state_dependent_noise_matrix_in_new_format[key] = noise_matrix[key]
+    
+    return(state_dependent_noise_matrix_in_new_format)
+    
+
+
+def change_state_dependent_noise_matrices_dictionary_format(noise_matrices_dictionary:Dict) -> Dict:
+
+    
+    """
+     .. note:: Deprecated in QREM 0.1.5
+          Function transforming representation of noise matrices. Used to translate results obtained with QREM versions < 0.1.5 
+        
+
+    
+   
+
+    """
+
+    state_dependent_noise_matrices_dictionary_in_new_format = {}
+
+
+    for key, item in noise_matrices_dictionary.items():
+
+        state_dependent_noise_matrices_dictionary_in_new_format[key] = change_state_dependent_noise_matrix_format(noise_matrix=item)
+        
+        
+    
+    return(state_dependent_noise_matrices_dictionary_in_new_format)
+
+def change_format_of_cn_dictionary(cn_dictionary:Dict)->Dict:
+
+    pattern='q[0-9]+'
+    cn_dictionary_new = {}
+    for key,entry in cn_dictionary.items():
+        index_list = re.findall(pattern,key)
+
+        cluster_arrangement = []
+        for index in index_list:
+            cluster_arrangement.append(int(index[1:]))
+        if entry == []:
+            new_key = None
+        else:
+            new_key = tuple(entry)
+        cn_dictionary_new[tuple(cluster_arrangement)] = new_key
+    return cn_dictionary_new

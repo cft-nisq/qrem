@@ -1,6 +1,8 @@
 """
-@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
-@contact: filip.b.maciejewski@gmail.com
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 
 import copy
@@ -247,8 +249,6 @@ def run_batches_parametric(
         memory_map,
         compilation_method: Optional[str] = 'parametric-native',
 ):
-    # TODO FBM: add batching jobs
-
     if base_program is None:
         base_program = get_generic_base_program_DOT(qubit_indices=qubit_indices)
 
@@ -264,7 +264,7 @@ def run_batches_parametric(
     qprint('Target number of circuits: ', str(target_number_of_circuits) + ' .')
     qprint("Compilation method:", compilation_method)
 
-    # TODO FBM: add handling errors, waiting etc
+    # FBM: add handling errors, waiting etc
 
     if compilation_method.upper() in ['NATIVE-PARAMETRIC', 'PARAMETRIC-NATIVE']:
 
@@ -372,7 +372,7 @@ def convert_results_to_counts_dictionaries_DOT(list_of_circuits_labels,
 #
 #
 #         elif sdk_name.lower() in ['pyquil']:
-#             # TODO FBM: finish this
+#             # FBM: finish this
 #             raise ValueError("pyquil not added yet")
 #
 #
@@ -383,5 +383,5 @@ def convert_results_to_counts_dictionaries_DOT(list_of_circuits_labels,
 #
 #
 #         elif sdk_name.lower() in ['pyquil']:
-#             # TODO FBM: finish this
+#             # FBM: finish this
 #             raise ValueError("pyquil not added yet")

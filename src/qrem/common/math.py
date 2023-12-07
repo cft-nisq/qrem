@@ -1,6 +1,16 @@
-"""qrem.common.math module contains all mathematical funcitons, 
+"""
+
+QREM Math Module
+================
+
+qrem.common.math module contains all mathematical funcitons, 
 that are useful and used throughout the qrem package.
 
+    
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 
 import warnings #standard imports go first; kets make it those that are python/system/code -related
@@ -18,7 +28,6 @@ import cmath # lets add internal meth related imports here
 import qrem.common.utils #then internal new imports
 from qrem.common.constants import SIGNIFICANT_DIGITS
 
-#TODO_PP >> talk with Paweł some format semantics
 class Constants:
     """ Contains static methods that return helpful mathematical constants, matrices, arrays etc.
 
@@ -208,10 +217,7 @@ def round_array_to_ndigits(m_a: np.ndarray, significant_digits=SIGNIFICANT_DIGIT
     -----
     - PP: refactored from some very werid construction. Should have the same functionality. 
     """
-    # OLD VERSION
-    
-    # # TODO PP: should be: np.around(m_a,  decimal)
-    # # TODO TR: Comment this method_name, and intention behind it.
+    # Old implementation:
     # m_b = np.array(copy.deepcopy(m_a))
     # with np.nditer(m_b, op_flags=['readwrite']) as it:
     #     for x in it:
@@ -286,10 +292,84 @@ def is_matrix_stochastic(potentially_stochastic_matrix: np.ndarray,
 
     return True
 
+def spectral_decomposition(matrix: np.ndarray, hermitian=False):
+    """
+    Perform the spectral decomposition of a matrix.
+
+    Decomposes a matrix into its eigenvalues and the corresponding projectors. 
+    This function can handle both Hermitian and non-Hermitian matrices.
+
+    Parameters
+    ----------
+    matrix : np.ndarray
+        The matrix to be decomposed.
+    hermitian : bool, optional
+        A flag indicating whether the matrix is Hermitian (default is False).
+
+    Returns
+    -------
+    tuple
+        A tuple (eigenvalues, projectors), where 'eigenvalues' is an array of eigenvalues 
+        and 'projectors' is a list of corresponding projector matrices.
+    """
+    if hermitian:
+        eigenvalues, eigenvalues_matrix = np.linalg.eigh(matrix)
+    else:
+        eigenvalues, eigenvalues_matrix = np.linalg.eig(matrix)
+
+    dimension = matrix.shape[0]
+    projectors = [outer_product(
+        np.array(eigenvalues_matrix[:, i]).reshape(dimension, 1)) for i in
+        range(dimension)]
+
+    return eigenvalues, projectors
+
 def kronecker_product(arguments: List[npt.ArrayLike]) -> npt.NDArray:
     """applies kronecker product to all arrays in the arguments list"""
     return ft.reduce(np.kron, arguments)
 
+
+def get_density_matrix(ket):
+    """
+    Convert a ket (state vector) into a density matrix.
+
+    Parameters
+    ----------
+    ket : array_like
+        The ket (state vector) to be converted.
+
+    Returns
+    -------
+    ndarray
+        The density matrix corresponding to the given ket.
+    """    
+    bra = np.matrix.getH(ket)
+    return ket @ bra
+# Done
+def get_offdiagonal_of_matrix(matrix: np.ndarray) -> np.ndarray:
+    """
+    Extract the off-diagonal part of a matrix.
+
+    This function calculates and returns the off-diagonal part of a given matrix, setting its diagonal elements to zero.
+
+    Parameters
+    ----------
+    matrix : np.ndarray
+        The matrix from which to extract the off-diagonal part.
+
+    Returns
+    -------
+    np.ndarray
+        The off-diagonal part of the input matrix.
+    """
+    matrix_dimension = matrix.shape[0]
+    matrix_off_diagonal = copy.copy(matrix)
+
+    for i in range(matrix_dimension):
+        # set diagonal element to zero
+        matrix_off_diagonal[i, i] = 0
+
+    return matrix_off_diagonal
 
 # ===================================================
 # Helpful Quantum-related
@@ -377,6 +457,10 @@ def compute_TVD(p:np.ndarray,q:np.ndarray):
 # ===================================================
 
 
+
+
+    
+
 def permute_composite_matrix(qubits_list,noise_matrix):
     qubits_list_sorted = copy.copy(qubits_list)
     noise_matrix_permuted = copy.copy(noise_matrix)
@@ -401,31 +485,33 @@ def permute_composite_vector(qubits_list,vector):
                 qubits_list[index_qubit], qubits_list[index_qubit+1] = qubits_list[index_qubit+1], qubits_list[index_qubit]  
     return vector_permuted
 
-
-def permute_vector(vector, n, transposition):
-    # Swap qubits (subspaces) in 2**number_of_qubits dimensional matrix
-    # number_of_qubits - number of qubits
-    # transposition - which qubits to SWAP.
-    # IMPORTANT: in transposition they are numbered from 1
-
-    swap = qubit_swap(n, transposition)
-    return swap @ vector
-
-
-def permute_matrix(matrix, n, transposition):
-    # Swap qubits (subspaces) in 2**number_of_qubits dimensional matrix
-    # number_of_qubits - number of qubits
-    # transposition - which qubits to SWAP.
-    # IMPORTANT: in transposition they are numbered from 1
-
-    swap = qubit_swap(n, transposition)
-    return swap @ matrix @ swap
-
-
 def qubit_swap(n, transposition=(1, 1)):
     # create swap between two qubits in 2**number_of_qubits dimensional space
     # labels inside transpositions start from 1.
+    """
+    Create a swap operation matrix for two qubits in a Hilbert space of dimension 2^n.
 
+    This function generates a unitary matrix representing the SWAP operation 
+    between two specified qubits in a quantum system of 'n' qubits. 
+    The qubits are identified by their positions in the quantum register, 
+    with numbering starting from 1 for convenience.
+
+    Parameters
+    ----------
+    n : int
+        The number of qubits in the quantum system.
+    transposition : tuple of int, optional
+        A tuple (i, j) representing the qubits to be swapped, 
+        where i and j are the positions of the qubits in the quantum register, 
+        starting from 1. Default is (1, 1), meaning no swap is performed.
+
+    Returns
+    -------
+    np.ndarray
+        A 2^n x 2^n unitary matrix representing the SWAP operation 
+        between the specified qubits in a quantum register of 'n' qubits.
+    """
+    
     D = 2 ** n
     # renumerate for Python convention
     i, j = transposition[0] - 1, transposition[1] - 1
@@ -453,3 +539,90 @@ def qubit_swap(n, transposition=(1, 1)):
             transformation[x, bit] = 1
 
     return transformation
+
+def permute_vector(vector, n, transposition):
+    """
+    Apply a qubit swap operation to a vector in a Hilbert space of dimension 2^n.
+
+    This function permutes the components of a quantum state vector according 
+    to a specified SWAP operation between two qubits in a quantum system 
+    of 'n' qubits. The permutation is defined by a SWAP matrix generated 
+    by the 'qubit_swap' function.
+
+    Parameters
+    ----------
+    vector : np.ndarray
+        The quantum state vector to be permuted, represented as a numpy array.
+    n : int
+        The number of qubits in the quantum system.
+    transposition : tuple of int
+        A tuple (i, j) specifying the qubits to be swapped. Numbering starts from 1.
+
+    Returns
+    -------
+    np.ndarray
+        The permuted quantum state vector after applying the SWAP operation.
+    """
+    swap = qubit_swap(n, transposition)
+    return swap @ vector
+
+def permute_matrix(matrix, n, transposition):
+    """
+    Apply a qubit swap operation to a matrix in a Hilbert space of dimension 2^n.
+
+    This function permutes the rows and columns of a square matrix 
+    according to a specified SWAP operation between two qubits in a quantum system 
+    of 'n' qubits. The permutation is carried out by conjugating the matrix with 
+    the SWAP matrix generated by the 'qubit_swap' function.
+
+    Parameters
+    ----------
+    matrix : np.ndarray
+        The matrix to be permuted, represented as a numpy array.
+    n : int
+        The number of qubits in the quantum system.
+    transposition : tuple of int
+        A tuple (i, j) specifying the qubits to be swapped. Numbering starts from 1.
+
+    Returns
+    -------
+    np.ndarray
+        The permuted matrix after applying the SWAP operation.
+    """
+    swap = qubit_swap(n, transposition)
+    return swap @ matrix @ swap
+
+
+# ==============================================================================================
+# Helpful functions - checking complete positivity and trace preservation of a Choi matrix  
+# ==============================================================================================
+
+
+
+def partial_trace(density_operator:np.array,dim1:int,dim2:int,subsystem=1)->np.array:
+    if subsystem == 1:
+        return np.trace(density_operator.reshape(dim1,dim2,dim1,dim2), axis1=0, axis2=2)
+    else:
+        return np.trace(density_operator.reshape(dim1,dim2,dim1,dim2), axis1=1, axis2=3) 
+    
+
+def check_trace_preservation(density_operator:np.array,dim1:int,dim2:int,n_precision = 10**(-3))-> bool:
+
+    reduced_operator = partial_trace(density_operator=density_operator,dim1=dim1,dim2=dim2,subsystem=2)
+
+    if np.max(np.abs(dim1*reduced_operator-np.eye(dim1))) > n_precision:
+        return False 
+    else:
+        return True
+    
+def check_complete_positivity(density_operator:np.array,n_precision = 10**(-6))->bool:
+
+    eigenvalues = np.linalg.eig(density_operator)[0]
+
+    if np.min(np.real(eigenvalues))<-n_precision:
+        
+        return False
+    
+    else:
+
+        return True 

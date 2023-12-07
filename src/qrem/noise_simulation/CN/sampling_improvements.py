@@ -5,7 +5,7 @@ from typing import Dict, Tuple
 import numpy as np
 from tqdm import tqdm
 
-from qrem.functions_qrem import ancillary_functions as anf, functions_data_analysis as fda
+from qrem.functions_qrem import functions_data_analysis as fda
 
 from qrem.common.printer import qprint
 from qrem.common import convert, utils
@@ -765,7 +765,6 @@ def sample_from_product_noise_model(input_bitstring: str,
 #                                                   n=number_of_samples)
 #         cluster_samples_original[cluster] = local_samples_now
 #
-#     from povms_qi import ancillary_functions as anf_pt
 #
 #
 #     # samples_clusters_shuffled = {}

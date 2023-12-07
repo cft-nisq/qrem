@@ -4,7 +4,8 @@ from tqdm import tqdm
 import numpy as np
 
 from qrem.noise_characterization.data_analysis.InitialNoiseAnalyzer import InitialNoiseAnalyzer
-from qrem.functions_qrem import ancillary_functions as anf, povmtools
+ 
+from qrem.common import povmtools
 from qrem.noise_characterization.tomography_design.standard.QuantumDetectorTomography import QDTCalibrationSetup, QDTFitter
 
 from qrem.common.math import Constants as Const
@@ -20,7 +21,7 @@ Analysis
 """
 
 
-#TODO FBM: this should probably descend from different class?
+#FBM: this should probably descend from different class?
 class QDTMarginalsAnalyzer(InitialNoiseAnalyzer):
     def __init__(self,
                  results_dictionary: Dict[str, Dict[str, int]],
@@ -60,7 +61,7 @@ class QDTMarginalsAnalyzer(InitialNoiseAnalyzer):
 #By Pauli an overcomplete bais of 6 eigenstates of Pauli eigenstates is ment
     @staticmethod
     def _labels_interpreter_paulis(label_gate):
-        #TODO FBM: TESTS
+        #FBM: TESTS
         _pauli_labels = ['z+', 'z-', 'x+', 'x-', 'y+', 'y-']
         # _pauli_labels = ['z+', 'z-', 'x+', 'y+', 'x-', 'y-']
 
@@ -162,11 +163,11 @@ class QDTMarginalsAnalyzer(InitialNoiseAnalyzer):
         number_of_qubits = len(qubit_indices)
         dimension = int(2 ** number_of_qubits)
 
-        #TODO FBM: fix this
+        #FBM: fix this
         keys_list = sorted(list(marginals_dictionary.keys()))
 
 
-        from qrem.functions_qrem import ancillary_functions as anf
+         
         # keys_list = anf.register_names_qubits(qubit_indices=qubit_indices,
         #                                       )
 
@@ -175,12 +176,12 @@ class QDTMarginalsAnalyzer(InitialNoiseAnalyzer):
         #Second index - outcome label
         frequencies_array = np.zeros((len(keys_list), dimension), dtype=complex)
 
-        #TODO FBM: debug
+        #FBM: debug
         # frequencies_array = np.full((len(keys_list), dimension), 10**(-6), dtype=complex)
 
         # print(keys_list)
 
-        from qrem.functions_qrem import ancillary_functions as anf
+         
 
         probe_kets = []
 
@@ -230,7 +231,7 @@ class QDTMarginalsAnalyzer(InitialNoiseAnalyzer):
                                                  method=estimation_method)
 
         # if isinstance(qubit_indices, list):
-        #     qubit_indices = anf.get_qubits_keystring(qubit_indices)
+        #     qubit_indices = convert.qubit_indices_to_keystring(qubit_indices)
 
         self._POVM_dictionary[qubit_indices] = POVM_now
 

@@ -1,6 +1,29 @@
+"""
+mitigation.py: Error Mitigation in Quantum Computations using CTMP Model
+
+This module is a part of the CTMP subpackage and provides functionalities for mitigating errors in quantum 
+computations. It includes methods for calculating the mitigated expectation values of observables and for 
+mitigating errors in marginal probability distributions.
+
+Functions
+---------
+mitigate_expected_value(observable: List[List], results_dictionary: Dict[str, Dict[str, int]], 
+                        noise_model: CTMPModelData, T: int) -> float
+    Returns the mitigated expectation value of an observable by applying the CTMP model to the given experimental results.
+
+mitigate_marginals(marginals_list: List[Tuple], results_dictionary: Dict[str, Dict[str, int]], 
+                   noise_model: CTMPModelData, T: int, ensure_proper_probability_distribution: bool=False) -> Dict[str, Dict[Tuple[int], np.array]]
+    Mitigates errors in specified marginals of experimental results using the CTMP model.
+
+
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl    
+"""
 import numpy as np
 from qrem.ctmp.mitigtools.mitig_utils import _mitigate
-from qrem.types import CTMPModelData
+from qrem.qtypes import CTMPModelData
 from typing import Dict, Tuple, List
 
 

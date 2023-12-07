@@ -2,7 +2,7 @@
 from typing import Optional, List, Dict, Union
 import numpy as np
 
-from qrem.functions_qrem import ancillary_functions as anf
+ 
 
 #ORGANISATIION:  At this moment this class is used only as a parent class to OverlappingTomographyBase.
 #  In principle it owuld be good to have a it for futher generalisations (MO)

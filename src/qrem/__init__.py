@@ -3,10 +3,13 @@
 It contains all qrem code after refactoring into upcoming version 1.0.0. Currently it holds
 most important data structures and common functions used in the freamework. The main subpackages are: \n\n
 - **common**: contains all common functions, utilities, connection to quantum backends etc. used throughout whole qrem package\n
-- **cn**: csubpackage containing cluster-neighbours approach implementation \n
+- **characterization**: submodule containing functions necessary for readout noise characterization with QREM package\n
+- **mitigation**: submodule containing functions necessary for readout noise mitigation with QREM package\n
+- **cn**: subpackage containing cluster-neighbours approach implementation \n
 - **ctmp**: Mitigation procedure as described in Bravyi et al. \n
 - **pipelines**: scripts containing executions of most common characterisation/mitigation routines from data generation, sending to quantum machine down to characterization and mitigation. \n
-- **types**: most important data holder classess used throughout the package \n
+- **providers**: contains all utilities necessary for connection to quantum backends etc. used throughout whole qrem package\n
+- **qtypes**: most important data holder classess used throughout the package \n
 """ 
 
 

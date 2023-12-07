@@ -18,8 +18,8 @@ You can run experiment by (i) providing a given config via -C argument, for exam
     
 Notes
 -----
-    @authors: 
-    @contact:
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 
 import os, sys
@@ -30,17 +30,15 @@ import orjson
 from qrem.common.io import date_time_formatted
 from qrem.common.printer import qprint, errprint, warprint
 from qrem.common.experiment import tomography as tomography
-from qrem.types import CircuitCollection
+from qrem.qtypes import CircuitCollection
 from qrem.common.constants import CIRCUIT_DATA_TYPE as c_type
-from qrem.common.providers import ibm   #PP: change to qrem.ibm
+from qrem.providers import ibm   #PP: change to qrem.ibm
 
 # ----------------------------------------------------------------
 # this are the parameters of running qrem in future / maybe move to config[GENERAL]?:
 # you will be able to run it asa command
 # ----------------------------------------------------------------
 CONFIG_PATH = ["--config_file", "C:\\CFT Chmura\\Theory of Quantum Computation\\QREM_Data\\ibm\\experiment_results\\first_experiment\\first_experiment_config.ini"]
-
-#TODO (PP) write version of runner that works with existing circuit collection file
 
 def run(cmd_args=CONFIG_PATH, verbose_log = True): 
     # ----------------------------------------------------------------
@@ -82,14 +80,15 @@ def run(cmd_args=CONFIG_PATH, verbose_log = True):
     #[4] Generate circuits
     # ----------------------------------------------------------------
     #[4.0] Setup circuit collection object
-    qrem_circuit_collection = CircuitCollection(EXPERIMENT_NAME)
+    qrem_circuit_collection = CircuitCollection()
+    qrem_circuit_collection.experiment_name = EXPERIMENT_NAME
 
     qrem_circuit_collection.load_config(config=config)
+    qrem_circuit_collection.device = config.device_name
     qrem_circuit_collection.qubit_indices = good_qubits_indices
     qrem_circuit_collection.metadata = METADATA
 
     #[4.1] TODO (PP) finish implementation of generate_circuits, so you know how many shots per circuit you need
-    # - TODO (PP) initialize with config object
     qrem_circuit_collection.circuits, _, theoretical_total_circuit_count, theoretical_number_of_shots = tomography.generate_circuits(   number_of_qubits = number_of_qubits,
                                                                             experiment_type = config.experiment_type, 
                                                                             k_locality = config.k_locality,
@@ -103,14 +102,14 @@ def run(cmd_args=CONFIG_PATH, verbose_log = True):
     #[5] At this stage, circuits are ready, we can save them to file
     if BACKUP_CIRCUITS:    
         qrem_circuit_collection.export_json(str(EXPERIMENT_FOLDER_PATH.joinpath("input_circuit_collection.json")), overwrite = True)
-
+    else:
+        warprint("WARNING: Circuits were not saved to file, as BACKUP_CIRCUITS = False. It is recommended to save circuits to file for future reference.")
     #[6] Now we need to use ibm module to prepare circuits in ibm format
     ibm_circuits = ibm.translate_circuits_to_qiskit_format(qrem_circuit_collection)
 
 
 
     #[6] Now we need to run circuits
-    #- TODO (PP) initialize with config object?
     job_ids = ibm.execute_circuits( qiskit_circuits= ibm_circuits,
                                     job_tags = JOB_TAGS,
                                     number_of_repetitions = config.shots_per_circuit,
@@ -120,9 +119,14 @@ def run(cmd_args=CONFIG_PATH, verbose_log = True):
                                     method = CONNECTION_METHOD,
                                     log_level='INFO',
                                     verbose_log=True)
-
-    #[6] Save job ids to a file
-    if BACKUP_JOB_IDs: 
+    
+    #[6.1] Backup jobs to circuit collection file
+    if BACKUP_CIRCUITS:    
+        qrem_circuit_collection.job_IDs = job_ids
+        qrem_circuit_collection.export_json(str(EXPERIMENT_FOLDER_PATH.joinpath("input_circuit_collection.json")), overwrite = True)
+        
+    #[6.2] Save job ids to a file
+    if BACKUP_JOB_IDs:     
         json_job_ids=orjson.dumps(job_ids)
         with open(str(EXPERIMENT_FOLDER_PATH.joinpath("input_circuit_collection.json")), 'wb') as outfile:
             outfile.write(json_job_ids)

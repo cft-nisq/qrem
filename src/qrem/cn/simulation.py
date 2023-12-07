@@ -1,17 +1,13 @@
 import random
-from qrem.functions_qrem import ancillary_functions as anf
 from qrem.cn.simtools import auxiliary_merging_functions as m_f
 
-from qrem.types import CNModelData as CNModelData 
+from qrem.qtypes import CNModelData as CNModelData 
 from qrem.common import probability
 
 import numpy as np
 
 from typing import Tuple, Dict, List, Optional
 import time
-
-#TODO TUZJAN: Correct docstrings and place them inside functions 
-
 
 
 #As for now neighbors functionality is not developed  
@@ -49,7 +45,7 @@ def create_random_noise_model(number_of_qubits:int,clusters_specification:List[L
 
     #[2] Now qubits are randomly assigned to clusters of a provided structure
     clusters_tuple=m_f.divide_qubits_in_the_clusters([i for i in range(number_of_qubits)],clusters_specification=clusters_specification)
-    noise_model.set_clusters_tuple(clusters_tuple=clusters_tuple)
+    noise_model.set_clusters_neighborhoods(clusters_neighborhoods=clusters_tuple)
 
     
     #[3] Random stochastic matrix is generated per each cluster, data is stored in a dictionary
@@ -58,7 +54,7 @@ def create_random_noise_model(number_of_qubits:int,clusters_specification:List[L
     if neighbors==None:
         #[3.1] TODO: now we don't suport neighbours, so it should be always true
         for element in clusters_tuple:
-            noise_model_dictionary[element] = probability.random_stochastic_matrix(2**len(element))
+            noise_model_dictionary[element] = {'averaged': probability.random_stochastic_matrix(2**len(element))}
     noise_model.set_noise_matrices_dictionary(noise_matrices_dictionary=noise_model_dictionary)
 
     #[4] We should be set with simulated CNModelData
@@ -146,7 +142,7 @@ def simulate_noise_results_dictionary(results_dictionary: Dict[str, Dict[str, in
 
                 state_on_cluster = ''.join([single_result[x] for x in cluster_qubits])
                 
-                if neighborhoods_tuples == {}:
+                if noise_model.clusters_neighborhoods == {}:
                     noise_matrix = noise_matrix_on_cluster
                 else:
                     noise_matrix = noise_matrix_on_cluster['averaged']
@@ -191,6 +187,9 @@ def simulate_noise_results_dictionary(results_dictionary: Dict[str, Dict[str, in
         
     
     return noisy_results_dictionary
+
+
+
 
 
 

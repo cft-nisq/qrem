@@ -7,8 +7,8 @@ import scipy as sc
 import numpy as np
 from tqdm import tqdm
 
-from qrem.functions_qrem import povmtools
-from qrem.functions_qrem import ancillary_functions as anf
+from qrem.common import povmtools
+
 from qrem.noise_simulation.CN import functions_sampling as fus
 
 import re
@@ -51,6 +51,7 @@ _parities__dict3 = {'0': 0,
 
 
 #ORGANIZE - this function computes energy of some local hamiltonians form marginals, this is used in benchmark functions probably (MO)
+# additional parameter dditional_multipliers (we do not use it) 
 def estimate_energy_from_marginals(weights_dictionary: Dict[Tuple[int], float],
                                    marginals_dictionary: Dict[Tuple[int], np.ndarray],
                                    additional_multipliers=None):
@@ -67,7 +68,6 @@ def estimate_energy_from_marginals(weights_dictionary: Dict[Tuple[int], float],
         weight = weights_dictionary[key_local_term]
         marginal = marginals_dictionary[key_local_term]
 
-        # print(marginal,len(marginal))
         qubits_number = int(np.log2(len(marginal)))
 
         local_term_energy = 0
@@ -75,15 +75,8 @@ def estimate_energy_from_marginals(weights_dictionary: Dict[Tuple[int], float],
             bitstring = list(convert.integer_to_bitstring(result_index, qubits_number))
             bit_true = [int(x) for x in bitstring]
             parity = (-1) ** (np.count_nonzero(bit_true))
-            #
-            # bitstring_getitem = convert.integer_to_bitstring(result_index, qubits_number).__getitem__
-            # parity = __get_part_bitstring_parity_special(bitstring_getitem=bitstring_getitem,
-            #                                              qubit_indices=range(qubits_number))
-            #
-            # print(bit_true,parity, weight, marginal[result_index])
-
             local_term_energy += weight * marginal[result_index] * parity
-            # print(local_term_energy)
+
         if additional_multipliers is not None:
             local_term_energy *= additional_multipliers[key_local_term]
 
@@ -144,7 +137,6 @@ def get_energy_from_bitstring_diagonal_local(bitstring: str,
     return energy
 
 #(PP) Hamiltonian w stylu Isinga
-"""
 def get_energy_from_bitstring_diagonal_global(bitstring: str,
                                              weights_dictionary: Dict[Tuple[int], float],
                                              additional_multipliers=None
@@ -160,7 +152,6 @@ def get_energy_from_bitstring_diagonal_global(bitstring: str,
         energy += local_energy
 
     return energy
-"""
 
 def get_noisy_energy_product_noise_model(input_state,
                                          noise_matrices_dictionary,
@@ -331,13 +322,11 @@ def reverse_bitstrings_in_counts_dictionary(counts_dictionary):
         counts_reversed[bitstring[::-1]] = ticks
     return counts_reversed
 
+#JT: 
 def convert_counts_overlapping_tomography(counts_dictionary: Dict[str, Dict[str, int]],
                                           experiment_name: str,
                                           reverse_bitstrings=True,
                                           old_send_procedure=True):
-
-    # TODO FBM: add support for Quantum Detector Tomography
-    # MOcomm - this looks
     """
     This function converts unprocessed dictionary of experiment results, where multiple keys can describe identical
     circuits (eg. "DDOT-010no0", "DDOT-010no1", see description of string_cutter below), to a dictionary where a key
@@ -380,10 +369,10 @@ def convert_counts_overlapping_tomography(counts_dictionary: Dict[str, Dict[str,
 
         :return: big_counts_dictionary
         """
-        from qrem.noise_characterization.tomography_design.overlapping import SeparableCircuitsCreator
+        # from qrem.noise_characterization.tomography_design.overlapping import SeparableCircuitsCreator
 
-        if experiment_name.lower() not in SeparableCircuitsCreator.__valid_experiments_names__:
-            raise ValueError(f"ONLY the following experiments are supported:\n{SeparableCircuitsCreator.__valid_experiments_names__}")
+        # if experiment_name.lower() not in SeparableCircuitsCreator.__valid_experiments_names__:
+        #     raise ValueError(f"ONLY the following experiments are supported:\n{SeparableCircuitsCreator.__valid_experiments_names__}")
 
         experiment_string_len = len(list(experiment_name))
         full_name_now = circuit_name[experiment_string_len + 1:]
@@ -450,8 +439,6 @@ def get_marginal_from_probability_distribution(
     :return: marginal_distribution : marginal probability distribution
 
     NOTE: we identify bits with qubits in the variables bitstring_names
-
-    #TODO FBM: do some speed tests on some details of those solutions
     """
 
     if len(bits_of_interest) == 0:
@@ -476,7 +463,7 @@ def get_marginal_from_probability_distribution(
     dimension_of_marginal = 2 ** number_of_bits_in_marginal
 
     if register_names is None:
-        bitstring_names = anf.get_classical_register_bitstrings(list(range(global_number_of_qubits)),
+        bitstring_names = povmtools.get_classical_register_bitstrings(list(range(global_number_of_qubits)),
                                                                 global_number_of_qubits)
     else:
         bitstring_names = register_names
@@ -508,7 +495,7 @@ def get_noise_matrices_from_POVMs_dictionary(POVMs_dictionary):
     noise_matrices_dictionary = {}
 
     for qubits_subset, POVM in tqdm(POVMs_dictionary.items()):
-        noise_matrices_dictionary[qubits_subset] = povmtools.get_noise_matrix_from_povm(povm=POVM)
+        noise_matrices_dictionary[qubits_subset] = povmtools.get_stochastic_map_from_povm(povm=POVM)
 
     return noise_matrices_dictionary
 
@@ -770,45 +757,13 @@ def get_multiple_mitigation_strategies_clusters_for_pairs_of_qubits(pairs_of_qub
 
 #     return dictionary_results
 # """
-# class KeyDependentDictForMarginals(defaultdict):
-#     # TODO FBM: This is too slow for big systems, remove usage of this from repository
-#     """
-#     This is class used to store marginal probability distributions in dictionary.
-#     It is "key dependent" in the sense that if user tries to refer to non-existing value for some
-#     KEY, then this value is created as a marginal distribution which size depends on the KEY
-#     NOTE: We assume that provided KEY is a string denoting  qubits subset
-#     (see self.value_creating_function)
 
-
-#     COPYRIGHT NOTE
-#     The main idea of this code was taken from Reddit thread:
-#     https://www.reddit.com/r/Python/comments/27crqg/making_defaultdict_create_defaults_that_are_a/
-
-#     """
-
-#     def __init__(self):
-#         super().__init__(None)  # initialize as standard defaultdict
-
-#         # This is the function which takes the string "key" that is assumed to label qubits subset
-#         # in the form 'q2q3q11...' etc. It takes this key, calculates number of qubits N, and creates
-#         # empty vector of the size d=2^N.
-#         self.value_creating_function = lambda key: np.zeros(
-#             (int(2 ** len(key)), 1),
-#             dtype=float)
-
-#     # called when key is missing
-#     def __missing__(self, key):
-#         # calculate the key-dependent value
-#         ret = self.value_creating_function(key)
-#         # put the value inside the dictionary
-#         self[key] = ret
-#         return ret
 
 
 # class key_dependent_dict_for_marginals(defaultdict):
 #     """
 #     same as KeyDependentDictForMarginals but different name
-#     TODO FBM: refactor this
+#     FBM: refactor this
 #     """
 
 #     def __init__(self):
@@ -818,7 +773,7 @@ def get_multiple_mitigation_strategies_clusters_for_pairs_of_qubits(pairs_of_qub
 #         # in the form 'q2q3q11...' etc. It takes this key, calculates number of qubits N, and creates
 #         # empty vector of the size d=2^N.
 #         self.value_creating_function = lambda key: np.zeros(
-#             (int(2 ** len(convert.get_qubit_indices_from_keystring(key))), 1),
+#             (int(2 ** len(convert.keystring_to_qubit_indices(key))), 1),
 #             dtype=float)
 
 #     # called when key is missing
@@ -842,7 +797,3 @@ def get_multiple_mitigation_strategies_clusters_for_pairs_of_qubits(pairs_of_qub
 #     return state_name
 
 
-# def get_mini_dict(number_of_qubits):
-#     register = povmtools.register_names_qubits(range(number_of_qubits), number_of_qubits)
-#     return {key: np.zeros((int(2 ** number_of_qubits), 1)) for key in register}
-# """

@@ -22,13 +22,13 @@ import scipy as sc
 import qutip
 from qiskit.result import Result
 
-from qrem.common import utils
-from qrem.functions_qrem.povmtools import get_density_matrix, permute_matrix, reorder_classical_register
-from qrem.common.providers.ibmutils.data_converters import get_frequencies_array_from_probabilities_list, \
+from qrem.common import utils, math as qmath
+from qrem.common.povmtools import  reorder_classical_register
+from qrem.providers.ibmutils.data_converters import get_frequencies_array_from_probabilities_list, \
     get_frequencies_array_from_results
 from qrem.functions_qrem.PyMaLi import GeneralTensorCalculator # old version: from PyMaLi import GeneralTensorCalculator
-from qrem.functions_qrem import povmtools
-from qrem.functions_qrem import functions_hyperplane_projections as fhp, ancillary_functions as anf
+from qrem.common import povmtools
+from qrem.common.external import hyperplane_projections as fhp
 
 # from qrem.common.printer import qprint_array
 
@@ -93,7 +93,7 @@ class QDTCalibrationSetup:
         else:
             self.probe_states = [ket @ np.matrix.getH(ket) for ket in probe_kets]
 
-        # from qrem.functions_qrem import ancillary_functions as anf
+        #  
         # for pi in self.probe_states:
         #     qprint_array(pi)
         #
@@ -174,7 +174,7 @@ class QDTCalibrationSetup:
         probe_states = []
 
         for i in range(qubits_number):
-            probe_states.append([get_density_matrix(ket) for ket in probe_kets])
+            probe_states.append([qmath.get_density_matrix(ket) for ket in probe_kets])
 
         general_tensor_calculator = GeneralTensorCalculator(gtc_tensor_counting_function)
 
@@ -295,7 +295,7 @@ class QDTFitter:
 
         dimension = calibration_setup.probe_states[0].shape[0]
 
-        from qrem.functions_qrem import ancillary_functions as anf
+         
 
         # for pi in calibration_setup.probe_states:
         #
@@ -396,7 +396,7 @@ class QDTFitter:
         povm = [np.zeros((dimension,dimension),dtype=complex)
                 for _ in range(number_of_outcomes)]
         #
-        # from qrem.functions_qrem import ancillary_functions as anf
+        #  
         # for pi in probe_states:
         #     qprint_array(pi)
         # raise KeyboardInterrupt("hejka")
@@ -546,7 +546,7 @@ def join_povms(povms: List[List[np.ndarray]],
 
             if index_qubit_now != j:
                 # swap qubit from jth position to proper position
-                swapped_povm = [permute_matrix(Mj, qubits_num, (j + 1, index_qubit_now + 1)) for Mj in swapped_povm]
+                swapped_povm = [qmath.permute_matrix(Mj, qubits_num, (j + 1, index_qubit_now + 1)) for Mj in swapped_povm]
 
         swapped_povms.append(swapped_povm)
 

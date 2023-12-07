@@ -1,3 +1,23 @@
+"""
+model.py: Error Rate Calibration in CTMP Model
+
+This module is part of the CTMP subpackage and focuses on calibrating the error rates of a quantum system 
+based on experimental results. It employs combinations of qubit states and experimental data to estimate
+error rates as per the CTMP model.
+
+Functions
+---------
+rates_from_exp_results(exp_results: Dict[str, Dict[str, int]], n: int) -> List[Tuple]
+    Calibrates and returns error rates based on experimental results. It processes the experimental outcomes
+    for pairs of qubits to estimate error transitions and rates.
+
+
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
+"""
+
 import numpy as np
 import scipy
 from itertools import combinations

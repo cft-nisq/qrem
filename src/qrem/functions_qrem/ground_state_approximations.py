@@ -1,15 +1,18 @@
 """
-@author: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
-@contact: filip.b.maciejewski@gmail.com
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 """
 
 from typing import Dict, Tuple, Optional
 
 import numpy as np
-from qrem.functions_qrem import ancillary_functions as anf, functions_data_analysis as fda
-from qrem.ctmp.modeltools.ncpol2sdpa import generate_variables, flatten, SdpRelaxation
+from qrem.functions_qrem import functions_data_analysis as fda
+from qrem.common.external.ncpol2sdpa import generate_variables, flatten, SdpRelaxation
 from sympy import S
 
+from qrem.common import povmtools
 
 def generate_commuting_measurements(party,
                                     label):
@@ -23,7 +26,7 @@ def generate_commuting_measurements(party,
 
 def find_ground_state_energy_bruteforce(weights_dictionary,
                                         number_of_qubits):
-    classical_states = anf.get_classical_register_bitstrings(qubit_indices=range(number_of_qubits),
+    classical_states = povmtools.get_classical_register_bitstrings(qubit_indices=range(number_of_qubits),
                                                              )
 
     ground_state_energy = 10 ** 6
@@ -88,8 +91,8 @@ def __extract_ground_state_from_moments_matrix(moments_matrix,
     return spin_configuration
 
 
-from qrem.functions_qrem.CBB import branchandbound_tools as bb_tools, spin_models as spin_tools
-from qrem.ctmp.modeltools.ncpol2sdpa.chordal_extension import find_variable_cliques
+from qrem.common.external.CBB import branchandbound_tools as bb_tools, spin_models as spin_tools
+from qrem.common.external.ncpol2sdpa.chordal_extension import find_variable_cliques
 
 
 def find_ground_state_with_CBB(weights_dictionary: Dict[Tuple[int], float],

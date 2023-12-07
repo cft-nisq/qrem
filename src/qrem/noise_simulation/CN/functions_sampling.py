@@ -3,14 +3,13 @@ from typing import Tuple, Dict, List, Union, Optional
 
 import numpy as np
 
-from qrem.functions_qrem import ancillary_functions as anf, functions_data_analysis as fda
+from qrem.functions_qrem import functions_data_analysis as fda
 from qrem.functions_qrem import quantum_ancillary_functions as qanf 
 from qrem.noise_characterization.base_classes.marginals_analyzer_base import MarginalsAnalyzerBase
-from qrem.noise_model_generation.CN.GlobalNoiseMatrixCreator import GlobalNoiseMatrixCreator
 
-from qrem.common import convert, utils
+from qrem.common import convert, utils, povmtools
 
-#TODO FBM: Clean up this file
+# FBM: Clean up this file
 
 
 # {cluster_tuple:{'averaged'}}
@@ -298,7 +297,7 @@ def calculate_pairs_marginals_from_tensor_model_all_inputs(
         needed_pairs,
         get_also_1q_marginals=True
 ):
-    # TODO FBM: generalize to higher locality
+    # FBM: generalize to higher locality
 
     clusters_list = list(noise_matrices_dictionary.keys())
     number_of_qubits = sum([len(x) for x in clusters_list])
@@ -320,7 +319,7 @@ def calculate_pairs_marginals_from_tensor_model_all_inputs(
         pairs_in_cluster = [(qi, qj) for qi in cluster for qj in cluster
                             if qj > qi and (qi, qj) in needed_pairs]
 
-        local_classical_register = anf.get_classical_register_bitstrings(
+        local_classical_register = povmtools.get_classical_register_bitstrings(
             qubit_indices=range(len(cluster)))
         enumerated_qubits = utils.map_index_to_order(list(cluster))
         for cluster_input_state in local_classical_register:
@@ -351,7 +350,7 @@ def calculate_pairs_marginals_from_tensor_model_all_inputs(
 
         enumerated_qubits = utils.map_index_to_order(list(cl0) + list(cl1))
 
-        local_classical_register = anf.get_classical_register_bitstrings(
+        local_classical_register = povmtools.get_classical_register_bitstrings(
             qubit_indices=range(len(cl0 + cl1)))
 
         for input_bitstring in local_classical_register:
@@ -371,7 +370,7 @@ def calculate_pairs_marginals_from_tensor_model_fixed_input(input_state: str,
                                                             needed_pairs,
                                                             get_also_1q_marginals=True
                                                             ):
-    # TODO FBM: generalize to higher locality
+    # FBM: generalize to higher locality
     pairs_marginals = {}
     for cluster, noise_matrix in noise_matrices_dictionary.items():
         pairs_in_cluster = [(qi, qj) for qi in cluster for qj in cluster
@@ -456,7 +455,7 @@ def calculate_pairs_marginals_from_tensor_model_fixed_input(input_state: str,
 #     marginals = {}
 #     for subset in needed_subsets:
 #         qubits_string = 'q' + 'q'.join([str(x) for x in subset])
-#         bigger_subset = convert.get_qubit_indices_from_keystring(correction_indices[qubits_string])
+#         bigger_subset = convert.keystring_to_qubit_indices(correction_indices[qubits_string])
 
 #         clusters_now = _find_clusters_in_subset(bigger_subset)
 
@@ -505,7 +504,7 @@ def calculate_pairs_marginals_from_tensor_model_fixed_input(input_state: str,
 
 #         input_state_local = ''.join([input_state[x] for x in qubits_ordering_all])
 #         marginal_now_big = []
-#         full_register_local = anf.get_classical_register_bitstrings(range(len(qubits_ordering_all)))
+#         full_register_local = povmtools.get_classical_register_bitstrings(range(len(qubits_ordering_all)))
 #         for local_output_state in full_register_local:
 #             marginal_now_big.append(
 #                 global_matrix_creator.compute_matrix_element(input_state=input_state_local,
@@ -543,7 +542,7 @@ def calculate_pairs_marginals_from_tensor_model_terrible(input_state: str,
                                                          needed_pairs,
                                                          get_also_1q_marginals=True
                                                          ):
-    # TODO FBM: generalize to higher locality
+    # FBM: generalize to higher locality
 
     all_clusters = list(noise_matrices_dictionary.keys())
 
@@ -635,7 +634,7 @@ def calculate_pairs_marginals_from_tensor_model_terrible(input_state: str,
     # really_needed_subsets = []
     # for subset in needed_subsets:
     #     qubits_string = 'q' + 'q'.join([str(x) for x in subset])
-    #     bigger_subset = convert.get_qubit_indices_from_keystring(correction_indices[qubits_string])
+    #     bigger_subset = convert.keystring_to_qubit_indices(correction_indices[qubits_string])
     #     if bigger_subset not in really_needed_subsets:
     #         really_needed_subsets.append(sorted(bigger_subset))
 
@@ -688,7 +687,7 @@ def calculate_pairs_marginals_from_tensor_model_terrible(input_state: str,
 
     #     input_state_local = ''.join([input_state[x] for x in qubits_with_neighbors])
 
-    #     full_register_local = anf.get_classical_register_bitstrings(
+    #     full_register_local = povmtools.get_classical_register_bitstrings(
     #         qubit_indices=list(range(register_size_local)))
 
     #     global_matrix_creator = GlobalNoiseMatrixCreator(

@@ -1,4 +1,8 @@
-"""qrem.common.utils module contains all helpful functions used throughout the projcets.
+"""
+Quantum Readout Error Mitigation (QREM) Utils Module
+==========================================================
+
+qrem.common.utils module contains all helpful functions used throughout the projcets.
 
 Current contents of this module will relate to:
 - dit/bitstring conversions
@@ -6,7 +10,13 @@ Current contents of this module will relate to:
 - boolean operators on lists (that treat lists as sets)
 - other helpful functions not covered elswhere
 
-May be split into other modules in the future (very likely)
+Utils Module May be split into other modules in the future.
+
+
+Notes
+-----
+    @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+    @contact: michal.oszmaniec@cft.edu.pl
 
 """
 import sys
@@ -234,7 +244,53 @@ def wrapped_multiprocessing_function(tuple_of_main_arguments: List[tuple],
     return results_dictionary_all 
 
 def get_full_object_size(obj, seen=None):
-    """Recursively finds size of objects in bytes"""
+    """
+    Recursively calculates the total size in bytes of a Python object, including all objects referenced by it.
+
+    Parameters
+    ----------
+    obj : Any
+        The object for which the size needs to be calculated.
+    seen : set, optional
+        A set to keep track of objects already visited to avoid infinite recursion.
+
+    Returns
+    -------
+    int
+        The total size in bytes of the object and its referenced objects.
+
+    Examples
+    --------
+    >>> get_full_object_size(42)
+    28
+
+    >>> get_full_object_size("Hello, World!")
+    38
+
+    >>> class CustomObject:
+    ...     def __init__(self):
+    ...         self.data = [1, 2, 3]
+    ...
+    >>> obj = CustomObject()
+    >>> get_full_object_size(obj)
+    244
+
+    >>> data = {'a': [1, 2, 3], 'b': (4, 5, 6)}
+    >>> get_full_object_size(data)
+    282
+
+    >>> class RecursiveObject:
+    ...     def __init__(self):
+    ...         self.data = None
+    ...
+    >>> obj1 = RecursiveObject()
+    >>> obj2 = RecursiveObject()
+    >>> obj1.data = obj2
+    >>> obj2.data = obj1
+    >>> get_full_object_size(obj1)
+    136
+    """
+   
     size = sys.getsizeof(obj)
     if seen is None:
         seen = set()
@@ -264,6 +320,26 @@ def get_full_object_size(obj, seen=None):
         
     return size
 
+#===================================================
+# OTHER
+#===================================================
+
+
+def get_historical_experiments_number_of_qubits(backend_name: str):
+    """A helper function that returns number of qubits for a given backend name that is no longer available.
+    """    
+    if backend_name == 'ibmq_16_melbourne':
+        number_of_qubits = 15
+    elif backend_name == 'ASPEN-8':
+        number_of_qubits = 23
+    elif backend_name.upper() == 'ASPEN-9':
+        number_of_qubits = 20
+    else:
+        raise ValueError('Wrong backend name')
+
+    return number_of_qubits
+
+     
 # import numpy as np
 # import orjson
 # from pathlib import Path

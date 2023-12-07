@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from typing import Dict, Tuple, List
-from qrem.types import CTMPModelData
+from qrem.qtypes import CTMPModelData
 from qrem.ctmp.simtools.sampling_utils import check_transition, apply_transition
 
 

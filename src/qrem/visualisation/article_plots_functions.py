@@ -1,6 +1,6 @@
 from qrem.visualisation.plotting_constants import color_map
 from matplotlib import pyplot as plt
-from qrem.pipelines.mitigation_functions import compute_mitigation_error_median_mean, compute_mitigation_errors
+from qrem.mitigation.mitigation_routines import compute_mitigation_error_median_mean, compute_mitigation_errors
 
 import numpy as np
 

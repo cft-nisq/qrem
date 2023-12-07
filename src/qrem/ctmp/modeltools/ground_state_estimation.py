@@ -2,16 +2,16 @@ import numpy as np
 from typing import Optional
 from collections import defaultdict
 from sympy import S
-from qrem.ctmp.modeltools.ncpol2sdpa.sdp_relaxation import SdpRelaxation
-from qrem.ctmp.modeltools.ncpol2sdpa.nc_utils import generate_variables, flatten
-from qrem.functions_qrem.functions_benchmarks import create_hamiltonians_for_benchmarks
+from qrem.common.external.ncpol2sdpa.sdp_relaxation import SdpRelaxation
+from qrem.common.external.ncpol2sdpa.nc_utils import generate_variables, flatten
+from qrem.benchmarks.hamiltonians import create_hamiltonians_for_benchmarks
 
 
 from typing import Dict, Tuple, List
 
-"""Glue function to access old code
-"""
 def estimate_gamma(n: int, rates: List[Tuple]) -> np.float:
+    """Glue function to access old code
+    """
     # convert rates to format from FM's code
     rates_dict = {}
     for error in rates:
@@ -26,15 +26,16 @@ def estimate_gamma(n: int, rates: List[Tuple]) -> np.float:
     _, gamma = _find_optimal_noise_strength_CTMP_SDP_relaxation(rates_dict, n)
     return gamma
 
-"""Generates a collectinon of ground state approximations for random Hamiltonians together with ground state 
-energy lower and upper bound.
 
-Returns a list of tuples (state, low, up), where:
-state - string describing the approximate ground state
-low, up - lower and upper bound on the ground state energy
-h - Hamiltonian
-"""
 def generate_random_ground_states(n_qubits: int, n_hamiltonians: int, clause_density: float) -> List[Tuple]:
+    """Generates a collectinon of ground state approximations for random Hamiltonians together with ground state 
+    energy lower and upper bound.
+
+    Returns a list of tuples (state, low, up), where:
+    state - string describing the approximate ground state
+    low, up - lower and upper bound on the ground state energy
+    h - Hamiltonian
+    """
     result = []
     random_hamiltonians = create_hamiltonians_for_benchmarks(n_qubits, n_hamiltonians, clause_density)
     for h in random_hamiltonians.values():
@@ -49,18 +50,15 @@ def generate_random_ground_states(n_qubits: int, n_hamiltonians: int, clause_den
         result.append((state, low, up, h))
     return result
 
-
-"""Code below copy pasted from Filip's code
-"""
-
 def generate_commuting_measurements(party, label):
+    """Code below copy pasted from Filip's code
+    """
     measurements = []
     for i in range(len(party)):
         measurements.append(generate_variables(label + '%s' % i,
                                                party[i] - 1,
                                                hermitian=True))
     return measurements
-
 
 def get_symbolic_hamiltonian_from_weights_dictionary(weights_dictionary: Dict[Tuple[int], float],
                                                      spins):
@@ -95,7 +93,7 @@ def find_ground_state_with_SDP_relaxations(weights_dictionary: Dict[Tuple[int], 
     sdp.solve(solver=solver_name)
     #sdp.solve(solver="mosek")
     low = sdp.primal
-    if sdp.status is not 'optimal':
+    if sdp.status != 'optimal':
         print('ERROR!!! The status is not optimal')
     if return_ground_state_approximation:
         ground_state_candidate = __extract_ground_state_from_moments_matrix(
@@ -110,7 +108,7 @@ def find_ground_state_with_SDP_relaxations(weights_dictionary: Dict[Tuple[int], 
         up = -sdp.primal
     else:
         up = None
-    if sdp.status is not 'optimal':
+    if sdp.status != 'optimal':
         print('ERROR!!! The status is not optimal')
     if return_ground_state_approximation:
         return low, up, ground_state_candidate
