@@ -4,7 +4,7 @@ This package provides a versatile set of tools for the characterization and miti
 
 You can find article based on initial version of this package [here - http://arxiv.org/abs/2311.10661](http://arxiv.org/abs/2311.10661) and the corresponding code used at the moment of writning the article [here](https://github.com/cft-nisq/qrem/tree/article-eff).
 
-<img src="http://quantin.pl/wp-content/uploads/2023/03/washington_26_04_2022_worst_case_classical_threshold_2.png"
+<img src="https://quantin.pl/wp-content/uploads/2023/03/washington_26_04_2022_worst_case_classical_threshold_2.png"
   alt="Plot of correlation coefficients determined in characterization on device layout"
   title="Plot of correlation coefficients determined in characterization on device layout"
   style="display: inline-block
