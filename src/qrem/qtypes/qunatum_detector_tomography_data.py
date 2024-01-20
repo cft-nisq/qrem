@@ -24,7 +24,7 @@ from qrem.providers.ibmutils.data_converters import get_frequencies_array_from_p
 from qrem.common.math import get_density_matrix
 
 #JT: check this import
-from qrem.functions_qrem.PyMaLi import GeneralTensorCalculator 
+from qrem.common.math import GeneralTensorCalculator 
 from qrem.common.math import kronecker_product
 
 

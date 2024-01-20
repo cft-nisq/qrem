@@ -1,13 +1,13 @@
 from typing import Dict, Tuple, List
 import time
 import numpy as np
-import qrem.functions_qrem.functions_data_analysis as fdt
-from qrem.noise_characterization.tomography_design.overlapping.DOTMarginalsAnalyzer import DOTMarginalsAnalyzer
+from qrem.common import convert 
 from qrem.common import io
 from qrem.qtypes import CNModelData, ExperimentResults
 from qrem.cn import simulation as cnsimulation
 from datetime import date
 import qrem.common.experiment.tomography as tom
+from qrem.common import probability 
 
 def custom_model_creator(number_of_qubits: int, model_specification: list[list[int]], directory_to_save: str, name_id: str = '', save_model: bool = True):
     '''
@@ -96,7 +96,7 @@ def simulate_experiment(circuits,number_of_shots,experiment_type="DDOT"):
 
 def simulate_noisy_experiment(noise_model: type[CNModelData], number_of_circuits: int, number_of_shots: int, data_directory: str, experiment_type: str = 'DDOT',
                                name_id: str = '', save_data: bool = False,
-                              return_ideal_experiment_data: bool = False, new_data_format: bool = True):
+                              return_ideal_experiment_data: bool = False, new_data_format: bool = True, ground_states_circuits:List[np.array]=None):
     if experiment_type == 'DDOT':
         number_of_qubits = noise_model.number_of_qubits
         qubit_indices = [i for i in range(number_of_qubits)]
@@ -105,11 +105,22 @@ def simulate_noisy_experiment(noise_model: type[CNModelData], number_of_circuits
 
         circuits = tom.generate_circuits(number_of_qubits=number_of_qubits,imposed_max_random_circuit_count=number_of_circuits)
 
+        if np.any(ground_states_circuits):
+
+            circuits_list = list(circuits)
+        
+            circuits_list[0] = np.append(circuits[0],ground_states_circuits, axis=0)
+            
+            circuits_list[1] = circuits[1] +len(ground_states_circuits)
+
+            circuits = tuple(circuits_list)
+
+
     
         unprocessed_results = simulate_experiment(circuits=circuits[0],number_of_shots=number_of_shots)
     
 
-        processed_results = fdt.convert_counts_overlapping_tomography(counts_dictionary=unprocessed_results,
+        processed_results = convert.convert_counts_overlapping_tomography(counts_dictionary=unprocessed_results,
                                                                   experiment_name='DDOT',reverse_bitstrings=False, old_send_procedure=False)
 
         file_name_results = experiment_type+'_simulation_workflow_results_' + name_string + '.pkl'
@@ -118,19 +129,7 @@ def simulate_noisy_experiment(noise_model: type[CNModelData], number_of_circuits
         print("simulation_workflow saved")
         results_dictionary = {}
 
-        if return_ideal_experiment_data:
-            marginals_analyzer_ideal = DOTMarginalsAnalyzer(results_dictionary_ddot=processed_results)
-
-            single_qubits = [(i,) for i in range(number_of_qubits)]
-            pairs_of_qubits = [(i, j) for i in range(number_of_qubits) for j in range(i + 1, number_of_qubits)]
-
-            marginals_to_mitigate = list(noise_model.clusters_tuple) + single_qubits + pairs_of_qubits
-
-            marginals_analyzer_ideal.compute_all_marginals(subsets_dictionary=marginals_to_mitigate, show_progress_bar=True,
-                                                       multiprocessing=False)
-       
-            results_dictionary['ideal_results_dictionary'] = marginals_analyzer_ideal.marginals_dictionary
-
+      
     
     
         t0=time.time()
@@ -149,6 +148,11 @@ def simulate_noisy_experiment(noise_model: type[CNModelData], number_of_circuits
                 int_vector = np.array(values, dtype=int)
                 new_format_dict[input] = (bool_matrix, int_vector)
             results_dictionary['new_data_format']=new_format_dict
+        
+        if return_ideal_experiment_data:
+           
+       
+            results_dictionary['ideal_results_dictionary'] = probability.compute_marginals_single(results_dictionary=new_format_dict,subsets_list=marginals_to_mitigate,normalization=True)
 
         if save_data:
             file_name_noisy_results = experiment_type+'_noisy_simulation_results_' + name_string + '.pkl'

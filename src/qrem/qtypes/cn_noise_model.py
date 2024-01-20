@@ -1,5 +1,3 @@
-
-
 from qrem.qtypes.datastructure_base import DataStructureBase
 from qrem.common import math
 from typing import Dict, Tuple, List
@@ -110,7 +108,7 @@ class CNModelData(DataStructureBase):
                     self.inverse_noise_matrices[(cluster)] = np.linalg.inv(noise_matrix['averaged'])
                 except:
                     print(f"MATRIX FOR SUBSET: {(cluster)} is not invertible, computing pseudinverse",'','red')
-                    self.inverse_noise_matrices[(cluster)] = np.linalg.pinv(noise_matrix)['averaged']
+                    self.inverse_noise_matrices[(cluster)] = np.linalg.pinv(noise_matrix['averaged'])
 
 
             else:

@@ -18,7 +18,7 @@ import numpy.typing as npt
 from tqdm import tqdm
 
 from qrem.common import povmtools
-from qrem.common.povmtools import reorder_probabilities
+from qrem.common.convert import reorder_probabilities
 from qrem.qtypes.circuit_collection import CircuitCollection
 
 

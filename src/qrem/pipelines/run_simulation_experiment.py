@@ -1,61 +1,75 @@
 """4. napisać funkcję run_simulation_experiment.py, która (1) stworzy przykladowy model(e), (2) zwróci nam jakąś przykladową symulację."""
-import qrem.pipelines.simulate_experiment as simulate_experiment
-from qrem.qtypes import CNModelData as CNModelData
-import qrem.qtypes.cn_noise_model as cn
-from qrem.common.printer import qprint, errprint, warprint
-import pickle
+import sys
+import qrem
+import qrem.providers.simulation as simulate_experiment
+from qrem.providers.simutils.simutils import noise_model_from_file, custom_model_creator
+from qrem.common.printer import warprint, qprint
+from pathlib import Path
 
-DATA_DIRECTORY= r'C:\\Users\\Kasia\\simtest\\'
-FILE_NAME_NOISE_MODEL ="10qmodel1st.pkl"
+CONFIG_PATH = ["--config_file", "C:\\Users\\Kasia\\QREM_SECRET_DEVELOPMENT\\src\\qrem\\common\\default_simulation.ini"]
 
-#Optional: noise model dictionary from a file, with the following function:
-def noise_model_from_file(data_directory: str, file_name: str):
-    with open(data_directory+file_name, 'rb') as filein:
-        noise_model_dictionary = pickle.load(filein)
 
-    noise_model = cn.CNModelData(number_of_qubits=noise_model_dictionary['number_of_qubits'])
-    noise_matrices = {}
-    for key, value in noise_model_dictionary['noise_matrices'].items():
-        noise_matrices[key]=value['averaged']
-
-    noise_model.set_noise_model(noise_matrices)
-    return noise_model
-
-def run_simulation_experiment(number_of_circuits: int, number_of_shots: int,
-                               data_directory: str, name_id: str = '', experiment_type: str = 'DDOT', number_of_qubits: int=None, model_specification: list[list[int]] = None,
-                              noise_model: type[CNModelData] = None, save_data: bool = True, new_data_format = True):
+def run_simulation_experiment(cmd_args=CONFIG_PATH, verbose_log = True):
     """Function which runs the simulation"""
+    config = qrem.load_config(cmd_args=cmd_args, verbose_log=verbose_log)
+    print(config)
+    experiment_type = config.experiment_type
+    data_directory = Path(config.experiment_path)
+    if not data_directory.is_dir():
+        data_directory.mkdir(parents=True, exist_ok=True)
 
-    if noise_model==None:
+    name_id = config.name_id
+    save_data = bool(config.save_data)
+    new_data_format = bool(config.new_data_format)
+    model_from_file = bool(config.model_from_file)
+    add_noise = bool(config.add_noise)
+
+    number_of_circuits=int(config.number_of_circuits)
+    number_of_shots=int(config.number_of_shots)
+    try:
+        number_of_qubits=int(config.number_of_qubits)
+    except ValueError:
+        number_of_qubits=None
+
+    model_specification=config.model_specification
+
+
+
+    if model_from_file:
+        noise_model_directory = Path(config.noise_model_directory)
+        noise_model_file = config.noise_model_file
+        noise_model = noise_model_from_file(data_directory=noise_model_directory, file_name=noise_model_file)
+    else:
         if number_of_qubits == None or model_specification == None:
             raise ValueError("Noise model unspecified")
-        noise_model = simulate_experiment.custom_model_creator(number_of_qubits=number_of_qubits, model_specification=model_specification,
+        noise_model = custom_model_creator(number_of_qubits=number_of_qubits, model_specification=model_specification,
                                       name_id=name_id, save_model = True,directory_to_save=data_directory)
-    noisy_results = simulate_experiment.simulate_noisy_experiment(data_directory=data_directory,noise_model=noise_model, number_of_circuits=number_of_circuits,
-                                                                      number_of_shots=number_of_shots,save_data=save_data,name_id=name_id,new_data_format=new_data_format)
+    noisy_results = simulate_experiment.simulate_noisy_experiment(data_directory=data_directory,noise_model=noise_model, number_of_circuits=number_of_circuits, experiment_type=experiment_type,
+                                                                      number_of_shots=number_of_shots,save_data=save_data,name_id=name_id,new_data_format=new_data_format,add_noise=add_noise)
 
     return noisy_results
 
-DATA_DIRECTORY= r'C:\\Users\\Kasia\\simtest\\'
-FILE_NAME_NOISE_MODEL ="10qmodel1st.pkl"
 
-number_of_qubits = 10
-model_specification = [[2,5]]
-number_of_circuits = 20
-number_of_shots = 10**4
 
 if __name__ == "__main__":
     warprint("=============================")
     warprint("START: Executing SIMULATION Experiment pipeline")
     warprint("=============================")
     warprint("Random noise model created for a given specification: ",color="BLUE")
-    run_simulation_experiment(number_of_qubits=number_of_qubits,model_specification=model_specification,
-                              number_of_circuits=number_of_circuits,number_of_shots=number_of_shots,
-                              name_id="1st",data_directory=DATA_DIRECTORY)
-    warprint("Second simulation based on the same noise model, now taken from a file: ", color="BLUE")
-    model_from_file = noise_model_from_file(DATA_DIRECTORY,FILE_NAME_NOISE_MODEL)
-    run_simulation_experiment(noise_model=model_from_file, number_of_circuits=number_of_circuits,number_of_shots=number_of_shots,name_id="2st",
-                              data_directory=DATA_DIRECTORY)
+    argv = sys.argv[1:]
+    import time
+
+    t0 = time.time()
+
+    if argv != []:
+        run_simulation_experiment(cmd_args=argv)
+    else:
+        run_simulation_experiment()
+
+    t1 = time.time()
+    qprint("=============================")
+    qprint("Elapsed time: {} sec".format(t1 - t0))
+
 
 
 

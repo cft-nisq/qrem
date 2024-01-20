@@ -5,7 +5,7 @@ import numpy.typing as npt
 
 
 from qrem.qtypes.datastructure_base import DataStructureBase
-from qrem.qtypes.cn_noise_model import CNModelData
+#from qrem.qtypes import CNModelData
 
 class CharacterizationData(DataStructureBase):
 
@@ -77,7 +77,7 @@ class CharacterizationData(DataStructureBase):
         self.marginals_dictionary: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]] = None
 
         
-        self.benchmark_marginals_dictionary = None
+        self.benchmark_marginals_dictionary : Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]  = None
 
         self.results_dictionary = None
 
@@ -96,6 +96,18 @@ class CharacterizationData(DataStructureBase):
         self.coherence_bound_dictionary: Dict[Tuple[Tuple[int]]:List[(float,str)]] = None 
 
         self.noise_model_list: List[Type[CNModelData]] = None
+
+        self.ground_states_list: List[str] = None
+        
+        self.coherence_witnesses_list: List[str] = None 
+
+        self.coherence_witness_results_dictionary = None
+
+        self.coherence_witness_marginals_dictionary = None
+
+        self.experiment_type: str = None
+
+        self.benchmark_averaged_marginals_dictionary: Dict = None 
 
 
 

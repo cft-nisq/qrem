@@ -6,7 +6,7 @@ from tqdm import tqdm
 from qiskit.result import Result
 
 from qrem.common.printer import qprint
-from qrem.common.povmtools import reorder_probabilities
+from qrem.common.convert import reorder_probabilities
 
 def get_shots_results_from_qiskit_result(result_object):
     pass
