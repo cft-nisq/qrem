@@ -8,7 +8,7 @@ import qiskit
 from qiskit import Aer, IBMQ
 from qiskit.providers.jobstatus import JobStatus
 
-from qrem.common.povmtools import reorder_probabilities
+from qrem.common.convert import reorder_probabilities
 from qrem.common import povmtools
 
 from qrem.common import io

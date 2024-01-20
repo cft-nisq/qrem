@@ -314,10 +314,23 @@ def random_stochastic_matrix(size, type='left',diagonal = 1.0):
 
     return matrix
 
+def compute_average_marginal_for_subsets_list(
+    subsets_list: List[Tuple],
+    experiment_results: Dict[str, Tuple[npt.NDArray[np.bool_], npt.NDArray[np.int_]]],
+    normalized_marginals: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]
+) -> Dict[str, npt.NDArray[np.float_]]:
+
+    marginals_averaged = {}
+    
+    
+    for subset in subsets_list:
+
+        marginals_averaged[subset] = compute_average_marginal_for_subset(subset=subset,experiment_results=experiment_results,normalized_marginals=normalized_marginals)   
+
 def compute_average_marginal_for_subset(
     subset: Tuple,
     experiment_results: Dict[str, Tuple[npt.NDArray[np.bool_], npt.NDArray[np.int_]]],
-    normalized_marginals: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]
+    normalized_marginals: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]], verbose_log:bool = False
 ) -> Dict[str, npt.NDArray[np.float_]]:
 
     """
@@ -345,7 +358,8 @@ def compute_average_marginal_for_subset(
             # marginal not in the precomputed dictionary, need to copmute it
             res_dict = {circuit_label: experiment_results[circuit_label]}
             marginal_vector = compute_marginals_single(res_dict, [subset], normalization = True)[circuit_label][subset]
-            warprint(f"Calculated marginals are missing given subset: {subset}, calculating and filling int")
+            if verbose_log:
+                warprint(f"Calculated marginals are missing given subset: {subset}, calculating and filling int")
         else:
             marginal_vector = normalized_marginals[circuit_label][subset]
         if circuit_label_on_subset_indices not in averaged_marginals.keys():
@@ -508,6 +522,26 @@ def normalize_marginals(
             marginals_per_circuit[marginal_qubits] = marginals_per_circuit[marginal_qubits]/marginals_per_circuit[marginal_qubits].sum()
         marginals_dictionary[experiment_label] = marginals_per_circuit
     return marginals_dictionary
+
+
+#this function is used in mitigation
+
+def convert_subset_counts_dictionary_to_probability_distribution(counts_dictionary):
+    """Makes a probability distribution from counts dictionary,
+    IMPORTANT: fills in with zeros for results absent in counts_dictionary
+    USED A LOT by functions from cn\mitigation.py and functions_qrem\new_mitigation_routines.py"""
+    key = next(iter(counts_dictionary))
+    subset_counts_dictionary = counts_dictionary[key]
+    subset = next(iter(subset_counts_dictionary))
+    number_of_qubits = len(subset) 
+    probability_distribution = np.zeros((2 ** number_of_qubits), dtype=float)
+    
+    normalization_shots = sum(list(subset_counts_dictionary[subset]))
+    probability_distribution= counts_dictionary[key][subset] / normalization_shots
+
+
+
+    return  probability_distribution
 
 # ===================================================
 # Basic function used to compute marginals from experimental counts - probability distributions
@@ -725,6 +759,65 @@ def compute_marginal_of_probability_distribution(
     Notes
     -----
     This function identifies bits with qubits in the variable bitstring_names.
+    """
+
+    if len(bits_of_interest) == 0:
+        print('0 length bits list')
+        return global_probability_distribution
+
+    try:
+        if isinstance(global_probability_distribution[0][0], complex) or isinstance(
+                global_probability_distribution[0][0], np.complex128):
+            global_probability_distribution = global_probability_distribution.real
+    except(IndexError):
+        if isinstance(global_probability_distribution[0], complex) or isinstance(
+                global_probability_distribution[0], np.complex128):
+            global_probability_distribution = global_probability_distribution.real
+
+    global_dimension = len(global_probability_distribution)
+    global_number_of_qubits = int(np.log2(global_dimension))
+    all_qubits = list(range(global_number_of_qubits))
+    bits_to_average_over = list(set(all_qubits).difference(set(bits_of_interest)))
+
+    number_of_bits_in_marginal = global_number_of_qubits - len(bits_to_average_over)
+    dimension_of_marginal = 2 ** number_of_bits_in_marginal
+
+    if register_names is None:
+        bitstring_names = povmtools.get_classical_register_bitstrings(list(range(global_number_of_qubits)),
+                                                                global_number_of_qubits)
+    else:
+        bitstring_names = register_names
+
+    marginal_distribution = np.zeros((dimension_of_marginal, 1), dtype=float)
+    for j in range(global_dimension):
+        # this is slightly faster than going through "for bitstring_global in bitstring_names
+        # and then converting bitstring_global to integer
+        # and also faster than creating the global bitstring in situ
+        bitstring_global = bitstring_names[j]
+
+        bitstring_local = ''.join(
+            [bitstring_global[qubit_index] for qubit_index in bits_of_interest])
+
+        marginal_distribution[int(bitstring_local, 2)] += global_probability_distribution[j]
+
+    return marginal_distribution
+
+
+def get_marginal_from_probability_distribution(
+        global_probability_distribution: np.ndarray,
+        bits_of_interest: List[int],
+        register_names: Optional[List[str]] = None) -> np.ndarray:
+    """Return marginal distribution from vector of global distribution
+    :param global_probability_distribution: distribution on all bits
+    :param bits_of_interest: bits we are interested in (so we average over other bits)
+                            Assuming that qubits are labeled
+                            from 0 to log2(len(global_probability_distribution))
+    :param register_names: bitstrings register, default is
+                           '00...00', '000...01', '000...10', ..., etc.
+
+    :return: marginal_distribution : marginal probability distribution
+
+    NOTE: we identify bits with qubits in the variables bitstring_names
     """
 
     if len(bits_of_interest) == 0:

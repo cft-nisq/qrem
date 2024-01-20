@@ -6,7 +6,6 @@ import numpy as np
 from qrem.common import probability
 from qrem.common import math
 from qrem.common import povmtools 
-from qrem.functions_qrem import functions_data_analysis as fda
 
 
 
@@ -77,10 +76,10 @@ def mitigate_marginal(marginal: Tuple, results_dictionary: Dict[str, Dict[str, i
    
 
     #computes extended marginal probability distribution on which is 
-    clusters_marginal_counts=probability.compute_marginals(results_dictionary=results_dictionary,subsets_list=[tuple(unordered_qubits_in_marginal_list)])
+    clusters_marginal_counts=probability.compute_marginals_single(results_dictionary=results_dictionary,subsets_list=[tuple(unordered_qubits_in_marginal_list)])
 
     #we are interested in the first key only hence the construction nex(iter()) TODO: this does not work, start from here 
-    mitigated_clusters_marginal_probability_distribution = fda.convert_subset_counts_dictionary_to_probability_distribution(clusters_marginal_counts)
+    mitigated_clusters_marginal_probability_distribution = probability.convert_subset_counts_dictionary_to_probability_distribution(clusters_marginal_counts)
     
     #reshape probability vector
     mitigated_clusters_marginal_probability_distribution = np.array(mitigated_clusters_marginal_probability_distribution).reshape(mitigated_clusters_marginal_probability_distribution.shape[0], 1)
@@ -197,7 +196,7 @@ def mitigate_marginal_state_dependent(marginal: Tuple, results_dictionary: Dict[
     clusters_marginal_counts=probability.compute_marginals(results_dictionary=results_dictionary,subsets_list=[tuple(unordered_qubits_in_marginal_list)])
 
     #we are interested in the first key only hence the construction nex(iter()) TODO: this does not work, start from here 
-    mitigated_clusters_marginal_probability_distribution = fda.convert_subset_counts_dictionary_to_probability_distribution(clusters_marginal_counts)
+    mitigated_clusters_marginal_probability_distribution = probability.convert_subset_counts_dictionary_to_probability_distribution(clusters_marginal_counts)
     
     #reshape probability vector
     mitigated_clusters_marginal_probability_distribution = np.array(mitigated_clusters_marginal_probability_distribution).reshape(mitigated_clusters_marginal_probability_distribution.shape[0], 1)
@@ -405,7 +404,7 @@ def mitigate_marginal_product(marginal: Tuple, results_dictionary: Dict[str, Dic
 
         clusters_marginal_counts=probability.compute_marginals(results_dictionary=results_dictionary,subsets_list=[cluster])
         
-        mitigated_clusters_marginal_probability_distribution = fda.convert_subset_counts_dictionary_to_probability_distribution(clusters_marginal_counts)
+        mitigated_clusters_marginal_probability_distribution = probability.convert_subset_counts_dictionary_to_probability_distribution(clusters_marginal_counts)
 
         mitigated_clusters_marginal_probability_distribution =np.array(mitigated_clusters_marginal_probability_distribution).reshape(mitigated_clusters_marginal_probability_distribution.shape[0], 1)
 

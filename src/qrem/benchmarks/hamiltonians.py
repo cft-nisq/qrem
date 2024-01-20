@@ -5,12 +5,15 @@ Notes
     @contact: michal.oszmaniec@cft.edu.pl
 """
 
-from typing import Optional
+from typing import Optional, Dict, Tuple, List 
 from tqdm import tqdm  
 import numpy as np
-from qrem.functions_qrem import functions_data_analysis as fda
-from qrem.noise_characterization.tomography_design.overlapping.DOTMarginalsAnalyzer import \
-    DOTMarginalsAnalyzer
+from qrem.common import convert
+from qrem.common import probability
+import pysat
+from qrem.ctmp.modeltools import ground_state_estimation 
+
+
 def __get_mapping_2SAT(clause_now,
                        j):
     variables = clause_now[1]
@@ -155,18 +158,16 @@ def __solve_2SAT_Hamiltonian_pysat(
                                    clause_density,
                                    repetitions = 1):
 
-    from pysat.formula import WCNF
-    from pysat.examples.rc2 import RC2Stratified
 
     new_rep = [__change_representation_to_pysat(cl) for cl in clauses_list]
-    wcnf_now = WCNF()
+    wcnf_now = pysat.WCNF()
     for cl in new_rep:
         wcnf_now.append(cl, weight=1)
 
 
     states_sol_repets, costs_sol_repets = [], []
     for heh in range(repetitions):
-        solver_rc2 = RC2Stratified(wcnf_now,
+        solver_rc2 = pysat.RC2Stratified(wcnf_now,
                                    solver='g4')
         solution_this = solver_rc2.compute()
         sol_state_now = list(solver_rc2.model)
@@ -193,7 +194,7 @@ def __solve_2SAT_Hamiltonian_pysat(
     min_energy = get_energy_from_SAT_solution(sat2_solution_rc2, number_of_clauses)
 
     list_state_binary = list(preferred_ground_state)
-    ground_state_energy = fda.get_energy_from_bitstring_diagonal_local(bitstring=list_state_binary,
+    ground_state_energy = get_energy_from_bitstring_diagonal_local(bitstring=list_state_binary,
                                                                        weights_dictionary=weights_dictionary)\
         # .get_energy_from_string(list_state_binary, weights_dictionary)
 
@@ -238,6 +239,42 @@ def solve_2SAT_hamiltonian(hamiltonian_data,
 
     return {**hamiltonian_data, **solution_data}
 
+def estimate_energy_from_marginals(weights_dictionary: Dict[Tuple[int], float],
+                                   marginals_dictionary: Dict[Tuple[int], np.ndarray],
+                                   additional_multipliers=None):
+    """
+    Compute energy of Hamiltonian from dictionary of marginal distributions.
+
+    :param weights_dictionary:
+    :param marginals_dictionary:
+    :return:
+    """
+
+    energy = 0
+    for key_local_term in weights_dictionary.keys():
+        weight = weights_dictionary[key_local_term]
+        marginal = marginals_dictionary[key_local_term]
+
+        qubits_number = int(np.log2(len(marginal)))
+
+        local_term_energy = 0
+        for result_index in range(len(marginal)):
+            bitstring = list(convert.integer_to_bitstring(result_index, qubits_number))
+            bit_true = [int(x) for x in bitstring]
+            parity = (-1) ** (np.count_nonzero(bit_true))
+            local_term_energy += weight * marginal[result_index] * parity
+
+        if additional_multipliers is not None:
+            local_term_energy *= additional_multipliers[key_local_term]
+
+        energy += local_term_energy
+
+    if isinstance(energy, list) or isinstance(energy, np.ndarray):
+        return energy[0]
+    else:
+        return energy
+
+
 
 def create_hamiltonians_for_benchmarks(number_of_qubits, number_of_hamiltonians, clause_density):
     hamiltonian_name = '2SAT'
@@ -259,6 +296,58 @@ def create_hamiltonians_for_benchmarks(number_of_qubits, number_of_hamiltonians,
         all_hamiltonians[hamiltonian_index] = hamiltonian_data_now
     return all_hamiltonians
 
+def __get_state_from_other_format(solution):
+    state = []
+    for k in range(len(solution)):
+        if np.sign(solution[k])==1:
+            state.append('0')
+        else:
+            state.append('1')
+
+    return state
+
+_parities__dict2 = {'0': 1,
+                    '1': -1,
+                    '00': 1,
+                    '11': 1,
+                    '01': -1,
+                    '10': -1,
+
+                    }
+
+def __get_part_bitstring_parity_special(bitstring_getitem,
+                                        qubit_indices):
+    """Used only in get_energy_from_bitstring_diagonal_local()"""
+    return (-1) ** list(map(bitstring_getitem, qubit_indices)).count('1')
+
+
+
+def get_energy_from_bitstring_diagonal_local(bitstring: str,
+                                             weights_dictionary: Dict[Tuple[int], float],
+                                             additional_multipliers=None
+                                             ):
+    """Calculates the energy corresponding to a state (encoded in bistring) and a Hamiltonian
+    (encoded in weights and additional_multipliers)"""
+    if isinstance(bitstring,list):
+        bitstring = ''.join(bitstring)
+
+    bitstring_getitem = bitstring.__getitem__
+
+    parities = {qubit_indices: __get_part_bitstring_parity_special(bitstring_getitem,
+                                                                   qubit_indices) for qubit_indices in
+                weights_dictionary.keys()}
+
+    energy = 0
+    for qubit_indices, hamiltonian_coefficient in weights_dictionary.items():
+        # marginal_bitstring = [int(bitstring[q]) for q in qubit_indices]
+        # parity = (-1) ** (np.count_nonzero(marginal_bitstring))
+        local_energy = parities[qubit_indices] * hamiltonian_coefficient
+        if additional_multipliers is not None:
+            local_energy *= additional_multipliers[qubit_indices]
+        energy += local_energy
+
+    return energy
+
 def eigenstate_energy_calculation_and_estimation(results_dictionary,marginals_dictionary, hamiltonians_data):
     results_energy_estimation = {}
 
@@ -268,7 +357,7 @@ def eigenstate_energy_calculation_and_estimation(results_dictionary,marginals_di
         weights_dictionary = hamiltonian_data_dictionary['weights_dictionary']
 
         # Calculate ideal energy
-        energy_ideal = fda.get_energy_from_bitstring_diagonal_local(bitstring=input_state,
+        energy_ideal = get_energy_from_bitstring_diagonal_local(bitstring=input_state,
                                                                     weights_dictionary=weights_dictionary)
 
         # Read experimental results data
@@ -277,16 +366,19 @@ def eigenstate_energy_calculation_and_estimation(results_dictionary,marginals_di
 
         missing_subsets = [x for x in weights_dictionary.keys() if x not in marginals_dictionary_raw.keys()]
         if len(missing_subsets) > 0:
-            marginals_analyzer = DOTMarginalsAnalyzer({input_state: results_dictionary_raw})
-            marginals_analyzer.compute_all_marginals(missing_subsets,
-                                                     show_progress_bar=False,
-                                                     multiprocessing=False)
+            #marginals_analyzer = DOTMarginalsAnalyzer({input_state: results_dictionary_raw})
+            #marginals_analyzer.compute_all_marginals(missing_subsets,
+            #                                         show_progress_bar=False,
+            #                                         multiprocessing=False)
+            
+            marginals_dictionary_temp = probability.compute_marginals_single(results_dictionary={input_state: results_dictionary_raw},subsets_list=missing_subsets,normalization=True)
 
             marginals_dictionary_raw = {**marginals_dictionary_raw,
-                                        **marginals_analyzer.marginals_dictionary[input_state]}
+                                        **marginals_dictionary_temp[input_state]}
+                                        #**marginals_analyzer.marginals_dictionary[input_state]}
 
         # Calculate experimentally estimated energy
-        energy_raw = fda.estimate_energy_from_marginals(weights_dictionary=weights_dictionary,
+        energy_raw = estimate_energy_from_marginals(weights_dictionary=weights_dictionary,
                                                         marginals_dictionary=marginals_dictionary_raw)
 
         dictionary_results_now = {'energy_ideal': energy_ideal,
@@ -299,3 +391,16 @@ def eigenstate_energy_calculation_and_estimation(results_dictionary,marginals_di
         results_energy_estimation[state_index] = dictionary_results_now
 
     return results_energy_estimation
+
+def create_hamiltonians_and_ground_states(number_of_benchmark_circuits:int, number_of_qubits:int ):
+
+        hamiltonians_dictionary = ground_state_estimation.generate_random_ground_states(n_qubits=number_of_qubits,n_hamiltonians=number_of_benchmark_circuits,clause_density=4.0)
+    
+        for i in range(number_of_benchmark_circuits):
+            ground_state = np.array([int(bit) for bit in hamiltonians_dictionary[i]['ground_state'] ])
+            if i!=0:
+                circuits_ground_states_preparation_collection=np.append(circuits_ground_states_preparation_collection,np.array([ground_state]),axis=0)
+            else:
+                circuits_ground_states_preparation_collection=np.array([ground_state])
+
+        return (hamiltonians_dictionary,circuits_ground_states_preparation_collection)

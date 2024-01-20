@@ -318,6 +318,45 @@ class QremConfigLoader:
         
         QremConfigLoader.config_parser.add_argument('--coherence_witness_circuits_path', type=parse_str, required=False, default=None,
                                 help='Path to coherence witness circuits collection')
+        #---
+        #[simulation]
+        QremConfigLoader.config_parser.add_argument('--name_id', type=parse_str, required=False,
+                                                    default=None,
+                                                    help='Unique name string included in all saved files from given simulation')
+        QremConfigLoader.config_parser.add_argument('--noise_model_directory', type=parse_str, required=False,
+                                                    default=None,
+                                                    help='Path to the directory where the noise model file is')
+        QremConfigLoader.config_parser.add_argument('--noise_model_file', type=parse_str, required=False,
+                                                    default=None,
+                                                    help='Name of the noise model file')
+
+        QremConfigLoader.config_parser.add_argument('--save_data', type=parse_boolean, required=False,
+                                                    default=True,
+                                                    help='Should the simulation results be saved?')
+        QremConfigLoader.config_parser.add_argument('--new_data_format', type=parse_boolean, required=False,
+                                                    default=True,
+                                                    help='Should the data be represented in the QREM data format?')
+        QremConfigLoader.config_parser.add_argument('--model_from_file', type=parse_boolean, required=False,
+                                                    default=False,
+                                                    help='Should the noise model be taken from file?')
+        QremConfigLoader.config_parser.add_argument('--add_noise', type=parse_boolean, required=False,
+                                                    default=True,
+                                                    help='Should noise be added? If False, the results of an ideal experiment are obtained')
+
+        QremConfigLoader.config_parser.add_argument('--number_of_circuits', type=int, required=True,
+                                                    default=None,
+                                                    help='For how many input circuits the simulation should be run?')
+        QremConfigLoader.config_parser.add_argument('--number_of_shots', type=int, required=True,
+                                                    default=None,
+                                                    help='How many shots per input circuit?')
+        QremConfigLoader.config_parser.add_argument('--number_of_qubits', type=int, required=False,
+                                                    default=None,
+                                                    help='How many qubits in the simulated system? ')
+        QremConfigLoader.config_parser.add_argument('--model_specification', type=parse_literal, nargs='+', required=False,
+                                                    default=None,
+                                                    help='Noise model specified as [[size1,number_of_clusters_of_size_1],[size2,number_of_clusters_of_size_2],..,[size_n,number_of_clusters_of_size_n]]')
+
+
         
 
 
@@ -361,6 +400,8 @@ if __name__ == "__main__":
     aa = QremConfigLoader.load()
     QremConfigLoader.help()
     QremConfigLoader.values()
+
+    print(aa)
 
     # for key, val in cfg_dict_orig.items():
     #     cfg_dict[key] = val.lower()
