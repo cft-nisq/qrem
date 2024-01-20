@@ -66,6 +66,7 @@ For **qrem** package to work properly, the following libraries should be present
 * "ipykernel >= 6.1.0",
 * "configargparse >= 1.5.0",
 * "python-dotenv >= 1.0.0",
+* "pysat >= 3.1.0"
 
 ## Optional dependencies
 
@@ -77,6 +78,8 @@ Dependecies for visualizations:
 
 **The workflow of this package is mainly based on works**:
   
+[0]  Jan Tuziemski, Filip B. Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Piotr Podziemski, Michał Oszmaniec, "Efficient reconstruction, benchmarking and validation of cross-talk models in readout noise in near-term quantum devices", [arXiv:2311.10661](https://arxiv.org/abs/2311.10661)
+
 [1] Filip B. Maciejewski, Zoltán Zimborás, Michał Oszmaniec, "Mitigation of readout noise in near-term quantum devices by classical post-processing based on detector tomography", [Quantum 4, 257 (2020)](https://quantum-journal.org/papers/q-2020-04-24-257/)
 
 [2] Filip B. Maciejewski, Flavio Baccari, Zoltán Zimborás, Michał Oszmaniec, "Modeling and mitigation of cross-talk effects in readout noise with applications to the Quantum Approximate Optimization Algorithm", [Quantum 5, 464 (2021)](https://quantum-journal.org/papers/q-2021-06-01-464/)
