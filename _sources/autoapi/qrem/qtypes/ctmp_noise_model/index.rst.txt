@@ -1,0 +1,99 @@
+:py:mod:`qrem.qtypes.ctmp_noise_model`
+======================================
+
+.. py:module:: qrem.qtypes.ctmp_noise_model
+
+.. autoapi-nested-parse::
+
+   This module defines the `CTMPModelData` class which encapsulates data relevant
+   to the Continuous-Time Markov Process (CTMP) model used for quantum error correction.
+
+   The CTMP model, as detailed in Bravyi et al., involves representing quantum errors
+   and their respective rates in a quantum system, specifically tailored for qubits.
+   This model is useful in analyzing and mitigating errors in quantum computations.
+
+   Classes
+   -------
+   CTMPModelData : DataStructureBase
+       Represents the CTMP model with associated quantum error rates and other parameters.
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.ctmp_noise_model.CTMPModelData
+
+
+
+
+.. py:class:: CTMPModelData(rates: List[Tuple] = [], n: int = 0, gamma: float = None)
+
+
+   Bases: :py:obj:`qrem.qtypes.datastructure_base.DataStructureBase`
+
+   Represents the CTMP model for quantum error correction as described in Bravyi et al.
+
+   This class stores information about quantum errors and their rates in a quantum system,
+   especially focusing on qubits. It is part of the larger framework for managing quantum
+   error correction and mitigation.
+
+   :param rates: A list of tuples representing error types. Each error is a tuple of the form
+                 (i, j, in, out, rate), where 'i' and 'j' are qubits the error acts on (i=j for
+                 one qubit error), 'in' and 'out' are input and output bits of the error, and
+                 'rate' is the rate of the given error. For example, (0, 2, "00", "11", 0.6)
+                 represents an error flipping 0_0... to 1_1..., and (1, 1, "0", "1", 0.6) represents
+                 an error flipping _0_... to _1_....
+   :type rates: List[Tuple], optional
+   :param n: The number of qubits in the quantum system.
+   :type n: int, optional
+   :param gamma: The CTMP noise strength as in eq. (13) from Bravyi et al. If None, it will be estimated
+                 heuristically based on the provided rates.
+   :type gamma: float, optional
+
+   .. attribute:: rates
+
+      Stores the error rates and types in the quantum system.
+
+      :type: List[Tuple]
+
+   .. attribute:: n
+
+      The number of qubits in the quantum system.
+
+      :type: int
+
+   .. attribute:: gamma
+
+      The noise strength in the CTMP model.
+
+      :type: float
+
+   .. method:: _estimate_gamma() -> float
+
+      Estimates the gamma value heuristically if not provided.
+
+
+   .. py:method:: _estimate_gamma() -> float
+
+      Estimates the gamma value heuristically based on the provided error rates.
+
+      This is a temporary solution and uses a simple sum of error rates. It is expected
+      to be replaced with a more sophisticated estimation method.
+
+      :returns: The estimated gamma value for the CTMP model.
+      :rtype: float
+
+
+

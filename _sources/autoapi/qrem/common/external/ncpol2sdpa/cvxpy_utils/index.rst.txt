@@ -1,0 +1,46 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.cvxpy_utils`
+=====================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.cvxpy_utils
+
+.. autoapi-nested-parse::
+
+   Created on Wed Jun  1 10:39:15 2016
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.cvxpy_utils.solve_with_cvxpy
+   qrem.common.external.ncpol2sdpa.cvxpy_utils.convert_to_cvxpy
+
+
+
+.. py:function:: solve_with_cvxpy(sdp, solverparameters=None)
+
+   Helper function to convert the SDP problem to CVXPY
+   and call the solver, and parse the output.
+
+   :param sdp: The SDP relaxation to be solved.
+   :type sdp: :class:`ncpol2sdpa.sdp`.
+
+
+.. py:function:: convert_to_cvxpy(sdp)
+
+   Convert an SDP relaxation to a CVXPY problem.
+
+   :param sdp: The SDP relaxation to convert.
+   :type sdp: :class:`ncpol2sdpa.sdp`.
+
+   :returns: :class:`cvxpy.Problem`.
+
+

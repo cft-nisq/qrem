@@ -1,0 +1,27 @@
+:py:mod:`qrem.ctmp.modeltools.qubit_utils`
+==========================================
+
+.. py:module:: qrem.ctmp.modeltools.qubit_utils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.ctmp.modeltools.qubit_utils.outeq
+
+
+
+.. py:function:: outeq(x: str, y: str, j: int, k: int) -> bool
+
+   x, y - bit strings
+   j, k - indices
+
+   Returns True if x=y outside indices {j, k} and False otherwise.
+
+

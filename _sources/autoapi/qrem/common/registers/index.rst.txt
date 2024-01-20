@@ -1,0 +1,47 @@
+:py:mod:`qrem.common.registers`
+===============================
+
+.. py:module:: qrem.common.registers
+
+.. autoapi-nested-parse::
+
+   Registers Module for QREM
+   =========================
+
+   qrem.common.registers module contains helper functions, that allow to create, manipuilate  circuit labels,
+   bitstrings, quantum registers etc.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.registers.all_possible_bitstrings_of_length
+
+
+
+.. py:function:: all_possible_bitstrings_of_length(n: int, rev=True, form=str)
+
+   Generate all possible bitstrings of a given length.
+
+   This function creates a list of all possible bitstrings for a specified number of qubits. The bitstrings can be
+   generated in normal or reverse order, and in string or list format.
+
+   :param n: The number of qubits or length of the bitstrings.
+   :type n: int
+   :param rev: If True, the bitstrings are generated in reverse order (default is True).
+   :type rev: bool, optional
+   :param form: The format of the bitstrings, either string or list (default is str).
+   :type form: type, optional
+
+   :returns: A list of bitstrings in the specified format and order.
+             Example: n=2 returns ['00', '01', '10', '11'].
+   :rtype: list
+
+

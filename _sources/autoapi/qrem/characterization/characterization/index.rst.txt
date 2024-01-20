@@ -1,0 +1,161 @@
+:py:mod:`qrem.characterization.characterization`
+================================================
+
+.. py:module:: qrem.characterization.characterization
+
+.. autoapi-nested-parse::
+
+   refactored functions with new marginals format
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.characterization.characterization.compute_all_marginals
+   qrem.characterization.characterization.averaged_marginals_to_noise_matrix_ddot
+   qrem.characterization.characterization.compute_single_noise_matrix_ddot
+   qrem.characterization.characterization.compute_single_noise_matrix_qdot
+   qrem.characterization.characterization.compute_noise_matrices_ddot
+   qrem.characterization.characterization.compute_errors_POVMs
+   qrem.characterization.characterization.compute_correlations_data_pairs
+   qrem.characterization.characterization.compute_reduced_POVMs_and_noise_matrices
+   qrem.characterization.characterization.Overlap
+   qrem.characterization.characterization.compute_indicator_normalization
+   qrem.characterization.characterization.compute_pauli_marginals
+   qrem.characterization.characterization.compute_coherence_indicator
+   qrem.characterization.characterization.perform_noise_model_reconstruction_routine
+   qrem.characterization.characterization.perform_clustering_routine
+   qrem.characterization.characterization.compute_noise_matrix_dependent
+
+
+
+.. py:function:: compute_all_marginals(results_dictionary: Dict[str, Tuple[numpy.typing.NDArray[numpy.bool_], numpy.typing.NDArray[numpy.int_]]], subsets_of_qubits: List[Tuple], backup: Union[bool, str, pathlib.Path] = False, overwrite: bool = False, verbose_log: bool = False)
+
+   #FBM: add multiprocessing for this task
+   #FBM: change subsets_list to be dictionary
+   Implements self.compute_marginals for all experimental keys.
+
+   :param subsets_dictionary: list of subsets of qubits for which marginals_dictionary should be calculated
+   :param show_progress_bar: if True, shows progress bar. Requires "tqdm" package
+
+
+.. py:function:: averaged_marginals_to_noise_matrix_ddot(averaged_marginals: Dict[str, numpy.ndarray]) -> numpy.ndarray
+
+   Return noise matrix from counts dictionary.
+   Assuming that the results are given only for qubits of interest.
+   :param results_dictionary: dictionary with experiments of the form:
+
+   results_dictionary[input_state_bitstring] = probability_distribution
+
+   where:
+   - input_state_bitstring is bitstring denoting classical input state
+   - probability_distribution - estimated vector of probabilities for that input state
+
+   :return: noise_matrix: the array representing noise on qubits
+   on which the experiments were performed
+
+
+.. py:function:: compute_single_noise_matrix_ddot(experiment_results: Dict[str, Dict[str, int]], normalized_marginals: Dict[str, Dict[str, int]], subset: Tuple, fill_missing_columns_with_ideal_result=True, verbose_log: bool = False) -> Dict[str, numpy.ndarray]
+
+   Noise matrix for subset of qubits, averaged over all other qubits
+
+   :param subset: subset of qubits we are interested in
+
+   By default takes data from self._marginals_dictionary. If data is not present, then it
+   calculates marginals_dictionary for given subset
+   and updates the class's property self.marginals_dictionary
+
+
+.. py:function:: compute_single_noise_matrix_qdot(experiment_results: Dict[str, Dict[str, int]], normalized_marginals: Dict[str, Dict[str, int]], subset: Tuple, estimation_method: str = 'pls', fill_missing_columns_with_ideal_result=True, verbose_log: bool = False) -> Dict[str, numpy.ndarray]
+
+   Noise matrix for subset of qubits, averaged over all other qubits
+
+   :param subset: subset of qubits we are interested in
+
+   By default takes data from self._marginals_dictionary. If data is not present, then it
+   calculates marginals_dictionary for given subset
+   and updates the class's property self.marginals_dictionary
+
+
+.. py:function:: compute_noise_matrices_ddot(experiment_results: Dict[str, Dict[str, int]], normalized_marginals: Dict[str, Dict[str, int]], subset_of_qubits: List[Tuple] = [], backup: Union[bool, str, pathlib.Path] = False, overwrite: bool = False, verbose_log: bool = False) -> Dict[Tuple, Dict[str, numpy.ndarray]]
+
+
+.. py:function:: compute_errors_POVMs(qubits_subsets: List[Tuple[int]], POVMs_dictionary: Dict[Tuple[int], numpy.array], distances_types=[('wc', 'classical')], chopping_threshold: Optional[float] = 0) -> Dict[str, Dict[str, Dict[Tuple[int], float]]]
+
+
+.. py:function:: compute_correlations_data_pairs(qubit_indices, POVMs_dictionary: Dict[Tuple[int], numpy.array], distances_types=[('ac', 'classical')], chopping_threshold: Optional[float] = 0) -> Dict[str, Dict[str, numpy.array]]
+
+
+.. py:function:: compute_reduced_POVMs_and_noise_matrices(characterization_data: Type[qrem.qtypes.characterization_data.CharacterizationData], subset_of_qubits: List)
+
+
+.. py:function:: Overlap(s1: str, s2: str)
+
+   Function used to create dictionary of overlapes between different Pauli states. It's needed to compute coherence indicator
+   Input: s1,s2 two symbols, each corresponding to one of the Pauli states, as in the SeparableCircuitsCreator class
+
+   Output: value of squared scalar product between the states
+
+
+.. py:function:: compute_indicator_normalization(dim, setting1, setting2, overlap_dic)
+
+   A function computing normalization factor of coherence indicator. As for now works for two-qubit reduced POVMs
+
+   Input:
+   dim - dimension of the reduced subspace
+   setting1,setting2 - strings consisting of two symbols each, corresponding to an inout Pauli eigenstate
+   overlap_dic - a dictionary consisting of squared scalar product of two Pauli eigenstates
+
+
+.. py:function:: compute_pauli_marginals(marginals_dictionary, subsets_list)
+
+   Dictionaries needed to perform computations
+
+   setting dictionary - keys correspond to alphabet enocding input states
+                        items correspond to unnormalized probability distributions for a given input state on subset of qubits
+   normalization dictionary
+                        keys correspond to alphabet encoding input states
+                        items correspond to number of times that a particular input state appear in marginals
+
+
+
+.. py:function:: compute_coherence_indicator(marginals_dictionary, subset_list, settings_list=['2', '3', '4', '5'])
+
+   Computation of coherence indicator
+
+   TVD between probability distributions generated by different input X,Y Pauli eigenstates of two qubits
+
+
+.. py:function:: perform_noise_model_reconstruction_routine(characterization_data_container: Type[qrem.qtypes.characterization_data.CharacterizationData], experiment_type: str = 'DDOT', find_neighbors: bool = False)
+
+
+.. py:function:: perform_clustering_routine(characterization_data, number_of_qubits: int, clustering_functions_parameters: Dict, perform_neighbors_search: bool = False)
+
+
+.. py:function:: compute_noise_matrix_dependent(characterization_data, qubits_of_interest: Tuple[int], neighbors_of_interest: Union[Tuple[int], None], experiment_type: str = 'ddot') -> Dict[str, numpy.ndarray]
+
+   Return lower-dimensional effective noise matrices acting on qubits_of_interest"
+           conditioned on input states of neighbors_of_interest
+   :param qubits_of_interest: labels of qubits in marginal  we are interested in
+   :param neighbors_of_interest: labels of qubits that affect noise matrix on qubits_of_interest
+
+   :return conditional_noise_matrices_dictionary: dictionary with structure
+
+   conditional_noise_matrices_dictionary['averaged'] =
+   noise matrix on qubits_of_interest averaged over input states of other qubits
+
+   and
+
+   conditional_noise_matrices_dictionary[input_state_neighbors_bitstring] =
+   noise matrix on qubits_of_interest conditioned on input state of neighbors being
+   input_state_neighbors_bitstring
+
+
+

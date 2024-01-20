@@ -1,0 +1,75 @@
+:py:mod:`qrem.cn.simtools.auxiliary_merging_functions`
+======================================================
+
+.. py:module:: qrem.cn.simtools.auxiliary_merging_functions
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.cn.simtools.auxiliary_merging_functions.divide_qubits_in_the_clusters
+   qrem.cn.simtools.auxiliary_merging_functions.transform_marginal_statistics_to_list_of_results
+   qrem.cn.simtools.auxiliary_merging_functions.merge_samples_list
+   qrem.cn.simtools.auxiliary_merging_functions.merge_results_list
+   qrem.cn.simtools.auxiliary_merging_functions.t1
+
+
+
+.. py:function:: divide_qubits_in_the_clusters(qubits_indices: List, clusters_specification: List[List]) -> List[tuple]
+
+   A function used to divide qubits into clusters
+
+   :param qubits_indices: a list of qubits indices defined upon .....
+   :type qubits_indices: list
+   :param clusters_specification:
+                                  - a nested list containing description of clusters to be created:
+
+                                      structure of the list [[element_1, element_2], ...]:
+                                          element_1 - integer encoding locality of a cluster
+                                          element_2 - number of clusters of given locality
+
+                                      e.g. [[3,1],[2,2]] encodes 1 3 qubits cluster and two 2 qubits clusters
+   :type clusters_specification: list
+
+   :returns: list with qubits assigned to clusters
+   :rtype: cluster_list
+
+
+.. py:function:: transform_marginal_statistics_to_list_of_results(marginal_results)
+
+
+.. py:function:: merge_samples_list(marginal_list_1, dim1, marginal_list_2, dim2)
+
+
+.. py:function:: merge_results_list(results_1, results_2)
+
+    Function joins marginal results lists. Used in simulation of CN noise model
+
+
+   Parameters
+    ----------
+
+    results_1: list
+        list with marginal results of an experiment
+
+    results_2: list
+        list with marginal results of an experiment
+
+    Returns
+    ----------
+    merged_results
+        list with merged results of experiment
+
+
+
+
+
+.. py:function:: t1()
+
+

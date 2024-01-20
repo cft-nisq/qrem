@@ -1,0 +1,155 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.steering_hierarchy`
+============================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.steering_hierarchy
+
+.. autoapi-nested-parse::
+
+   The module converts a noncommutative optimization problem provided in SymPy
+   format to an SDPA semidefinite programming problem.
+
+   Created on Sun May 26 15:06:17 2013
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.steering_hierarchy.SteeringHierarchy
+
+
+
+
+.. py:class:: SteeringHierarchy(variables, verbose=0, matrix_var_dim=None, mark_conjugate=False, parallel=False)
+
+
+   Bases: :py:obj:`qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation`
+
+   Class for obtaining a step in the steering hierarchy.
+
+   :param variables: Commutative or noncommutative, Hermitian or nonhermiatian
+                     variables.
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param verbose: Optional parameter for level of verbosity:
+
+                      * 0: quiet
+                      * 1: verbose
+                      * 2: debug level
+
+   :type verbose: int.
+   :param matrix_var_dim: Optional parameter to specify the size of matrix
+                          variable blocks
+   :type matrix_var_dim: int.
+   :param mark_conjugate: Use this optional parameter to generate a symbolic
+                          representation of the steering hierarchy for export.
+   :type mark_conjugate: bool.
+
+   .. attribute:: - `monomial_sets`
+
+      The monomial sets that generate the moment matrix blocks.
+
+   .. attribute:: - `monomial_index`
+
+      Dictionary that maps monomials to SDP variables.
+
+   .. attribute:: - `constraints`
+
+      The complete set of constraints after preprocesssing.
+
+   .. attribute:: - `primal`
+
+      The primal optimal value.
+
+   .. attribute:: - `dual`
+
+      The dual optimal value.
+
+   .. attribute:: - `x_mat`
+
+      The primal solution matrix.
+
+   .. attribute:: - `y_mat`
+
+      The dual solution matrix.
+
+   .. attribute:: - `solution_time`
+
+      The amount of time taken to solve the relaxation.
+
+   .. attribute:: - `status`
+
+      The solution status of the relaxation.
+
+   .. py:attribute:: hierarchy_types
+      :value: ['npa', 'npa_chordal', 'moroder']
+
+      
+
+   .. py:method:: _process_monomial(monomial, n_vars)
+
+      Process a single monomial when building the moment matrix.
+
+
+
+   .. py:method:: _push_monomial(monomial, n_vars, row_offset, rowA, columnA, N, rowB, columnB, lenB, prevent_substitutions=False)
+
+
+   .. py:method:: __add_matrix_variable(row_offset, rowA, columnA, N, rowB, columnB, lenB, k, conjugate, coeff)
+
+
+   .. py:method:: __get_trace_facvar(polynomial)
+
+      Return dense vector representation of a polynomial. This function is
+      nearly identical to __push_facvar_sparse, but instead of pushing
+      sparse entries to the constraint matrices, it returns a dense
+      vector.
+
+
+   .. py:method:: set_objective(objective, extraobjexpr=None)
+
+      Set or change the objective function of the polynomial optimization
+      problem.
+
+      :param objective: Describes the objective function.
+      :type objective: :class:`sympy.core.expr.Expr`
+      :param extraobjexpr: Optional parameter of a string expression of a
+                           linear combination of moment matrix elements to be
+                           included in the objective function
+      :type extraobjexpr: str.
+
+
+   .. py:method:: _calculate_block_structure(inequalities, equalities, momentinequalities, momentequalities, extramomentmatrix, removeequalities, block_struct=None)
+
+      Calculates the block_struct array for the output file.
+
+
+
+   .. py:method:: _estimate_n_vars()
+
+
+   .. py:method:: write_to_file(filename, filetype=None)
+
+      Write the relaxation to a file.
+
+      :param filename: The name of the file to write to. The type can be
+                       autodetected from the extension: .dat-s for SDPA,
+                       .task for mosek, .csv for human readable format, or
+                       .txt for a symbolic export
+      :type filename: str.
+      :param filetype: Optional parameter to define the filetype. It can be
+                       "sdpa" for SDPA , "mosek" for Mosek, "csv" for
+                       human readable format, or "txt" for a symbolic export.
+      :type filetype: str.
+
+
+

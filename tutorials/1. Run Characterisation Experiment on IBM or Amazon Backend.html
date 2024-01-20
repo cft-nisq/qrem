@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial 1: Preparation and Execution of Readout Noise Characterization Circuits on IBM Quantum Systems and Amazon Braket Systems &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Noise Characterisation Tutorial" href="2.%20Noise%20Characterisation.html" />
+    <link rel="prev" title="0. Installation" href="../Tutorial0.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/qrem/index.html">qrem package API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Run Characterisation Experiment (IBM/Amazon Braket)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preparation-of-experiments-characterizing-readout-noise">1. Preparation of Experiments Characterizing Readout Noise</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-configuration-file">1.1. The Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-the-configuration-file">1.2. Importing the configuration file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-of-the-experiments-on-ibm-quantum-system-eagle-r2">2. Execution of the experiments on IBM Quantum System Eagle r2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-env-file">Setting up .env file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-steps">2.1 Initial steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-characterisation-circuits">2.2 Creating characterisation circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#experiment-preparation">2.3 Experiment preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#experiment-execution">2.4 Experiment execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#retrieving-results">2.5 Retrieving results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">3. Execution of the Experiments on IBM Quantum System Eagle r2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-amazon-braket-local-development-environment">Setting up Amazon Braket Local Development Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.1 Initial steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.2 Creating characterisation circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.3 Experiment preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.4 Experiment execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.5 Retrieving results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tutorial 1: Preparation and Execution of Readout Noise Characterization Circuits on IBM Quantum Systems and Amazon Braket Systems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/1. Run Characterisation Experiment on IBM or Amazon Backend.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p><a id='Overview'></a></p>
+<section id="tutorial-1-preparation-and-execution-of-readout-noise-characterization-circuits-on-ibm-quantum-systems-and-amazon-braket-systems">
+<h1>Tutorial 1: Preparation and Execution of Readout Noise Characterization Circuits on IBM Quantum Systems and Amazon Braket Systems<a class="headerlink" href="#tutorial-1-preparation-and-execution-of-readout-noise-characterization-circuits-on-ibm-quantum-systems-and-amazon-braket-systems" title="Link to this heading"></a></h1>
+<p>This tutorial focuses on preparing and executing characterization experiments on real quantum devices.</p>
+<p>We start by preparing a collection of random quantum circuits. Each circuit consists of a single layer of one-qubit gates, randomly selected from a predefined set. In this context, we neglect the errors introduced by these gates.</p>
+<p>In an ideal scenario, we would perform single-copy measurements of states from these random circuits and use the statistical outcomes to characterize the quantum device. However, due to the limitations of current noisy intermediate-scale quantum (NISQ) devices, a more practical approach involves reusing a set of unique quantum circuits (~hundreds) multiple times. This modified protocol is detailed in Appendix A of <a class="reference external" href="http://arxiv.org/abs/2311.10661">Tuziemski, Jan, et al.</a>.</p>
+<p>This tutorial will guide you through the preparation, execution, and analysis of experiments on two leading quantum machine platforms: IBM Quantum Systems and Amazon Braket. The tutorial is structured as follows:</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="#Part1"><span class="xref myst">Preparation of Experiments Characterizing Readout Noise</span></a></p>
+<p>1.1 <a class="reference internal" href="#Part11"><span class="xref myst">The Configuration File</span></a></p>
+<p>1.2 <a class="reference internal" href="#Part12"><span class="xref myst">Importing the Configuration File</span></a></p>
+</li>
+<li><p><a class="reference internal" href="#Part2"><span class="xref myst">Execution of the Experiment on IBM Quantum System Eagle r2 </span></a></p>
+<p>2.1 <a class="reference internal" href="#Part21"><span class="xref myst">Initial Steps</span></a></p>
+<p>2.2 <a class="reference internal" href="#Part22"><span class="xref myst">Creating Characterisation Circuits</span></a></p>
+<p>2.3 <a class="reference internal" href="#Part23"><span class="xref myst">Experiment Preparation</span></a></p>
+<p>2.4 <a class="reference internal" href="#Part24"><span class="xref myst">Experiment Execution</span></a></p>
+<p>2.5 <a class="reference internal" href="#Part25"><span class="xref myst">Retrieving Results</span></a></p>
+</li>
+<li><p><a class="reference internal" href="#Part3"><span class="xref myst">Execution of the Experiment on Amazon Braket Rigetti ASPEN M-3 System</span></a></p>
+<p>2.1 <a class="reference internal" href="#Part31"><span class="xref myst">Initial Steps</span></a></p>
+<p>2.2 <a class="reference internal" href="#Part32"><span class="xref myst">Creating Characterisation Circuits</span></a></p>
+<p>2.3 <a class="reference internal" href="#Part33"><span class="xref myst">Experiment Preparation</span></a></p>
+<p>2.4 <a class="reference internal" href="#Part34"><span class="xref myst">Experiment Execution</span></a></p>
+<p>2.5 <a class="reference internal" href="#Part35"><span class="xref myst">Retrieving Results</span></a></p>
+</li>
+</ol>
+<p><a id='Part1'></a></p>
+<section id="preparation-of-experiments-characterizing-readout-noise">
+<h2>1. Preparation of Experiments Characterizing Readout Noise<a class="headerlink" href="#preparation-of-experiments-characterizing-readout-noise" title="Link to this heading"></a></h2>
+<p><a id='Part11'></a></p>
+<section id="the-configuration-file">
+<h3>1.1. The Configuration File<a class="headerlink" href="#the-configuration-file" title="Link to this heading"></a></h3>
+<p>The specifics of the experiment are defined within a QREM ‘.ini’ configuration file. You can find examples of such files in our repository:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/main/src/qrem/common/default_ibm.ini">example configuration file for IBM Quantum Eagle r2 system</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/main/src/qrem/common/default_aws.ini">example configuration file for AWS Braket ASPEN M-3 system</a></p></li>
+</ul>
+<p>The configuration file is organized into sections: ‘general’, ‘data’, ‘experiment’, ‘characterization’ and ‘mitigation’. Here we will cover only the ‘general’, ‘data’ and ‘experiment’ parts:
+-<strong>general</strong>: Contains general settings for the experiment, such as the experiment’s name, author, and logging level.</p>
+<ul class="simple">
+<li><p><strong>data</strong> Manages settings related to data handling, including backups of circuits, job IDs, and circuit metadata.</p></li>
+<li><p><strong>experiment</strong> Specifies various parameters and settings directly related to the quantum experiment, including device information, provider details, experiment type, and quantum circuit configuration.</p></li>
+</ul>
+<p>You can find the full specification of the configuration file in our <a class="reference external" href="https://cft-nisq.github.io/qrem/autoapi/qrem/common/config/index.html">documentation</a>, here we will denote most important parameters from the ponit of view of the experiment design:</p>
+<ul class="simple">
+<li><p><strong>experiment_type</strong> : a string specifying a type of readout characterization experiment to be performed. Currently QREM supports two types of characterization experiments Quantum Detector Overlapping Tomography (‘QDOT’) or Diagonal Detector Overlapping Tomography (‘DDOT’). For this tutorial we will choose DDoT.</p></li>
+<li><p><strong>k_locality</strong> :  The locality of the readout noise to consider within the experiment, with values ranging from 2 to 5. We choose 2 fot this tutorial.</p></li>
+<li><p><strong>gate_threshold</strong> : Gate error threshold, if crossed - qubits will be excluded from calculations. ranging from 0 to 1. A value of 0 or Null includes all qubits, which is the setting we choose here.</p></li>
+<li><p><strong>limited_circuit_randomness</strong> : For now should be True. Indicates if limitations should be imposed on a number of random circuits configurations (e.g., number of random circuits). For now number of random circuits we can process is limited by technical constrains on available machines (limited execution time, duration of execution)</p></li>
+</ul>
+<p>-<strong>random_circuits_count</strong> : Total count of random circuits to be sent. We set it to 1500 for this tutorial</p>
+<p>-<strong>random_circuits_count</strong> : Number of shots (repetitions) per unique circuit, we set it to 10000.</p>
+<ul class="simple">
+<li><p><strong>experiment_path</strong> : The file path for storing experiment-related files.</p></li>
+</ul>
+<p>You can read all parameters we will run in this tutorial in the default configuration file <a class="reference external" href="https://github.com/cft-nisq/qrem/tree/main/src/qrem/common/default_aws.ini">here</a></p>
+<p><a id='Part12'></a></p>
+</section>
+<section id="importing-the-configuration-file">
+<h3>1.2. Importing the configuration file<a class="headerlink" href="#importing-the-configuration-file" title="Link to this heading"></a></h3>
+<p>Let’s import the default configuration file. If you prepared your version - you can use the commented line to change the source of config file to the file specified by you.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">qrem</span>
+<span class="kn">from</span> <span class="nn">qrem.common.config</span> <span class="kn">import</span> <span class="n">example_config_ibm_path</span>
+
+<span class="n">CONFIG_PATH</span> <span class="o">=</span> <span class="n">example_config_ibm_path</span>
+<span class="c1">#CONFIG_PATH = &quot;path_to_your_ini_file.ini&quot;]</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">qrem</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">path</span> <span class="o">=</span> <span class="n">CONFIG_PATH</span><span class="p">,</span> <span class="n">verbose_log</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s read in basic configuration parameters:</span>
+<span class="n">EXPERIMENT_NAME</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">experiment_name</span>
+
+<span class="n">EXPERIMENT_FOLDER_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">experiment_path</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+    <span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+
+<span class="n">BACKUP_CIRCUITS</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">backup_circuits</span>
+<span class="n">BACKUP_JOB_IDs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">backup_job_ids</span>
+<span class="n">BACKUP_CIRCUITS_METADATA</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">backup_circuits_metadata</span>
+<span class="n">JOB_TAGS</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">job_tags</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part2'></a></p>
+</section>
+</section>
+<section id="execution-of-the-experiments-on-ibm-quantum-system-eagle-r2">
+<h2>2. Execution of the experiments on IBM Quantum System Eagle r2<a class="headerlink" href="#execution-of-the-experiments-on-ibm-quantum-system-eagle-r2" title="Link to this heading"></a></h2>
+<section id="setting-up-env-file">
+<h3>Setting up .env file<a class="headerlink" href="#setting-up-env-file" title="Link to this heading"></a></h3>
+<p>To connect with IBM machine you need to define environmental variables as per provider instructions. With qrem, you can set them up by setting up correctly a .env file in your project path. You can see an example .env file <a class="reference external" href="https://github.com/cft-nisq/qrem/blob/main/.env-default">here</a>. Keep in mind, that if you modify our template, you need to rename it to .env and place in your working directory.</p>
+<p>In .env file:</p>
+<ul class="simple">
+<li><p>QISKIT_IBM_TOKEN = xxxxx     # put_your_personal_token_here</p></li>
+<li><p>QISKIT_IBM_CHANNEL = ibm-q/open/main    # put correct channel here for your organisation, or use open channel</p></li>
+</ul>
+<p><a id='Part21'></a></p>
+</section>
+<section id="initial-steps">
+<h3>2.1 Initial steps<a class="headerlink" href="#initial-steps" title="Link to this heading"></a></h3>
+<p>To define how many qubits our circuits will contain, and get the indicies of the valid qubits (not all available systems label the availbale qubits sequentially), we need to comunicate with the IBM Backend. For that puirpose we will use <strong>qrem.providers.ibm</strong> submodule. Let’s connect to the backend and find get valid qubits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qrem.providers</span> <span class="kn">import</span> <span class="n">ibm</span>
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="c1"># [1] Get info from provider about valid qubits</span>
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="n">CONNECTION_METHOD</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">ibm_connection_method</span>
+<span class="n">backend</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">provider</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">CONNECTION_METHOD</span><span class="p">,</span> <span class="n">verbose_log</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">verbose_log</span><span class="p">)</span>
+<span class="n">valid_qubit_properties</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">get_valid_qubits_properties</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">gate_threshold</span><span class="p">)</span>
+
+<span class="n">number_of_qubits</span> <span class="o">=</span> <span class="n">valid_qubit_properties</span><span class="p">[</span><span class="s2">&quot;number_of_good_qubits&quot;</span><span class="p">]</span>
+<span class="n">good_qubits_indices</span> <span class="o">=</span> <span class="n">valid_qubit_properties</span><span class="p">[</span><span class="s2">&quot;good_qubits_indices&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add some infomration to the metadata object, which will be saved in the experiment folder with circuits collection</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qrem.common</span> <span class="kn">import</span> <span class="n">io</span>
+
+<span class="n">METADATA</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">METADATA</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">date_time_formatted</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">BACKUP_CIRCUITS_METADATA</span><span class="p">:</span>
+    <span class="n">METADATA</span><span class="p">[</span><span class="s2">&quot;valid_qubit_properties&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">valid_qubit_properties</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part22'></a></p>
+</section>
+<section id="creating-characterisation-circuits">
+<h3>2.2 Creating characterisation circuits<a class="headerlink" href="#creating-characterisation-circuits" title="Link to this heading"></a></h3>
+<p>Now we have all necessary info to generate our characterisation circuit collection. It is held by qrem specific data structure: <strong>qrem.qtypes.CircuitCollection</strong>. This implementation is QREM - specific and does not rely on any external packages/implementations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qrem.qtypes</span> <span class="kn">import</span> <span class="n">CircuitCollection</span>
+<span class="kn">from</span> <span class="nn">qrem.common.experiment</span> <span class="kn">import</span> <span class="n">tomography</span>
+<span class="kn">from</span> <span class="nn">qrem.common.printer</span> <span class="kn">import</span> <span class="n">warprint</span>
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="c1">#[1] Generate circuits colelction object and fill in parameters</span>
+<span class="c1"># ----------------------------------------------------------------</span>
+
+<span class="n">qrem_circuit_collection</span> <span class="o">=</span> <span class="n">CircuitCollection</span><span class="p">()</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">experiment_name</span> <span class="o">=</span> <span class="n">EXPERIMENT_NAME</span>
+
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">device_name</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">qubit_indices</span> <span class="o">=</span> <span class="n">good_qubits_indices</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">METADATA</span>
+
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="c1">#[1] Generate circuits </span>
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">circuits</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">theoretical_total_circuit_count</span><span class="p">,</span> <span class="n">theoretical_number_of_shots</span> <span class="o">=</span> <span class="n">tomography</span><span class="o">.</span><span class="n">generate_circuits</span><span class="p">(</span>   <span class="n">number_of_qubits</span> <span class="o">=</span> <span class="n">number_of_qubits</span><span class="p">,</span>
+                                                                            <span class="n">experiment_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">experiment_type</span><span class="p">,</span> 
+                                                                            <span class="n">k_locality</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">k_locality</span><span class="p">,</span>
+                                                                            <span class="n">limited_circuit_randomness</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">limited_circuit_randomness</span><span class="p">,</span>
+                                                                            <span class="n">imposed_max_random_circuit_count</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">random_circuits_count</span><span class="p">,</span>
+                                                                            <span class="n">imposed_max_number_of_shots</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">shots_per_circuit</span><span class="p">)</span>
+    
+
+<span class="k">if</span> <span class="n">BACKUP_CIRCUITS</span><span class="p">:</span>    
+    <span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">export_json</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;input_circuit_collection.json&quot;</span><span class="p">)),</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">warprint</span><span class="p">(</span><span class="s2">&quot;WARNING: Circuits were not saved to file, as BACKUP_CIRCUITS = False. It is recommended to save circuits to file for future reference.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using QREM package, you can add special circuits to the experiment, like circuits for benchmarking, circuits containing ground state approximation for benchmarked hamiltonians or coherenve witness circuits. Tutorial how to prepare them and add them to the mix will be prepared in short future.</p>
+<p><a id='Part23'></a></p>
+</section>
+<section id="experiment-preparation">
+<h3>2.3 Experiment preparation<a class="headerlink" href="#experiment-preparation" title="Link to this heading"></a></h3>
+<p>As <strong>qrem.qtypes.CircuitCollection</strong> is a QREM internal object, we will need to translate it to qiskit format, required by the IBM backened for circuit execution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ibm_circuits</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">translate_circuits_to_qiskit_format</span><span class="p">(</span><span class="n">qrem_circuit_collection</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part24'></a></p>
+</section>
+<section id="experiment-execution">
+<h3>2.4 Experiment execution<a class="headerlink" href="#experiment-execution" title="Link to this heading"></a></h3>
+<p>Now we can run circuits on our backend machine. Make always sure that you are using correct IBM instance, and chose correct backend when connecting at the beggining of the process. In this step we will also back up again our CircuitsCollection to json file, together with job ids, so after experiment is ready we will know  which job IDs correspond to the sent experiment. In short, every unique quantum circuit will correspond to a separate job and job ID.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">orjson</span> 
+
+<span class="c1">#[6] Now we need to run circuits</span>
+<span class="n">job_ids</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">execute_circuits</span><span class="p">(</span> <span class="n">qiskit_circuits</span><span class="o">=</span> <span class="n">ibm_circuits</span><span class="p">,</span>
+                                <span class="n">job_tags</span> <span class="o">=</span> <span class="n">JOB_TAGS</span><span class="p">,</span>
+                                <span class="n">number_of_repetitions</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">shots_per_circuit</span><span class="p">,</span>
+                                <span class="n">instance</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">provider_instance</span><span class="p">,</span>
+                                <span class="n">service</span> <span class="o">=</span> <span class="n">service</span><span class="p">,</span>
+                                <span class="n">backend</span> <span class="o">=</span> <span class="n">backend</span><span class="p">,</span>
+                                <span class="n">method</span> <span class="o">=</span> <span class="n">CONNECTION_METHOD</span><span class="p">,</span>
+                                <span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;INFO&#39;</span><span class="p">,</span>
+                                <span class="n">verbose_log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#[6.1] Backup jobs to circuit collection file</span>
+<span class="k">if</span> <span class="n">BACKUP_CIRCUITS</span><span class="p">:</span>    
+    <span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">job_IDs</span> <span class="o">=</span> <span class="n">job_ids</span>
+    <span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">export_json</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;input_circuit_collection.json&quot;</span><span class="p">)),</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    
+<span class="c1">#[6.2] Save job ids to a file</span>
+<span class="k">if</span> <span class="n">BACKUP_JOB_IDs</span><span class="p">:</span>     
+    <span class="n">json_job_ids</span><span class="o">=</span><span class="n">orjson</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">job_ids</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;job_ids.json&quot;</span><span class="p">)),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json_job_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part25'></a></p>
+</section>
+<section id="retrieving-results">
+<h3>2.5 Retrieving results<a class="headerlink" href="#retrieving-results" title="Link to this heading"></a></h3>
+<p>You can check on IBM Quantum Platform <a class="reference external" href="https://quantum.ibm.com/">https://quantum.ibm.com/</a>, when your jobs will complete. After they are complete, you can retrieve your results, based on the backed up json file with Circuit Collection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">provider</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">CONNECTION_METHOD</span><span class="p">,</span> <span class="n">verbose_log</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">verbose_log</span><span class="p">)</span>
+<span class="n">valid_qubit_properties</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">get_valid_qubits_properties</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">gate_threshold</span><span class="p">)</span>
+
+<span class="n">circuit_collection</span> <span class="o">=</span> <span class="n">CircuitCollection</span><span class="p">()</span>
+<span class="n">circuit_collection</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;input_circuit_collection.json&quot;</span><span class="p">)))</span>
+
+<span class="n">experiment_results</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">retrieve_results</span><span class="p">(</span>  <span class="n">device_name</span> <span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span>
+                                            <span class="n">provider_instance</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">provider_instance</span><span class="p">,</span>
+                                            <span class="n">job_IDs</span> <span class="o">=</span> <span class="n">circuit_collection</span><span class="o">.</span><span class="n">job_IDs</span><span class="p">,</span>
+                                            <span class="n">original_circuits</span> <span class="o">=</span> <span class="n">circuit_collection</span><span class="p">,</span>
+                                            <span class="n">save_experiment_results</span> <span class="o">=</span>  <span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;ibm_experiment_results.json&quot;</span><span class="p">)),</span>
+                                            <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                                            <span class="n">verbose_log</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can now use the experiment_results object and circuit_collection object in futher part of this tutorial series.</p>
+<p>Below you will find how to connect and run characterisation experiment on Amazon machine (available soon)</p>
+<p><a id='Part3'></a></p>
+</section>
+</section>
+<section id="id1">
+<h2>3. Execution of the Experiments on IBM Quantum System Eagle r2<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="setting-up-amazon-braket-local-development-environment">
+<h3>Setting up Amazon Braket Local Development Environment<a class="headerlink" href="#setting-up-amazon-braket-local-development-environment" title="Link to this heading"></a></h3>
+<p>To connect with Amazon Braket tou need to set up your local environment for connection with Amazon Braket. To do that please follow steps 1-4 of <a class="reference external" href="https://Amazon.amazon.com/blogs/quantum-computing/setting-up-your-local-development-environment-in-amazon-braket/">Setting up your local development environment in Amazon Braket</a> tutorial. You don’t need to set up conda environment, the virtual environment prepared in installation tutorial will be sufficient and supports Amazon Braket SDK.</p>
+<p>Also, remember to set up relevant parameter in your qrem config file, such as <strong>provider</strong>,  <strong>device_name</strong>, <strong>provider_instance</strong>. For the next part of the tutorial, we will use a default ini file for Amazon Braket provided by qrem package. You can get this template from <a class="reference external" href="https://github.com/cft-nisq/qrem/tree/main/src/qrem/common/default_aws.ini">here</a> and modify yourself. Let’s read in the  confi file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">qrem</span>
+<span class="kn">from</span> <span class="nn">qrem.common.config</span> <span class="kn">import</span> <span class="n">example_config_ibm_path</span>
+
+<span class="n">CONFIG_PATH</span> <span class="o">=</span> <span class="n">example_config_aws_path</span>
+<span class="c1">#CONFIG_PATH = &quot;path_to_your_ini_file.ini&quot;]</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">qrem</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">path</span> <span class="o">=</span> <span class="n">CONFIG_PATH</span><span class="p">,</span> <span class="n">verbose_log</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s read in basic configuration parameters:</span>
+<span class="n">EXPERIMENT_NAME</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">experiment_name</span>
+
+<span class="n">EXPERIMENT_FOLDER_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">experiment_path</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+    <span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+
+<span class="n">BACKUP_CIRCUITS</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">backup_circuits</span>
+<span class="n">BACKUP_CIRCUITS_METADATA</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">backup_circuits_metadata</span>
+<span class="n">JOB_TAGS</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">job_tags</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part31'></a></p>
+</section>
+<section id="id2">
+<h3>3.1 Initial steps<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>To define how many qubits our circuits will contain, and get the indicies of the valid qubits (not all available systems label the availbale qubits sequentially), we need to comunicate with the Amazon Braket Backend. For that puirpose we will use <strong>qrem.providers.aws</strong> submodule. Let’s connect to the backend and find get valid qubits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qrem.providers</span> <span class="kn">import</span> <span class="n">aws_braket</span>
+
+<span class="n">aws_device</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">aws_braket</span><span class="o">.</span><span class="n">get_device</span><span class="p">(</span><span class="n">device_full_name</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">verbose_log</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">verbose_log</span><span class="p">);</span>
+<span class="n">valid_qubit_properties</span> <span class="o">=</span> <span class="n">aws_braket</span><span class="o">.</span><span class="n">get_valid_qubits_properties</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">aws_device</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose_log</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">verbose_log</span><span class="p">)</span><span class="c1">#config.gate_threshold, verbose_log = config.verbose_log)</span>
+
+<span class="n">number_of_qubits</span> <span class="o">=</span> <span class="n">valid_qubit_properties</span><span class="p">[</span><span class="s2">&quot;number_of_good_qubits&quot;</span><span class="p">]</span>
+<span class="n">good_qubits_indices</span> <span class="o">=</span> <span class="n">valid_qubit_properties</span><span class="p">[</span><span class="s2">&quot;good_qubits_indices&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add some infomration to the metadata object, which will be saved in the experiment folder with circuits collection</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">METADATA</span> <span class="o">=</span> <span class="n">metadata</span>
+<span class="n">METADATA</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_time_formatted</span><span class="p">()</span>
+<span class="n">METADATA</span><span class="p">[</span><span class="s2">&quot;JOB_TAGS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">JOB_TAGS</span>
+<span class="k">if</span> <span class="n">BACKUP_CIRCUITS_METADATA</span><span class="p">:</span>
+    <span class="n">METADATA</span><span class="p">[</span><span class="s2">&quot;valid_qubit_properties&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">valid_qubit_properties</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part32'></a></p>
+</section>
+<section id="id3">
+<h3>3.2 Creating characterisation circuits<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>Now we have all necessary info to generate our characterisation circuit collection. It is held by qrem specific data structure: <strong>qrem.qtypes.CircuitCollection</strong>. This implementation is QREM - specific and does not rely on any external packages/implementations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qrem.qtypes</span> <span class="kn">import</span> <span class="n">CircuitCollection</span>
+<span class="kn">from</span> <span class="nn">qrem.common.experiment</span> <span class="kn">import</span> <span class="n">tomography</span>
+<span class="kn">from</span> <span class="nn">qrem.common.printer</span> <span class="kn">import</span> <span class="n">warprint</span>
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="c1">#[1] Generate circuits colelction object and fill in parameters</span>
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="n">qrem_circuit_collection</span> <span class="o">=</span> <span class="n">CircuitCollection</span><span class="p">()</span>
+
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">experiment_name</span> <span class="o">=</span> <span class="n">EXPERIMENT_NAME</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">qubit_indices</span> <span class="o">=</span> <span class="n">good_qubits_indices</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">METADATA</span>
+
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="c1">#[1] Generate circuits colelction</span>
+<span class="c1"># ----------------------------------------------------------------</span>
+<span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">circuits</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">theoretical_total_circuit_count</span><span class="p">,</span> <span class="n">theoretical_number_of_shots</span> <span class="o">=</span> <span class="n">tomography</span><span class="o">.</span><span class="n">generate_circuits</span><span class="p">(</span>   <span class="n">number_of_qubits</span> <span class="o">=</span> <span class="n">number_of_qubits</span><span class="p">,</span>
+                                                                        <span class="n">experiment_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">experiment_type</span><span class="p">,</span> 
+                                                                        <span class="n">k_locality</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">k_locality</span><span class="p">,</span>
+                                                                        <span class="n">limited_circuit_randomness</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">limited_circuit_randomness</span><span class="p">,</span>
+                                                                        <span class="n">imposed_max_random_circuit_count</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">random_circuits_count</span><span class="p">,</span>
+                                                                        <span class="n">imposed_max_number_of_shots</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">shots_per_circuit</span><span class="p">)</span>
+    
+<span class="k">if</span> <span class="n">BACKUP_CIRCUITS</span><span class="p">:</span>    
+    <span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">export_json</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;input_circuit_collection.json&quot;</span><span class="p">)),</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">warprint</span><span class="p">(</span><span class="s2">&quot;WARNING: Circuits were not saved to file, as BACKUP_CIRCUITS = False. It is recommended to save circuits to file for future reference.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using QREM package, you can add special circuits to the experiment, like circuits for benchmarking, circuits containing ground state approximation for benchmarked hamiltonians or coherenve witness circuits. Tutorial how to prepare them and add them to the mix will be prepared in short future.</p>
+<p><a id='Part33'></a></p>
+</section>
+<section id="id4">
+<h3>3.3 Experiment preparation<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>As <strong>qrem.qtypes.CircuitCollection</strong> is a QREM internal object, we will need to translate it to qiskit format, required by the Amazon Braket backened for circuit execution.</p>
+<p>For connecting with Amazon Braket, we will send additional files to the Amazon Service, thus it is expecially important to prepare a “Job Submission” folder in which we will output the files to be saved</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">braket_circuits</span> <span class="o">=</span> <span class="n">aws_braket</span><span class="o">.</span><span class="n">translate_circuits_to_braket_format</span><span class="p">(</span><span class="n">qrem_circuit_collection</span><span class="p">,</span><span class="n">valid_qubit_indices</span><span class="o">=</span><span class="n">good_qubits_indices</span><span class="p">)</span>
+
+
+<span class="n">SUBMISSION_FOLDER_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">experiment_path</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;job_submission&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">SUBMISSION_FOLDER_PATH</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+    <span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+
+<span class="n">total_number_of_circuits</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">qrem_circuit_collection</span><span class="o">.</span><span class="n">circuits</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of circuits: </span><span class="si">{</span><span class="n">total_number_of_circuits</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part34'></a></p>
+</section>
+<section id="id5">
+<h3>3.4 Experiment execution<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Now we can run circuits on our backend machine. Make always sure that you are using correct AWS Braket instance and available device, and chose correct backend region when connecting at the beggining of the process when setting up local Amazon Environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Now we need to prepare and run circuits</span>
+<span class="n">circuits_ready</span> <span class="o">=</span> <span class="n">aws_braket</span><span class="o">.</span><span class="n">prepare_cricuits</span><span class="p">(</span> <span class="n">braket_circuits</span> <span class="o">=</span> <span class="n">braket_circuits</span><span class="p">,</span>
+                    <span class="n">circuit_collection</span> <span class="o">=</span> <span class="n">qrem_circuit_collection</span><span class="p">,</span>
+                    <span class="n">good_qubits_indices</span> <span class="o">=</span> <span class="n">good_qubits_indices</span><span class="p">,</span>
+                    <span class="n">number_of_repetitions</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">shots_per_circuit</span><span class="p">,</span>
+                    <span class="n">number_of_task_retries</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">aws_braket_task_retries</span><span class="p">,</span>
+                    <span class="n">experiment_name</span> <span class="o">=</span> <span class="n">EXPERIMENT_NAME</span><span class="p">,</span>
+                    <span class="n">job_tags</span> <span class="o">=</span> <span class="n">JOB_TAGS</span><span class="p">,</span>
+                    <span class="n">pickle_submission</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">aws_pickle_results</span><span class="p">,</span>
+                    <span class="n">metadata</span> <span class="o">=</span> <span class="n">METADATA</span><span class="p">,</span>
+                    <span class="n">verbose_log</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">verbose_log</span><span class="p">,</span>
+                    <span class="n">job_dir</span> <span class="o">=</span> <span class="n">SUBMISSION_FOLDER_PATH</span><span class="p">,</span>
+                    <span class="n">overwrite_output</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">circuits_ready</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR during circuit creation, aborting.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">aws_braket</span><span class="o">.</span><span class="n">execute_circuits</span><span class="p">(</span> <span class="n">device_name</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span>
+                    <span class="n">pickle_submission</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">aws_pickle_results</span><span class="p">,</span>
+                    <span class="n">job_dir</span><span class="o">=</span><span class="n">SUBMISSION_FOLDER_PATH</span><span class="p">)</span>                    
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Part35'></a></p>
+</section>
+<section id="id6">
+<h3>3.5 Retrieving results<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>You can check on AWS Braket Platform <a class="reference external" href="https://aws.amazon.com/console/">https://aws.amazon.com/console/</a>, when your jobs and tasks will complete. After they are complete, you can retrieve your results, based on the backed up json file with Circuit Collection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">orjson</span>
+<span class="n">backend</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">provider</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">CONNECTION_METHOD</span><span class="p">,</span> <span class="n">verbose_log</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">verbose_log</span><span class="p">)</span>
+<span class="n">valid_qubit_properties</span> <span class="o">=</span> <span class="n">ibm</span><span class="o">.</span><span class="n">get_valid_qubits_properties</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">gate_threshold</span><span class="p">)</span>
+
+<span class="n">circuit_collection</span> <span class="o">=</span> <span class="n">CircuitCollection</span><span class="p">()</span>
+<span class="n">circuit_collection</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;input_circuit_collection.json&quot;</span><span class="p">)))</span>
+
+<span class="c1">#task_arns.txt file needs to be downloaded from AWS Braket console after job and tasks are completed! It will be in the results folder at the respective S3 bucket.</span>
+<span class="n">circuit_collection</span><span class="o">.</span><span class="n">job_IDs</span> <span class="o">=</span> <span class="n">orjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;task_arns.txt&quot;</span><span class="p">)),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">experiment_results</span> <span class="o">=</span> <span class="n">aws_braket</span><span class="o">.</span><span class="n">retrieve_results</span><span class="p">(</span> <span class="n">task_ARNs</span> <span class="o">=</span> <span class="n">circuit_collection</span><span class="o">.</span><span class="n">job_IDs</span><span class="p">,</span>
+                                            <span class="n">original_circuits</span> <span class="o">=</span> <span class="n">circuit_collection</span><span class="p">,</span>
+                                            <span class="n">save_experiment_results</span> <span class="o">=</span>  <span class="nb">str</span><span class="p">(</span><span class="n">EXPERIMENT_FOLDER_PATH</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;ibm_experiment_results.json&quot;</span><span class="p">)),</span>
+                                            <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                                            <span class="n">verbose_log</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Tutorial0.html" class="btn btn-neutral float-left" title="0. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="2.%20Noise%20Characterisation.html" class="btn btn-neutral float-right" title="Noise Characterisation Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

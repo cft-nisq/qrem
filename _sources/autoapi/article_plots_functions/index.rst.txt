@@ -1,0 +1,38 @@
+:py:mod:`article_plots_functions`
+=================================
+
+.. py:module:: article_plots_functions
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   article_plots_functions.create_coherence_bound_histogram_data
+   article_plots_functions.create_POVMs_distance_histogram
+   article_plots_functions.create_correlations_distance_histogram
+   article_plots_functions.create_coherence_bound_histogram
+   article_plots_functions.create_error_mitigation_prediction_histogram
+
+
+
+.. py:function:: create_coherence_bound_histogram_data(coherence_bound_dictionary)
+
+
+.. py:function:: create_POVMs_distance_histogram(POVMs_errors_ibm, POVMs_errors_rig, path_to_save=None)
+
+
+.. py:function:: create_correlations_distance_histogram(correlations_coefficients_matrix_ibm, correlations_coefficients_matrix_rig, path_to_save=None)
+
+
+.. py:function:: create_coherence_bound_histogram(coherence_bound_dictionary_ibm: Dict, coherence_bound_dictionary_rigetti: Dict, path_to_save=None)
+
+
+.. py:function:: create_error_mitigation_prediction_histogram(noise_models_mitigated_energy_dictionary: Dict, noise_models_predicted_energy_dictionary: Dict, energy_dictionary: Dict, number_of_qubits: int, plot_title='', path_to_save=None)
+
+

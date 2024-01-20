@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.providers.aws_braket &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.providers.ibm" href="../ibm/index.html" />
+    <link rel="prev" title="qrem.providers.simutils.simutils" href="../simutils/simutils/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#quantum-experimentation-providers-subpackage">This subpackage (qrem.providers) contains modules that provide functionalities for interacting with various quantum computing platforms and simulators. It enables users to run characterization, mitigation, and benchmarking experiments on different quantum devices and simulators. The subpackage is organized into modules, each catering to a specific quantum computing provider or simulation environment.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.aws_braket</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/providers/aws_braket/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.providers.aws_braket">
+<span id="qrem-providers-aws-braket"></span><h1><a class="reference internal" href="#module-qrem.providers.aws_braket" title="qrem.providers.aws_braket"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.aws_braket</span></code></a><a class="headerlink" href="#module-qrem.providers.aws_braket" title="Link to this heading"></a></h1>
+<section id="aws-braket-provider-module">
+<p>This module (<cite>qrem.providers.aws_braket</cite>) provides functionalities for running characterisation,
+mitigation, and benchmarking experiments on AWS Braket devices. It includes methods for retrieving
+device properties, translating circuit collections to Braket format, preparing circuits for execution,
+and executing these circuits on AWS Braket.</p>
+<p>The module is designed to interact with AWS Braket services, utilizing their device and job handling
+capabilities.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>add_ground_states</dt><dd><p>Function to add ground states from a file. [Functionality not implemented in provided code snippet.]
+Parameters:
+- groundstates_file (str, optional): Path to the file containing ground state information.</p>
+</dd>
+<dt>get_device</dt><dd><p>Retrieves properties of a specified AWS Braket device.
+Parameters:
+- device_full_name (str, optional): The full ARN of the AWS Braket device. Defaults to Rigetti’s Aspen-M-2.
+- verbose_log (bool, optional): If True, enables verbose logging of device properties.</p>
+</dd>
+<dt>get_valid_qubits_properties</dt><dd><p>Extracts properties of valid qubits from an AWS Braket device.
+Parameters:
+- device (AwsDevice): The AWS Braket device from which to retrieve qubit properties.
+- threshold (Optional[float], optional): Error threshold for qualifying a qubit as valid. Defaults to 0 (no threshold).
+- verbose_log (bool, optional): Enables verbose logging if set to True. Defaults to False.
+- simultaneous_randomize_benchmark (bool, optional): If True, uses simultaneous randomize benchmark for error thresholding. Defaults to True.</p>
+</dd>
+<dt>translate_circuits_to_braket_format</dt><dd><p>Translates a collection of quantum circuits into the format used by AWS Braket.
+Parameters:
+- circuit_collection (CircuitCollection): Collection of circuits to be translated.
+- valid_qubit_indices (List[int]): Indices of valid qubits to be used in the translation.</p>
+</dd>
+<dt>prepare_circuits</dt><dd><p>Prepares and stores AWS Braket circuits and associated metadata in a specified directory.
+Parameters:
+- braket_circuits (List[Circuit]): List of quantum circuits in AWS Braket format.
+- circuit_collection (CircuitCollection): The original collection of circuits before translation.
+- good_qubits_indices: Indices of qubits deemed good for computation.
+- number_of_repetitions (int, optional): The number of repetitions for each circuit execution. Defaults to 1024.
+- experiment_name (str, optional): Name of the experiment. Defaults to an empty string.
+- metadata (dict, optional): Additional metadata related to the experiment. Defaults to an empty dictionary.
+- job_tags (dict, optional): Tags associated with the job. Defaults to {‘QREM_JOB’}.
+- job_dir (str, optional): Directory to store prepared circuits and metadata. Defaults to an empty string.
+- pickle_submission (bool, optional): If True, circuits will be pickled for submission. Defaults to False.
+- number_of_task_retries (int, optional): Number of retries for each task. Defaults to 3.
+- overwrite_output (bool, optional): If True, overwrites existing data in the job directory. Defaults to False.
+- verbose_log (bool, optional): Enables verbose logging if set to True. Defaults to False.</p>
+</dd>
+<dt>execute_circuits</dt><dd><p>Executes prepared quantum circuits on an AWS Braket device.
+Parameters:
+- device_name (str, optional): The full ARN of the AWS Braket device to use for execution. Defaults to Rigetti’s Aspen-M-2.
+- pickle_submission (bool, optional): If True, uses pickled circuits for submission. Defaults to False.
+- job_dir (Union[Path, str], optional): Directory containing the circuits and metadata for the job. Defaults to ‘job_dir’.
+- verbose_log (bool, optional): If True, enables verbose logging of the execution process. Defaults to True.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.aws_braket.add_ground_states" title="qrem.providers.aws_braket.add_ground_states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_ground_states</span></code></a>([groundstates_file])</p></td>
+<td><p>[Placeholder for future implementation]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.providers.aws_braket.get_device" title="qrem.providers.aws_braket.get_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_device</span></code></a>([device_full_name, verbose_log])</p></td>
+<td><p>Retrieves various properties of the specified AWS Braket device.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.aws_braket.get_valid_qubits_properties" title="qrem.providers.aws_braket.get_valid_qubits_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_valid_qubits_properties</span></code></a>(device[, threshold, ...])</p></td>
+<td><p>Analyzes and reports properties of valid qubits from an AWS Braket device,</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.providers.aws_braket._circuits_translator" title="qrem.providers.aws_braket._circuits_translator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_circuits_translator</span></code></a>(eigenstate_index, ...)</p></td>
+<td><p>Internal helper method that translates a circuit representation into a specific</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.aws_braket.translate_circuits_to_braket_format" title="qrem.providers.aws_braket.translate_circuits_to_braket_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate_circuits_to_braket_format</span></code></a>(...)</p></td>
+<td><p>Translates a collection of quantum circuits into the format used by AWS Braket.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.providers.aws_braket.prepare_cricuits" title="qrem.providers.aws_braket.prepare_cricuits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_cricuits</span></code></a>(braket_circuits, circuit_collection, ...)</p></td>
+<td><p>Prepares and stores AWS Braket circuits and associated metadata in a specified directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.aws_braket.execute_circuits" title="qrem.providers.aws_braket.execute_circuits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">execute_circuits</span></code></a>([device_name, pickle_submission, ...])</p></td>
+<td><p>Packs all data and script runner, and executes prepared quantum circuits on an AWS Braket device.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.providers.aws_braket.retrieve_results" title="qrem.providers.aws_braket.retrieve_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">retrieve_results</span></code></a>(→ qrem.qtypes.ExperimentResults)</p></td>
+<td><p>Retrieves and processes results from an AWS Braket backend based on provided task ARNs.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket.add_ground_states">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">add_ground_states</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groundstates_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.aws_braket.add_ground_states" title="Link to this definition"></a></dt>
+<dd><p>[Placeholder for future implementation]
+Function to add ground states from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>groundstates_file</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the file containing ground state information.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function is currently not implemented in the provided code snippet.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket.get_device">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">get_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_full_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'arn:aws:braket:us-west-1::device/qpu/rigetti/Aspen-M-2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.aws_braket.get_device" title="Link to this definition"></a></dt>
+<dd><p>Retrieves various properties of the specified AWS Braket device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_full_name</strong> (<em>str</em><em>, </em><em>optional</em>) – The full ARN of the AWS Braket device. Defaults to Rigetti’s Aspen-M-2.</p></li>
+<li><p><strong>verbose_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, enables verbose logging of device properties.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns a tuple of the AwsDevice object and a dictionary containing metadata about the device.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[AwsDevice, dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket.get_valid_qubits_properties">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">get_valid_qubits_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">braket.aws.AwsDevice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simultaneous_randomize_benchmark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.aws_braket.get_valid_qubits_properties" title="Link to this definition"></a></dt>
+<dd><p>Analyzes and reports properties of valid qubits from an AWS Braket device,
+considering a given error threshold and benchmarking method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> (<em>AwsDevice</em>) – The AWS Braket device from which to retrieve qubit properties.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>optional</em>) – Error threshold for qualifying a qubit as valid. Defaults to 0 (no threshold).</p></li>
+<li><p><strong>verbose_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – Enables verbose logging if set to True. Defaults to False.</p></li>
+<li><p><strong>simultaneous_randomize_benchmark</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, uses simultaneous randomize benchmark for error thresholding. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing indices of good qubits and other relevant information.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket._circuits_translator">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">_circuits_translator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eigenstate_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantum_circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">braket.circuits.Circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.aws_braket._circuits_translator" title="Link to this definition"></a></dt>
+<dd><p>Internal helper method that translates a circuit representation into a specific
+eigenstate format native to BRAKET. It applies Pauli eigenstates to the circuit.</p>
+<p>(in deprecated codebase formerly named _apply_pauli_eigenstate).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eigenstate_index</strong> (<em>int</em>) – Index representing the eigenstate to be applied.</p></li>
+<li><p><strong>quantum_circuit</strong> (<em>Circuit</em>) – The Braket quantum circuit to which the eigenstate is applied.</p></li>
+<li><p><strong>qubit_index</strong> (<em>int</em>) – Index of the qubit in the quantum circuit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The modified Braket quantum circuit with the applied eigenstate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Circuit</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If an incorrect eigenstate index is provided.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function is intended for internal use.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket.translate_circuits_to_braket_format">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">translate_circuits_to_braket_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit_collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CircuitCollection" title="qrem.qtypes.CircuitCollection"><span class="pre">qrem.qtypes.CircuitCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_qubit_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">braket.circuits.Circuit</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.providers.aws_braket.translate_circuits_to_braket_format" title="Link to this definition"></a></dt>
+<dd><p>Translates a collection of quantum circuits into the format used by AWS Braket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>circuit_collection</strong> (<a class="reference internal" href="../../qtypes/circuit_collection/index.html#qrem.qtypes.circuit_collection.CircuitCollection" title="qrem.qtypes.circuit_collection.CircuitCollection"><em>CircuitCollection</em></a>) – Collection of circuits to be translated.</p></li>
+<li><p><strong>valid_qubit_indices</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Indices of valid qubits to be used in the translation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of circuits in the AWS Braket format.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Circuit]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket.prepare_cricuits">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">prepare_cricuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">braket_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">braket.circuits.Circuit</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CircuitCollection" title="qrem.qtypes.CircuitCollection"><span class="pre">qrem.qtypes.CircuitCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">good_qubits_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_repetitions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_tags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'QREM_JOB'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pickle_submission</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_task_retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.aws_braket.prepare_cricuits" title="Link to this definition"></a></dt>
+<dd><p>Prepares and stores AWS Braket circuits and associated metadata in a specified directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>braket_circuits</strong> (<em>List</em><em>[</em><em>Circuit</em><em>]</em>) – List of quantum circuits in AWS Braket format.</p></li>
+<li><p><strong>circuit_collection</strong> (<a class="reference internal" href="../../qtypes/circuit_collection/index.html#qrem.qtypes.circuit_collection.CircuitCollection" title="qrem.qtypes.circuit_collection.CircuitCollection"><em>CircuitCollection</em></a>) – The original collection of circuits before translation.</p></li>
+<li><p><strong>good_qubits_indices</strong> (<em>list</em>) – Indices of qubits deemed good for computation.</p></li>
+<li><p><strong>number_of_repetitions</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of repetitions for each circuit execution. Defaults to 1024.</p></li>
+<li><p><strong>experiment_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the experiment. Defaults to an empty string.</p></li>
+<li><p><strong>metadata</strong> (<em>dict</em><em>, </em><em>optional</em>) – Additional metadata related to the experiment. Defaults to an empty dictionary.</p></li>
+<li><p><strong>job_tags</strong> (<em>dict</em><em>, </em><em>optional</em>) – Tags associated with the job. Defaults to {‘QREM_JOB’}.</p></li>
+<li><p><strong>job_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory to store prepared circuits and metadata. Defaults to an empty string.</p></li>
+<li><p><strong>pickle_submission</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, circuits will be pickled for submission. Defaults to True.</p></li>
+<li><p><strong>number_of_task_retries</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of retries for each task. Defaults to 3.</p></li>
+<li><p><strong>overwrite_output</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, overwrites existing data in the job directory. Defaults to False.</p></li>
+<li><p><strong>verbose_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – Enables verbose logging if set to True. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if preparation is successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket.execute_circuits">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">execute_circuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'arn:aws:braket:us-west-1::device/qpu/rigetti/Aspen-M-2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pickle_submission</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'job_dir'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.aws_braket.execute_circuits" title="Link to this definition"></a></dt>
+<dd><p>Packs all data and script runner, and executes prepared quantum circuits on an AWS Braket device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_name</strong> (<em>str</em><em>, </em><em>optional</em>) – The full ARN of the AWS Braket device to use for execution. Defaults to Rigetti’s Aspen-M-2: arn:aws:braket:us-west-1::device/qpu/rigetti/Aspen-M-2.</p></li>
+<li><p><strong>pickle_submission</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, uses pickled circuits for submission. Defaults to True.</p></li>
+<li><p><strong>job_dir</strong> (<em>Union</em><em>[</em><em>Path</em><em>, </em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Directory containing the circuits and metadata for the job. Defaults to ‘job_dir’.</p></li>
+<li><p><strong>verbose_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, enables verbose logging of the execution process. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.aws_braket.retrieve_results">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.aws_braket.</span></span><span class="sig-name descname"><span class="pre">retrieve_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_ARNs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CircuitCollection" title="qrem.qtypes.CircuitCollection"><span class="pre">qrem.qtypes.CircuitCollection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_circuits_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_experiment_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup_original_task_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_tasks_backup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.ExperimentResults" title="qrem.qtypes.ExperimentResults"><span class="pre">qrem.qtypes.ExperimentResults</span></a></span></span><a class="headerlink" href="#qrem.providers.aws_braket.retrieve_results" title="Link to this definition"></a></dt>
+<dd><p>Retrieves and processes results from an AWS Braket backend based on provided task ARNs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>provider</strong> (<em>IBMProvider</em>) – The IBMProvider instance used to retrieve results.</p></li>
+<li><p><strong>task_ARNs</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of task ARNs for which results are to be retrieved.</p></li>
+<li><p><strong>original_circuits</strong> (<em>Union</em><em>[</em><a class="reference internal" href="../../qtypes/circuit_collection/index.html#qrem.qtypes.circuit_collection.CircuitCollection" title="qrem.qtypes.circuit_collection.CircuitCollection"><em>CircuitCollection</em></a><em>, </em><em>bool</em><em>]</em><em>, </em><em>optional</em>) – The original circuits used in the jobs. Set to False if not provided. Defaults to False.</p></li>
+<li><p><strong>original_circuits_path</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>, </em><em>Path</em><em>]</em><em>, </em><em>optional</em>) – Path to the file containing the original circuits. Defaults to False.</p></li>
+<li><p><strong>config_file_path</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>, </em><em>Path</em><em>]</em><em>, </em><em>optional</em>) – Path to the file containing the original submission config. Defaults to False.</p></li>
+<li><p><strong>save_experiment_results</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>, </em><em>Path</em><em>]</em><em>, </em><em>optional</em>) – Path to save the processed experiment results. Defaults to False.</p></li>
+<li><p><strong>backup_original_task_results</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>, </em><em>Path</em><em>]</em><em>, </em><em>optional</em>) – Path to backup the original results. Defaults to False.</p></li>
+<li><p><strong>from_tasks_backup</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>, </em><em>Path</em><em>]</em><em>, </em><em>optional</em>) – Read from pickled backed-up task files. Useful mostly for debugging.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, overwrites existing files at the specified paths. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>results of an experiment held in ExperimentResults.counts object of format {“&lt;circuit_label&gt;”: tuple(&lt;RESTULS_MATRIX&gt;, &lt;COUNTS_VECTOR&gt;)}</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../qtypes/experiment_results/index.html#qrem.qtypes.experiment_results.ExperimentResults" title="qrem.qtypes.experiment_results.ExperimentResults">ExperimentResults</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../simutils/simutils/index.html" class="btn btn-neutral float-left" title="qrem.providers.simutils.simutils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ibm/index.html" class="btn btn-neutral float-right" title="qrem.providers.ibm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

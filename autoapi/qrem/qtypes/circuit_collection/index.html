@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.qtypes.circuit_collection &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.qtypes.cn_noise_model" href="../cn_noise_model/index.html" />
+    <link rel="prev" title="qrem.qtypes.characterization_data" href="../characterization_data/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#id1">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.circuit_collection</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/qtypes/circuit_collection/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.qtypes.circuit_collection">
+<span id="qrem-qtypes-circuit-collection"></span><h1><a class="reference internal" href="#module-qrem.qtypes.circuit_collection" title="qrem.qtypes.circuit_collection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.circuit_collection</span></code></a><a class="headerlink" href="#module-qrem.qtypes.circuit_collection" title="Link to this heading"></a></h1>
+<p>qrem.qtypes.circuit_collection module contains CircuitCollection class, which serves as the base class that contains all information
+about a set of circuits to be sent to a quantum machine for characterization, mitigation, or benchmarking purposes.
+It inherits from DataStructureBase and is extended by ExperimentResults, a class that contains results of experiments performed on a given circuit collection.</p>
+<p class="rubric">Notes</p>
+<p>&#64;authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+&#64;contact: <a class="reference external" href="mailto:michal&#46;oszmaniec&#37;&#52;&#48;cft&#46;edu&#46;pl">michal<span>&#46;</span>oszmaniec<span>&#64;</span>cft<span>&#46;</span>edu<span>&#46;</span>pl</a></p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.qtypes.circuit_collection.CircuitCollection" title="qrem.qtypes.circuit_collection.CircuitCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CircuitCollection</span></code></a></p></td>
+<td><p>CircuitCollection class contains data about circuits to be prepared on a certain device for a specified experiment.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.qtypes.circuit_collection._test_collection" title="qrem.qtypes.circuit_collection._test_collection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_test_collection</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.qtypes.circuit_collection.</span></span><span class="sig-name descname"><span class="pre">CircuitCollection</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase" title="qrem.qtypes.datastructure_base.DataStructureBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qrem.qtypes.datastructure_base.DataStructureBase</span></code></a></p>
+<p>CircuitCollection class contains data about circuits to be prepared on a certain device for a specified experiment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> (<em>str</em>) – Name of the device on which the circuits will be run.</p></li>
+<li><p><strong>experiment_type</strong> (<em>str</em>) – Type of experiment, DDOT (Diagonal Detector Overlapping Tomography) or QDOT (Quantum Detector Overlapping Tomography).</p></li>
+<li><p><strong>circuits_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of circuits, where each circuit is a string of symbols (0-1 for DDOT, 0-5 for QDOT).</p></li>
+<li><p><strong>qubit_indices</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – List of sorted indices of qubits on which the circuits are to be executed.</p></li>
+<li><p><strong>gate_error_threshold</strong> (<em>float</em>) – Gate error on a qubit above which qubits are disregarded (circuits are not executed there).</p></li>
+<li><p><strong>locality</strong> (<em>int</em>) – The degree of marginals we wish to characterize.</p></li>
+<li><p><strong>no_shots</strong> (<em>int</em>) – How many times each circuit is executed.</p></li>
+<li><p><strong>datetime_created_utc</strong> (<em>datetime</em>) – When the circuit collection was created.</p></li>
+<li><p><strong>author</strong> (<em>str</em>) – Creator of the collection.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.device" title="Link to this definition"></a></dt>
+<dd><p>Name of the device on which the circuits will be run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.experiment_type">
+<span class="sig-name descname"><span class="pre">experiment_type</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.experiment_type" title="Link to this definition"></a></dt>
+<dd><p>Type of experiment, DDOT (Diagonal Detector Overlapping Tomography) or QDOT (Quantum Detector Overlapping Tomography).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.circuits_labels">
+<span class="sig-name descname"><span class="pre">circuits_labels</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.circuits_labels" title="Link to this definition"></a></dt>
+<dd><p>List of circuits where each circuit is a string of symbols (0-1 for DDOT, 0-5 for QDOT).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.circuits">
+<span class="sig-name descname"><span class="pre">circuits</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.circuits" title="Link to this definition"></a></dt>
+<dd><p>Matrix representing circuits (shape: number_of_qubits x number_of_circuits, dtype: uint8).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.job_IDs">
+<span class="sig-name descname"><span class="pre">job_IDs</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.job_IDs" title="Link to this definition"></a></dt>
+<dd><p>After experiment is executed, it will be filled with relevant job_IDs (ibm) / task_ARNs (aws).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.qubit_indices">
+<span class="sig-name descname"><span class="pre">qubit_indices</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.qubit_indices" title="Link to this definition"></a></dt>
+<dd><p>List of sorted indices of qubits on which the circuits are to be executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.random_circuits_count">
+<span class="sig-name descname"><span class="pre">random_circuits_count</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.random_circuits_count" title="Link to this definition"></a></dt>
+<dd><p>Number of random circuits to be generated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.total_circuits_count">
+<span class="sig-name descname"><span class="pre">total_circuits_count</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.total_circuits_count" title="Link to this definition"></a></dt>
+<dd><p>Total number of circuits (random + predefined).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.gate_error_threshold">
+<span class="sig-name descname"><span class="pre">gate_error_threshold</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.gate_error_threshold" title="Link to this definition"></a></dt>
+<dd><p>Gate error on a qubit above which qubits are disregarded (circuits are not executed there).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.locality">
+<span class="sig-name descname"><span class="pre">locality</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.locality" title="Link to this definition"></a></dt>
+<dd><p>The degree of marginals we wish to characterize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.no_shots">
+<span class="sig-name descname"><span class="pre">no_shots</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.no_shots" title="Link to this definition"></a></dt>
+<dd><p>How many times each circuit is executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.datetime_created_utc">
+<span class="sig-name descname"><span class="pre">datetime_created_utc</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.datetime_created_utc" title="Link to this definition"></a></dt>
+<dd><p>When the circuit collection was created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>datetime</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.experiment_name">
+<span class="sig-name descname"><span class="pre">experiment_name</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.experiment_name" title="Link to this definition"></a></dt>
+<dd><p>Name of the experiment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.author">
+<span class="sig-name descname"><span class="pre">author</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.author" title="Link to this definition"></a></dt>
+<dd><p>Creator of the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.metadata" title="Link to this definition"></a></dt>
+<dd><p>Additional metadata information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.load_config">
+<span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../common/config/index.html#qrem.common.config.QremConfigLoader" title="qrem.common.config.QremConfigLoader"><span class="pre">qrem.common.config.QremConfigLoader</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.load_config" title="Link to this definition"></a></dt>
+<dd><p>Load configuration settings into the CircuitCollection object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../common/config/index.html#qrem.common.config.QremConfigLoader" title="qrem.common.config.QremConfigLoader"><em>QremConfigLoader</em></a>) – Configuration settings to load.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection.CircuitCollection.load_from_dict">
+<span class="sig-name descname"><span class="pre">load_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.circuit_collection.CircuitCollection.load_from_dict" title="Link to this definition"></a></dt>
+<dd><p>Load data from a dictionary into the CircuitCollection object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dictionary</strong> (<em>dict</em>) – Dictionary containing data to load into the object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.qtypes.circuit_collection._test_collection">
+<span class="sig-prename descclassname"><span class="pre">qrem.qtypes.circuit_collection.</span></span><span class="sig-name descname"><span class="pre">_test_collection</span></span><a class="headerlink" href="#qrem.qtypes.circuit_collection._test_collection" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../characterization_data/index.html" class="btn btn-neutral float-left" title="qrem.qtypes.characterization_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../cn_noise_model/index.html" class="btn btn-neutral float-right" title="qrem.qtypes.cn_noise_model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

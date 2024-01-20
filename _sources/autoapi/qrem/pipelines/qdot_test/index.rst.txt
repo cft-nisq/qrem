@@ -1,0 +1,71 @@
+:py:mod:`qrem.pipelines.qdot_test`
+==================================
+
+.. py:module:: qrem.pipelines.qdot_test
+
+
+Module Contents
+---------------
+
+.. py:data:: DATA_DIRECTORY
+   :value: '/media/tuzjan/T7/work_tuzjan/article_analysis/'
+
+   
+
+.. py:data:: FILE_NAME_RESULTS_RIG
+   :value: 'RESULTS_RIGETTI_ASPEN-M-3.pkl'
+
+   
+
+.. py:data:: FILE_NAME_GROUND_STATES_LIST_RIG
+   :value: 'RIGETTI-ASPEN-M-3_GROUND_STATES_LIST.pkl'
+
+   
+
+.. py:data:: COHERENCE_WITNESS_CIRCUITS_PATH_RIG
+   :value: 'RIGETTI-ASPEN-M-3_COHERENCE_WITNESS_CIRCUITS.pkl'
+
+   
+
+.. py:data:: FILE_NAME_HAMILTONIANS_RIG
+   :value: 'RIGETTI-ASPEN-M-3_HAMILTONIANS_DICTIONARY.PKL'
+
+   
+
+.. py:data:: FILE_NAME_MARGINALS_RIG
+   :value: 'RIGETTI-ASPEN-M-3_MARGINALS_DICTIONARY.pkl'
+
+   
+
+.. py:data:: results_dictionary_rig
+
+   
+
+.. py:data:: circuits_ground_states_preparation_collection_rig
+
+   
+
+.. py:data:: coherence_witness_circuits_rig
+
+   
+
+.. py:data:: hamiltonians_dictionary_rig
+
+   
+
+.. py:data:: marginals_dictionary_rig
+
+   
+
+.. py:data:: marginals_dictionary_rig
+
+   
+
+.. py:data:: characterization_data_container
+
+   
+
+.. py:data:: characterization_data_container
+
+   
+

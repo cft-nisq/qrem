@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.characterization.characterization_routine &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.characterization.clustering_algorithms" href="../clustering_algorithms/index.html" />
+    <link rel="prev" title="qrem.characterization.characterization" href="../characterization/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-characterisation-module">This subpackage <cite>qrem.characterisation</cite> provides a suite of modules fro quantum error characterisation.
+Detailed documentation coming soon.</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.characterization_routine</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/characterization/characterization_routine/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.characterization.characterization_routine">
+<span id="qrem-characterization-characterization-routine"></span><h1><a class="reference internal" href="#module-qrem.characterization.characterization_routine" title="qrem.characterization.characterization_routine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.characterization_routine</span></code></a><a class="headerlink" href="#module-qrem.characterization.characterization_routine" title="Link to this heading"></a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization_routine.execute_characterization_workflow" title="qrem.characterization.characterization_routine.execute_characterization_workflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">execute_characterization_workflow</span></code></a>(...[, name_id, ...])</p></td>
+<td><p>A function that performs analysis of experimental data and provides various characteristics of readout noise as well as reconstructs a CN redout noise model. It returns a list of reconstructed CNModelData objects with noise models data.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization_routine.execute_characterization_workflow">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization_routine.</span></span><span class="sig-name descname"><span class="pre">execute_characterization_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data_container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/characterization_data/index.html#qrem.qtypes.characterization_data.CharacterizationData" title="qrem.qtypes.characterization_data.CharacterizationData"><span class="pre">qrem.qtypes.characterization_data.CharacterizationData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perform_noise_model_reconstruction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization_routine.execute_characterization_workflow" title="Link to this definition"></a></dt>
+<dd><p>A function that performs analysis of experimental data and provides various characteristics of readout noise as well as reconstructs a CN redout noise model. It returns a list of reconstructed CNModelData objects with noise models data.
+In addition, it saves data about correlation coefficients and reduced POVMs into files.</p>
+<p>It is used to:</p>
+<ol class="arabic simple">
+<li><p>Perform full characterization workflow</p></li>
+<li><p>As an initial step before running mitigation routine</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_dictionary</strong> (<em>dictionary</em><em> (</em><em>key - string encoding experimental setting</em><em> , </em><em>value - dictionary with experimental results i.e. key - string encoding outcome bits</em><em>, </em><em>values- number</em><em> of </em><em>occurrences</em><em> of </em><em>a given outcome</em><em>  )</em>) – Stores results of a characterization experiment.</p></li>
+<li><p><strong>marginals_dictionary</strong> (<em>dictionary</em><em> (</em><em>key - string encoding experimental setting</em><em> , </em><em>value - dictionary with experimental results i.e. key - tuple encoding qubits in a marginal values- marginal probability distribution for a given marginal</em><em>  )</em>) – Optional parameter that allows to input precomputed marginal probability distributions into characterization routine. Stores marginal probability distributions for marginals.</p></li>
+<li><p><strong>experiment_type</strong> (<em>string</em>) – String encoding type of characterization experiment. Possible values: Diagonal detector overlapping tomography -  ‘DDOT’ Quantum detector overlapping tomography - ‘QDOT’</p></li>
+<li><p><strong>data_directory</strong> (<em>string</em>) – A string specifying path where results of characterization procedure are saved.</p></li>
+<li><p><strong>number_of_benchmark_circuits</strong> (<em>integer</em>) – The number of experiments from results_dictionary to be used in benchmarks. For number_of_benchmark_circuits &gt; 0 the corresponding cumber of entries from results_dictionary is excluded from characterization procedure.</p></li>
+<li><p><strong>return_old_mitigation_data</strong> (<em>bool</em>) – Specifies whether old mitigation data are returned. Probably it should be excluded from the final release. It stays for now for debugging purposes.</p></li>
+<li><p><strong>perform_clustering</strong> (<em>bool</em>) – To be removed in final release: Specifies whether clustering algorithms to find noise model</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>characterization_data_dictionary</strong> – A dictionary with results of characterization procedure</p>
+<dl>
+<dt>Structure:</dt><dd><p>Key: ‘noise_models_list’ - a list of noise models that is a result of clustering</p>
+<p>Key: ‘benchmarks_results_dictionary’ - a dictionary with results to be used for benchmarks, empty unless number_of_benchmark_circuits &gt; 0</p>
+<p>Key: ‘benchmarks_marginals_dictionary’ - a dictionary with marginals to be used for benchmarks, empty unless number_of_benchmark_circuits &gt; 0</p>
+<p>Key: ‘POVMs_dictionary’ - a dictionary with two qubit POVMs</p>
+<p>Key: ‘correlations_data’ - a dictionary with correlation coefficients</p>
+<p>Old mitigation data:
+the rest of the keys is used to perform “old mitigation”, it should be probably removed before final release, here it is used for debugging purposes</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>dictionary</p>
+<p>a value in a string</p>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>KeyError</strong> – when a key error</p></li>
+<li><p><strong>OtherError</strong> – when an other error</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../characterization/index.html" class="btn btn-neutral float-left" title="qrem.characterization.characterization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../clustering_algorithms/index.html" class="btn btn-neutral float-right" title="qrem.characterization.clustering_algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

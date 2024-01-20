@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.config &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.common.constants" href="../constants/index.html" />
+    <link rel="prev" title="qrem.common.tomography.tomography" href="../tomography/tomography/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.config</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/common/config/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.config">
+<span id="qrem-common-config"></span><h1><a class="reference internal" href="#module-qrem.common.config" title="qrem.common.config"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.config</span></code></a><a class="headerlink" href="#module-qrem.common.config" title="Link to this heading"></a></h1>
+<section id="qrem-configuration-loader-module">
+<p>This module provides functionality for parsing configuration files and command-line arguments
+specifically tailored for the Quantum Research Environment Manager (QREM) project.
+The module includes helper functions for parsing various data types and a class <cite>QremConfigLoader</cite>
+that facilitates loading and managing configuration settings.</p>
+<p>The config file is designed to help in preparation and documenting the configuration of each QREM execution on quantum computers.
+It is an ini file, that contains all the parameters necessary to configure an experiment. Parameters can also be passed as a command line arguments.</p>
+<p>Example config files can be found in the qrem/configs folder of the package and accessed through followint variables:
+- qrem.common.config.example_config_ibm_path
+- qrem.common.config.example_config_aws_path</p>
+</section>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>The configuration is organized into sections: ‘general’, ‘data’, ‘experiment’, ‘characterization’ and ‘mitigation’.</dt><dd><dl class="simple">
+<dt>general</dt><dd><p>Contains general settings for the experiment, such as the experiment’s name, author, and logging level.</p>
+</dd>
+<dt>data</dt><dd><p>Manages settings related to data handling, including backups of circuits, job IDs, and circuit metadata.</p>
+</dd>
+<dt>experiment</dt><dd><p>Specifies various parameters and settings directly related to the quantum experiment, including device information, provider details, experiment type, and quantum circuit configuration.</p>
+</dd>
+<dt>characterization</dt><dd><p>Contains settings for characterization of the quantum device.</p>
+</dd>
+<dt>mitigation</dt><dd><p>Contains settings for mitigation of the quantum device.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="configuration-parameters">
+<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>[general]</dt><dd><dl class="simple">
+<dt>experiment_name<span class="classifier">str</span></dt><dd><p>The name of the experiment, used for bookkeeping in all files.</p>
+</dd>
+<dt>author<span class="classifier">str</span></dt><dd><p>The name or nickname of the author, saved in all files for tracking.</p>
+</dd>
+<dt>verbose_log<span class="classifier">bool</span></dt><dd><p>Enables verbose logging for additional information during execution.</p>
+</dd>
+</dl>
+</dd>
+<dt>[data]</dt><dd><dl class="simple">
+<dt>backup_circuits<span class="classifier">bool</span></dt><dd><p>Indicates whether to save the original list of circuits in the QREM definition to a file.</p>
+</dd>
+<dt>backup_job_ids<span class="classifier">bool</span></dt><dd><p>Specifies whether to save job IDs to a file after submitting data to a backend.</p>
+</dd>
+<dt>backup_circuits_metadata<span class="classifier">bool</span></dt><dd><p>Determines whether to add additional information (like qubit readout errors, list of bad qubits) to the saved circuits list.</p>
+</dd>
+</dl>
+</dd>
+<dt>[experiment]</dt><dd><dl class="simple">
+<dt>experiment_path<span class="classifier">str</span></dt><dd><p>The file path for storing experiment-related files.</p>
+</dd>
+<dt>device_name<span class="classifier">str</span></dt><dd><p>The name of the quantum device (e.g., ‘ibm_seattle’, ‘Aspen-M-3’).</p>
+</dd>
+<dt>provider<span class="classifier">str</span></dt><dd><p>The quantum computing provider (e.g., ‘IBM’, ‘AWS-BRAKET’).</p>
+</dd>
+<dt>ibm_connection_method<span class="classifier">str</span></dt><dd><p>Specific to IBM, defines the connection method to the quantum machine (e.g., ‘RUNTIME_SESSIONS’, ‘RUNTIME’).</p>
+</dd>
+<dt>provider_instance<span class="classifier">str</span></dt><dd><p>For IBM, specifies the provider instance, such as ‘ibm-q/open/main’.</p>
+</dd>
+<dt>aws_pickle_results<span class="classifier">bool</span></dt><dd><p>Specifies if results should be pickled when using AWS Braket.</p>
+</dd>
+<dt>aws_braket_task_retries<span class="classifier">int</span></dt><dd><p>The number of retries for AWS Braket tasks.</p>
+</dd>
+<dt>experiment_type<span class="classifier">str</span></dt><dd><p>The type of experiment, such as ‘QDoT’, ‘DDoT’, ‘QDT’, ‘RFE’.</p>
+</dd>
+<dt>k_locality<span class="classifier">int</span></dt><dd><p>The locality of the experiment, with values ranging from 2 to 5.</p>
+</dd>
+<dt>gate_threshold<span class="classifier">float</span></dt><dd><p>Gate error threshold, if crossed - qubits will be excluded from calculations. ranging from 0 to 1. A value of 0 or Null includes all qubits.</p>
+</dd>
+<dt>ground_state_circuits<span class="classifier">bool</span></dt><dd><p>Determines if ground state circuits should be included.</p>
+</dd>
+<dt>ground_state_circuits_path<span class="classifier">str</span></dt><dd><p>File path to the pickle file containing ground state circuits information.</p>
+</dd>
+<dt>ground_states_count<span class="classifier">int</span></dt><dd><p>The number of ground states to be considered in the experiment.</p>
+</dd>
+<dt>limited_circuit_randomness<span class="classifier">bool</span></dt><dd><p>Indicates if limitations should be imposed on number of random circuits (e.g., number of random circuits).</p>
+</dd>
+<dt>random_circuits_count<span class="classifier">int</span></dt><dd><p>Total count of random circuits to be sent, relevant when ‘limited_circuit_randomness’ is True.</p>
+</dd>
+<dt>shots_per_circuit<span class="classifier">int</span></dt><dd><p>Number of shots (repetitions) per circuit, relevant when ‘limited_circuit_randomness’ is True.</p>
+</dd>
+<dt>job_tags<span class="classifier">tuple</span></dt><dd><p>Tags used for identifying jobs sent to the backend.</p>
+</dd>
+<dt>qbits_of_interest<span class="classifier">list or None</span></dt><dd><p>List of qubits to be used, following the device’s native indexing convention. Not yet implemented.</p>
+</dd>
+<dt>ensure_completnes_on_pairs<span class="classifier">bool</span></dt><dd><p>Ensures completeness of the experiment on qubit pairs (currently always true).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>The configuration file is used by the QREM module to set up and manage quantum experiments.
+Users can modify the file to customize various aspects of their experiments,
+including experimental parameters, data backup options, and device-specific settings.</p>
+</div></blockquote>
+<p class="rubric">Notes</p>
+<p>&#64;authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+&#64;contact: <a class="reference external" href="mailto:michal&#46;oszmaniec&#37;&#52;&#48;cft&#46;edu&#46;pl">michal<span>&#46;</span>oszmaniec<span>&#64;</span>cft<span>&#46;</span>edu<span>&#46;</span>pl</a></p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.config.QremConfigLoader" title="qrem.common.config.QremConfigLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QremConfigLoader</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.config.parse_str" title="qrem.common.config.parse_str"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_str</span></code></a>(in_str)</p></td>
+<td><p>Helper function to evaluate a string in the config file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.config.parse_literal" title="qrem.common.config.parse_literal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_literal</span></code></a>(instr)</p></td>
+<td><p>Converts a string specifying a list or tuple.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.config.parse_boolean" title="qrem.common.config.parse_boolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_boolean</span></code></a>(b)</p></td>
+<td><p>Interpret config parameter as a boolean values.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.config.example_config_ibm_path" title="qrem.common.config.example_config_ibm_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_config_ibm_path</span></code></a></p></td>
+<td><p>Example configuration file path for execution on IBM Quantum devices.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.config.example_config_aws_path" title="qrem.common.config.example_config_aws_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_config_aws_path</span></code></a></p></td>
+<td><p>Example configuration file path for execution on AWS Braket Quantum devices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.config.aa" title="qrem.common.config.aa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aa</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.config.example_config_ibm_path">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.config.</span></span><span class="sig-name descname"><span class="pre">example_config_ibm_path</span></span><a class="headerlink" href="#qrem.common.config.example_config_ibm_path" title="Link to this definition"></a></dt>
+<dd><p>Example configuration file path for execution on IBM Quantum devices.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.config.example_config_aws_path">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.config.</span></span><span class="sig-name descname"><span class="pre">example_config_aws_path</span></span><a class="headerlink" href="#qrem.common.config.example_config_aws_path" title="Link to this definition"></a></dt>
+<dd><p>Example configuration file path for execution on AWS Braket Quantum devices.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.config.parse_str">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.config.</span></span><span class="sig-name descname"><span class="pre">parse_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.config.parse_str" title="Link to this definition"></a></dt>
+<dd><p>Helper function to evaluate a string in the config file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>in_str</strong> (<em>str</em>) – The input string to be evaluated.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The evaluated string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.config.parse_literal">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.config.</span></span><span class="sig-name descname"><span class="pre">parse_literal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.config.parse_literal" title="Link to this definition"></a></dt>
+<dd><p>Converts a string specifying a list or tuple.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instr</strong> (<em>str</em>) – The input string specifying a list.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted list.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.config.parse_boolean">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.config.</span></span><span class="sig-name descname"><span class="pre">parse_boolean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.config.parse_boolean" title="Link to this definition"></a></dt>
+<dd><p>Interpret config parameter as a boolean values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>str</em>) – The input string representing a boolean value.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The interpreted boolean value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the input string cannot be interpreted as a boolean.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.config.QremConfigLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.config.</span></span><span class="sig-name descname"><span class="pre">QremConfigLoader</span></span><a class="headerlink" href="#qrem.common.config.QremConfigLoader" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.config.QremConfigLoader.config_parser">
+<span class="sig-name descname"><span class="pre">config_parser</span></span><a class="headerlink" href="#qrem.common.config.QremConfigLoader.config_parser" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.config.QremConfigLoader.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">str(example_config_ibm_path)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.config.QremConfigLoader.load" title="Link to this definition"></a></dt>
+<dd><p>Processes a config file specific for QREM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd_args</strong> (<em>list</em><em>, </em><em>optional</em>) – Command line arguments (default is None).</p></li>
+<li><p><strong>default_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the default config file (default is ‘default.ini’ located within “qrem/config” path of the module ).</p></li>
+<li><p><strong>as_dict</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, returns the configuration as a dictionary (default is False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The parsed configuration.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>configargparse.Namespace or dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.config.QremConfigLoader.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.config.QremConfigLoader.values" title="Link to this definition"></a></dt>
+<dd><p>Return summary of configuration values</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.config.QremConfigLoader.help">
+<span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.config.QremConfigLoader.help" title="Link to this definition"></a></dt>
+<dd><p>Print help for preparation of the config file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.config.aa">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.config.</span></span><span class="sig-name descname"><span class="pre">aa</span></span><a class="headerlink" href="#qrem.common.config.aa" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tomography/tomography/index.html" class="btn btn-neutral float-left" title="qrem.common.tomography.tomography" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../constants/index.html" class="btn btn-neutral float-right" title="qrem.common.constants" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

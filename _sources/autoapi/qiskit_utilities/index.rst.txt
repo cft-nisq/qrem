@@ -1,0 +1,64 @@
+:py:mod:`qiskit_utilities`
+==========================
+
+.. py:module:: qiskit_utilities
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qiskit_utilities.get_qiskit_provider
+   qiskit_utilities.add_gate_to_circuit
+   qiskit_utilities.get_frequencies_from_counts
+   qiskit_utilities.download_multiple_jobs
+   qiskit_utilities.add_counts_dicts
+   qiskit_utilities.run_batches
+
+
+
+.. py:function:: get_qiskit_provider(backend_name: str, provider_data: Dict[str, str] = None)
+
+
+.. py:function:: add_gate_to_circuit(circuit, qreg, q_index, unitary)
+
+
+.. py:function:: get_frequencies_from_counts(counts_dict, crs=None, classical_register=None, shots_number=None, reorder_bits=True)
+
+
+.. py:function:: download_multiple_jobs(backend_name, job_IDs_list, provider_data=None)
+
+
+.. py:function:: add_counts_dicts(all_counts, modulo, dimension)
+
+
+.. py:function:: run_batches(batches, backend_name, shots, saving_IDs_dictionary=dict(saving=False, directory=None, file_name=None, dictionary_to_save={}), provider_data: Optional[Dict[str, str]] = None, verbose_log=True)
+
+   Description:
+       This function takes a list of circuit batches and sends them for execution on the specified backend.
+       User can choose to save the resulting jobs' IDs, using parameters in saving_IDs_dictionary
+   :param : param batches: (list(list(qiskit.circuit.quantumcircuit.QuantumCircuit))): list of batches, where each batch is
+   :param a list of qiskit circuits and each batch has length <= maximum number of circuits in job:
+   :param : param backend_name: (str): if value is of the names of a qiskit simulator: ('qasm_simulator',
+   :param 'statevector_simulator': from 'provider_data'
+   :param 'unitary_simulator'): from 'provider_data'
+   :param provider is chosen to be Aer; in other cases provider is taken: from 'provider_data'
+   :param #TODO: consider cases where other backend names are provided (e.g. aer_simulator)
+   :param : param shots: number of repetitions of each circuit from batches
+   :param : param saving_IDs_dictionary:
+   :param : provider_data: Dict[str]: contains access data required by providers, like user ID etc. If None, as is default,
+   :param this data is obtained from environmental variables by function get_qiskit_provider:
+   :type this data is obtained from environmental variables by function get_qiskit_provider: see function for details
+
+   :returns: list of qiskit jobs (results of qiskit.execute())
+   :rtype: jobs
+
+   Notes:
+
+
+

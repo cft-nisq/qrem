@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.characterization.characterization &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.characterization.characterization_routine" href="../characterization_routine/index.html" />
+    <link rel="prev" title="qrem.characterization" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-characterisation-module">This subpackage <cite>qrem.characterisation</cite> provides a suite of modules fro quantum error characterisation.
+Detailed documentation coming soon.</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.characterization</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/characterization/characterization/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.characterization.characterization">
+<span id="qrem-characterization-characterization"></span><h1><a class="reference internal" href="#module-qrem.characterization.characterization" title="qrem.characterization.characterization"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.characterization</span></code></a><a class="headerlink" href="#module-qrem.characterization.characterization" title="Link to this heading"></a></h1>
+<p>refactored functions with new marginals format</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_all_marginals" title="qrem.characterization.characterization.compute_all_marginals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_all_marginals</span></code></a>(results_dictionary, ...[, ...])</p></td>
+<td><p>#FBM: add multiprocessing for this task</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.characterization.averaged_marginals_to_noise_matrix_ddot" title="qrem.characterization.characterization.averaged_marginals_to_noise_matrix_ddot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">averaged_marginals_to_noise_matrix_ddot</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Return noise matrix from counts dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_single_noise_matrix_ddot" title="qrem.characterization.characterization.compute_single_noise_matrix_ddot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_single_noise_matrix_ddot</span></code></a>(→ Dict[str, ...)</p></td>
+<td><p>Noise matrix for subset of qubits, averaged over all other qubits</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_single_noise_matrix_qdot" title="qrem.characterization.characterization.compute_single_noise_matrix_qdot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_single_noise_matrix_qdot</span></code></a>(→ Dict[str, ...)</p></td>
+<td><p>Noise matrix for subset of qubits, averaged over all other qubits</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_noise_matrices_ddot" title="qrem.characterization.characterization.compute_noise_matrices_ddot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_noise_matrices_ddot</span></code></a>(→ Dict[Tuple, Dict[str, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_errors_POVMs" title="qrem.characterization.characterization.compute_errors_POVMs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_errors_POVMs</span></code></a>(], chopping_threshold, Dict[str, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_correlations_data_pairs" title="qrem.characterization.characterization.compute_correlations_data_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_correlations_data_pairs</span></code></a>(], chopping_threshold, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_reduced_POVMs_and_noise_matrices" title="qrem.characterization.characterization.compute_reduced_POVMs_and_noise_matrices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_reduced_POVMs_and_noise_matrices</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.Overlap" title="qrem.characterization.characterization.Overlap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Overlap</span></code></a>(s1, s2)</p></td>
+<td><p>Function used to create dictionary of overlapes between different Pauli states. It's needed to compute coherence indicator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_indicator_normalization" title="qrem.characterization.characterization.compute_indicator_normalization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_indicator_normalization</span></code></a>(dim, setting1, ...)</p></td>
+<td><p>A function computing normalization factor of coherence indicator. As for now works for two-qubit reduced POVMs</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_pauli_marginals" title="qrem.characterization.characterization.compute_pauli_marginals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_pauli_marginals</span></code></a>(marginals_dictionary, subsets_list)</p></td>
+<td><p>Dictionaries needed to perform computations</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_coherence_indicator" title="qrem.characterization.characterization.compute_coherence_indicator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_coherence_indicator</span></code></a>(marginals_dictionary, ...)</p></td>
+<td><p>Computation of coherence indicator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.perform_noise_model_reconstruction_routine" title="qrem.characterization.characterization.perform_noise_model_reconstruction_routine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perform_noise_model_reconstruction_routine</span></code></a>(...[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.characterization.perform_clustering_routine" title="qrem.characterization.characterization.perform_clustering_routine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perform_clustering_routine</span></code></a>(characterization_data, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.characterization.compute_noise_matrix_dependent" title="qrem.characterization.characterization.compute_noise_matrix_dependent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_noise_matrix_dependent</span></code></a>(→ Dict[str, numpy.ndarray])</p></td>
+<td><p>Return lower-dimensional effective noise matrices acting on qubits_of_interest&quot;</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_all_marginals">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_all_marginals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.bool_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.compute_all_marginals" title="Link to this definition"></a></dt>
+<dd><p>#FBM: add multiprocessing for this task
+#FBM: change subsets_list to be dictionary
+Implements self.compute_marginals for all experimental keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subsets_dictionary</strong> – list of subsets of qubits for which marginals_dictionary should be calculated</p></li>
+<li><p><strong>show_progress_bar</strong> – if True, shows progress bar. Requires “tqdm” package</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.averaged_marginals_to_noise_matrix_ddot">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">averaged_marginals_to_noise_matrix_ddot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">averaged_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.characterization.characterization.averaged_marginals_to_noise_matrix_ddot" title="Link to this definition"></a></dt>
+<dd><p>Return noise matrix from counts dictionary.
+Assuming that the results are given only for qubits of interest.
+:param results_dictionary: dictionary with experiments of the form:</p>
+<p>results_dictionary[input_state_bitstring] = probability_distribution</p>
+<p>where:
+- input_state_bitstring is bitstring denoting classical input state
+- probability_distribution - estimated vector of probabilities for that input state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>noise_matrix: the array representing noise on qubits</p>
+</dd>
+</dl>
+<p>on which the experiments were performed</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_single_noise_matrix_ddot">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_single_noise_matrix_ddot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_missing_columns_with_ideal_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.characterization.characterization.compute_single_noise_matrix_ddot" title="Link to this definition"></a></dt>
+<dd><p>Noise matrix for subset of qubits, averaged over all other qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subset</strong> – subset of qubits we are interested in</p>
+</dd>
+</dl>
+<p>By default takes data from self._marginals_dictionary. If data is not present, then it
+calculates marginals_dictionary for given subset
+and updates the class’s property self.marginals_dictionary</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_single_noise_matrix_qdot">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_single_noise_matrix_qdot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pls'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_missing_columns_with_ideal_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.characterization.characterization.compute_single_noise_matrix_qdot" title="Link to this definition"></a></dt>
+<dd><p>Noise matrix for subset of qubits, averaged over all other qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subset</strong> – subset of qubits we are interested in</p>
+</dd>
+</dl>
+<p>By default takes data from self._marginals_dictionary. If data is not present, then it
+calculates marginals_dictionary for given subset
+and updates the class’s property self.marginals_dictionary</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_noise_matrices_ddot">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_noise_matrices_ddot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.characterization.characterization.compute_noise_matrices_ddot" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_errors_POVMs">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_errors_POVMs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_subsets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POVMs_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[('wc',</span> <span class="pre">'classical')]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chopping_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.characterization.characterization.compute_errors_POVMs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_correlations_data_pairs">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_correlations_data_pairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POVMs_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[('ac',</span> <span class="pre">'classical')]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chopping_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.characterization.characterization.compute_correlations_data_pairs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_reduced_POVMs_and_noise_matrices">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_reduced_POVMs_and_noise_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/characterization_data/index.html#qrem.qtypes.characterization_data.CharacterizationData" title="qrem.qtypes.characterization_data.CharacterizationData"><span class="pre">qrem.qtypes.characterization_data.CharacterizationData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.compute_reduced_POVMs_and_noise_matrices" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.Overlap">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">Overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.Overlap" title="Link to this definition"></a></dt>
+<dd><p>Function used to create dictionary of overlapes between different Pauli states. It’s needed to compute coherence indicator
+Input: s1,s2 two symbols, each corresponding to one of the Pauli states, as in the SeparableCircuitsCreator class</p>
+<p>Output: value of squared scalar product between the states</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_indicator_normalization">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_indicator_normalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setting1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setting2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap_dic</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.compute_indicator_normalization" title="Link to this definition"></a></dt>
+<dd><p>A function computing normalization factor of coherence indicator. As for now works for two-qubit reduced POVMs</p>
+<p>Input:
+dim - dimension of the reduced subspace
+setting1,setting2 - strings consisting of two symbols each, corresponding to an inout Pauli eigenstate
+overlap_dic - a dictionary consisting of squared scalar product of two Pauli eigenstates</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_pauli_marginals">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_pauli_marginals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.compute_pauli_marginals" title="Link to this definition"></a></dt>
+<dd><p>Dictionaries needed to perform computations</p>
+<dl class="simple">
+<dt>setting dictionary - keys correspond to alphabet enocding input states</dt><dd><p>items correspond to unnormalized probability distributions for a given input state on subset of qubits</p>
+</dd>
+<dt>normalization dictionary</dt><dd><p>keys correspond to alphabet encoding input states
+items correspond to number of times that a particular input state appear in marginals</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_coherence_indicator">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_coherence_indicator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['2',</span> <span class="pre">'3',</span> <span class="pre">'4',</span> <span class="pre">'5']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.compute_coherence_indicator" title="Link to this definition"></a></dt>
+<dd><p>Computation of coherence indicator</p>
+<p>TVD between probability distributions generated by different input X,Y Pauli eigenstates of two qubits</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.perform_noise_model_reconstruction_routine">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">perform_noise_model_reconstruction_routine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data_container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/characterization_data/index.html#qrem.qtypes.characterization_data.CharacterizationData" title="qrem.qtypes.characterization_data.CharacterizationData"><span class="pre">qrem.qtypes.characterization_data.CharacterizationData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'DDOT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.perform_noise_model_reconstruction_routine" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.perform_clustering_routine">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">perform_clustering_routine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering_functions_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perform_neighbors_search</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.characterization.perform_clustering_routine" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.characterization.compute_noise_matrix_dependent">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.characterization.</span></span><span class="sig-name descname"><span class="pre">compute_noise_matrix_dependent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubits_of_interest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neighbors_of_interest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ddot'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.characterization.characterization.compute_noise_matrix_dependent" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Return lower-dimensional effective noise matrices acting on qubits_of_interest”</dt><dd><p>conditioned on input states of neighbors_of_interest</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubits_of_interest</strong> – labels of qubits in marginal  we are interested in</p></li>
+<li><p><strong>neighbors_of_interest</strong> – labels of qubits that affect noise matrix on qubits_of_interest</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return conditional_noise_matrices_dictionary<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary with structure</p>
+</dd>
+</dl>
+<p>conditional_noise_matrices_dictionary[‘averaged’] =
+noise matrix on qubits_of_interest averaged over input states of other qubits</p>
+<p>and</p>
+<p>conditional_noise_matrices_dictionary[input_state_neighbors_bitstring] =
+noise matrix on qubits_of_interest conditioned on input state of neighbors being
+input_state_neighbors_bitstring</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="qrem.characterization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../characterization_routine/index.html" class="btn btn-neutral float-right" title="qrem.characterization.characterization_routine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

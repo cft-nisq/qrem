@@ -1,0 +1,393 @@
+:py:mod:`qrem.common.math`
+==========================
+
+.. py:module:: qrem.common.math
+
+.. autoapi-nested-parse::
+
+   QREM Math Module
+   ================
+
+   qrem.common.math module contains all mathematical funcitons,
+   that are useful and used throughout the qrem package.
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.math.Constants
+   qrem.common.math.GeneralTensorCalculator
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.math.outer_product
+   qrem.common.math.ketbra
+   qrem.common.math.matrix_zero_check
+   qrem.common.math.identity_check
+   qrem.common.math.round_array_to_ndigits
+   qrem.common.math.is_pauli_x
+   qrem.common.math.is_matrix_stochastic
+   qrem.common.math.spectral_decomposition
+   qrem.common.math.kronecker_product
+   qrem.common.math.get_density_matrix
+   qrem.common.math.get_offdiagonal_of_matrix
+   qrem.common.math.apply_unitary_channel
+   qrem.common.math.get_k_local_subsets
+   qrem.common.math.get_sample_from_multinomial_distribution
+   qrem.common.math.compute_TVD
+   qrem.common.math.permute_composite_matrix
+   qrem.common.math.permute_composite_vector
+   qrem.common.math.qubit_swap
+   qrem.common.math.permute_vector
+   qrem.common.math.permute_matrix
+   qrem.common.math.partial_trace
+   qrem.common.math.check_trace_preservation
+   qrem.common.math.check_complete_positivity
+   qrem.common.math.check_complete_positivity_and_trace_preservation
+
+
+
+.. py:class:: Constants
+
+
+   Contains static methods that return helpful mathematical constants, matrices, arrays etc.
+
+   .. attribute:: pauli_dict_test
+
+
+
+      :type: test for attribute documentation
+
+   .. rubric:: Notes
+
+   The choice to use static methods rather than variables was made for documentation/pylint readability.
+   Before Python 3.11 the way to go would be to wrap @classmethod around @property, so you could access this methods as e.g Constant.pauli_sigmas['id'].
+   It is only possible however in Python 3.9-3.10.
+
+   Another possibility would be to use (i) module variable or (ii) class variable, however first one is hard to document to provide
+   e.g. nice hints in PyCharm or VSCode, with the second you can do this for example with Attributes section at class-level docstring,
+   but it won't give you e.g. nice hover hints in VSCode.
+   For that reason now we need to bear with a bit ugly:
+   Constant.pauli_sigmas()['id']
+
+   .. py:attribute:: pauli_dict_test
+
+      
+
+   .. py:method:: pauli_sigmas()
+      :staticmethod:
+
+      Returns a dictionary with Paili sigmas: id, I, X, Y, Z; all dictionary values are numpy arrays with complex elements.
+
+
+   .. py:method:: bell_states()
+      :staticmethod:
+
+      Returns a dictionary with Bell states : phi+, phi-; psi+; psi-; all dictionary values are numpy arrays.
+
+
+   .. py:method:: standard_gates()
+      :staticmethod:
+
+      Returns a dictionary with Standard Gates : 1,I,id,X,Y,Z,S,T,H,SWAP; all dictionary values are numpy complex arrays.
+
+
+   .. py:method:: pauli_eigenkets()
+      :staticmethod:
+
+      Returns a dictionary with Pauli Eigenkets : x+,x-,y+,y-,z+,zi; all dictionary values are numpy complex arrays.
+
+
+   .. py:method:: pauli_eigenkets_listed(order='ZXY')
+      :staticmethod:
+
+      Returns a list with Pauli Eigenkets, Default order z+z-x+x-y+y-. Order is defined by a strin, e.g. "ZYX or "XYZ"
+
+
+   .. py:method:: pauli_measurements()
+      :staticmethod:
+
+      Returns a dictionary with Pauli Measurments on 'X', 'Y', 'Z'.
+
+
+
+.. py:function:: outer_product(ket1, ket2=None)
+
+   Outer product of two vectors.
+
+   .. rubric:: Notes
+
+   - PP: should it just be np.outer(ket1, ket2)?
+   - MO: what about complex entries?
+
+
+.. py:function:: ketbra(ket)
+
+   Ketbra operation. Can be simplified with numpy
+
+
+
+.. py:function:: matrix_zero_check(potential_zero_matrix: numpy.ndarray, significant_digits=SIGNIFICANT_DIGITS) -> bool
+
+   Functions that checks if matrix is zero. Wraps numpy allclose.
+
+   :param potential_zero_matrix:
+   :type potential_zero_matrix: NDArray
+   :param significant_digits:
+   :type significant_digits: int
+
+   :returns: True if matrix is 0 with given significant digits accuracy
+   :rtype: bool
+
+
+.. py:function:: identity_check(m_a, significant_digits=SIGNIFICANT_DIGITS) -> bool
+
+   Function that checks if matrix is identity (up to global phase), with significant_digits accuracy.
+
+   :returns: If matrix is identity  returns True
+   :rtype: bool
+
+
+.. py:function:: round_array_to_ndigits(m_a: numpy.ndarray, significant_digits=SIGNIFICANT_DIGITS) -> numpy.ndarray
+
+   perform round operation on a given array m_a.
+
+   .. rubric:: Notes
+
+   - PP: refactored from some very werid construction. Should have the same functionality.
+
+
+.. py:function:: is_pauli_x(m_a) -> bool
+
+   Is a matrix an X Pauli Sigma?
+
+
+.. py:function:: is_matrix_stochastic(potentially_stochastic_matrix: numpy.ndarray, stochasticity_type: Optional[str] = 'left', significant_digits: Optional[float] = SIGNIFICANT_DIGITS) -> bool
+
+   Test stochasticity of a given input matrix: left|right|ortho. Default is left.
+   You can specify significant digits of the check, default is 9 (accuracy 10^9).
+
+   :param potentially_stochastic_matrix:
+   :type potentially_stochastic_matrix: NDArray
+   :param stochasticity_type: string specyfing what type of stochasticity we want to tests; otrho option is equal to doubly
+   :type stochasticity_type: {'left', 'right', 'ortho', 'doubly'}
+   :param significant_digits: significant digits specifying the accuracy to which entries need to be positive rows/ columns
+   :param default=9: significant digits specifying the accuracy to which entries need to be positive rows/ columns
+
+   :returns: is matrix stochastic
+   :rtype: bool
+
+   :raises ValueError: Wrong stochasticity_type of stochasticity
+
+   .. rubric:: Notes
+
+
+.. py:function:: spectral_decomposition(matrix: numpy.ndarray, hermitian=False)
+
+   Perform the spectral decomposition of a matrix.
+
+   Decomposes a matrix into its eigenvalues and the corresponding projectors.
+   This function can handle both Hermitian and non-Hermitian matrices.
+
+   :param matrix: The matrix to be decomposed.
+   :type matrix: np.ndarray
+   :param hermitian: A flag indicating whether the matrix is Hermitian (default is False).
+   :type hermitian: bool, optional
+
+   :returns: A tuple (eigenvalues, projectors), where 'eigenvalues' is an array of eigenvalues
+             and 'projectors' is a list of corresponding projector matrices.
+   :rtype: tuple
+
+
+.. py:function:: kronecker_product(arguments: List[numpy.typing.ArrayLike]) -> numpy.typing.NDArray
+
+   applies kronecker product to all arrays in the arguments list
+
+
+.. py:function:: get_density_matrix(ket)
+
+   Convert a ket (state vector) into a density matrix.
+
+   :param ket: The ket (state vector) to be converted.
+   :type ket: array_like
+
+   :returns: The density matrix corresponding to the given ket.
+   :rtype: ndarray
+
+
+.. py:function:: get_offdiagonal_of_matrix(matrix: numpy.ndarray) -> numpy.ndarray
+
+   Extract the off-diagonal part of a matrix.
+
+   This function calculates and returns the off-diagonal part of a given matrix, setting its diagonal elements to zero.
+
+   :param matrix: The matrix from which to extract the off-diagonal part.
+   :type matrix: np.ndarray
+
+   :returns: The off-diagonal part of the input matrix.
+   :rtype: np.ndarray
+
+
+.. py:function:: apply_unitary_channel(matrix_to_be_rotated, unitary_operator) -> numpy.ndarray
+
+   Apply unitary channel to a matrix: unitary_operator @ matrix_to_be_rotated @ np.matrix.getH(unitary_operator)
+
+
+
+.. py:function:: get_k_local_subsets(number_of_elements: int, subset_size: int, all_sizes_up_to_k=False) -> List
+
+   Create all subsets of size (locality) k=subset_size  of n=number_of_elements elements set.
+   If all_sizes_up_to_k is set to True, will return all subsets of size from 1 up to k.
+
+   :param number_of_elements: number of qubits
+   :type number_of_elements: int
+   :param subset_size: max number of element in a subset
+   :type subset_size: int
+   :param all_sizes_up_to_k: should all sizes from 1 up to k be taken into consideration
+   :type all_sizes_up_to_k: bool
+
+   :returns: list of all subsets up to k=subset_size number of elements
+   :rtype: List
+
+
+.. py:function:: get_sample_from_multinomial_distribution(probability_distribution: numpy.typing.ArrayLike, seed=None, method='numpy') -> int
+
+   Draw one single sample from multinomial distribution (numpy implementation only for now)
+
+   :param probability_distribution: list of probability distribution values
+   :type probability_distribution: List(int)
+   :param method: method of drawing, currently based on numpy random and multinomial functions
+   :type method: str
+   :param seed: seed to initialize numpy random. Default is None
+   :type seed: int
+
+   :returns: single sample
+   :rtype: int
+
+
+.. py:function:: compute_TVD(p: numpy.ndarray, q: numpy.ndarray)
+
+   Calculation of TVD between two probability distributions.
+
+
+.. py:function:: permute_composite_matrix(qubits_list, noise_matrix)
+
+
+.. py:function:: permute_composite_vector(qubits_list, vector)
+
+
+.. py:function:: qubit_swap(n, transposition=(1, 1))
+
+   Create a swap operation matrix for two qubits in a Hilbert space of dimension 2^n.
+
+   This function generates a unitary matrix representing the SWAP operation
+   between two specified qubits in a quantum system of 'n' qubits.
+   The qubits are identified by their positions in the quantum register,
+   with numbering starting from 1 for convenience.
+
+   :param n: The number of qubits in the quantum system.
+   :type n: int
+   :param transposition: A tuple (i, j) representing the qubits to be swapped,
+                         where i and j are the positions of the qubits in the quantum register,
+                         starting from 1. Default is (1, 1), meaning no swap is performed.
+   :type transposition: tuple of int, optional
+
+   :returns: A 2^n x 2^n unitary matrix representing the SWAP operation
+             between the specified qubits in a quantum register of 'n' qubits.
+   :rtype: np.ndarray
+
+
+.. py:function:: permute_vector(vector, n, transposition)
+
+   Apply a qubit swap operation to a vector in a Hilbert space of dimension 2^n.
+
+   This function permutes the components of a quantum state vector according
+   to a specified SWAP operation between two qubits in a quantum system
+   of 'n' qubits. The permutation is defined by a SWAP matrix generated
+   by the 'qubit_swap' function.
+
+   :param vector: The quantum state vector to be permuted, represented as a numpy array.
+   :type vector: np.ndarray
+   :param n: The number of qubits in the quantum system.
+   :type n: int
+   :param transposition: A tuple (i, j) specifying the qubits to be swapped. Numbering starts from 1.
+   :type transposition: tuple of int
+
+   :returns: The permuted quantum state vector after applying the SWAP operation.
+   :rtype: np.ndarray
+
+
+.. py:function:: permute_matrix(matrix, n, transposition)
+
+   Apply a qubit swap operation to a matrix in a Hilbert space of dimension 2^n.
+
+   This function permutes the rows and columns of a square matrix
+   according to a specified SWAP operation between two qubits in a quantum system
+   of 'n' qubits. The permutation is carried out by conjugating the matrix with
+   the SWAP matrix generated by the 'qubit_swap' function.
+
+   :param matrix: The matrix to be permuted, represented as a numpy array.
+   :type matrix: np.ndarray
+   :param n: The number of qubits in the quantum system.
+   :type n: int
+   :param transposition: A tuple (i, j) specifying the qubits to be swapped. Numbering starts from 1.
+   :type transposition: tuple of int
+
+   :returns: The permuted matrix after applying the SWAP operation.
+   :rtype: np.ndarray
+
+
+.. py:function:: partial_trace(density_operator: numpy.array, dim1: int, dim2: int, subsystem=1) -> numpy.array
+
+
+.. py:function:: check_trace_preservation(density_operator: numpy.array, dim1: int, dim2: int, n_precision=10**(-3)) -> bool
+
+
+.. py:function:: check_complete_positivity(density_operator: numpy.array, n_precision=10**(-6)) -> bool
+
+
+.. py:function:: check_complete_positivity_and_trace_preservation(density_operator: numpy.array, dim1: int, dim2: int) -> bool
+
+
+.. py:class:: GeneralTensorCalculator(f: Optional[Callable] = kronecker_product)
+
+
+   .. py:method:: calculate_tensor(objects: list) -> dict
+
+
+   .. py:method:: calculate_tensor_to_increasing_list(objects: list) -> list
+
+
+   .. py:method:: __get_increasing_objects_dict_from_list(d: dict) -> list
+
+
+   .. py:method:: count_tensor_value_for_combination(combination, objects)
+
+
+   .. py:method:: __get_indices_combinations(objects: list) -> list
+
+
+   .. py:method:: __initialize_tensor(indices_combination) -> None
+
+
+   .. py:method:: __initialize_combination_path(tensor, combination)
+
+
+

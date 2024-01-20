@@ -1,0 +1,65 @@
+:py:mod:`qrem.pipelines.run_ibm_experiment`
+===========================================
+
+.. py:module:: qrem.pipelines.run_ibm_experiment
+
+.. autoapi-nested-parse::
+
+   Run IBM Experiment pipeline
+
+   This module allows to run a characterization/mitigation/benchmark experiment
+   on a chosen IBM quantum machine. It uses a config file, which example can be found in
+   <configs/ default_ibm.ini> file. Read the config to understand avialable parameters.
+
+
+    documentation as specified by the `NumPy
+   Documentation HOWTO`_. Docstrings may extend over multiple lines. Sections
+   are created with a section header followed by an underline of equal length.
+
+   .. rubric:: Example
+
+   You can run experiment by (i) providing a given config via -C argument, for example
+
+       $ python run_ibm_experiment.py -C \path\to\experiment\config.ini
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.pipelines.run_ibm_experiment.run
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.pipelines.run_ibm_experiment.CONFIG_PATH
+   qrem.pipelines.run_ibm_experiment.argv
+
+
+.. py:data:: CONFIG_PATH
+   :value: ['--config_file', 'C:\\CFT Chmura\\Theory of Quantum...
+
+   
+
+.. py:function:: run(cmd_args=CONFIG_PATH, verbose_log=True)
+
+
+.. py:data:: argv
+
+   
+

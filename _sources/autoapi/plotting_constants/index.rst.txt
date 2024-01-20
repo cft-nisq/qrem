@@ -1,0 +1,94 @@
+:py:mod:`plotting_constants`
+============================
+
+.. py:module:: plotting_constants
+
+.. autoapi-nested-parse::
+
+   Constants used in visualisation module, e.g. colors, line widths etc.
+
+
+
+Module Contents
+---------------
+
+.. py:data:: WHITE
+   :value: '#FFFFFF'
+
+   
+
+.. py:data:: radius_size
+   :value: 0.36
+
+   
+
+.. py:data:: arrow_tip_size
+   :value: 0.5
+
+   
+
+.. py:data:: buff_val
+   :value: 0.3
+
+   
+
+.. py:data:: stroke_width_thin
+   :value: 4
+
+   
+
+.. py:data:: stroke_width_medium
+   :value: 5
+
+   
+
+.. py:data:: stroke_width_thick
+   :value: 6
+
+   
+
+.. py:data:: max_stroke_width_to_length_ratio
+   :value: 50
+
+   
+
+.. py:data:: legend_bar_height
+   :value: 6
+
+   
+
+.. py:data:: legend_bar_width
+   :value: 0.3
+
+   
+
+.. py:data:: opacity_of_unused
+   :value: 1
+
+   
+
+.. py:data:: lightest_gray
+   :value: '#F5F5F5'
+
+   
+
+.. py:data:: medium_gray
+
+   
+
+.. py:data:: darkest_gray
+
+   
+
+.. py:data:: cmap
+
+   
+
+.. py:data:: colors
+
+   
+
+.. py:data:: color_map
+
+   
+

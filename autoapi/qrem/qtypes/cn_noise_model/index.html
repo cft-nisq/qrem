@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.qtypes.cn_noise_model &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.qtypes.ctmp_noise_model" href="../ctmp_noise_model/index.html" />
+    <link rel="prev" title="qrem.qtypes.circuit_collection" href="../circuit_collection/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#id1">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.cn_noise_model</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/qtypes/cn_noise_model/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.qtypes.cn_noise_model">
+<span id="qrem-qtypes-cn-noise-model"></span><h1><a class="reference internal" href="#module-qrem.qtypes.cn_noise_model" title="qrem.qtypes.cn_noise_model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.cn_noise_model</span></code></a><a class="headerlink" href="#module-qrem.qtypes.cn_noise_model" title="Link to this heading"></a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.qtypes.cn_noise_model.CNModelData" title="qrem.qtypes.cn_noise_model.CNModelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CNModelData</span></code></a></p></td>
+<td><p>Handles data for the Clusters and Neighbors (CN) noise model in quantum systems.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.qtypes.cn_noise_model._t1" title="qrem.qtypes.cn_noise_model._t1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_t1</span></code></a>(test_model)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.qtypes.cn_noise_model._t2" title="qrem.qtypes.cn_noise_model._t2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_t2</span></code></a>(test_model)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.qtypes.cn_noise_model._qubits_in_cluster_1" title="qrem.qtypes.cn_noise_model._qubits_in_cluster_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_qubits_in_cluster_1</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.qtypes.cn_noise_model.</span></span><span class="sig-name descname"><span class="pre">CNModelData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase" title="qrem.qtypes.datastructure_base.DataStructureBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qrem.qtypes.datastructure_base.DataStructureBase</span></code></a></p>
+<p>Handles data for the Clusters and Neighbors (CN) noise model in quantum systems.</p>
+<p>This class is used for storing results from the CN noise model reconstruction algorithm and for mitigating readout errors
+on marginal probability distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_of_qubits</strong> (<em>int</em>) – The total number of qubits in the quantum system.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.clusters_tuple">
+<span class="sig-name descname"><span class="pre">clusters_tuple</span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.clusters_tuple" title="Link to this definition"></a></dt>
+<dd><p>Information about clusters of qubits, where each tuple contains indices of qubits belonging to a cluster  e.g. ((0,2),(1,3).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[Tuple]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.noise_matrices">
+<span class="sig-name descname"><span class="pre">noise_matrices</span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.noise_matrices" title="Link to this definition"></a></dt>
+<dd><p>Noise matrices associated with each cluster, indexed by tuples of qubit indices. Eg. (0:2) : [[0.8,0,0,0], [0.2,1,0.1,0],[0,0,0.9,0],[0,0,0,1]].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[Tuple,NDArray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.inverse_noise_matrices">
+<span class="sig-name descname"><span class="pre">inverse_noise_matrices</span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.inverse_noise_matrices" title="Link to this definition"></a></dt>
+<dd><p>Inverse of the noise matrices, computed and stored for each cluster.  This property is filled automatically when noise_matrices property is set via set_noise_matrices_dictionary method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.qubit_in_cluster_membership">
+<span class="sig-name descname"><span class="pre">qubit_in_cluster_membership</span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.qubit_in_cluster_membership" title="Link to this definition"></a></dt>
+<dd><p>Maps individual qubits to the cluster they belong to. Key in the dictionary is a tuple constructed form a qubit index. Corresponding value is a cluster to which the qubit belongs.
+E.g. (2,) : (0,2,5). This property is filled automatically when noise_matrices property is set via set_noise_matrices_dictionary method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[Tuple,Tuple]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.composite_inverse_noise_matrices">
+<span class="sig-name descname"><span class="pre">composite_inverse_noise_matrices</span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.composite_inverse_noise_matrices" title="Link to this definition"></a></dt>
+<dd><p>Stores the composite inverse noise matrices for different qubit combinations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.clusters_neighborhoods">
+<span class="sig-name descname"><span class="pre">clusters_neighborhoods</span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.clusters_neighborhoods" title="Link to this definition"></a></dt>
+<dd><p>Information about the neighborhoods of each cluster.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_noise_model</span> <span class="pre">:</span></span></dt>
+<dd><p>Sets up the noise model by initializing clusters, noise matrices, and their inverses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_extended_inverse_noise_matrices</span> <span class="pre">:</span></span></dt>
+<dd><p>Computes the extended inverse noise matrix for a given marginal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_clusters_in_marginal_list</span> <span class="pre">:</span></span></dt>
+<dd><p>Returns the list of clusters involved in a specified marginal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">...</span></span></dt>
+<dd></dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">CNModelData</span><span class="p">(</span><span class="n">number_of_qubits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">set_noise_model</span><span class="p">({</span><span class="n">_qubits_in_cluster_1</span><span class="p">:</span> <span class="n">_noise_matrix_1</span><span class="p">,</span> <span class="n">_qubits_in_cluster_2</span><span class="p">:</span> <span class="n">_noise_matrix_2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">clusters_tuple</span><span class="p">)</span>
+<span class="go">((_qubits_in_cluster_1,), (_qubits_in_cluster_2,))</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData._establish_qubit_in_cluster_dictionary">
+<span class="sig-name descname"><span class="pre">_establish_qubit_in_cluster_dictionary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData._establish_qubit_in_cluster_dictionary" title="Link to this definition"></a></dt>
+<dd><p>Method used to establish membership of qubits in clusters.
+It constructs a dictionary with key - tuple consisting of a qubit index e.g. (0,) and value - tuple storing corresponding cluster e.g. (0,3)
+It is automatically called when set_clusters_tuple method is used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData._compute_inverse_noise_matrices">
+<span class="sig-name descname"><span class="pre">_compute_inverse_noise_matrices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData._compute_inverse_noise_matrices" title="Link to this definition"></a></dt>
+<dd><p>Method that creates inverse noise matrix dictionary for an instance of CN noise model.
+In the dictionary key corresponds to a tuple storing a cluster, and value to an numpy array storing inverse noise matrix e.g. (0,5): 4 by 4 numpy array.
+It is automatically called when set_noise_matrices_dictionary is used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.set_clusters_tuple">
+<span class="sig-name descname"><span class="pre">set_clusters_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusters_tuple</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.set_clusters_tuple" title="Link to this definition"></a></dt>
+<dd><p>Method fills clusters_tuple property. It is called when properties of a CN noise model are established via set_noise_model method.
+In addition the method calls _establish_qubit_in_cluster_dictionary, which fills qubit_in_cluster_membership property</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.set_clusters_neighborhoods">
+<span class="sig-name descname"><span class="pre">set_clusters_neighborhoods</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusters_neighborhoods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.set_clusters_neighborhoods" title="Link to this definition"></a></dt>
+<dd><p>Method fills clusters_neighborhoods property. It is called when properties of a CN noise model are established via set_noise_model method.
+In addition the method calls _establish_qubit_in_cluster_dictionary, which fills qubit_in_cluster_membership property</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.set_noise_matrices_dictionary">
+<span class="sig-name descname"><span class="pre">set_noise_matrices_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_matrices_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.set_noise_matrices_dictionary" title="Link to this definition"></a></dt>
+<dd><p>Method fills noise_matrices property. It is called when properties of a CN noise model are established via set_noise_model method.
+In addition the method calls _compute_inverse_noise_matrices, which fills inverse_noise_matrices property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>noise_matrices_dictionary</strong> (<em>dictionary</em><em> (</em><em>key - tuple</em><em> of </em><em>integers</em><em>, </em><em>value - array</em><em>)</em>) – Dictionary storing noise matrices for a CN noise model. Key in the dictionary is a tuple with indices of qubits belonging to a cluster.
+Corresponding value is an array storing noise matrix associated with the cluster. Eg. (0:2) : [[0.8,0,0,0], [0.2,1,0.1,0],[0,0,0.9,0],[0,0,0,1]].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.set_noise_model">
+<span class="sig-name descname"><span class="pre">set_noise_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_matrices_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.set_noise_model" title="Link to this definition"></a></dt>
+<dd><p>Main method used to fill properties of CN noise model. The following properties are filled when the method is called:
+1) clusters_tuple
+2) qubit_in_cluster_membership
+3) noise_matrices
+4) inverse_noise_matrices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>noise_matrices_dictionary</strong> (<em>dictionary</em><em> (</em><em>key - tuple</em><em> of </em><em>integers</em><em>, </em><em>value - array</em><em>)</em>) – Dictionary storing noise matrices for a CN noise model. Key in the dictionary is a tuple with indices of qubits belonging to a cluster.
+Corresponding value is an array storing noise matrix associated with the cluster. Eg. (0:2) : [[0.8,0,0,0], [0.2,1,0.1,0],[0,0,0.9,0],[0,0,0,1]].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.compute_extended_inverse_noise_matrices">
+<span class="sig-name descname"><span class="pre">compute_extended_inverse_noise_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusters_in_marginal_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.compute_extended_inverse_noise_matrices" title="Link to this definition"></a></dt>
+<dd><p>Function determines inverse noise matrix for a given marginal. It is used as a step in mitigation_marginal function.
+The matrix is constructed as a tensor product on inverse noise matrices involved in a marginal, when it is necessary
+the matrix is permuted to ensure proper ordering of qubits indices. E.g. for a cluster_in_marginal_list
+[(0,2),(1,3)], the returned matrix corresponds to qubits ordered as (0,1,2,3).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noise_model</strong> (<em>object</em><em> of </em><em>CNModelData class</em>) – An object of CNModelData class</p></li>
+<li><p><strong>clusters_in_marginal_list</strong> – A list of tuples with clusters involved in the marginal</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>An inverse noise matrix for qubits specified in clusters_in_marginal_list, qubits are sorted in ascending order</em></p></li>
+<li><p><em>(e.g. for a clusters_in_marginal_list =[(0,4),(1,8)], indices of the inverse noise matrix indices correspond to qubits in the order (0,1,4,8) )</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.get_clusters_in_marginal_list">
+<span class="sig-name descname"><span class="pre">get_clusters_in_marginal_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.get_clusters_in_marginal_list" title="Link to this definition"></a></dt>
+<dd><p>Function creates a list of clusters that are involved in a marginal. Used in mitigation routines.
+For a given marginal inspects provided noise model and checks clusters membership of qubits form
+marginal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>marginal</strong> (<em>tuple</em>) – A tuple specifying marginal</p></li>
+<li><p><strong>noise_model</strong> (<em>object</em><em> of </em><em>CNModelData class</em>) – An object of CNModelData class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tuples involved in the input marginal</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>clusters_in_marginal_list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.get_clusters_and_neighborhoods_in_marginal_dictionary">
+<span class="sig-name descname"><span class="pre">get_clusters_and_neighborhoods_in_marginal_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.get_clusters_and_neighborhoods_in_marginal_dictionary" title="Link to this definition"></a></dt>
+<dd><p>Function creates a list of clusters that are involved in a marginal. Used in mitigation routines.
+For a given marginal inspects provided noise model and checks clusters membership of qubits form
+marginal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>marginal</strong> (<em>tuple</em>) – A tuple specifying marginal</p></li>
+<li><p><strong>noise_model</strong> (<em>object</em><em> of </em><em>CNModelData class</em>) – An object of CNModelData class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tuples involved in the input marginal</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>clusters_in_marginal_list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.get_neighbors_in_marginal">
+<span class="sig-name descname"><span class="pre">get_neighbors_in_marginal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.get_neighbors_in_marginal" title="Link to this definition"></a></dt>
+<dd><p>Function creates a dictionary with clusters and neighbors that belong to a marginal (it can happen that clusters’ neighbors do not belong to other clusters that form a marginal .
+For a given marginal, and clusters and neighbors, membership of neighbors in the marginal is checked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>marginal</strong> (<em>tuple</em>) – A tuple specifying marginal</p></li>
+<li><p><strong>noise_model</strong> (<em>object</em><em> of </em><em>CNModelData class</em>) – An object of CNModelData class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tuples involved in the input marginal</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>clusters_in_marginal_list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.get_noise_matrices_indexes">
+<span class="sig-name descname"><span class="pre">get_noise_matrices_indexes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.get_noise_matrices_indexes" title="Link to this definition"></a></dt>
+<dd><p>Function creates a dictionary with indices of state dependent noise matrices that should be used to compute noise matrix inverse,</p>
+<p>It is used during error  mitigation of CN noise model with neighbors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>marginal</strong> (<em>tuple</em>) – A tuple specifying marginal</p></li>
+<li><p><strong>noise_model</strong> (<em>object</em><em> of </em><em>CNModelData class</em>) – An object of CNModelData class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with a key - cluster and value - tuple of indicies to be averaged over or a string ‘averaged’</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>neighbors_indices_to_compute_average</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.compute_extended_inverse_noise_matrices_state_dependent">
+<span class="sig-name descname"><span class="pre">compute_extended_inverse_noise_matrices_state_dependent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusters_in_marginal_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marginal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.compute_extended_inverse_noise_matrices_state_dependent" title="Link to this definition"></a></dt>
+<dd><p>Function determines inverse noise matrix for a given marginal. It is used as a step in mitigation_marginal function.
+The matrix is constructed as a tensor product on inverse noise matrices involved in a marginal, when it is necessary
+the matrix is permuted to ensure proper ordering of qubits indices. E.g. for a cluster_in_marginal_list
+[(0,2),(1,3)], the returned matrix corresponds to qubits ordered as (0,1,2,3).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noise_model</strong> (<em>object</em><em> of </em><em>CNModelData class</em>) – An object of CNModelData class</p></li>
+<li><p><strong>clusters_in_marginal_list</strong> – A list of tuples with clusters involved in the marginal</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>An inverse noise matrix for qubits specified in clusters_in_marginal_list, qubits are sorted in ascending order</em></p></li>
+<li><p><em>(e.g. for a clusters_in_marginal_list =[(0,4),(1,8)], indices of the inverse noise matrix indices correspond to qubits in the order (0,1,4,8) )</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model.CNModelData.compute_specific_state_dependent_noise_matrix">
+<span class="sig-name descname"><span class="pre">compute_specific_state_dependent_noise_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cluster</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicies</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#qrem.qtypes.cn_noise_model.CNModelData.compute_specific_state_dependent_noise_matrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model._t1">
+<span class="sig-prename descclassname"><span class="pre">qrem.qtypes.cn_noise_model.</span></span><span class="sig-name descname"><span class="pre">_t1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qrem.qtypes.cn_noise_model.CNModelData" title="qrem.qtypes.cn_noise_model.CNModelData"><span class="pre">CNModelData</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model._t1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model._t2">
+<span class="sig-prename descclassname"><span class="pre">qrem.qtypes.cn_noise_model.</span></span><span class="sig-name descname"><span class="pre">_t2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qrem.qtypes.cn_noise_model.CNModelData" title="qrem.qtypes.cn_noise_model.CNModelData"><span class="pre">CNModelData</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.qtypes.cn_noise_model._t2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.qtypes.cn_noise_model._qubits_in_cluster_1">
+<span class="sig-prename descclassname"><span class="pre">qrem.qtypes.cn_noise_model.</span></span><span class="sig-name descname"><span class="pre">_qubits_in_cluster_1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0,</span> <span class="pre">3)</span></em><a class="headerlink" href="#qrem.qtypes.cn_noise_model._qubits_in_cluster_1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../circuit_collection/index.html" class="btn btn-neutral float-left" title="qrem.qtypes.circuit_collection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ctmp_noise_model/index.html" class="btn btn-neutral float-right" title="qrem.qtypes.ctmp_noise_model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+:py:mod:`qrem.common.probability`
+=================================
+
+.. py:module:: qrem.common.probability
+
+.. autoapi-nested-parse::
+
+   Quantum Readout Error Mitigation (QREM) Probability Module
+   ==========================================================
+
+   This module is part of the QREM package, designed for performing various operations related to
+   the computation of probability vectors, stochastic matrices, marginal distributions etc.
+   in quantum experiments. It includes among others functions for  validating probability vectors, generating
+   random stochastic matrices, and computing marginal distributions from experimental results.
+
+
+   Functions
+   ---------
+   is_valid_probability_vector(examined_vector, threshold=1e-5)
+       Validates whether a given list of numbers forms a valid probability vector.
+
+   find_closest_prob_vector_l1(quasiprobability_vector: List[float], method='picos')
+       Find the closest probability vector to a quasiprobability vector using L1 norm.
+
+   find_closest_prob_vector_l2find_closest_prob_vector_l2(quasiprobability_vector: List[float])
+       Find the closest probability vector to a given quasiprobability vector using Euclidean norm
+
+   random_stochastic_matrix(size, type='left', diagonal=1.0)
+       Generates a random stochastic matrix of a specified type and size.
+
+   compute_marginals(results_dictionary, subsets_list, print_progress_bar=False, normalization=False)
+       Computes marginal distributions for given experimental settings and marginal lists.
+
+   compute_marginals_multiprocessing(results_dictionary, subsets_list, multiprocessing=False, number_of_threads=None, print_progress_bar=False, normalization=False)
+       Computes marginals, optionally using multiprocessing for performance.
+
+   compute_marginal_of_probability_distribution(global_probability_distribution, bits_of_interest, register_names=None)
+       Returns the marginal distribution from a vector of global distribution.
+
+   calculate_total_variation_distance(p: np.array, q: np.array)
+       alculate the total variation distance between two probability vectors.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.probability.is_valid_probability_vector
+   qrem.common.probability.find_closest_prob_vector_l2
+   qrem.common.probability.find_closest_prob_vector_l1
+   qrem.common.probability.calculate_total_variation_distance
+   qrem.common.probability.random_stochastic_matrix
+   qrem.common.probability.compute_average_marginal_for_subsets_list
+   qrem.common.probability.compute_average_marginal_for_subset
+   qrem.common.probability.compute_marginals_single
+   qrem.common.probability.compute_marginals_mew
+   qrem.common.probability.normalize_marginals
+   qrem.common.probability.convert_subset_counts_dictionary_to_probability_distribution
+   qrem.common.probability._compute_marginals
+   qrem.common.probability.compute_marginals
+   qrem.common.probability.compute_marginal_of_probability_distribution
+   qrem.common.probability.get_marginal_from_probability_distribution
+
+
+
+.. py:function:: is_valid_probability_vector(examined_vector: List[float], threshold=1e-05) -> bool
+
+   Check if a given vector is a valid probability vector.
+
+   :param examined_vector: A list of float numbers representing a vector to be examined.
+   :type examined_vector: List[float]
+   :param threshold: A small value to allow for numerical imprecision in summing to 1.
+   :type threshold: float, optional
+
+   :returns: Returns True if the vector is a valid probability vector, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: find_closest_prob_vector_l2(quasiprobability_vector: List[float]) -> numpy.ndarray
+
+   Find the closest probability vector to a given quasiprobability vector using Euclidean norm.
+
+   :param quasiprobability_vector: A vector, possibly containing negative elements, whose elements sum to 1.
+   :type quasiprobability_vector: List[float]
+
+   :returns: The closest probability vector in the Euclidean norm sense.
+   :rtype: np.ndarray
+
+   .. rubric:: Notes
+
+   This function computes the probability vector closest to the input quasiprobability vector in terms of the
+   Euclidean (L2) norm. It employs an algorithm suitable for diagonal quantum states, leveraging the equivalence
+   of the 2-norm for diagonal matrices with the 2-norm of their diagonal elements - Ref. [4]. The method is essential in
+   quantum information theory for approximating non-physical probability distributions with valid quantum states.
+
+
+.. py:function:: find_closest_prob_vector_l1(quasiprobability_vector: List[float], method='picos') -> numpy.ndarray
+
+   Find the closest probability vector to a quasiprobability vector using L1 norm.
+
+   :param quasiprobability_vector: A vector with elements summing to 1 but may contain negative values.
+   :type quasiprobability_vector: List[float]
+   :param method: The optimization method to use ('picos' or 'scipy'). Defaults to 'picos'.
+   :type method: str, optional
+
+   :returns: The closest probability vector in the L1 norm sense.
+   :rtype: np.ndarray
+
+   .. rubric:: Notes
+
+   This function calculates the probability vector closest to a given quasiprobability vector, in terms of the L1 norm.
+   It formulates this task as a linear programming problem, which can be solved using either the 'picos' or 'scipy'
+   optimization libraries. This approach is crucial in quantum information theory for reconciling non-physical
+   probability distributions with valid quantum states under different norm considerations.
+
+
+.. py:function:: calculate_total_variation_distance(p: numpy.array, q: numpy.array) -> float
+
+   Calculate the total variation distance between two probability vectors. See Refs. [1] and [2] for the relation
+   between TV-distance and operational distance between quantum measurements.
+
+   The total variation distance is a measure of the statistical distance between two probability distributions.
+
+   :param p: The first probability vector.
+   :type p: np.ndarray
+   :param q: The second probability vector.
+   :type q: np.ndarray
+
+   :returns: The total variation distance between vectors p and q.
+   :rtype: float
+
+
+.. py:function:: random_stochastic_matrix(size, type='left', diagonal=1.0)
+
+   Generate a random stochastic matrix of a specified size and type.
+
+   :param size: The size of the square matrix.
+   :type size: int
+   :param type: Type of the stochastic matrix: 'left', 'right', or 'double'.
+   :type type: str, optional
+   :param diagonal: Value to add to the diagonal elements, defaults to 1.0.
+   :type diagonal: float, optional
+
+   :returns: A numpy array representing the generated stochastic matrix.
+   :rtype: numpy.ndarray
+
+
+.. py:function:: compute_average_marginal_for_subsets_list(subsets_list: List[Tuple], experiment_results: Dict[str, Tuple[numpy.typing.NDArray[numpy.bool_], numpy.typing.NDArray[numpy.int_]]], normalized_marginals: Dict[str, Dict[Tuple[int], numpy.typing.NDArray[numpy.float_]]]) -> Dict[str, numpy.typing.NDArray[numpy.float_]]
+
+
+.. py:function:: compute_average_marginal_for_subset(subset: Tuple, experiment_results: Dict[str, Tuple[numpy.typing.NDArray[numpy.bool_], numpy.typing.NDArray[numpy.int_]]], normalized_marginals: Dict[str, Dict[Tuple[int], numpy.typing.NDArray[numpy.float_]]], verbose_log: bool = False) -> Dict[str, numpy.typing.NDArray[numpy.float_]]
+
+   For a given subset of qubits, compute its marginal with marginalizing (averaging) also over the input settings / circuit labels.
+
+   :param subset: A list of quibts for which the marginal is computed.
+   :type subset: Tuple
+   :param results_dictionary: A dictionary with experimental setting labels and results.
+   :type results_dictionary: Dict[str, Tuple[npt.NDArray[np.bool_], npt.NDArray[np.int_]]]
+   :param counts_dictionary: A dictionary of precomputed unnormalized marginals (raw counts)
+   :type counts_dictionary: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]
+
+   :returns: A dictionary of computed marginals. Keys are the circuit labels that appeared on the subset qubit indices. Value is a probability vector.
+   :rtype: Dict[str, npt.NDArray[np.float_]]
+
+
+.. py:function:: compute_marginals_single(results_dictionary: Dict[str, Tuple[numpy.typing.NDArray[numpy.bool_], numpy.typing.NDArray[numpy.int_]]], subsets_list: List[Tuple], print_progress_bar: bool = False, normalization: bool = False) -> Dict[str, Dict[Tuple[int], numpy.typing.NDArray[numpy.float_]]]
+
+   Compute marginal distributions for given experimental settings and marginals lists.
+
+   :param results_dictionary: A dictionary with experimental setting labels and results.
+   :type results_dictionary: Dict[str, Tuple[npt.NDArray[np.bool_], npt.NDArray[np.int_]]]
+   :param subsets_list subset: A list of tuples indicating the marginals to be computed, e.g. [(0,1,2), (0,4,5), ...]
+   :type subsets_list subset: List[Tuple]
+   :param print_progress_bar: If True, shows a progress bar.
+   :type print_progress_bar: bool, optional
+   :param normalization: If True, normalizes the results to form a probability vector, otherwise raw counts.
+   :type normalization: bool, optional
+
+   :returns: A dictionary of computed marginals, in big endian qubits ordering.
+   :rtype: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]
+
+
+.. py:function:: compute_marginals_mew(results_dictionary: Dict[str, Tuple[numpy.typing.NDArray[numpy.bool_], numpy.typing.NDArray[numpy.int_]]], subsets_list: List[Tuple], print_progress_bar: bool = False, normalization: bool = False, multiprocessing: bool = False, number_of_threads=None) -> Dict[str, Dict[Tuple[int], numpy.typing.NDArray[numpy.float_]]]
+
+   Compute marginals with optional multiprocessing support.
+
+   :param results_dictionary: A dictionary with experimental setting labels and results.
+   :type results_dictionary: Dict[str, Tuple[npt.NDArray[np.bool_], npt.NDArray[np.int_]]]
+   :param subsets_list: A list of tuples indicating the marginals to be computed, e.g. [(0,1,2), (0,4,5), ...]
+   :type subsets_list: List[Tuple]
+   :param print_progress_bar: If True, shows a progress bar.
+   :type print_progress_bar: bool, optional
+   :param normalization: If True, normalizes the results to form a probability vector, otherwise raw counts.
+   :type normalization: bool, optional
+   :param multiprocessing: A dictionary containing the computed marginals.
+                           If True, uses multiprocessing to improve performance.
+   :type multiprocessing: bool, optionalDict
+   :param number_of_threads: The number of threads to use in multiprocessing.
+   :type number_of_threads: Optional[int], optional
+
+   :returns: A dictionary of computed marginals, in big endian qubits ordering.
+   :rtype: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]
+
+
+.. py:function:: normalize_marginals(marginals_dictionary: Dict[str, Dict[Tuple[int], numpy.typing.NDArray[numpy.float_]]], print_progress_bar: bool = False) -> Dict[str, Dict[Tuple[int], numpy.typing.NDArray[numpy.float_]]]
+
+   Normalizes marginal distributions for given marginals dictionary.
+
+   :param marginals_dictionary: A dictionary of unnormalized  marginals, in big endian qubits ordering.
+   :type marginals_dictionary: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]
+   :param print_progress_bar: If True, shows a progress bar.
+   :type print_progress_bar: bool, optional
+
+   :returns: A dictionary of normalized marginals, in big endian qubits ordering.
+   :rtype: Dict[str, Dict[Tuple[int], npt.NDArray[np.float_]]]
+
+
+.. py:function:: convert_subset_counts_dictionary_to_probability_distribution(counts_dictionary)
+
+   Makes a probability distribution from counts dictionary,
+       IMPORTANT: fills in with zeros for results absent in counts_dictionary
+       USED A LOT by functions from cn\mitigation.py and functions_qrem
+   ew_mitigation_routines.py
+
+
+.. py:function:: _compute_marginals(results_dictionary: Dict[str, Dict[str, int]], subsets_list: List[Tuple], print_progress_bar: bool = False, normalization: bool = False)
+
+
+.. py:function:: compute_marginals(results_dictionary: Dict[str, Dict[str, int]], subsets_list: List[Tuple], use_multiprocessing: bool = False, number_of_threads=None, print_progress_bar: bool = False, normalization: bool = False)
+
+   Compute marginals with optional multiprocessing support.
+
+   :param results_dictionary: A dictionary of experimental results.
+   :type results_dictionary: Dict[str, Dict[str, int]]
+   :param subsets_list: List of subsets for which marginals are to be computed.
+   :type subsets_list: List[Tuple]
+   :param use_multiprocessing: If True, uses multiprocessing to improve performance.
+   :type use_multiprocessing: bool, optional
+   :param number_of_threads: The number of threads to use in multiprocessing.
+   :type number_of_threads: Optional[int], optional
+   :param print_progress_bar: If True, displays a progress bar.
+   :type print_progress_bar: bool, optional
+   :param normalization: If True, normalizes the results to form probability vectors.
+   :type normalization: bool, optional
+
+   :returns: A dictionary containing the computed marginals.
+   :rtype: Dict
+
+
+.. py:function:: compute_marginal_of_probability_distribution(global_probability_distribution: numpy.ndarray, bits_of_interest: List[int], register_names: Optional[List[str]] = None) -> numpy.ndarray
+
+   Compute the marginal of a probability distribution
+   (Return marginal distribution from vector of global distribution).
+
+   :param global_probability_distribution: The global probability distribution as an array.
+   :type global_probability_distribution: np.ndarray
+   :param bits_of_interest: Indices of bits for which the marginal distribution is computed (so we average over other bits)
+                            Assuming that qubits are labeled
+                            from 0 to log2(len(global_probability_distribution)).
+   :type bits_of_interest: List[int]
+   :param register_names: Bitstring register names, defaults to a standard binary representation:
+                          '00...00', '000...01', '000...10', ..., etc.
+   :type register_names: Optional[List[str]], optional
+
+   :returns: The marginal probability distribution array.
+   :rtype: np.ndarray
+
+   .. rubric:: Notes
+
+   This function identifies bits with qubits in the variable bitstring_names.
+
+
+.. py:function:: get_marginal_from_probability_distribution(global_probability_distribution: numpy.ndarray, bits_of_interest: List[int], register_names: Optional[List[str]] = None) -> numpy.ndarray
+
+   Return marginal distribution from vector of global distribution
+   :param global_probability_distribution: distribution on all bits
+   :param bits_of_interest: bits we are interested in (so we average over other bits)
+                           Assuming that qubits are labeled
+                           from 0 to log2(len(global_probability_distribution))
+   :param register_names: bitstrings register, default is
+                          '00...00', '000...01', '000...10', ..., etc.
+
+   :return: marginal_distribution : marginal probability distribution
+
+   NOTE: we identify bits with qubits in the variables bitstring_names
+
+

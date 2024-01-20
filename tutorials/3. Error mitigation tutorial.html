@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error mitigation tutorial &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial overview" href="complete_workflow.html" />
+    <link rel="prev" title="Noise Characterisation Tutorial" href="2.%20Noise%20Characterisation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/qrem/index.html">qrem package API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Noise Characterisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-contents">List of contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparation-of-experiments-characterizing-readout-noise">1.1.1 Preparation of experiments characterizing readout noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-of-the-experiments-on-simulators-real-quantum-hardware">1.1.2 Execution of the experiments on simulators/real quantum hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-of-the-characterization-routine">Execution of the characterization routine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readout-error-mitigation">Readout error mitigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-steps">2.1 Initial steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-mitigation-execution">2.2 Error mitigation execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-analysis">2.4 Performance analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization">2.4 Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Error mitigation tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/3. Error mitigation tutorial.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="error-mitigation-tutorial">
+<h1>Error mitigation tutorial<a class="headerlink" href="#error-mitigation-tutorial" title="Link to this heading"></a></h1>
+<p>The purpose of this tutorial is to demonstrate the basic use of error mitigation routines of  the QREM package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qrem.cn</span> <span class="kn">import</span> <span class="n">simulation</span> <span class="k">as</span> <span class="n">cnsimulation</span> 
+<span class="kn">from</span> <span class="nn">qrem.mitigation</span> <span class="kn">import</span> <span class="n">mitigation_routines</span>
+<span class="kn">from</span> <span class="nn">qrem.benchmarks</span> <span class="kn">import</span> <span class="n">hamiltonians</span>
+<span class="kn">from</span> <span class="nn">qrem.characterization</span> <span class="kn">import</span> <span class="n">characterization_routine</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">qrem.providers</span> <span class="kn">import</span> <span class="n">simulation</span> <span class="k">as</span> <span class="n">simulate_experiment</span>
+<span class="kn">from</span> <span class="nn">qrem.qtypes.characterization_data</span> <span class="kn">import</span> <span class="n">CharacterizationData</span>
+<span class="kn">from</span> <span class="nn">qrem.qtypes.mitigation_data</span> <span class="kn">import</span> <span class="n">MitigationData</span>
+<span class="kn">from</span> <span class="nn">qrem.visualisation</span> <span class="kn">import</span> <span class="n">benchmark_plots_functions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Overview'></a></p>
+<section id="list-of-contents">
+<h2>List of contents<a class="headerlink" href="#list-of-contents" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p><a class="reference internal" href="#Part1"><span class="xref myst">Data generation for mitigation routine</span></a></p>
+<p>1.1 <a class="reference internal" href="#Part1"><span class="xref myst">Creation and execution of the experiments on simulators/real quantum hardware</span></a></p>
+<p>1.2. <a class="reference internal" href="#Characterization"><span class="xref myst">Execution of the characterization routine</span></a></p>
+</li>
+<li><p><a class="reference internal" href="#Mitigation"><span class="xref myst">Mitigation workflow</span></a></p>
+<p>2.1 <a class="reference internal" href="#InitialS"><span class="xref myst">Initial steps</span></a></p>
+<p>2.2 <a class="reference internal" href="#MExecution"><span class="xref myst">Error mitigation execution</span></a></p>
+<p>2.3 <a class="reference internal" href="#PAnalysis"><span class="xref myst">Performance analysis</span></a></p>
+<p>2.4 <a class="reference internal" href="#Visualization"><span class="xref myst">Visualization</span></a></p>
+</li>
+</ol>
+<p><a id='Part1'></a></p>
+</section>
+<section id="preparation-of-experiments-characterizing-readout-noise">
+<h2>1.1.1 Preparation of experiments characterizing readout noise<a class="headerlink" href="#preparation-of-experiments-characterizing-readout-noise" title="Link to this heading"></a></h2>
+<p>The first step in experiment preparation is creation of characterization circuits.
+This requires specifying the following parameters:</p>
+<ol class="arabic simple">
+<li><p>number_of_qubits - a variable describing number of qubits for which characterization is going to be performed. Note that number_of_qubits is not necessarily equal to the total numbers of qubits in a device, as one may be interested in characterization  only a subset of all qubits. In the example below we set number of qubits to 10</p></li>
+<li><p>experiment_name - a string specifying a typ of readout characterization experiment to be performed. QREM supports two types of characterization experiments Quantum Detector Overlapping Tomography (‘QDOT’) or Diagonal Detector Overlapping Tomography (‘DDOT’).  Here we choose ‘DDOT’.</p></li>
+<li><p>Number of characterization circuits: number of circuits used in characterization routine.</p></li>
+<li><p>Number of shots (number of each circuits repetition).</p></li>
+<li><p>include_benchmark_circuits - a bool variable indicating whether the experiment should include circuits that are going to be used in noise model reconstruction and mitigation benchmarks  .</p></li>
+<li><p>number_of_benchmark_circuits - an integer specifying number of circuits used in benchmarks.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_qubits</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">experiment_type</span> <span class="o">=</span> <span class="s2">&quot;DDOT&quot;</span>
+
+<span class="n">number_of_circuits</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">number_of_shots</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="n">include_benchmark_circuits</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">number_of_benchmark_circuits</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="execution-of-the-experiments-on-simulators-real-quantum-hardware">
+<h2>1.1.2 Execution of the experiments on simulators/real quantum hardware<a class="headerlink" href="#execution-of-the-experiments-on-simulators-real-quantum-hardware" title="Link to this heading"></a></h2>
+<p>Execution of characterization circuits on quantum backends requires access to quantum hardware. QREM supports backends such as IBM Quantum and AWS Bracket.  Detailed description of circuits implementation on those backends is described in tutorials .</p>
+<p>To illustrate functionalities of the package here we simulate a noise characterization experiment according to a CN noise model (see). For simplicity we do not include neighbors.</p>
+<p>To specify the noise model one needs to provide number of clusters of given locality:</p>
+<ol class="arabic simple">
+<li><p>number_of_3_qubit_clusters - number of clusters of locality 3 (consisting of 3 qubits) Here set to 1.</p></li>
+<li><p>number_of_2_qubit_clusters - number of clusters of locality 2 (consisting of 2 qubits) Here set to 3.</p></li>
+<li><p>number_of_1_qubit_clusters - number of clusters of locality 1 (consisting of 3 qubits) Here set to 1.</p></li>
+</ol>
+<p>The noise model is created using cn.simulation module. It returns object of a CNNoiseModel class that stores all properties of the CN nosie model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_3_qubit_clusters</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">number_of_2_qubit_clusters</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">number_of_1_qubit_clusters</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">noise_model_simulation</span><span class="o">=</span><span class="n">cnsimulation</span><span class="o">.</span><span class="n">create_random_noise_model</span><span class="p">(</span><span class="n">number_of_qubits</span><span class="o">=</span><span class="n">number_of_qubits</span><span class="p">,</span><span class="n">clusters_specification</span><span class="o">=</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="n">number_of_3_qubit_clusters</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">number_of_2_qubit_clusters</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_1_qubit_clusters</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An object of CharacterizationData class is created, which stores all data created during characterization stage, and benchmark circuits corresponding to ground states of local Hamiltonians are created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characterization_data_container</span> <span class="o">=</span> <span class="n">CharacterizationData</span><span class="p">()</span>
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">experiment_type</span> <span class="o">=</span> <span class="s1">&#39;DDOT&#39;</span> 
+
+<span class="k">if</span> <span class="n">include_benchmark_circuits</span><span class="p">:</span>
+    
+    <span class="n">hamiltonians_dictionary</span><span class="p">,</span> <span class="n">circuits_ground_states</span> <span class="o">=</span> <span class="n">hamiltonians</span><span class="o">.</span><span class="n">create_hamiltonians_and_ground_states</span><span class="p">(</span><span class="n">number_of_qubits</span><span class="o">=</span><span class="n">number_of_qubits</span><span class="p">,</span><span class="n">number_of_benchmark_circuits</span><span class="o">=</span><span class="n">number_of_benchmark_circuits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Simulation of the noisy experiment is performed using simulate_noisy_experiment function that requires the following parameters:</p>
+<ol class="arabic simple">
+<li><p>noise_model - an object of CNNoiseModel class, here noise_model_simulation.</p></li>
+<li><p>number_of_circuits - an integer specifying number of circuits used in characterization. Here number_of_circuits set in preparation stage.</p></li>
+<li><p>number_of_shots - an integer specifying number of shots. Here number_of_shots set in preparation stage.</p></li>
+</ol>
+<p>Results of experiment are stored in the characterization_data_container object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">results_dictionary</span> <span class="o">=</span> <span class="n">simulate_experiment</span><span class="o">.</span><span class="n">simulate_noisy_experiment</span><span class="p">(</span><span class="n">noise_model</span><span class="o">=</span><span class="n">noise_model_simulation</span><span class="p">,</span><span class="n">number_of_circuits</span><span class="o">=</span><span class="n">number_of_circuits</span><span class="p">,</span><span class="n">number_of_shots</span><span class="o">=</span><span class="n">number_of_shots</span><span class="p">,</span><span class="n">save_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">new_data_format</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">ground_states_circuits</span><span class="o">=</span><span class="n">circuits_ground_states</span><span class="p">,</span><span class="n">data_directory</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">counts</span>
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">ground_states_list</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">results_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="o">-</span><span class="n">number_of_benchmark_circuits</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Possible count of random circuits (300) is lower than desired total circuit count (1315).
+10
+completeness: True
+Adding 290 random circuits to a 10-element set
+Set of 300 circuits, completeness: True
+noisy results generated in: 13.611753463745117 seconds
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Saving pickled file to: </span> &#39;.&#39;
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Saving pickled file to: </span> &#39;.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Characterization'></a></p>
+</section>
+<section id="execution-of-the-characterization-routine">
+<h2>Execution of the characterization routine<a class="headerlink" href="#execution-of-the-characterization-routine" title="Link to this heading"></a></h2>
+<p>Execution of the characterization routine is performed. Function execute_characterization_workflow takes as an input experimental data stored in characterization_data_container object. Detailed description of the noise characterization functionalities can be found in tutorial 2 Noise Characterisation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characterization_data_container</span><span class="o">=</span> <span class="n">characterization_routine</span><span class="o">.</span><span class="n">execute_characterization_workflow</span><span class="p">(</span><span class="n">characterization_data_container</span><span class="o">=</span><span class="n">characterization_data_container</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">MARGINALS COMPUTATION FINISHED</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 55/55 [00:00&lt;00:00, 3250.12it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">REDUCED POVMS COMPUTATION FINISHED</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">Calculating errors of type:</span> (&#39;worst_case&#39;, &#39;classical&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:00&lt;00:00, 16723.70it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">DONE</span>
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">POVMS DISTANCES COMPUTATION FINISHED</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">Calculating correlations of type:</span> (&#39;worst_case&#39;, &#39;classical&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 45/45 [00:00&lt;00:00, 3199.91it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">DONE</span>
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">PAIRWISE READOUT ERRORS CORRELATION COEFFICIENTS FINISHED</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">Current max cluster size:</span> 2
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">Current max cluster size:</span> 3
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">Current max cluster size:</span> 4
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Mitigation'></a></p>
+</section>
+<section id="readout-error-mitigation">
+<h2>Readout error mitigation<a class="headerlink" href="#readout-error-mitigation" title="Link to this heading"></a></h2>
+<p>To demonstrate functionalities of mitigation module</p>
+<p>One of the results of the characterization workflow are reconstructed noise models of different locality. To demonstrate functionalities of mitigation results of error mitigation based on those models are compared to the exact noise model that was used in the simulation of the noisy experiment.
+To this end characterization_data_container is updated to include the exact noise model. This is an optional step and it is not performed when working with data coming from quantum hardware.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">noise_model_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">noise_model_simulation</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='InitialS'></a></p>
+</section>
+<section id="initial-steps">
+<h2>2.1 Initial steps<a class="headerlink" href="#initial-steps" title="Link to this heading"></a></h2>
+<p>Energy of ground states prepared by the noisy device is estimated</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_dictionary</span><span class="o">=</span> <span class="n">hamiltonians</span><span class="o">.</span><span class="n">eigenstate_energy_calculation_and_estimation</span><span class="p">(</span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">benchmark_results_dictionary</span> <span class="p">,</span>  <span class="n">characterization_data_container</span><span class="o">.</span><span class="n">benchmark_marginals_dictionary</span> <span class="p">,</span><span class="n">hamiltonians_dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20it [00:00, 2221.09it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p>An object of MitigationData class is created to store results of mitigation is created</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mitigation_data</span> <span class="o">=</span> <span class="n">MitigationData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='MExecution'></a></p>
+</section>
+<section id="error-mitigation-execution">
+<h2>2.2 Error mitigation execution<a class="headerlink" href="#error-mitigation-execution" title="Link to this heading"></a></h2>
+<p>Error mitigation is performed using estimate_mitigated_energy_over_noise_models function of the mitigation module. It performs mitigation for all CN noise models reconstructed during the characterization stage. For each noise model it returns a dictionary with the mitigated values of energies for Hamiltonians used in the benchmark. The corresponding data structure is a dictionary. As an input to the mitigation routine one need to specify:</p>
+<ol class="arabic simple">
+<li><p>characterization_data- an object of CharacterizationData class storing results of characterization routine and experimental data, here characterization_data_container</p></li>
+<li><p>hamiltonians_dictionary - dictionary specifying Hamiltonians, for which ground states were implemented, here hamiltonians_dictionary</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise_models_mitigation_results_dictionary</span> <span class="o">=</span> <span class="n">mitigation_routines</span><span class="o">.</span><span class="n">estimate_mitigated_energy_over_noise_models</span><span class="p">(</span><span class="n">characterization_data</span><span class="o">=</span><span class="n">characterization_data_container</span> <span class="p">,</span><span class="n">hamiltonians_dictionary</span><span class="o">=</span><span class="n">hamiltonians_dictionary</span><span class="p">,</span><span class="n">return_marginals</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+     
+<span class="n">mitigation_data</span><span class="o">.</span><span class="n">noise_models_mitigation_results_dictionary</span> <span class="o">=</span> <span class="n">noise_models_mitigation_results_dictionary</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 20/20 [00:00&lt;00:00, 249.40it/s]
+100%|██████████| 20/20 [00:00&lt;00:00, 267.84it/s]
+100%|██████████| 20/20 [00:00&lt;00:00, 206.93it/s]
+100%|██████████| 20/20 [00:00&lt;00:00, 246.86it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='PAnalysis'></a></p>
+</section>
+<section id="performance-analysis">
+<h2>2.4 Performance analysis<a class="headerlink" href="#performance-analysis" title="Link to this heading"></a></h2>
+<p>To compute errors  of mitigation the exact data is compared to results obtained using error mitigation. Also some statistical features of the errors for different noise models are obtained and printed together with the corresponding clusters structure. The last results correspond to the noise model used in characterization experiment simulation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise_models_mitigated_energy_dictionary_error</span> <span class="o">=</span> <span class="n">mitigation_routines</span><span class="o">.</span><span class="n">compute_mitigation_errors</span><span class="p">(</span><span class="n">mitigation_data</span><span class="o">=</span><span class="n">mitigation_data</span><span class="p">,</span><span class="n">hamiltonian_energy_dictionary</span><span class="o">=</span><span class="n">energy_dictionary</span><span class="p">,</span><span class="n">number_of_qubits</span><span class="o">=</span><span class="n">number_of_qubits</span><span class="p">)</span>
+
+<span class="n">mitigation_data</span><span class="o">.</span><span class="n">noise_models_mitigated_energy_dictionary_error</span> <span class="o">=</span> <span class="n">noise_models_mitigated_energy_dictionary_error</span> 
+
+<span class="n">noise_models_mitigated_energy_dictionary_error_statistics</span><span class="o">=</span> <span class="n">mitigation_routines</span><span class="o">.</span><span class="n">compute_mitigation_error_median_mean</span><span class="p">(</span><span class="n">mitigation_data</span><span class="o">=</span><span class="n">mitigation_data</span><span class="p">,</span> <span class="n">print_results</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">mitigation_data</span><span class="o">.</span><span class="n">noise_models_mitigated_energy_dictionary_error_statistics</span> <span class="o">=</span> <span class="n">noise_models_mitigated_energy_dictionary_error_statistics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">((0,), (1,), (2,), (3,), (4,), (5,), (6,), (7,), (8,), (9,))</span>
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error mean</span> 0.5767024938191828
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error median</span> 0.38284537497778737
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">((0, 3), (5, 9), (7, 8), (1, 4), (2, 6))</span>
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error mean</span> 0.22468234094681996
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error median</span> 0.16051428372192794
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">((0, 2, 3), (5, 6, 9), (7, 8), (1, 4))</span>
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error mean</span> 0.07579283566475507
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error median</span> 0.053939441867717264
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">((5, 6, 9), (1, 4), (7, 8), (0, 3), (2,))</span>
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error mean</span> 0.07181963262818221
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Mitigation error median</span> 0.05476190095380651
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Visualization'></a></p>
+</section>
+<section id="visualization">
+<h2>2.4 Visualization<a class="headerlink" href="#visualization" title="Link to this heading"></a></h2>
+<p>Errors of mitigation procedure are visualized on a histogram</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">benchmark_plots_functions</span><span class="o">.</span><span class="n">create_error_mitigation_histogram</span><span class="p">(</span><span class="n">mitigation_data</span><span class="o">=</span><span class="n">mitigation_data</span><span class="p">,</span><span class="n">energy_dictionary</span><span class="o">=</span><span class="n">energy_dictionary</span><span class="p">,</span><span class="n">number_of_qubits</span><span class="o">=</span><span class="n">number_of_qubits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/87db5c900683fb18aca38824b02ffc620f8505f40b174efb31fc9d1513a24ef5.png" src="../_images/87db5c900683fb18aca38824b02ffc620f8505f40b174efb31fc9d1513a24ef5.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="2.%20Noise%20Characterisation.html" class="btn btn-neutral float-left" title="Noise Characterisation Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="complete_workflow.html" class="btn btn-neutral float-right" title="Tutorial overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

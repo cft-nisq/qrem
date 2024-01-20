@@ -1,0 +1,246 @@
+:py:mod:`qrem.providers.aws_braket`
+===================================
+
+.. py:module:: qrem.providers.aws_braket
+
+.. autoapi-nested-parse::
+
+   AWS-Braket Provider Module
+   ==========================
+
+   This module (`qrem.providers.aws_braket`) provides functionalities for running characterisation,
+   mitigation, and benchmarking experiments on AWS Braket devices. It includes methods for retrieving
+   device properties, translating circuit collections to Braket format, preparing circuits for execution,
+   and executing these circuits on AWS Braket.
+
+   The module is designed to interact with AWS Braket services, utilizing their device and job handling
+   capabilities.
+
+   Functions
+   ---------
+   add_ground_states
+       Function to add ground states from a file. [Functionality not implemented in provided code snippet.]
+       Parameters:
+       - groundstates_file (str, optional): Path to the file containing ground state information.
+
+   get_device
+       Retrieves properties of a specified AWS Braket device.
+       Parameters:
+       - device_full_name (str, optional): The full ARN of the AWS Braket device. Defaults to Rigetti's Aspen-M-2.
+       - verbose_log (bool, optional): If True, enables verbose logging of device properties.
+
+   get_valid_qubits_properties
+       Extracts properties of valid qubits from an AWS Braket device.
+       Parameters:
+       - device (AwsDevice): The AWS Braket device from which to retrieve qubit properties.
+       - threshold (Optional[float], optional): Error threshold for qualifying a qubit as valid. Defaults to 0 (no threshold).
+       - verbose_log (bool, optional): Enables verbose logging if set to True. Defaults to False.
+       - simultaneous_randomize_benchmark (bool, optional): If True, uses simultaneous randomize benchmark for error thresholding. Defaults to True.
+
+   translate_circuits_to_braket_format
+       Translates a collection of quantum circuits into the format used by AWS Braket.
+       Parameters:
+       - circuit_collection (CircuitCollection): Collection of circuits to be translated.
+       - valid_qubit_indices (List[int]): Indices of valid qubits to be used in the translation.
+
+   prepare_circuits
+       Prepares and stores AWS Braket circuits and associated metadata in a specified directory.
+       Parameters:
+       - braket_circuits (List[Circuit]): List of quantum circuits in AWS Braket format.
+       - circuit_collection (CircuitCollection): The original collection of circuits before translation.
+       - good_qubits_indices: Indices of qubits deemed good for computation.
+       - number_of_repetitions (int, optional): The number of repetitions for each circuit execution. Defaults to 1024.
+       - experiment_name (str, optional): Name of the experiment. Defaults to an empty string.
+       - metadata (dict, optional): Additional metadata related to the experiment. Defaults to an empty dictionary.
+       - job_tags (dict, optional): Tags associated with the job. Defaults to {'QREM_JOB'}.
+       - job_dir (str, optional): Directory to store prepared circuits and metadata. Defaults to an empty string.
+       - pickle_submission (bool, optional): If True, circuits will be pickled for submission. Defaults to False.
+       - number_of_task_retries (int, optional): Number of retries for each task. Defaults to 3.
+       - overwrite_output (bool, optional): If True, overwrites existing data in the job directory. Defaults to False.
+       - verbose_log (bool, optional): Enables verbose logging if set to True. Defaults to False.
+
+   execute_circuits
+       Executes prepared quantum circuits on an AWS Braket device.
+       Parameters:
+       - device_name (str, optional): The full ARN of the AWS Braket device to use for execution. Defaults to Rigetti's Aspen-M-2.
+       - pickle_submission (bool, optional): If True, uses pickled circuits for submission. Defaults to False.
+       - job_dir (Union[Path, str], optional): Directory containing the circuits and metadata for the job. Defaults to 'job_dir'.
+       - verbose_log (bool, optional): If True, enables verbose logging of the execution process. Defaults to True.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.aws_braket.add_ground_states
+   qrem.providers.aws_braket.get_device
+   qrem.providers.aws_braket.get_valid_qubits_properties
+   qrem.providers.aws_braket._circuits_translator
+   qrem.providers.aws_braket.translate_circuits_to_braket_format
+   qrem.providers.aws_braket.prepare_cricuits
+   qrem.providers.aws_braket.execute_circuits
+   qrem.providers.aws_braket.retrieve_results
+
+
+
+.. py:function:: add_ground_states(groundstates_file='')
+
+   [Placeholder for future implementation]
+   Function to add ground states from a file.
+
+   :param groundstates_file: Path to the file containing ground state information.
+   :type groundstates_file: str, optional
+
+   .. rubric:: Notes
+
+   This function is currently not implemented in the provided code snippet.
+
+
+.. py:function:: get_device(device_full_name='arn:aws:braket:us-west-1::device/qpu/rigetti/Aspen-M-2', verbose_log=False)
+
+   Retrieves various properties of the specified AWS Braket device.
+
+   :param device_full_name: The full ARN of the AWS Braket device. Defaults to Rigetti's Aspen-M-2.
+   :type device_full_name: str, optional
+   :param verbose_log: If True, enables verbose logging of device properties.
+   :type verbose_log: bool, optional
+
+   :returns: Returns a tuple of the AwsDevice object and a dictionary containing metadata about the device.
+   :rtype: Tuple[AwsDevice, dict]
+
+
+.. py:function:: get_valid_qubits_properties(device: braket.aws.AwsDevice, threshold: Optional[float] = 0, verbose_log=False, simultaneous_randomize_benchmark: bool = True)
+
+   Analyzes and reports properties of valid qubits from an AWS Braket device,
+   considering a given error threshold and benchmarking method.
+
+   :param device: The AWS Braket device from which to retrieve qubit properties.
+   :type device: AwsDevice
+   :param threshold: Error threshold for qualifying a qubit as valid. Defaults to 0 (no threshold).
+   :type threshold: float, optional
+   :param verbose_log: Enables verbose logging if set to True. Defaults to False.
+   :type verbose_log: bool, optional
+   :param simultaneous_randomize_benchmark: If True, uses simultaneous randomize benchmark for error thresholding. Defaults to True.
+   :type simultaneous_randomize_benchmark: bool, optional
+
+   :returns: A dictionary containing indices of good qubits and other relevant information.
+   :rtype: dict
+
+
+.. py:function:: _circuits_translator(eigenstate_index: int, quantum_circuit: braket.circuits.Circuit, qubit_index: int)
+
+   Internal helper method that translates a circuit representation into a specific
+   eigenstate format native to BRAKET. It applies Pauli eigenstates to the circuit.
+
+   (in deprecated codebase formerly named _apply_pauli_eigenstate).
+
+   :param eigenstate_index: Index representing the eigenstate to be applied.
+   :type eigenstate_index: int
+   :param quantum_circuit: The Braket quantum circuit to which the eigenstate is applied.
+   :type quantum_circuit: Circuit
+   :param qubit_index: Index of the qubit in the quantum circuit.
+   :type qubit_index: int
+
+   :returns: The modified Braket quantum circuit with the applied eigenstate.
+   :rtype: Circuit
+
+   :raises ValueError: If an incorrect eigenstate index is provided.
+
+   .. rubric:: Notes
+
+   This function is intended for internal use.
+
+
+.. py:function:: translate_circuits_to_braket_format(circuit_collection: qrem.qtypes.CircuitCollection, valid_qubit_indices: list) -> List[braket.circuits.Circuit]
+
+   Translates a collection of quantum circuits into the format used by AWS Braket.
+
+   :param circuit_collection: Collection of circuits to be translated.
+   :type circuit_collection: CircuitCollection
+   :param valid_qubit_indices: Indices of valid qubits to be used in the translation.
+   :type valid_qubit_indices: List[int]
+
+   :returns: A list of circuits in the AWS Braket format.
+   :rtype: List[Circuit]
+
+
+.. py:function:: prepare_cricuits(braket_circuits: List[braket.circuits.Circuit], circuit_collection: qrem.qtypes.CircuitCollection, good_qubits_indices, number_of_repetitions: int = 1024, experiment_name: str = '', metadata: dict = {}, job_tags: dict = {'QREM_JOB'}, job_dir: str = '', pickle_submission=True, number_of_task_retries: int = 3, overwrite_output=False, verbose_log: bool = False)
+
+   Prepares and stores AWS Braket circuits and associated metadata in a specified directory.
+
+   :param braket_circuits: List of quantum circuits in AWS Braket format.
+   :type braket_circuits: List[Circuit]
+   :param circuit_collection: The original collection of circuits before translation.
+   :type circuit_collection: CircuitCollection
+   :param good_qubits_indices: Indices of qubits deemed good for computation.
+   :type good_qubits_indices: list
+   :param number_of_repetitions: The number of repetitions for each circuit execution. Defaults to 1024.
+   :type number_of_repetitions: int, optional
+   :param experiment_name: Name of the experiment. Defaults to an empty string.
+   :type experiment_name: str, optional
+   :param metadata: Additional metadata related to the experiment. Defaults to an empty dictionary.
+   :type metadata: dict, optional
+   :param job_tags: Tags associated with the job. Defaults to {'QREM_JOB'}.
+   :type job_tags: dict, optional
+   :param job_dir: Directory to store prepared circuits and metadata. Defaults to an empty string.
+   :type job_dir: str, optional
+   :param pickle_submission: If True, circuits will be pickled for submission. Defaults to True.
+   :type pickle_submission: bool, optional
+   :param number_of_task_retries: Number of retries for each task. Defaults to 3.
+   :type number_of_task_retries: int, optional
+   :param overwrite_output: If True, overwrites existing data in the job directory. Defaults to False.
+   :type overwrite_output: bool, optional
+   :param verbose_log: Enables verbose logging if set to True. Defaults to False.
+   :type verbose_log: bool, optional
+
+   :returns: Returns True if preparation is successful, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: execute_circuits(device_name: str = 'arn:aws:braket:us-west-1::device/qpu/rigetti/Aspen-M-2', pickle_submission=True, job_dir: pathlib.Path = 'job_dir', verbose_log=True)
+
+   Packs all data and script runner, and executes prepared quantum circuits on an AWS Braket device.
+
+   :param device_name: The full ARN of the AWS Braket device to use for execution. Defaults to Rigetti's Aspen-M-2: arn:aws:braket:us-west-1::device/qpu/rigetti/Aspen-M-2.
+   :type device_name: str, optional
+   :param pickle_submission: If True, uses pickled circuits for submission. Defaults to True.
+   :type pickle_submission: bool, optional
+   :param job_dir: Directory containing the circuits and metadata for the job. Defaults to 'job_dir'.
+   :type job_dir: Union[Path, str], optional
+   :param verbose_log: If True, enables verbose logging of the execution process. Defaults to True.
+   :type verbose_log: bool, optional
+
+
+.. py:function:: retrieve_results(task_ARNs: List[str] = [], original_circuits: Union[qrem.qtypes.CircuitCollection, bool] = False, original_circuits_path: Union[bool, str, pathlib.Path] = False, save_experiment_results: Union[bool, str, pathlib.Path] = False, backup_original_task_results: Union[bool, str, pathlib.Path] = False, from_tasks_backup: Union[bool, str, pathlib.Path] = False, overwrite=False, verbose_log=False) -> qrem.qtypes.ExperimentResults
+
+   Retrieves and processes results from an AWS Braket backend based on provided task ARNs.
+
+   :param provider: The IBMProvider instance used to retrieve results.
+   :type provider: IBMProvider
+   :param task_ARNs: List of task ARNs for which results are to be retrieved.
+   :type task_ARNs: List[str]
+   :param original_circuits: The original circuits used in the jobs. Set to False if not provided. Defaults to False.
+   :type original_circuits: Union[CircuitCollection, bool], optional
+   :param original_circuits_path: Path to the file containing the original circuits. Defaults to False.
+   :type original_circuits_path: Union[bool, str, Path], optional
+   :param config_file_path: Path to the file containing the original submission config. Defaults to False.
+   :type config_file_path: Union[bool, str, Path], optional
+   :param save_experiment_results: Path to save the processed experiment results. Defaults to False.
+   :type save_experiment_results: Union[bool, str, Path], optional
+   :param backup_original_task_results: Path to backup the original results. Defaults to False.
+   :type backup_original_task_results: Union[bool, str, Path], optional
+   :param from_tasks_backup: Read from pickled backed-up task files. Useful mostly for debugging.
+   :type from_tasks_backup: Union[bool, str, Path], optional
+   :param overwrite: If True, overwrites existing files at the specified paths. Defaults to False.
+   :type overwrite: bool, optional
+
+   :returns: results of an experiment held in ExperimentResults.counts object of format {"<circuit_label>": tuple(<RESTULS_MATRIX>, <COUNTS_VECTOR>)}
+   :rtype: ExperimentResults
+
+

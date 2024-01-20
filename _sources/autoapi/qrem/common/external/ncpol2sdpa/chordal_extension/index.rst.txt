@@ -1,0 +1,61 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.chordal_extension`
+===========================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.chordal_extension
+
+.. autoapi-nested-parse::
+
+   The module contains helper functions to calculate the chordal extension of the
+   correlative sparsity pattern matrix. It is largely based on the MATLAB version
+   in SparsePOP.
+
+   Created on Sun Nov 30 15:01:13 2014
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.chordal_extension.sliding_cliques
+   qrem.common.external.ncpol2sdpa.chordal_extension._generate_clique
+   qrem.common.external.ncpol2sdpa.chordal_extension._generate_clique_alt
+   qrem.common.external.ncpol2sdpa.chordal_extension.find_clique_index
+   qrem.common.external.ncpol2sdpa.chordal_extension.find_variable_cliques
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.chordal_extension.generate_clique
+
+
+.. py:function:: sliding_cliques(k, n)
+
+
+.. py:function:: _generate_clique(variables, obj, inequalities, equalities, momentinequalities, momentequalities)
+
+
+.. py:function:: _generate_clique_alt(variables, obj, inequalities, equalities, momentinequalities, momentequalities)
+
+
+.. py:function:: find_clique_index(variables, polynomial, clique_set)
+
+
+.. py:function:: find_variable_cliques(variables, objective=None, inequalities=None, equalities=None, momentinequalities=None, momentequalities=None)
+
+
+.. py:data:: generate_clique
+
+   
+

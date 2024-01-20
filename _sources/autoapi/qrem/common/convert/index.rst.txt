@@ -1,0 +1,240 @@
+:py:mod:`qrem.common.convert`
+=============================
+
+.. py:module:: qrem.common.convert
+
+.. autoapi-nested-parse::
+
+   Convert Module for QREM
+   =======================
+
+   qrem.common.convert module contains helper functions, that allow to convert between various formats used to describe circuit labels,
+   bitstrings, quantum registers etc.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.convert.bitstring_to_integer
+   qrem.common.convert.integer_to_bitstring
+   qrem.common.convert.bitstring_to_ndarray
+   qrem.common.convert.ndarray_to_bitstring
+   qrem.common.convert.integer_to_ditstring
+   qrem.common.convert.negate_bitstring
+   qrem.common.convert.sort_bitstring
+   qrem.common.convert.sort_bitarray
+   qrem.common.convert.get_ditstrings_register
+   qrem.common.convert.keystring_to_qubit_indices
+   qrem.common.convert.qubit_indices_to_keystring
+   qrem.common.convert.qubits_keystring_to_tuple
+   qrem.common.convert.change_state_dependent_noise_matrix_format
+   qrem.common.convert.change_state_dependent_noise_matrices_dictionary_format
+   qrem.common.convert.change_format_of_cn_dictionary
+   qrem.common.convert.divide_data_into_characterization_benchmark_coherence_witness_data
+   qrem.common.convert.reverse_bitstrings_in_counts_dictionary
+   qrem.common.convert.merge_multiple_counts_dictionaries
+   qrem.common.convert.convert_counts_overlapping_tomography
+   qrem.common.convert.change_state_dependent_noise_matrix_format
+   qrem.common.convert.change_state_dependent_noise_matrices_dictionary_format
+   qrem.common.convert.reorder_classical_register
+   qrem.common.convert.reorder_probabilities
+   qrem.common.convert.convert_results_dictionary_to_new_format
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.convert.a
+
+
+.. py:function:: bitstring_to_integer(bitstring: str) -> int
+
+
+.. py:function:: integer_to_bitstring(integer: int, number_of_bits: int) -> str
+
+   Return binary representation of an integer in a string form
+
+   :param integer: input integer which bytes will be interpreted as bitstring
+   :type integer: int
+   :param number_of_bits: Number of bits.It  can be greater than minimal needed to represent integer (but if the input number of bits
+                          is smaller then the minimal one, the latter one will be executed )
+   :type number_of_bits: int
+
+
+.. py:function:: bitstring_to_ndarray(bitstring: str, reverse=False) -> numpy.ndarray
+
+   Return numpy array  representation of a bitstring
+
+   :param bitstring: input bitstring
+   :type bitstring: string
+   :param reverse: The output array can be reversed in order. Default is False
+   :type reverse: bool
+
+
+.. py:function:: ndarray_to_bitstring(bitarray: numpy.ndarray, reverse=False) -> str
+
+
+.. py:function:: integer_to_ditstring(integer, base, number_of_dits)
+
+   Return nnary representation of an integer in a string form
+   based on
+   https://stackoverflow.com/questions/2267362/how-to-convert-an-integer-to-a-string-in-any-base
+
+   :param integer: input integer value
+   :type integer: int
+   :param base: base for the ditstring
+   :type base: int
+   :param number_of_dits: Number of bits.It  can be greater than minimal needed to represent integer (but if the input number of bits
+                          is smaller then the minimal one, the latter one will be executed )
+   :type number_of_dits: int
+
+
+.. py:function:: negate_bitstring(bitstring)
+
+   This function creates a negation of a bitstring (assuming it is in string format)
+   :param bitstring: input bitstring
+   :type bitstring: int
+
+
+.. py:function:: sort_bitstring(string: str, new_order: Iterable) -> str
+
+   Sort bits in string according to new_order
+
+
+.. py:function:: sort_bitarray(bitarray: numpy.ndarray, new_order: Iterable) -> numpy.ndarray
+
+   Sort bits in string according to new_order
+
+
+.. py:function:: get_ditstrings_register(base, number_of_dits)
+
+   Return a list of natural numbers fitting in number_of_dits with base dit-representation
+
+
+.. py:data:: a
+
+   
+
+.. py:function:: keystring_to_qubit_indices(qubits_string: str, with_q: Optional[bool] = False) -> List[int]
+
+   Return list of qubit indices from the string of the form "q0q1q22q31"
+   :param qubits_string (string): string which has the form of "q" followed by qubit index
+   :param (optional) with_q (Boolean): specify whether returned indices
+                                       should be in form of string with letter
+
+   :return: list of qubit indices:
+
+   depending on value of parameter "with_q" the mapping will be one of the following:
+
+   if with_q:
+       'q1q5q13' -> ['q1','q5','q13']
+   else:
+       'q1q5q13' -> [1,5,13]
+
+
+.. py:function:: qubit_indices_to_keystring(list_of_qubits: List[int]) -> str
+
+   from subset of qubit indices get the string that labels this subset
+       using convention 'q5q6q12...' etc.
+   :param list_of_qubits: labels of qubits
+
+   :return: string label for qubits
+
+    NOTE: this function is "inverse operation" to keystring_to_qubit_indices.
+
+
+.. py:function:: qubits_keystring_to_tuple(qubits_string)
+
+
+.. py:function:: change_state_dependent_noise_matrix_format(noise_matrix: Dict) -> Dict
+
+   .. note:: Deprecated in QREM 0.1.5
+         Function transforming representation of noise matrices. Used to translate results obtained with QREM versions < 0.1.5
+
+
+
+.. py:function:: change_state_dependent_noise_matrices_dictionary_format(noise_matrices_dictionary: Dict) -> Dict
+
+   .. note:: Deprecated in QREM 0.1.5
+        Function transforming representation of noise matrices. Used to translate results obtained with QREM versions < 0.1.5
+
+
+
+
+
+
+
+.. py:function:: change_format_of_cn_dictionary(cn_dictionary: Dict) -> Dict
+
+
+.. py:function:: divide_data_into_characterization_benchmark_coherence_witness_data(characterization_data: Type[qrem.qtypes.characterization_data.CharacterizationData]) -> qrem.qtypes.characterization_data.CharacterizationData
+
+
+.. py:function:: reverse_bitstrings_in_counts_dictionary(counts_dictionary)
+
+   Used only by convert_counts_overlapping_tomography()
+
+
+.. py:function:: merge_multiple_counts_dictionaries(counts_dictionaries_list: List[Dict[str, int]]) -> Dict[str, int]
+
+   Merge multiple counts dictionaries.
+   This is useful when you have results of multiple implementations of the same experiment.
+
+   :param counts_dictionaries_list: list of results of counts dictionaries of the form:
+                                   {'bitstring":number of measurements}
+   :return:
+
+
+.. py:function:: convert_counts_overlapping_tomography(counts_dictionary: Dict[str, Dict[str, int]], experiment_name: str, reverse_bitstrings=True, old_send_procedure=True)
+
+   This function converts unprocessed dictionary of experiment results, where multiple keys can describe identical
+   circuits (eg. "DDOT-010no0", "DDOT-010no1", see description of string_cutter below), to a dictionary where a key
+   uniquely corresponds to a circuit and value is the combined counts from all such circuits in the unprocessed
+   dictionary. In resulting dictionary outcome bit strings and circuit names are in big-endian order.
+
+   param counts_dictionary: dictionary where the key is circuit name (e.g. "DDOT-010no3", described in inner
+                             string_cutter function below) and value is dictionary of counts, where the key is a string
+                             denoting classical outcome and the value the number of its occurrences in given experiment.
+   param experiment_name: string denoting the type of experiment whose results counts_dictionary contains, e.g. 'QDOT';
+                           the valid names are specified in SeparableCircuitsCreator.__valid_experiments_names__
+   param reverse_bitstrings: bool; if False, the bitstring denoting classical outcome in counts_dictionary will be
+                              interpreted as big-endian (qubit 0 on the left); if True it will be interpreted as
+                              little-endian (qubit 0 on the right) and will be reversed to conform to QREM convention.
+
+   :return: big_counts_dictionary: dictionary where key is string describing circuit (e.g. '010' means gates:
+                                   iden, X, iden on qubits 0, 1, 2 respectively) and value is
+                                   dictionary where key is bitstring describing outcome (e.g. '100') and value is
+                                   number of occurences of that outcome in the experiment; these strings are big-endian.
+
+
+.. py:function:: change_state_dependent_noise_matrix_format(noise_matrix: Dict) -> Dict
+
+   Function transforming old to new format of state dependent matrix
+
+
+
+.. py:function:: change_state_dependent_noise_matrices_dictionary_format(noise_matrices_dictionary: Dict) -> Dict
+
+   Function transforming old to new format of state dependent matrix
+
+
+
+.. py:function:: reorder_classical_register(new_order: Iterable) -> List
+
+
+.. py:function:: reorder_probabilities(probabilities, new_order)
+
+
+.. py:function:: convert_results_dictionary_to_new_format(noisy_results_dictionary)
+
+

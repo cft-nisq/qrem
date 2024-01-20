@@ -1,0 +1,245 @@
+:py:mod:`qrem.characterization.clustering_algorithms`
+=====================================================
+
+.. py:module:: qrem.characterization.clustering_algorithms
+
+.. autoapi-nested-parse::
+
+   Created on 01.03.2021
+
+   @author: Oskar Słowik
+   @contact: osslowik@gmail.com
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.characterization.clustering_algorithms.f_clust_sharp
+   qrem.characterization.clustering_algorithms.f_clust
+   qrem.characterization.clustering_algorithms.f_clust_square_sharp
+   qrem.characterization.clustering_algorithms.get_S_ij_av
+   qrem.characterization.clustering_algorithms.get_S_i
+   qrem.characterization.clustering_algorithms.get_Sc_i
+   qrem.characterization.clustering_algorithms.cost_function_simple_cummulative
+   qrem.characterization.clustering_algorithms.cost_function_simple
+   qrem.characterization.clustering_algorithms.evaluate_move_operation_naive_cummulative
+   qrem.characterization.clustering_algorithms.evaluate_move_operation_naive
+   qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive_cummulative
+   qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive
+   qrem.characterization.clustering_algorithms.evaluate_move_operation_cummulative
+   qrem.characterization.clustering_algorithms.evaluate_move_operation
+   qrem.characterization.clustering_algorithms.evaluate_swap_operation_cummulative
+   qrem.characterization.clustering_algorithms.evaluate_swap_operation
+   qrem.characterization.clustering_algorithms.get_initial_partition
+   qrem.characterization.clustering_algorithms.return_cluster_index
+   qrem.characterization.clustering_algorithms.make_move_operation
+   qrem.characterization.clustering_algorithms.make_swap_operation
+   qrem.characterization.clustering_algorithms.choose_nonpos_op
+   qrem.characterization.clustering_algorithms.partition_algorithm_v1
+   qrem.characterization.clustering_algorithms.partition_algorithm_v1_cummulative
+   qrem.characterization.clustering_algorithms.partition_algorithm_v2_cummulative
+   qrem.characterization.clustering_algorithms.partition_algorithm_v3_cummulative
+   qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative
+   qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative_temp
+   qrem.characterization.clustering_algorithms.choose_pos_op
+
+
+
+.. py:exception:: InfinityException
+
+
+   Bases: :py:obj:`Exception`
+
+   Class for handling infinity
+
+
+.. py:exception:: ClusterSizeError
+
+
+   Bases: :py:obj:`NameError`
+
+   Class for handling too small max cluster size
+
+
+.. py:exception:: RejectionException
+
+
+   Bases: :py:obj:`Exception`
+
+   Class for handling rejection of all operations
+
+
+.. py:function:: f_clust_sharp(C_size, C_maxsize)
+
+
+.. py:function:: f_clust(C_size, C_maxsize)
+
+
+.. py:function:: f_clust_square_sharp(C_size, C_maxsize)
+
+
+.. py:function:: get_S_ij_av(C_i, C_j, correlations_table)
+
+
+.. py:function:: get_S_i(C_i, correlations_table)
+
+
+.. py:function:: get_Sc_i(C_i, correlations_table)
+
+
+.. py:function:: cost_function_simple_cummulative(partition, correlations_table, alpha, C_maxsize)
+
+   Calculates the value of the objective function phi on partition.
+
+   :param partition: partition
+   :type partition: List[int]
+
+   :param correlations_table: table of all 2-qubit correlation coefficients.
+   :type correlations_table: ndarray(dtype=float, ndim=2)
+
+   :param alpha: multiplicative parameter of the cluster size penalty function.
+   :type alpha: float
+
+   :param C_maxsize: Maximal allowed size of a cluster (threshold).
+   :type C_maxsize: int
+
+   :return value of phi on partition.
+   :rtype: float
+
+
+.. py:function:: cost_function_simple(partition, correlations_table, alpha, C_maxsize)
+
+
+.. py:function:: evaluate_move_operation_naive_cummulative(partition, index_k, index_C_i, index_C_j, correlations_table, alpha, C_maxsize)
+
+
+.. py:function:: evaluate_move_operation_naive(partition, index_k, index_C_i, index_C_j, correlations_table, alpha, C_maxsize, S)
+
+
+.. py:function:: evaluate_swap_operation_naive_cummulative(partition, index_k, index_l, index_C_i, index_C_j, correlations_table, alpha, C_maxsize)
+
+
+.. py:function:: evaluate_swap_operation_naive(partition, index_k, index_l, index_C_i, index_C_j, correlations_table, alpha, C_maxsize, S)
+
+
+.. py:function:: evaluate_move_operation_cummulative(partition, index_k, index_C_i, index_C_j, correlations_table, alpha, C_maxsize)
+
+
+.. py:function:: evaluate_move_operation(partition, index_k, index_C_i, index_C_j, correlations_table, alpha, C_maxsize, S)
+
+
+.. py:function:: evaluate_swap_operation_cummulative(partition, index_k, index_l, index_C_i, index_C_j, correlations_table, alpha)
+
+
+.. py:function:: evaluate_swap_operation(partition, index_k, index_l, index_C_i, index_C_j, correlations_table, alpha, C_maxsize, S)
+
+
+.. py:function:: get_initial_partition(correlations_table)
+
+
+.. py:function:: return_cluster_index(partition, target_qubit)
+
+
+.. py:function:: make_move_operation(partition, index_k, index_C_i, index_C_j)
+
+
+.. py:function:: make_swap_operation(partition, index_k, index_l, index_C_i, index_C_j)
+
+
+.. py:function:: choose_nonpos_op(val_of_ops_nonpos, temp)
+
+   Chooses the cluster index for which to move the qubit among all those resulting in nonpositive change of objective function phi.
+   Probability of the choice of cluster i is:
+   p(i)=exp(change_i/temp)/(no_of_ops_nonpos + epsilon)
+   where no_of_ops_nonpos is the number of all operations and epsilon is small number added for numerical stability (here set as 0.001).
+   Additionally, no operation can be selected with probability:
+   p(reject)= 1- sum_j p(j).
+
+   :param val_of_ops_nonpos: dictionary with keys being cluster indices and values being the changes of phi.
+   :type val_of_ops_nonpos: dict
+
+   :param temp: temperature parameter
+   :type temp: float
+
+   :return: chosen cluster index.
+   :rtype: int
+
+
+.. py:function:: partition_algorithm_v1(correlations_table, alpha, C_maxsize, N_alg, printing, drawing)
+
+
+.. py:function:: partition_algorithm_v1_cummulative(correlations_table, alpha, C_maxsize, N_alg, printing, drawing, disable_pb)
+
+
+.. py:function:: partition_algorithm_v2_cummulative(correlations_table, alpha, C_maxsize, N_alg, N_rand, printing, drawing, disable_pb)
+
+
+.. py:function:: partition_algorithm_v3_cummulative(correlations_table, alpha, C_maxsize, N_alg, N_rand, printing, drawing, disable_pb)
+
+
+.. py:function:: partition_algorithm_v4_cummulative(correlations_table, alpha, C_maxsize, N_alg, printing, drawing, disable_pb)
+
+
+.. py:function:: partition_algorithm_v4_cummulative_temp(correlations_table, alpha, C_maxsize, N_alg, printing, drawing, disable_pb, temp=1.0)
+
+   Partition algorithm using move operations on qubits with termination criterion and metropolis-like acceptance condition (regulated by temp).
+   If C_maxsize < 2 then algorithm terminates with exception raised. If C_maxsize = 2 then the algorithm is not executed and the initial partition is returned.
+   The algorith is run N_alg times and the best partition is chosen. In each run, the algorithm traverses qubits in epochs.
+   An epoch consists of all qubits that are traversed at random and without repetitions.
+   The partition is being updated during each epoch, by executing move operations on qubits.
+   The algorithm terminates, if after some epoch the value of objective function phi has not improved compared to the end of a previous epoch.
+
+   :param correlations_table: table of all 2-qubit correlation coefficients.
+   :type correlations_table: ndarray(dtype=float, ndim=2)
+
+   :param alpha: multiplicative parameter of the cluster size penalty function.
+   :type alpha: float
+
+   :param C_maxsize: Maximal allowed size of a cluster (threshold).
+   :type C_maxsize: int
+
+   :param N_alg: Number of runs.
+   :type N_alg: int
+
+   :param printing: Is printing allowed.
+   :type printing: bool
+
+   :param drawing: Is cluster drawing allowed.
+   :type drawing: bool
+
+   :param disable_pb: Is progress bar disabled.
+   :type disable_pb: bool
+
+   :param temp: Temperture parameter (default is 1.0).
+   :type temp: float
+
+   :return best partition found, value of the objective function for this partition
+   :rtype:(List[int], float)
+
+   :raises MaxClusterSizeException: returned if max allowed cluster size is < 2
+
+
+.. py:function:: choose_pos_op(val_of_ops_pos, temp)
+
+   Chooses the cluster index for which to move the qubit among all those resulting in positive change of objective function phi.
+   Probability of the choice of cluster i is:
+   p(i)=exp((change_i-max_change)/temp)/norm_const
+   where norm_const is the normalization constant: sum_j exp((change_j-max_change)/temp.
+
+   :param val_of_ops_pos: dictionary with keys being cluster indices and values being the changes of phi.
+   :type val_of_ops_pos: dict
+
+   :param temp: temperature parameter
+   :type temp: float
+
+   :return: chosen cluster index.
+   :rtype: int
+
+

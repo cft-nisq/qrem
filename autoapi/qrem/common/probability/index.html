@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.probability &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.common.registers" href="../registers/index.html" />
+    <link rel="prev" title="qrem.common.printer" href="../printer/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.probability</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/common/probability/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.probability">
+<span id="qrem-common-probability"></span><h1><a class="reference internal" href="#module-qrem.common.probability" title="qrem.common.probability"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.probability</span></code></a><a class="headerlink" href="#module-qrem.common.probability" title="Link to this heading"></a></h1>
+<section id="quantum-readout-error-mitigation-qrem-probability-module">
+<p>This module is part of the QREM package, designed for performing various operations related to
+the computation of probability vectors, stochastic matrices, marginal distributions etc.
+in quantum experiments. It includes among others functions for  validating probability vectors, generating
+random stochastic matrices, and computing marginal distributions from experimental results.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>is_valid_probability_vector(examined_vector, threshold=1e-5)</dt><dd><p>Validates whether a given list of numbers forms a valid probability vector.</p>
+</dd>
+<dt>find_closest_prob_vector_l1(quasiprobability_vector: List[float], method=’picos’)</dt><dd><p>Find the closest probability vector to a quasiprobability vector using L1 norm.</p>
+</dd>
+<dt>find_closest_prob_vector_l2find_closest_prob_vector_l2(quasiprobability_vector: List[float])</dt><dd><p>Find the closest probability vector to a given quasiprobability vector using Euclidean norm</p>
+</dd>
+<dt>random_stochastic_matrix(size, type=’left’, diagonal=1.0)</dt><dd><p>Generates a random stochastic matrix of a specified type and size.</p>
+</dd>
+<dt>compute_marginals(results_dictionary, subsets_list, print_progress_bar=False, normalization=False)</dt><dd><p>Computes marginal distributions for given experimental settings and marginal lists.</p>
+</dd>
+<dt>compute_marginals_multiprocessing(results_dictionary, subsets_list, multiprocessing=False, number_of_threads=None, print_progress_bar=False, normalization=False)</dt><dd><p>Computes marginals, optionally using multiprocessing for performance.</p>
+</dd>
+<dt>compute_marginal_of_probability_distribution(global_probability_distribution, bits_of_interest, register_names=None)</dt><dd><p>Returns the marginal distribution from a vector of global distribution.</p>
+</dd>
+<dt>calculate_total_variation_distance(p: np.array, q: np.array)</dt><dd><p>alculate the total variation distance between two probability vectors.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.is_valid_probability_vector" title="qrem.common.probability.is_valid_probability_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_probability_vector</span></code></a>(→ bool)</p></td>
+<td><p>Check if a given vector is a valid probability vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.probability.find_closest_prob_vector_l2" title="qrem.common.probability.find_closest_prob_vector_l2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_closest_prob_vector_l2</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Find the closest probability vector to a given quasiprobability vector using Euclidean norm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.find_closest_prob_vector_l1" title="qrem.common.probability.find_closest_prob_vector_l1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_closest_prob_vector_l1</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Find the closest probability vector to a quasiprobability vector using L1 norm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.probability.calculate_total_variation_distance" title="qrem.common.probability.calculate_total_variation_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_total_variation_distance</span></code></a>(→ float)</p></td>
+<td><p>Calculate the total variation distance between two probability vectors. See Refs. [1] and [2] for the relation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.random_stochastic_matrix" title="qrem.common.probability.random_stochastic_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_stochastic_matrix</span></code></a>(size[, type, diagonal])</p></td>
+<td><p>Generate a random stochastic matrix of a specified size and type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.probability.compute_average_marginal_for_subsets_list" title="qrem.common.probability.compute_average_marginal_for_subsets_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_average_marginal_for_subsets_list</span></code></a>(→ Dict[str, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.compute_average_marginal_for_subset" title="qrem.common.probability.compute_average_marginal_for_subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_average_marginal_for_subset</span></code></a>(→ Dict[str, ...)</p></td>
+<td><p>For a given subset of qubits, compute its marginal with marginalizing (averaging) also over the input settings / circuit labels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.probability.compute_marginals_single" title="qrem.common.probability.compute_marginals_single"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_marginals_single</span></code></a>(→ Dict[str, Dict[Tuple[int], ...)</p></td>
+<td><p>Compute marginal distributions for given experimental settings and marginals lists.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.compute_marginals_mew" title="qrem.common.probability.compute_marginals_mew"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_marginals_mew</span></code></a>(→ Dict[str, Dict[Tuple[int], ...)</p></td>
+<td><p>Compute marginals with optional multiprocessing support.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.probability.normalize_marginals" title="qrem.common.probability.normalize_marginals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_marginals</span></code></a>(→ Dict[str, Dict[Tuple[int], ...)</p></td>
+<td><p>Normalizes marginal distributions for given marginals dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.convert_subset_counts_dictionary_to_probability_distribution" title="qrem.common.probability.convert_subset_counts_dictionary_to_probability_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_subset_counts_dictionary_to_probability_distribution</span></code></a>(...)</p></td>
+<td><p>Makes a probability distribution from counts dictionary,</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.probability._compute_marginals" title="qrem.common.probability._compute_marginals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_compute_marginals</span></code></a>(results_dictionary, subsets_list[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.compute_marginals" title="qrem.common.probability.compute_marginals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_marginals</span></code></a>(results_dictionary, subsets_list[, ...])</p></td>
+<td><p>Compute marginals with optional multiprocessing support.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.probability.compute_marginal_of_probability_distribution" title="qrem.common.probability.compute_marginal_of_probability_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_marginal_of_probability_distribution</span></code></a>(...)</p></td>
+<td><p>Compute the marginal of a probability distribution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.probability.get_marginal_from_probability_distribution" title="qrem.common.probability.get_marginal_from_probability_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_marginal_from_probability_distribution</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Return marginal distribution from vector of global distribution</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.is_valid_probability_vector">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">is_valid_probability_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">examined_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.probability.is_valid_probability_vector" title="Link to this definition"></a></dt>
+<dd><p>Check if a given vector is a valid probability vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>examined_vector</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – A list of float numbers representing a vector to be examined.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>optional</em>) – A small value to allow for numerical imprecision in summing to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if the vector is a valid probability vector, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.find_closest_prob_vector_l2">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">find_closest_prob_vector_l2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quasiprobability_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.probability.find_closest_prob_vector_l2" title="Link to this definition"></a></dt>
+<dd><p>Find the closest probability vector to a given quasiprobability vector using Euclidean norm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>quasiprobability_vector</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – A vector, possibly containing negative elements, whose elements sum to 1.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The closest probability vector in the Euclidean norm sense.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function computes the probability vector closest to the input quasiprobability vector in terms of the
+Euclidean (L2) norm. It employs an algorithm suitable for diagonal quantum states, leveraging the equivalence
+of the 2-norm for diagonal matrices with the 2-norm of their diagonal elements - Ref. [4]. The method is essential in
+quantum information theory for approximating non-physical probability distributions with valid quantum states.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.find_closest_prob_vector_l1">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">find_closest_prob_vector_l1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quasiprobability_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'picos'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.probability.find_closest_prob_vector_l1" title="Link to this definition"></a></dt>
+<dd><p>Find the closest probability vector to a quasiprobability vector using L1 norm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>quasiprobability_vector</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – A vector with elements summing to 1 but may contain negative values.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – The optimization method to use (‘picos’ or ‘scipy’). Defaults to ‘picos’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The closest probability vector in the L1 norm sense.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function calculates the probability vector closest to a given quasiprobability vector, in terms of the L1 norm.
+It formulates this task as a linear programming problem, which can be solved using either the ‘picos’ or ‘scipy’
+optimization libraries. This approach is crucial in quantum information theory for reconciling non-physical
+probability distributions with valid quantum states under different norm considerations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.calculate_total_variation_distance">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">calculate_total_variation_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qrem.common.probability.calculate_total_variation_distance" title="Link to this definition"></a></dt>
+<dd><p>Calculate the total variation distance between two probability vectors. See Refs. [1] and [2] for the relation
+between TV-distance and operational distance between quantum measurements.</p>
+<p>The total variation distance is a measure of the statistical distance between two probability distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>np.ndarray</em>) – The first probability vector.</p></li>
+<li><p><strong>q</strong> (<em>np.ndarray</em>) – The second probability vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The total variation distance between vectors p and q.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.random_stochastic_matrix">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">random_stochastic_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'left'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.probability.random_stochastic_matrix" title="Link to this definition"></a></dt>
+<dd><p>Generate a random stochastic matrix of a specified size and type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – The size of the square matrix.</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of the stochastic matrix: ‘left’, ‘right’, or ‘double’.</p></li>
+<li><p><strong>diagonal</strong> (<em>float</em><em>, </em><em>optional</em>) – Value to add to the diagonal elements, defaults to 1.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A numpy array representing the generated stochastic matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.compute_average_marginal_for_subsets_list">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">compute_average_marginal_for_subsets_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsets_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.bool_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.probability.compute_average_marginal_for_subsets_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.compute_average_marginal_for_subset">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">compute_average_marginal_for_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.bool_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.probability.compute_average_marginal_for_subset" title="Link to this definition"></a></dt>
+<dd><p>For a given subset of qubits, compute its marginal with marginalizing (averaging) also over the input settings / circuit labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subset</strong> (<em>Tuple</em>) – A list of quibts for which the marginal is computed.</p></li>
+<li><p><strong>results_dictionary</strong> (Dict[str, Tuple[npt.NDArray[<a href="#id2"><span class="problematic" id="id3">np.bool_</span></a>], npt.NDArray[<a href="#id4"><span class="problematic" id="id5">np.int_</span></a>]]]) – A dictionary with experimental setting labels and results.</p></li>
+<li><p><strong>counts_dictionary</strong> (Dict[str, Dict[Tuple[int], npt.NDArray[<a href="#id6"><span class="problematic" id="id7">np.float_</span></a>]]]) – A dictionary of precomputed unnormalized marginals (raw counts)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of computed marginals. Keys are the circuit labels that appeared on the subset qubit indices. Value is a probability vector.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, npt.NDArray[<a href="#id8"><span class="problematic" id="id9">np.float_</span></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.compute_marginals_single">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">compute_marginals_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.bool_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.probability.compute_marginals_single" title="Link to this definition"></a></dt>
+<dd><p>Compute marginal distributions for given experimental settings and marginals lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_dictionary</strong> (Dict[str, Tuple[npt.NDArray[<a href="#id10"><span class="problematic" id="id11">np.bool_</span></a>], npt.NDArray[<a href="#id12"><span class="problematic" id="id13">np.int_</span></a>]]]) – A dictionary with experimental setting labels and results.</p></li>
+<li><p><strong>subset</strong> (<em>subsets_list</em>) – A list of tuples indicating the marginals to be computed, e.g. [(0,1,2), (0,4,5), …]</p></li>
+<li><p><strong>print_progress_bar</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, shows a progress bar.</p></li>
+<li><p><strong>normalization</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, normalizes the results to form a probability vector, otherwise raw counts.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of computed marginals, in big endian qubits ordering.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Dict[Tuple[int], npt.NDArray[<a href="#id14"><span class="problematic" id="id15">np.float_</span></a>]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.compute_marginals_mew">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">compute_marginals_mew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.bool_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiprocessing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.probability.compute_marginals_mew" title="Link to this definition"></a></dt>
+<dd><p>Compute marginals with optional multiprocessing support.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_dictionary</strong> (Dict[str, Tuple[npt.NDArray[<a href="#id16"><span class="problematic" id="id17">np.bool_</span></a>], npt.NDArray[<a href="#id18"><span class="problematic" id="id19">np.int_</span></a>]]]) – A dictionary with experimental setting labels and results.</p></li>
+<li><p><strong>subsets_list</strong> (<em>List</em><em>[</em><em>Tuple</em><em>]</em>) – A list of tuples indicating the marginals to be computed, e.g. [(0,1,2), (0,4,5), …]</p></li>
+<li><p><strong>print_progress_bar</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, shows a progress bar.</p></li>
+<li><p><strong>normalization</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, normalizes the results to form a probability vector, otherwise raw counts.</p></li>
+<li><p><strong>multiprocessing</strong> (<em>bool</em><em>, </em><em>optionalDict</em>) – A dictionary containing the computed marginals.
+If True, uses multiprocessing to improve performance.</p></li>
+<li><p><strong>number_of_threads</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – The number of threads to use in multiprocessing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of computed marginals, in big endian qubits ordering.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Dict[Tuple[int], npt.NDArray[<a href="#id20"><span class="problematic" id="id21">np.float_</span></a>]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.normalize_marginals">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">normalize_marginals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.probability.normalize_marginals" title="Link to this definition"></a></dt>
+<dd><p>Normalizes marginal distributions for given marginals dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>marginals_dictionary</strong> (Dict[str, Dict[Tuple[int], npt.NDArray[<a href="#id22"><span class="problematic" id="id23">np.float_</span></a>]]]) – A dictionary of unnormalized  marginals, in big endian qubits ordering.</p></li>
+<li><p><strong>print_progress_bar</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, shows a progress bar.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of normalized marginals, in big endian qubits ordering.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Dict[Tuple[int], npt.NDArray[<a href="#id24"><span class="problematic" id="id25">np.float_</span></a>]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.convert_subset_counts_dictionary_to_probability_distribution">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">convert_subset_counts_dictionary_to_probability_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.probability.convert_subset_counts_dictionary_to_probability_distribution" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Makes a probability distribution from counts dictionary,</dt><dd><p>IMPORTANT: fills in with zeros for results absent in counts_dictionary
+USED A LOT by functions from cnmitigation.py and functions_qrem</p>
+</dd>
+</dl>
+<p>ew_mitigation_routines.py</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability._compute_marginals">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">_compute_marginals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.probability._compute_marginals" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.compute_marginals">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">compute_marginals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_multiprocessing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.probability.compute_marginals" title="Link to this definition"></a></dt>
+<dd><p>Compute marginals with optional multiprocessing support.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_dictionary</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>]</em>) – A dictionary of experimental results.</p></li>
+<li><p><strong>subsets_list</strong> (<em>List</em><em>[</em><em>Tuple</em><em>]</em>) – List of subsets for which marginals are to be computed.</p></li>
+<li><p><strong>use_multiprocessing</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, uses multiprocessing to improve performance.</p></li>
+<li><p><strong>number_of_threads</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – The number of threads to use in multiprocessing.</p></li>
+<li><p><strong>print_progress_bar</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, displays a progress bar.</p></li>
+<li><p><strong>normalization</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, normalizes the results to form probability vectors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the computed marginals.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.compute_marginal_of_probability_distribution">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">compute_marginal_of_probability_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">global_probability_distribution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits_of_interest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.probability.compute_marginal_of_probability_distribution" title="Link to this definition"></a></dt>
+<dd><p>Compute the marginal of a probability distribution
+(Return marginal distribution from vector of global distribution).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>global_probability_distribution</strong> (<em>np.ndarray</em>) – The global probability distribution as an array.</p></li>
+<li><p><strong>bits_of_interest</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Indices of bits for which the marginal distribution is computed (so we average over other bits)
+Assuming that qubits are labeled
+from 0 to log2(len(global_probability_distribution)).</p></li>
+<li><p><strong>register_names</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – Bitstring register names, defaults to a standard binary representation:
+‘00…00’, ‘000…01’, ‘000…10’, …, etc.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The marginal probability distribution array.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function identifies bits with qubits in the variable bitstring_names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.probability.get_marginal_from_probability_distribution">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.probability.</span></span><span class="sig-name descname"><span class="pre">get_marginal_from_probability_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">global_probability_distribution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits_of_interest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.probability.get_marginal_from_probability_distribution" title="Link to this definition"></a></dt>
+<dd><p>Return marginal distribution from vector of global distribution
+:param global_probability_distribution: distribution on all bits
+:param bits_of_interest: bits we are interested in (so we average over other bits)</p>
+<blockquote>
+<div><p>Assuming that qubits are labeled
+from 0 to log2(len(global_probability_distribution))</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>register_names</strong> – bitstrings register, default is
+‘00…00’, ‘000…01’, ‘000…10’, …, etc.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>marginal_distribution : marginal probability distribution</p>
+</dd>
+</dl>
+<p>NOTE: we identify bits with qubits in the variables bitstring_names</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../printer/index.html" class="btn btn-neutral float-left" title="qrem.common.printer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../registers/index.html" class="btn btn-neutral float-right" title="qrem.common.registers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

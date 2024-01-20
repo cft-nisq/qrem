@@ -1,0 +1,47 @@
+:py:mod:`qrem.common.scipy_optimizers_wrappers`
+===============================================
+
+.. py:module:: qrem.common.scipy_optimizers_wrappers
+
+.. autoapi-nested-parse::
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.scipy_optimizers_wrappers.wrapper_scipy_optimize
+   qrem.common.scipy_optimizers_wrappers.fun_test
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.scipy_optimizers_wrappers.params_starting
+
+
+.. py:function:: wrapper_scipy_optimize(target_function: Callable, optimizer_name: str, initial_parameters: Optional[List[float]] = None, basinhopping=False, basinhopping_kwargs={}, differential_evolution_kwargs={}, additional_arguments: Optional[Tuple] = (), bounds_list: Optional[List[Tuple[float, float]]] = None, options: Optional[dict] = None, differential_evolution_constraints=())
+
+
+.. py:function:: fun_test(xs)
+
+
+.. py:data:: params_starting
+   :value: [1, 1]
+
+   
+

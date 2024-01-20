@@ -1,0 +1,17 @@
+:py:mod:`qrem.cn.simtools`
+==========================
+
+.. py:module:: qrem.cn.simtools
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   auxiliary_merging_functions/index.rst
+   custom_model_creator/index.rst
+   noisy_simulationsKKM/index.rst
+
+

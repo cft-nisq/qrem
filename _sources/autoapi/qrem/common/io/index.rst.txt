@@ -1,0 +1,138 @@
+:py:mod:`qrem.common.io`
+========================
+
+.. py:module:: qrem.common.io
+
+.. autoapi-nested-parse::
+
+   QREM IO Module
+   ==============
+
+   The `qrem.common.io` module provides utility functions for handling dates and file operations,
+   specifically for saving and loading data in a QREM (Quantum Error Mitigation) context. It includes
+   functions to format current date and time, prepare output file paths, and perform file operations
+   like saving and loading data using pickle serialization.
+
+   Functions
+   ---------
+   date_time_formatted()
+       Returns the current date and time formatted for file naming.
+
+   date_formatted()
+       Returns the current date formatted.
+
+   date_time_fileformatted()
+       Returns the current date and time formatted for file naming, with a file-safe format.
+
+   prepare_outfile(outpath: Union[bool, str, Path], overwrite: bool, default_filename: str)
+       Prepares and returns a path for saving output files, with optional overwriting.
+
+   load(file_path: str)
+       Loads data from a pickled file.
+
+   save(dictionary_to_save: dict, directory: Union[Path, str], custom_filename: Optional[str],
+        overwrite: bool, verbose_log: bool)
+       Saves a dictionary to a pickled file in a specified directory.
+
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.io.date_time_formatted
+   qrem.common.io.date_formatted
+   qrem.common.io.date_time_fileformatted
+   qrem.common.io.prepare_outfile
+   qrem.common.io.load
+   qrem.common.io.save
+   qrem.common.io._t1
+
+
+
+.. py:function:: date_time_formatted()
+
+   Returns the current date and time formatted as a string suitable for use in filenames.
+
+   :returns: The current date and time in "YYYY_MM_DD-HH_MM_SS" format.
+   :rtype: str
+
+
+.. py:function:: date_formatted()
+
+   Returns the current date formatted as a string.
+
+   :returns: The current date in "YYYY-MM-DD" format.
+   :rtype: str
+
+
+.. py:function:: date_time_fileformatted()
+
+   Returns the current date and time formatted as a string suitable for filenames,
+   ensuring file system compatibility.
+
+   :returns: The current date and time in "YYYY_MM_DD__HH_MM_SS" format.
+   :rtype: str
+
+
+.. py:function:: prepare_outfile(outpath: Union[bool, str, pathlib.Path] = False, overwrite: bool = False, default_filename='output.pkl')
+
+   Prepares and returns a path for an output file. If the path doesn't exist, it will be created.
+
+   :param outpath: The desired path for the output file. If False, a default path will be used.
+   :type outpath: Union[bool, str, Path], optional
+   :param overwrite: If True, will overwrite existing files at the path.
+   :type overwrite: bool, optional
+   :param default_filename: The default filename to use if no specific path is provided.
+   :type default_filename: str, optional
+
+   :returns: The prepared Path object for the output file.
+   :rtype: Path
+
+
+.. py:function:: load(file_path: str)
+
+   Loads and returns data from a pickled file.
+
+   :param file_path: The path to the pickled file.
+   :type file_path: str
+
+   :returns: The data unpickled from the file.
+   :rtype: Any
+
+
+.. py:function:: save(dictionary_to_save: dict, directory: Union[pathlib.Path, str], custom_filename: Optional[str] = None, overwrite: bool = False, verbose_log: bool = True)
+
+   Saves a dictionary to a pickled file in the specified directory.
+
+   :param dictionary_to_save: The dictionary to be saved.
+   :type dictionary_to_save: dict
+   :param directory: The directory where the file should be saved.
+   :type directory: Union[Path, str]
+   :param custom_filename: A custom filename for the saved file. If None, a default name is generated.
+   :type custom_filename: Optional[str], optional
+   :param overwrite: If True, will overwrite existing data in the directory.
+   :type overwrite: bool, optional
+   :param verbose_log: If True, prints additional information during the save process.
+   :type verbose_log: bool, optional
+
+   .. rubric:: Notes
+
+   The function will create the directory if it does not exist.
+
+
+.. py:function:: _t1()
+
+

@@ -1,0 +1,151 @@
+:py:mod:`qrem.qtypes.datastructure_base`
+========================================
+
+.. py:module:: qrem.qtypes.datastructure_base
+
+.. autoapi-nested-parse::
+
+   Data Structure Module
+
+   This module provides a base class for data structures with export and import capabilities.
+   It includes methods for exporting and importing data structures to/from JSON and pickle formats.
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.datastructure_base.DataStructureBase
+   qrem.qtypes.datastructure_base.MyTestStructure
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.datastructure_base._testcase1
+
+
+.. py:class:: DataStructureBase
+
+
+   Base class for data structures with export and import capabilities.
+
+   .. attribute:: None
+
+
+
+   .. method:: get_dict_format()
+
+      Returns this class as a JSON-like dictionary structure.
+
+
+   .. method:: load_from_dict(dictionary)
+
+      Loads class fields from a dictionary.
+
+
+   .. method:: to_json()
+
+      Returns this class as a JSON structure.
+
+
+   .. method:: export_json(json_export_path, overwrite=False)
+
+      Saves the class into a JSON file.
+
+
+   .. method:: import_json(json_import_path)
+
+      Imports class fields from a JSON file.
+
+
+   .. method:: get_pickle()
+
+      Returns this class as a pickle structure.
+
+
+   .. method:: export_pickle(pickle_export_path, overwrite=False)
+
+      Saves the class into a pickle file.
+
+
+   .. method:: import_pickle(pickle_import_path)
+
+      Imports class fields from a pickle file.
+
+
+   .. py:method:: get_dict_format()
+
+      returns this class as a json-like dictionary structure
+
+
+   .. py:method:: load_from_dict(dictionary)
+
+
+   .. py:method:: to_json()
+
+      returns this class as a json structure
+
+
+   .. py:method:: export_json(json_export_path, overwrite=False)
+
+      saves the class into json file
+
+
+   .. py:method:: import_json(json_import_path)
+
+      imports class' fields from json file
+
+
+   .. py:method:: get_pickle()
+
+      returns this class as a pickle structure
+
+
+   .. py:method:: export_pickle(pickle_export_path, overwrite=False)
+
+      saves the class into pickle file
+
+
+   .. py:method:: import_pickle(pickle_import_path)
+
+      imports class' fields from pickle file
+
+
+
+.. py:class:: MyTestStructure(data)
+
+
+   Bases: :py:obj:`DataStructureBase`
+
+   Example custom data structure derived from DataStructureBase.
+
+   .. attribute:: data
+
+      The data stored in this structure.
+
+      :type: numpy.ndarray
+
+   .. method:: __init__(data)
+
+      Initializes a new instance of MyStructure.
+
+
+.. py:data:: _testcase1
+
+   
+

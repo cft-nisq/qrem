@@ -1,0 +1,1094 @@
+:py:mod:`qrem.common.external.ncpol2sdpa`
+=========================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa
+
+.. autoapi-nested-parse::
+
+   Ncpol2SDPA
+   =====
+
+   Ncpol2SDPA package by Peter Wittek. Provides:
+    1. A converter from a polynomial optimization problems of commuting and
+       noncommuting variables to a semidefinite programming relaxation.
+    2. Helper functions to define physics problems.
+
+    As current version of the package available on PyPI contains minor issues,
+    original package was moved and modified to be used as a submodule of QREM package.
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   chordal_extension/index.rst
+   cvxpy_utils/index.rst
+   faacets_relaxation/index.rst
+   moroder_hierarchy/index.rst
+   mosek_utils/index.rst
+   nc_utils/index.rst
+   physics_utils/index.rst
+   picos_utils/index.rst
+   rdm_hierarchy/index.rst
+   sdp_relaxation/index.rst
+   sdpa_utils/index.rst
+   solver_common/index.rst
+   steering_hierarchy/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.FaacetsRelaxation
+   qrem.common.external.ncpol2sdpa.SdpRelaxation
+   qrem.common.external.ncpol2sdpa.SteeringHierarchy
+   qrem.common.external.ncpol2sdpa.MoroderHierarchy
+   qrem.common.external.ncpol2sdpa.RdmHierarchy
+   qrem.common.external.ncpol2sdpa.Probability
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.generate_operators
+   qrem.common.external.ncpol2sdpa.generate_variables
+   qrem.common.external.ncpol2sdpa.get_monomials
+   qrem.common.external.ncpol2sdpa.flatten
+   qrem.common.external.ncpol2sdpa.read_sdpa_out
+   qrem.common.external.ncpol2sdpa.bosonic_constraints
+   qrem.common.external.ncpol2sdpa.fermionic_constraints
+   qrem.common.external.ncpol2sdpa.pauli_constraints
+   qrem.common.external.ncpol2sdpa.get_neighbors
+   qrem.common.external.ncpol2sdpa.get_next_neighbors
+   qrem.common.external.ncpol2sdpa.correlator
+   qrem.common.external.ncpol2sdpa.generate_measurements
+   qrem.common.external.ncpol2sdpa.projective_measurement_constraints
+   qrem.common.external.ncpol2sdpa.maximum_violation
+   qrem.common.external.ncpol2sdpa.define_objective_with_I
+
+
+
+.. py:class:: FaacetsRelaxation
+
+
+   Bases: :py:obj:`qrem.common.external.ncpol2sdpa.sdp_relaxation.Relaxation`
+
+   Class for wrapping around a Faacets relaxation.
+
+
+
+   .. py:method:: get_relaxation(A_configuration, B_configuration, I)
+
+      Get the sparse SDP relaxation of a Bell inequality.
+
+      :param A_configuration: The definition of measurements of Alice.
+      :type A_configuration: list of list of int.
+      :param B_configuration: The definition of measurements of Bob.
+      :type B_configuration: list of list of int.
+      :param I: The matrix describing the Bell inequality in the
+                Collins-Gisin picture.
+      :type I: list of list of int.
+
+
+
+.. py:class:: SdpRelaxation(variables, parameters=None, verbose=0, normalized=True, parallel=False, number_of_threads=None)
+
+
+   Bases: :py:obj:`Relaxation`
+
+   Class for obtaining sparse SDP relaxation.
+
+   :param variables: Commutative or noncommutative, Hermitian or nonhermiatian
+                     variables, possibly a list of list of variables if the
+                     hierarchy is not NPA.
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param parameters: Optional symbolic variables for which moments are not
+                      generated.
+   :type parameters: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param verbose: Optional parameter for level of verbosity:
+
+                      * 0: quiet (default)
+                      * 1: verbose
+                      * 2: debug level
+   :type verbose: int.
+   :param normalized: Optional parameter for changing the normalization of
+                      states over which the optimization happens. Turn it off
+                      if further processing is done on the SDP matrix before
+                      solving it.
+   :type normalized: bool.
+   :param parallel: Optional parameter for allowing parallel computations.
+   :type parallel: bool.
+   :param number_of_threads: set the number of threads if parallel is True. If None, use cpu_count() of multiprocess.
+   :type number_of_threads: int.
+
+   .. attribute:: - `monomial_sets`
+
+      The monomial sets that generate the moment matrix blocks.
+
+   .. attribute:: - `monomial_index`
+
+      Dictionary that maps monomials to SDP variables.
+
+   .. attribute:: - `constraints`
+
+      The complete set of constraints after preprocesssing.
+
+   .. attribute:: - `primal`
+
+      The primal optimal value.
+
+   .. attribute:: - `dual`
+
+      The dual optimal value.
+
+   .. attribute:: - `x_mat`
+
+      The primal solution matrix.
+
+   .. attribute:: - `y_mat`
+
+      The dual solution matrix.
+
+   .. attribute:: - `solution_time`
+
+      The amount of time taken to solve the relaxation.
+
+   .. attribute:: - `status`
+
+      The solution status of the relaxation.
+
+   .. py:method:: _process_monomial(monomial, n_vars)
+
+      Process a single monomial when building the moment matrix.
+
+
+
+   .. py:method:: _push_monomial(monomial, n_vars, row_offset, rowA, columnA, N, rowB, columnB, lenB, prevent_substitutions=False)
+
+
+   .. py:method:: _generate_moment_matrix(n_vars, block_index, processed_entries, monomialsA, monomialsB, ppt=False)
+
+      Generate the moment matrix of monomials.
+
+      Arguments:
+      n_vars -- current number of variables
+      block_index -- current block index in the SDP matrix
+      monomials -- |W_d| set of words of length up to the relaxation level
+
+
+   .. py:method:: _generate_all_moment_matrix_blocks(n_vars, block_index)
+
+
+   .. py:method:: _get_index_of_monomial(element, enablesubstitution=True, daggered=False)
+
+      Returns the index of a monomial.
+
+
+
+   .. py:method:: __push_facvar_sparse(polynomial, block_index, row_offset, i, j)
+
+      Calculate the sparse vector representation of a polynomial
+      and pushes it to the F structure.
+
+
+   .. py:method:: _get_facvar(polynomial)
+
+      Return dense vector representation of a polynomial. This function is
+      nearly identical to __push_facvar_sparse, but instead of pushing
+      sparse entries to the constraint matrices, it returns a dense
+      vector.
+
+
+   .. py:method:: __process_inequalities(block_index)
+
+      Generate localizing matrices
+
+      Arguments:
+      inequalities -- list of inequality constraints
+      monomials    -- localizing monomials
+      block_index -- the current block index in constraint matrices of the
+                     SDP relaxation
+
+
+   .. py:method:: __process_equalities(equalities, momentequalities)
+
+      Generate localizing matrices
+
+      Arguments:
+      equalities -- list of equality constraints
+      equalities -- list of moment equality constraints
+
+
+   .. py:method:: __remove_equalities(equalities, momentequalities)
+
+      Attempt to remove equalities by solving the linear equations.
+
+
+
+   .. py:method:: __duplicate_momentmatrix(original_n_vars, n_vars, block_index)
+
+
+   .. py:method:: __add_new_momentmatrix(n_vars, block_index)
+
+
+   .. py:method:: __impose_ppt(block_index)
+
+
+   .. py:method:: __add_extra_momentmatrices(extramomentmatrices, n_vars, block_index)
+
+
+   .. py:method:: __parse_expression(expr, row_offset, line=None)
+
+
+   .. py:method:: _calculate_block_structure(inequalities, equalities, momentinequalities, momentequalities, extramomentmatrix, removeequalities, block_struct=None)
+
+      Calculates the block_struct array for the output file.
+
+
+
+   .. py:method:: __generate_monomial_sets(extramonomials)
+
+
+   .. py:method:: _estimate_n_vars()
+
+
+   .. py:method:: __add_parameters()
+
+
+   .. py:method:: __wipe_F_from_constraints()
+
+
+   .. py:method:: process_constraints(inequalities=None, equalities=None, momentinequalities=None, momentequalities=None, block_index=0, removeequalities=False)
+
+      Process the constraints and generate localizing matrices. Useful
+      only if the moment matrix already exists. Call it if you want to
+      replace your constraints. The number of the respective types of
+      constraints and the maximum degree of each constraint must remain the
+      same.
+
+      :param inequalities: Optional parameter to list inequality constraints.
+      :type inequalities: list of :class:`sympy.core.exp.Expr`.
+      :param equalities: Optional parameter to list equality constraints.
+      :type equalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentinequalities: Optional parameter of inequalities defined
+                                 on moments.
+      :type momentinequalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentequalities: Optional parameter of equalities defined
+                               on moments.
+      :type momentequalities: list of :class:`sympy.core.exp.Expr`.
+      :param removeequalities: Optional parameter to attempt removing the
+                               equalities by solving the linear equations.
+
+      :param removeequalities: Optional parameter to attempt removing the
+                               equalities by solving the linear equations.
+      :type removeequalities: bool.
+
+
+   .. py:method:: set_objective(objective, extraobjexpr=None)
+
+      Set or change the objective function of the polynomial optimization
+      problem.
+
+      :param objective: Describes the objective function.
+      :type objective: :class:`sympy.core.expr.Expr`
+      :param extraobjexpr: Optional parameter of a string expression of a
+                           linear combination of moment matrix elements to be
+                           included in the objective function
+      :type extraobjexpr: str.
+
+
+   .. py:method:: __getitem__(index)
+
+      Obtained the value for a polynomial in a solved relaxation.
+
+      :param index: The polynomial.
+      :type index: `sympy.core.exp.Expr`
+
+      :returns: The value of the polynomial extracted from the solved SDP.
+      :rtype: float
+
+
+   .. py:method:: get_sos_decomposition(threshold=0.0)
+
+      Given a solution of the dual problem, it returns the SOS
+      decomposition.
+
+      :param threshold: Optional parameter for specifying the threshold value
+                        below which the eigenvalues and entries of the
+                        eigenvectors are disregarded.
+      :type threshold: float.
+      :returns: The SOS decomposition of [sigma_0, sigma_1, ..., sigma_m]
+      :rtype: list of :class:`sympy.core.exp.Expr`.
+
+
+   .. py:method:: extract_dual_value(monomial, blocks=None)
+
+      Given a solution of the dual problem and a monomial, it returns the
+      inner product of the corresponding coefficient matrix and the dual
+      solution. It can be restricted to certain blocks.
+
+      :param monomial: The monomial for which the value is requested.
+      :type monomial: :class:`sympy.core.exp.Expr`.
+      :param monomial: The monomial for which the value is requested.
+      :type monomial: :class:`sympy.core.exp.Expr`.
+      :param blocks: Optional parameter to specify the blocks to be included.
+      :type blocks: list of `int`.
+      :returns: The value of the monomial in the solved relaxation.
+      :rtype: float.
+
+
+   .. py:method:: find_solution_ranks(xmat=None, baselevel=0)
+
+      Helper function to detect rank loop in the solution matrix.
+
+      :param sdpRelaxation: The SDP relaxation.
+      :type sdpRelaxation: :class:`ncpol2sdpa.SdpRelaxation`.
+      :param x_mat: Optional parameter providing the primal solution of the
+                    moment matrix. If not provided, the solution is extracted
+                    from the sdpRelaxation object.
+      :type x_mat: :class:`numpy.array`.
+      :param base_level: Optional parameter for specifying the lower level
+                         relaxation for which the rank loop should be tested
+                         against.
+      :type base_level: int.
+      :returns: list of int -- the ranks of the solution matrix with in the
+                order of increasing degree.
+
+
+   .. py:method:: get_dual(constraint, ymat=None)
+
+      Given a solution of the dual problem and a constraint of any type,
+      it returns the corresponding block in the dual solution. If it is an
+      equality constraint that was converted to a pair of inequalities, it
+      returns a two-tuple of the matching dual blocks.
+
+      :param constraint: The constraint.
+      :type index: `sympy.core.exp.Expr`
+      :param y_mat: Optional parameter providing the dual solution of the
+                    SDP. If not provided, the solution is extracted
+                    from the sdpRelaxation object.
+      :type y_mat: :class:`numpy.array`.
+      :returns: The corresponding block in the dual solution.
+      :rtype: :class:`numpy.array` or a tuple thereof.
+
+
+   .. py:method:: write_to_file(filename, filetype=None)
+
+      Write the relaxation to a file.
+
+      :param filename: The name of the file to write to. The type can be
+                       autodetected from the extension: .dat-s for SDPA,
+                       .task for mosek or .csv for human readable format.
+      :type filename: str.
+      :param filetype: Optional parameter to define the filetype. It can be
+                       "sdpa" for SDPA , "mosek" for Mosek, or "csv" for
+                       human readable format.
+      :type filetype: str.
+
+
+   .. py:method:: save_monomial_index(filename)
+
+      Write the monomial index to a file.
+
+      :param filename: The name of the file to write to.
+      :type filename: str.
+
+
+   .. py:method:: convert_to_cvxpy()
+
+      Convert an SDP relaxation to a CVXPY problem.
+
+      :returns: :class:`cvxpy.Problem`.
+
+
+   .. py:method:: convert_to_picos(duplicate_moment_matrix=False)
+
+      Convert the SDP relaxation to a PICOS problem such that the exported
+      .dat-s file is extremely sparse, there is not penalty imposed in terms
+      of SDP variables or number of constraints. This conversion can be used
+      for imposing extra constraints on the moment matrix, such as partial
+      transpose.
+
+      :param duplicate_moment_matrix: Optional parameter to add an
+                                      unconstrained moment matrix to the
+                                      problem with the same structure as the
+                                      moment matrix with the PSD constraint.
+      :type duplicate_moment_matrix: bool.
+
+      :returns: :class:`picos.Problem`.
+
+
+   .. py:method:: convert_to_mosek()
+
+      Convert an SDP relaxation to a MOSEK task.
+
+      :returns: :class:`mosek.Task`.
+
+
+   .. py:method:: get_relaxation(level, objective=None, inequalities=None, equalities=None, substitutions=None, momentinequalities=None, momentequalities=None, momentsubstitutions=None, removeequalities=False, extramonomials=None, extramomentmatrices=None, extraobjexpr=None, localizing_monomials=None, chordal_extension=False)
+
+      Get the SDP relaxation of a noncommutative polynomial optimization
+      problem.
+
+      :param level: The level of the relaxation. The value -1 will skip
+                    automatic monomial generation and use only the monomials
+                    supplied by the option `extramonomials`.
+      :type level: int.
+      :param obj: Optional parameter to describe the objective function.
+      :type obj: :class:`sympy.core.exp.Expr`.
+      :param inequalities: Optional parameter to list inequality constraints.
+      :type inequalities: list of :class:`sympy.core.exp.Expr`.
+      :param equalities: Optional parameter to list equality constraints.
+      :type equalities: list of :class:`sympy.core.exp.Expr`.
+      :param substitutions: Optional parameter containing monomials that can
+                            be replaced (e.g., idempotent variables).
+      :type substitutions: dict of :class:`sympy.core.exp.Expr`.
+      :param momentinequalities: Optional parameter of inequalities defined
+                                 on moments.
+      :type momentinequalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentequalities: Optional parameter of equalities defined
+                               on moments.
+      :type momentequalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentsubstitutions: Optional parameter containing moments that
+                                  can be replaced.
+      :type momentsubstitutions: dict of :class:`sympy.core.exp.Expr`.
+      :param removeequalities: Optional parameter to attempt removing the
+                               equalities by solving the linear equations.
+      :type removeequalities: bool.
+      :param extramonomials: Optional paramter of monomials to be included,
+                             on top of the requested level of relaxation.
+      :type extramonomials: list of :class:`sympy.core.exp.Expr`.
+      :param extramomentmatrices: Optional paramter of duplicating or adding
+                             moment matrices.  A new moment matrix can be
+                             unconstrained (""), a copy  of the first one
+                             ("copy"), and satisfying a partial positivity
+                             constraint ("ppt"). Each new moment matrix is
+                             requested as a list of string of these options.
+                             For instance, adding a single new moment matrix
+                             as a copy of the first would be
+                             ``extramomentmatrices=[["copy"]]``.
+      :type extramomentmatrices: list of list of str.
+      :param extraobjexpr: Optional parameter of a string expression of a
+                           linear combination of moment matrix elements to be
+                           included in the objective function.
+      :type extraobjexpr: str.
+      :param localizing_monomials: Optional parameter to specify sets of
+                                   localizing monomials for each constraint.
+                                   The internal order of constraints is
+                                   inequalities first, followed by the
+                                   equalities. If the parameter is specified,
+                                   but for a certain constraint the automatic
+                                   localization is requested, leave None in
+                                   its place in this parameter.
+      :type localizing_monomials: list of list of `sympy.core.exp.Expr`.
+      :param chordal_extension: Optional parameter to request a sparse
+                                chordal extension.
+      :type chordal_extension: bool.
+
+
+
+
+.. py:class:: SteeringHierarchy(variables, verbose=0, matrix_var_dim=None, mark_conjugate=False, parallel=False)
+
+
+   Bases: :py:obj:`qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation`
+
+   Class for obtaining a step in the steering hierarchy.
+
+   :param variables: Commutative or noncommutative, Hermitian or nonhermiatian
+                     variables.
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param verbose: Optional parameter for level of verbosity:
+
+                      * 0: quiet
+                      * 1: verbose
+                      * 2: debug level
+
+   :type verbose: int.
+   :param matrix_var_dim: Optional parameter to specify the size of matrix
+                          variable blocks
+   :type matrix_var_dim: int.
+   :param mark_conjugate: Use this optional parameter to generate a symbolic
+                          representation of the steering hierarchy for export.
+   :type mark_conjugate: bool.
+
+   .. attribute:: - `monomial_sets`
+
+      The monomial sets that generate the moment matrix blocks.
+
+   .. attribute:: - `monomial_index`
+
+      Dictionary that maps monomials to SDP variables.
+
+   .. attribute:: - `constraints`
+
+      The complete set of constraints after preprocesssing.
+
+   .. attribute:: - `primal`
+
+      The primal optimal value.
+
+   .. attribute:: - `dual`
+
+      The dual optimal value.
+
+   .. attribute:: - `x_mat`
+
+      The primal solution matrix.
+
+   .. attribute:: - `y_mat`
+
+      The dual solution matrix.
+
+   .. attribute:: - `solution_time`
+
+      The amount of time taken to solve the relaxation.
+
+   .. attribute:: - `status`
+
+      The solution status of the relaxation.
+
+   .. py:attribute:: hierarchy_types
+      :value: ['npa', 'npa_chordal', 'moroder']
+
+      
+
+   .. py:method:: _process_monomial(monomial, n_vars)
+
+      Process a single monomial when building the moment matrix.
+
+
+
+   .. py:method:: _push_monomial(monomial, n_vars, row_offset, rowA, columnA, N, rowB, columnB, lenB, prevent_substitutions=False)
+
+
+   .. py:method:: __add_matrix_variable(row_offset, rowA, columnA, N, rowB, columnB, lenB, k, conjugate, coeff)
+
+
+   .. py:method:: __get_trace_facvar(polynomial)
+
+      Return dense vector representation of a polynomial. This function is
+      nearly identical to __push_facvar_sparse, but instead of pushing
+      sparse entries to the constraint matrices, it returns a dense
+      vector.
+
+
+   .. py:method:: set_objective(objective, extraobjexpr=None)
+
+      Set or change the objective function of the polynomial optimization
+      problem.
+
+      :param objective: Describes the objective function.
+      :type objective: :class:`sympy.core.expr.Expr`
+      :param extraobjexpr: Optional parameter of a string expression of a
+                           linear combination of moment matrix elements to be
+                           included in the objective function
+      :type extraobjexpr: str.
+
+
+   .. py:method:: _calculate_block_structure(inequalities, equalities, momentinequalities, momentequalities, extramomentmatrix, removeequalities, block_struct=None)
+
+      Calculates the block_struct array for the output file.
+
+
+
+   .. py:method:: _estimate_n_vars()
+
+
+   .. py:method:: write_to_file(filename, filetype=None)
+
+      Write the relaxation to a file.
+
+      :param filename: The name of the file to write to. The type can be
+                       autodetected from the extension: .dat-s for SDPA,
+                       .task for mosek, .csv for human readable format, or
+                       .txt for a symbolic export
+      :type filename: str.
+      :param filetype: Optional parameter to define the filetype. It can be
+                       "sdpa" for SDPA , "mosek" for Mosek, "csv" for
+                       human readable format, or "txt" for a symbolic export.
+      :type filetype: str.
+
+
+
+.. py:class:: MoroderHierarchy(variables, parameters=None, verbose=0, normalized=True, ppt=False, parallel=False)
+
+
+   Bases: :py:obj:`qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation`
+
+   Class for obtaining a step in the Moroder hierarchy
+   (`doi:10.1103/PhysRevLett.111.030501 <http://dx.doi.org/10.1103/PhysRevLett.111.030501>`_)
+   :param variables: Commutative or noncommutative, Hermitian or nonhermiatian
+                     variables, possibly a list of list of variables if the
+                     hierarchy is not NPA.
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param parameters: Optional symbolic variables for which moments are not
+                      generated.
+   :type parameters: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param verbose: Optional parameter for level of verbosity:
+
+                      * 0: quiet
+                      * 1: verbose
+                      * 2: debug level
+   :type verbose: int.
+   :param normalized: Optional parameter for changing the normalization of
+                      states over which the optimization happens. Turn it off
+                      if further processing is done on the SDP matrix before
+                      solving it.
+   :type normalized: bool.
+   :param ppt: Optional parameter to impose a partial positivity constraint
+               on the moment matrix.
+   :type ppt: bool.
+
+   .. attribute:: - `monomial_sets`
+
+      The monomial sets that generate the moment matrix
+
+   .. attribute:: blocks.
+
+      
+
+   .. attribute:: - `monomial_index`
+
+      Dictionary that maps monomials to SDP variables.
+
+   .. attribute:: - `constraints`
+
+      The complete set of constraints after preprocesssing.
+
+   .. attribute:: - `primal`
+
+      The primal optimal value.
+
+   .. attribute:: - `dual`
+
+      The dual optimal value.
+
+   .. attribute:: - `x_mat`
+
+      The primal solution matrix.
+
+   .. attribute:: - `y_mat`
+
+      The dual solution matrix.
+
+   .. attribute:: - `solution_time`
+
+      The amount of time taken to solve the relaxation.
+
+   .. attribute:: - `status`
+
+      The solution status of the relaxation.
+
+   .. py:method:: _generate_all_moment_matrix_blocks(n_vars, block_index)
+
+
+   .. py:method:: _calculate_block_structure(inequalities, equalities, momentinequalities, momentequalities, extramomentmatrix, removeequalities, block_struct=None)
+
+      Calculates the block_struct array for the output file.
+
+
+
+   .. py:method:: _estimate_n_vars()
+
+
+
+.. py:class:: RdmHierarchy(variables, parameters=None, verbose=0, circulant=False, parallel=False)
+
+
+   Bases: :py:obj:`qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation`
+
+   Class for obtaining a level in the reduced density matrix method
+   :param variables: Commutative or noncommutative, Hermitian or nonhermiatian
+                     variables, possibly a list of list of variables if the
+                     hierarchy is not NPA.
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param parameters: Optional symbolic variables for which moments are not
+                      generated.
+   :type parameters: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param verbose: Optional parameter for level of verbosity:
+
+                      * 0: quiet
+                      * 1: verbose
+                      * 2: debug level
+   :type verbose: int.
+   :param normalized: Optional parameter for changing the normalization of
+                      states over which the optimization happens. Turn it off
+                      if further processing is done on the SDP matrix before
+                      solving it.
+   :type normalized: bool.
+   :param ppt: Optional parameter to impose a partial positivity constraint
+               on the moment matrix.
+   :type ppt: bool.
+
+   .. attribute:: - `monomial_sets`
+
+      The monomial sets that generate the moment matrix blocks.
+
+   .. attribute:: - `monomial_index`
+
+      Dictionary that maps monomials to SDP variables.
+
+   .. attribute:: - `constraints`
+
+      The complete set of constraints after preprocesssing.
+
+   .. attribute:: - `primal`
+
+      The primal optimal value.
+
+   .. attribute:: - `dual`
+
+      The dual optimal value.
+
+   .. attribute:: - `x_mat`
+
+      The primal solution matrix.
+
+   .. attribute:: - `y_mat`
+
+      The dual solution matrix.
+
+   .. attribute:: - `solution_time`
+
+      The amount of time taken to solve the relaxation.
+
+   .. attribute:: - `status`
+
+      The solution status of the relaxation.
+
+   .. py:method:: _push_monomials(monomials, n_vars, row_offset, coords, N)
+
+
+   .. py:method:: __second_moments(n_vars, monomialsA, block_index, processed_entries)
+
+
+   .. py:method:: __fourth_moments(n_vars, monomialsA, block_index, processed_entries)
+
+
+   .. py:method:: _generate_moment_matrix(n_vars, block_index, processed_entries, monomialsA, monomialsB, ppt=False)
+
+      Generate the moment matrix of monomials.
+
+      Arguments:
+      n_vars -- current number of variables
+      block_index -- current block index in the SDP matrix
+      monomials -- |W_d| set of words of length up to the relaxation level
+
+
+
+.. py:function:: generate_operators(name, n_vars=1, hermitian=None, commutative=False)
+
+   Generates a number of commutative or noncommutative operators
+
+   :param name: The prefix in the symbolic representation of the noncommuting
+                variables. This will be suffixed by a number from 0 to
+                n_vars-1 if n_vars > 1.
+   :type name: str.
+   :param n_vars: The number of variables.
+   :type n_vars: int.
+   :param hermitian: Optional parameter to request Hermitian variables .
+   :type hermitian: bool.
+   :param commutative: Optional parameter to request commutative variables.
+                       Commutative variables are Hermitian by default.
+   :type commutative: bool.
+
+   :returns: list of :class:`sympy.physics.quantum.operator.Operator` or
+             :class:`sympy.physics.quantum.operator.HermitianOperator`
+             variables
+
+   :Example:
+
+   >>> generate_variables('y', 2, commutative=True)
+   ￼[y0, y1]
+
+
+.. py:function:: generate_variables(name, n_vars=1, hermitian=None, commutative=True)
+
+   Generates a number of commutative or noncommutative variables
+
+   :param name: The prefix in the symbolic representation of the noncommuting
+                variables. This will be suffixed by a number from 0 to
+                n_vars-1 if n_vars > 1.
+   :type name: str.
+   :param n_vars: The number of variables.
+   :type n_vars: int.
+   :param hermitian: Optional parameter to request Hermitian variables .
+   :type hermitian: bool.
+   :param commutative: Optional parameter to request commutative variables.
+                       Commutative variables are Hermitian by default.
+   :type commutative: bool.
+
+   :returns: list of :class:`sympy.physics.quantum.operator.Operator` or
+             :class:`sympy.physics.quantum.operator.HermitianOperator`
+             variables or `sympy.Symbol`
+
+   :Example:
+
+   >>> generate_variables('y', 2, commutative=True)
+   ￼[y0, y1]
+
+
+.. py:function:: get_monomials(variables, degree)
+
+   Generates all noncommutative monomials up to a degree
+
+   :param variables: The noncommutative variables to generate monomials from
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param degree: The maximum degree.
+   :type degree: int.
+
+   :returns: list of monomials.
+
+
+.. py:function:: flatten(lol)
+
+   Flatten a list of lists to a list.
+
+   :param lol: A list of lists in arbitrary depth.
+   :type lol: list of list.
+
+   :returns: flat list of elements.
+
+
+.. py:function:: read_sdpa_out(filename, solutionmatrix=False, status=False, sdp=None)
+
+   Helper function to parse the output file of SDPA.
+
+   :param filename: The name of the SDPA output file.
+   :type filename: str.
+   :param solutionmatrix: Optional parameter for retrieving the solution.
+   :type solutionmatrix: bool.
+   :param status: Optional parameter for retrieving the status.
+   :type status: bool.
+   :param sdp: Optional parameter to add the solution to a
+                         relaxation.
+   :type sdp: sdp.
+   :returns: tuple of two floats and optionally two lists of `numpy.array` and
+             a status string
+
+
+.. py:function:: bosonic_constraints(a)
+
+   Return  a set of constraints that define fermionic ladder operators.
+
+   :param a: The non-Hermitian variables.
+   :type a: list of :class:`sympy.physics.quantum.operator.Operator`.
+   :returns: a dict of substitutions.
+
+
+.. py:function:: fermionic_constraints(a)
+
+   Return  a set of constraints that define fermionic ladder operators.
+
+   :param a: The non-Hermitian variables.
+   :type a: list of :class:`sympy.physics.quantum.operator.Operator`.
+   :returns: a dict of substitutions.
+
+
+.. py:function:: pauli_constraints(X, Y, Z)
+
+   Return  a set of constraints that define Pauli spin operators.
+
+   :param X: List of Pauli X operator on sites.
+   :type X: list of :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param Y: List of Pauli Y operator on sites.
+   :type Y: list of :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param Z: List of Pauli Z operator on sites.
+   :type Z: list of :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+   :returns: tuple of substitutions and equalities.
+
+
+.. py:function:: get_neighbors(index, lattice_length, width=0, periodic=False)
+
+   Get the forward neighbors of a site in a lattice.
+
+   :param index: Linear index of operator.
+   :type index: int.
+   :param lattice_length: The size of the 2D lattice in either dimension
+   :type lattice_length: int.
+   :param width: Optional parameter to define width.
+   :type width: int.
+   :param periodic: Optional parameter to indicate periodic boundary
+                    conditions.
+   :type periodic: bool
+
+   :returns: list of int -- the neighbors in linear index.
+
+
+.. py:function:: get_next_neighbors(indices, lattice_length, width=0, distance=1, periodic=False)
+
+   Get the forward neighbors at a given distance of a site or set of sites
+   in a lattice.
+
+   :param index: Linear index of operator.
+   :type index: int.
+   :param lattice_length: The size of the 2D lattice in either dimension
+   :type lattice_length: int.
+   :param width: Optional parameter to define width.
+   :type width: int.
+   :param distance: Optional parameter to define distance.
+   :type width: int.
+   :param periodic: Optional parameter to indicate periodic boundary
+                    conditions.
+   :type periodic: bool
+
+   :returns: list of int -- the neighbors at given distance in linear index.
+
+
+.. py:function:: correlator(A, B)
+
+   Correlators between the probabilities of two parties.
+
+   :param A: Measurements of Alice.
+   :type A: list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param B: Measurements of Bob.
+   :type B: list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+   :returns: list of correlators.
+
+
+.. py:function:: generate_measurements(party, label)
+
+   Generate variables that behave like measurements.
+
+   :param party: The list of number of measurement outputs a party has.
+   :type party: list of int.
+   :param label: The label to be given to the symbolic variables.
+   :type label: str.
+
+   :returns: list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+
+.. py:function:: projective_measurement_constraints(*parties)
+
+   Return a set of constraints that define projective measurements.
+
+   :param parties: Measurements of different parties.
+   :type A: list or tuple of list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+   :returns: substitutions containing idempotency, orthogonality and
+             commutation relations.
+
+
+.. py:function:: maximum_violation(A_configuration, B_configuration, I, level, extra=None)
+
+   Get the maximum violation of a two-party Bell inequality.
+
+   :param A_configuration: Measurement settings of Alice.
+   :type A_configuration: list of int.
+   :param B_configuration: Measurement settings of Bob.
+   :type B_configuration: list of int.
+   :param I: The I matrix of a Bell inequality in the Collins-Gisin notation.
+   :type I: list of list of int.
+   :param level: Level of relaxation.
+   :type level: int.
+
+   :returns: tuple of primal and dual solutions of the SDP relaxation.
+
+
+.. py:function:: define_objective_with_I(I, *args)
+
+   Define a polynomial using measurements and an I matrix describing a Bell
+   inequality.
+
+   :param I: The I matrix of a Bell inequality in the Collins-Gisin notation.
+   :type I: list of list of int.
+   :param args: Either the measurements of Alice and Bob or a `Probability`
+                class describing their measurement operators.
+   :type A: tuple of list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator` or
+            :class:`ncpol2sdpa.Probability`
+
+   :returns: :class:`sympy.core.expr.Expr` -- the objective function to be
+             solved as a minimization problem to find the maximum quantum
+             violation. Note that the sign is flipped compared to the Bell
+             inequality.
+
+
+.. py:class:: Probability(*args, **kwargs)
+
+
+   Bases: :py:obj:`object`
+
+   .. py:method:: get_all_operators()
+
+      Return all operators across all parties and measurements to supply
+      them to the `ncpol2sdpa.SdpRelaxation` class.
+
+
+
+   .. py:method:: _monomial_generator(monomials, label_indices)
+
+
+   .. py:method:: get_extra_monomials(*args)
+
+
+   .. py:method:: _convert_marginal_index(marginal)
+
+
+   .. py:method:: __call__(output_, input_, marginal=None)
+
+      Obtain your probabilities in the p(ab...|xy...) notation.
+
+      :param output_: Conditional output as [a, b, ...]
+      :type output_: list of ints.
+      :param input_: The input to condition on as [x, y, ...]
+      :type input_: list of ints.
+      :param marginal: Optional parameter. If it is a marginal, then you can
+                       define which party or parties it belongs to.
+      :type marginal: list of str.
+      :returns: polynomial of `sympy.physics.quantum.HermitianOperator`.
+
+      :Example:
+
+      For the CHSH scenario, to get p(10|01), write
+
+          P([1,0], [0,1])
+
+      To get the marginal p_A(0|1), write
+
+          P([0], [1], ['A'])
+
+
+
+

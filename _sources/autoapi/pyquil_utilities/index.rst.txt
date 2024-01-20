@@ -1,0 +1,91 @@
+:py:mod:`pyquil_utilities`
+==========================
+
+.. py:module:: pyquil_utilities
+
+.. autoapi-nested-parse::
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pyquil_utilities._apply_elementary_gate_native
+   pyquil_utilities._declare_generic_DOT_gate_parametric
+   pyquil_utilities._apply_generic_DOT_gate_parametric
+   pyquil_utilities.create_memory_map_DOT
+   pyquil_utilities.get_generic_base_program_DOT
+   pyquil_utilities.get_backend_wrapper
+   pyquil_utilities.run_batches_parametric
+   pyquil_utilities.convert_results_to_counts
+   pyquil_utilities._convert_results_to_counts_tuples
+   pyquil_utilities.convert_results_to_counts_dictionaries_DOT
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pyquil_utilities.__dictionary_with_angles_pauli_eigenstates__
+   pyquil_utilities.enumerated_labels_pauli_eigenstates
+
+
+.. py:data:: __dictionary_with_angles_pauli_eigenstates__
+
+   
+
+.. py:data:: enumerated_labels_pauli_eigenstates
+
+   
+
+.. py:function:: _apply_elementary_gate_native(quantum_program, qubit_index: int, gate_label: str)
+
+
+.. py:function:: _declare_generic_DOT_gate_parametric(quantum_program, qubit_index: int, number_of_rz_rotations=3, number_of_rx_rotations=2, name_suffix='', name_prefix='')
+
+
+.. py:function:: _apply_generic_DOT_gate_parametric(quantum_program, qubit_index_physical: int)
+
+   :param quantum_program:
+   :type quantum_program:
+   :param qubit_index_physical:
+   :type qubit_index_physical:
+
+   :return:
+   :rtype:
+
+
+.. py:function:: create_memory_map_DOT(list_of_keys: List[str], qubit_indices: List[int])
+
+
+.. py:function:: get_generic_base_program_DOT(qubit_indices: List[int], compilation_name: Optional[str] = 'parametric-native')
+
+
+.. py:function:: get_backend_wrapper(backend_name, sdk_name)
+
+
+.. py:function:: run_batches_parametric(backend_name: str, sdk_name: str, number_of_shots: int, qubit_indices: List[int], base_program, memory_map, compilation_method: Optional[str] = 'parametric-native')
+
+
+.. py:function:: convert_results_to_counts(single_result)
+
+
+.. py:function:: _convert_results_to_counts_tuples(single_result)
+
+
+.. py:function:: convert_results_to_counts_dictionaries_DOT(list_of_circuits_labels, results_list)
+
+

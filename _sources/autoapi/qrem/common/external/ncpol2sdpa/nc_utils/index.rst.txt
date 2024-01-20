@@ -1,0 +1,297 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.nc_utils`
+==================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.nc_utils
+
+.. autoapi-nested-parse::
+
+   This file contains helper functions to work with noncommutative polynomials
+   and Hamiltonians.
+
+   Created on Thu May  2 16:03:05 2013
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.nc_utils.flatten
+   qrem.common.external.ncpol2sdpa.nc_utils.simplify_polynomial
+   qrem.common.external.ncpol2sdpa.nc_utils.is_pure_substitution_rule
+   qrem.common.external.ncpol2sdpa.nc_utils.remove_scalar_factor
+   qrem.common.external.ncpol2sdpa.nc_utils.__separate_scalar_factor
+   qrem.common.external.ncpol2sdpa.nc_utils.get_support
+   qrem.common.external.ncpol2sdpa.nc_utils.get_support_variables
+   qrem.common.external.ncpol2sdpa.nc_utils.separate_scalar_factor
+   qrem.common.external.ncpol2sdpa.nc_utils.count_ncmonomials
+   qrem.common.external.ncpol2sdpa.nc_utils.apply_substitutions
+   qrem.common.external.ncpol2sdpa.nc_utils.fast_substitute
+   qrem.common.external.ncpol2sdpa.nc_utils.generate_variables
+   qrem.common.external.ncpol2sdpa.nc_utils.generate_operators
+   qrem.common.external.ncpol2sdpa.nc_utils.get_monomials
+   qrem.common.external.ncpol2sdpa.nc_utils.ncdegree
+   qrem.common.external.ncpol2sdpa.nc_utils.iscomplex
+   qrem.common.external.ncpol2sdpa.nc_utils.get_all_monomials
+   qrem.common.external.ncpol2sdpa.nc_utils.pick_monomials_up_to_degree
+   qrem.common.external.ncpol2sdpa.nc_utils.pick_monomials_of_degree
+   qrem.common.external.ncpol2sdpa.nc_utils.convert_monomial_to_string
+   qrem.common.external.ncpol2sdpa.nc_utils.save_monomial_index
+   qrem.common.external.ncpol2sdpa.nc_utils.unique
+   qrem.common.external.ncpol2sdpa.nc_utils.build_permutation_matrix
+   qrem.common.external.ncpol2sdpa.nc_utils.convert_relational
+   qrem.common.external.ncpol2sdpa.nc_utils.find_variable_set
+   qrem.common.external.ncpol2sdpa.nc_utils.moment_of_entry
+   qrem.common.external.ncpol2sdpa.nc_utils.assemble_monomial_and_do_substitutions
+   qrem.common.external.ncpol2sdpa.nc_utils.split_commutative_parts
+   qrem.common.external.ncpol2sdpa.nc_utils.is_number_type
+   qrem.common.external.ncpol2sdpa.nc_utils.is_adjoint
+   qrem.common.external.ncpol2sdpa.nc_utils.is_hermitian
+   qrem.common.external.ncpol2sdpa.nc_utils.flip_sign
+
+
+
+.. py:function:: flatten(lol)
+
+   Flatten a list of lists to a list.
+
+   :param lol: A list of lists in arbitrary depth.
+   :type lol: list of list.
+
+   :returns: flat list of elements.
+
+
+.. py:function:: simplify_polynomial(polynomial, monomial_substitutions)
+
+   Simplify a polynomial for uniform handling later.
+
+
+
+.. py:function:: is_pure_substitution_rule(lhs, rhs)
+
+
+.. py:function:: remove_scalar_factor(monomial)
+
+   Return monomial without constant factor.
+
+
+
+.. py:function:: __separate_scalar_factor(monomial)
+
+   Separate the constant factor from a monomial.
+
+
+
+.. py:function:: get_support(variables, polynomial)
+
+   Gets the support of a polynomial.
+
+
+
+.. py:function:: get_support_variables(polynomial)
+
+   Gets the support of a polynomial.
+
+
+
+.. py:function:: separate_scalar_factor(element)
+
+   Construct a monomial with the coefficient separated
+   from an element in a polynomial.
+
+
+.. py:function:: count_ncmonomials(monomials, degree)
+
+   Given a list of monomials, it counts those that have a certain degree,
+   or less. The function is useful when certain monomials were eliminated
+   from the basis.
+
+   :param variables: The noncommutative variables making up the monomials
+   :param monomials: List of monomials (the monomial basis).
+   :param degree:  Maximum degree to count.
+
+   :returns: The count of appropriate monomials.
+
+
+.. py:function:: apply_substitutions(monomial, monomial_substitutions, pure=False)
+
+   Helper function to remove monomials from the basis.
+
+
+.. py:function:: fast_substitute(monomial, old_sub, new_sub)
+
+   Experimental fast substitution routine that considers only restricted
+   cases of noncommutative algebras. In rare cases, it fails to find a
+   substitution. Use it with proper testing.
+
+   :param monomial: The monomial with parts need to be substituted.
+   :param old_sub: The part to be replaced.
+   :param new_sub: The replacement.
+
+
+.. py:function:: generate_variables(name, n_vars=1, hermitian=None, commutative=True)
+
+   Generates a number of commutative or noncommutative variables
+
+   :param name: The prefix in the symbolic representation of the noncommuting
+                variables. This will be suffixed by a number from 0 to
+                n_vars-1 if n_vars > 1.
+   :type name: str.
+   :param n_vars: The number of variables.
+   :type n_vars: int.
+   :param hermitian: Optional parameter to request Hermitian variables .
+   :type hermitian: bool.
+   :param commutative: Optional parameter to request commutative variables.
+                       Commutative variables are Hermitian by default.
+   :type commutative: bool.
+
+   :returns: list of :class:`sympy.physics.quantum.operator.Operator` or
+             :class:`sympy.physics.quantum.operator.HermitianOperator`
+             variables or `sympy.Symbol`
+
+   :Example:
+
+   >>> generate_variables('y', 2, commutative=True)
+   ￼[y0, y1]
+
+
+.. py:function:: generate_operators(name, n_vars=1, hermitian=None, commutative=False)
+
+   Generates a number of commutative or noncommutative operators
+
+   :param name: The prefix in the symbolic representation of the noncommuting
+                variables. This will be suffixed by a number from 0 to
+                n_vars-1 if n_vars > 1.
+   :type name: str.
+   :param n_vars: The number of variables.
+   :type n_vars: int.
+   :param hermitian: Optional parameter to request Hermitian variables .
+   :type hermitian: bool.
+   :param commutative: Optional parameter to request commutative variables.
+                       Commutative variables are Hermitian by default.
+   :type commutative: bool.
+
+   :returns: list of :class:`sympy.physics.quantum.operator.Operator` or
+             :class:`sympy.physics.quantum.operator.HermitianOperator`
+             variables
+
+   :Example:
+
+   >>> generate_variables('y', 2, commutative=True)
+   ￼[y0, y1]
+
+
+.. py:function:: get_monomials(variables, degree)
+
+   Generates all noncommutative monomials up to a degree
+
+   :param variables: The noncommutative variables to generate monomials from
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param degree: The maximum degree.
+   :type degree: int.
+
+   :returns: list of monomials.
+
+
+.. py:function:: ncdegree(polynomial)
+
+   Returns the degree of a noncommutative polynomial.
+
+   :param polynomial: Polynomial of noncommutive variables.
+   :type polynomial: :class:`sympy.core.expr.Expr`.
+
+   :returns: int -- the degree of the polynomial.
+
+
+.. py:function:: iscomplex(polynomial)
+
+   Returns whether the polynomial has complex coefficients
+
+   :param polynomial: Polynomial of noncommutive variables.
+   :type polynomial: :class:`sympy.core.expr.Expr`.
+
+   :returns: bool -- whether there is a complex coefficient.
+
+
+.. py:function:: get_all_monomials(variables, extramonomials, substitutions, degree, removesubstitutions=True)
+
+   Return the monomials of a certain degree.
+
+
+
+.. py:function:: pick_monomials_up_to_degree(monomials, degree)
+
+   Collect monomials up to a given degree.
+
+
+
+.. py:function:: pick_monomials_of_degree(monomials, degree)
+
+   Collect all monomials up of a given degree.
+
+
+
+.. py:function:: convert_monomial_to_string(monomial)
+
+
+.. py:function:: save_monomial_index(filename, monomial_index)
+
+   Save a monomial dictionary for debugging purposes.
+
+   :param filename: The name of the file to save to.
+   :type filename: str.
+   :param monomial_index: The monomial index of the SDP relaxation.
+   :type monomial_index: dict of :class:`sympy.core.expr.Expr`.
+
+
+
+.. py:function:: unique(seq)
+
+   Helper function to include only unique monomials in a basis.
+
+
+.. py:function:: build_permutation_matrix(permutation)
+
+   Build a permutation matrix for a permutation.
+
+
+
+.. py:function:: convert_relational(relational)
+
+   Convert all inequalities to >=0 form.
+
+
+
+.. py:function:: find_variable_set(variable_sets, polynomial)
+
+
+.. py:function:: moment_of_entry(pos, monomials, ineq, substitutions)
+
+
+.. py:function:: assemble_monomial_and_do_substitutions(arg, monomialsA, monomialsB, ppt, substitutions, pure_substitution_rules)
+
+
+.. py:function:: split_commutative_parts(e)
+
+
+.. py:function:: is_number_type(exp)
+
+
+.. py:function:: is_adjoint(exp)
+
+
+.. py:function:: is_hermitian(exp)
+
+
+.. py:function:: flip_sign(exp)
+
+

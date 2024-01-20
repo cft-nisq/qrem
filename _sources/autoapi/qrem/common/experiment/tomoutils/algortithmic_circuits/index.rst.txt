@@ -1,0 +1,105 @@
+:py:mod:`qrem.common.experiment.tomoutils.algortithmic_circuits`
+================================================================
+
+.. py:module:: qrem.common.experiment.tomoutils.algortithmic_circuits
+
+.. autoapi-nested-parse::
+
+   Combinatorial Quantum Circuit Generation Submodule
+
+   This module contains functions for generating and completing quantum circuits for quantum experiments, particularly in quantum tomography. It provides methods to generate combinatorial circuits, complete circuits based on missing symbols in given subsets, and find optimal partitions of qubit subsets for circuit analysis. The functions support various types of quantum experiments and are designed to handle different quantum tomography methods.
+
+   Functions
+   ---------
+       generate_combinatorial_circuits:
+           Generates a set of combinatorial circuits for a given quantum experiment.
+       complete_on_subset:
+           Completes a set of circuits by adding missing symbols in specified subsets.
+       find_partition:
+           Finds an optimal partition of qubit subsets for circuit analysis.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.experiment.tomoutils.algortithmic_circuits.generate_combinatorial_circuits
+   qrem.common.experiment.tomoutils.algortithmic_circuits.complete_on_subset
+   qrem.common.experiment.tomoutils.algortithmic_circuits.find_partition
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.experiment.tomoutils.algortithmic_circuits.experiments
+
+
+.. py:function:: generate_combinatorial_circuits(experiment_type: str, number_of_qubits: int, subset_locality: int, symbols: Optional[List] = None) -> numpy.array
+
+   Generates a set of combinatorial circuits for quantum tomography experiments.
+
+   :param experiment_type: The type of quantum experiment (e.g., DDOT, QDOT) which defines the set of symbols used for encoding gates.
+   :type experiment_type: str
+   :param number_of_qubits: The number of qubits involved in the experiment.
+   :type number_of_qubits: int
+   :param subset_locality: The number of qubits on which each circuit acts.
+   :type subset_locality: int
+   :param symbols: A list of symbols to be used in the circuits. If None, defaults to a range based on the number of symbols for the experiment.
+   :type symbols: List, optional
+
+   :returns: An array of generated quantum circuits, each circuit represented as a list of symbols.
+   :rtype: np.array
+
+   :raises ValueError: If the provided experiment type is not recognized.
+
+
+.. py:function:: complete_on_subset(experiment_type: str, circuit_list: List, subset: Tuple, absent_symbols: List)
+
+   Completes a given set of circuits by adding circuits with absent symbols for a specified subset of qubits.
+
+   :param experiment_type: The type of quantum experiment, dictating the encoding of gates.
+   :type experiment_type: str
+   :param circuit_list: The list of existing quantum circuits.
+   :type circuit_list: List
+   :param subset: A tuple of qubits for which absent symbols need to be added.
+   :type subset: Tuple
+   :param absent_symbols: A list of symbols absent in the subset that need to be included in the new circuits.
+   :type absent_symbols: List
+
+   :returns: An updated list of quantum circuits, including the newly added circuits covering the absent symbols.
+   :rtype: List
+
+   :raises ValueError: If the provided experiment type is not recognized.
+
+
+.. py:function:: find_partition(subset_list, n)
+
+   Finds an optimal partition of a list of qubit subsets for circuit analysis.
+
+   :param subset_list: A list of subsets of qubits to be partitioned.
+   :type subset_list: List
+   :param n: The total number of qubits in the experiment.
+   :type n: int
+
+   :returns: A list of subsets that form an optimal partition for circuit analysis.
+   :rtype: List
+
+   .. rubric:: Notes
+
+   The function aims to find a partition that evenly distributes the qubits across the subsets, ensuring efficient analysis.
+
+
+.. py:data:: experiments
+   :value: ['DDOT', 'QDOT']
+
+   
+

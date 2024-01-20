@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.providers.ibmutils.ibmutils &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="qrem.providers.simutils" href="../../simutils/index.html" />
+    <link rel="prev" title="qrem.providers.ibmutils.data_converters" href="../data_converters/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#quantum-experimentation-providers-subpackage">This subpackage (qrem.providers) contains modules that provide functionalities for interacting with various quantum computing platforms and simulators. It enables users to run characterization, mitigation, and benchmarking experiments on different quantum devices and simulators. The subpackage is organized into modules, each catering to a specific quantum computing provider or simulation environment.</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.ibmutils</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.ibmutils.ibmutils</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/autoapi/qrem/providers/ibmutils/ibmutils/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.providers.ibmutils.ibmutils">
+<span id="qrem-providers-ibmutils-ibmutils"></span><h1><a class="reference internal" href="#module-qrem.providers.ibmutils.ibmutils" title="qrem.providers.ibmutils.ibmutils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.ibmutils.ibmutils</span></code></a><a class="headerlink" href="#module-qrem.providers.ibmutils.ibmutils" title="Link to this heading"></a></h1>
+<p>qrem.providers.ibmutils module contains helper functions for translating and preparation of circuits for running a characterisation/mitigation/benchmarking experiment
+on IBM Quantum machines via QiskitRuntimeService or IBMServiceBackend.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.ibmutils.ibmutils.add_measurements" title="qrem.providers.ibmutils.ibmutils.add_measurements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_measurements</span></code></a>(qiskit_circuit, q_reg, c_reg, ...)</p></td>
+<td><p>Helper function that adds a measurement for every valid qubit defined in valid_qubit_indices list on existing qiskit_circuit (QuantumCircuit).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.providers.ibmutils.ibmutils.circuits_translator_DDOT" title="qrem.providers.ibmutils.ibmutils.circuits_translator_DDOT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circuits_translator_DDOT</span></code></a>(→ qiskit.QuantumCircuit)</p></td>
+<td><p>Helper method that creates DDOT circuits in format native to QISKIT and applies to existing (empty) qiskit_circuit,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.ibmutils.ibmutils.circuits_translator_QDOT" title="qrem.providers.ibmutils.ibmutils.circuits_translator_QDOT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circuits_translator_QDOT</span></code></a>(→ qiskit.QuantumCircuit)</p></td>
+<td><p>Helper method that creates QDOT circuits in format native to QISKIT and applies to existing (empty) qiskit_circuit,</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.providers.ibmutils.ibmutils.transpile_circuits" title="qrem.providers.ibmutils.ibmutils.transpile_circuits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transpile_circuits</span></code></a>(qiskit_circuits, backend)</p></td>
+<td><p>Helper method that transpiles circuits for the device. Optimization methodd set now to 0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.ibmutils.ibmutils.download_results" title="qrem.providers.ibmutils.ibmutils.download_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_results</span></code></a>(backend, job_IDs[, backup, ...])</p></td>
+<td><p>Executes circuits prepared in QISKIT format (qiskit_circuits) on the backend provided by a qrem.providers.ibm.connection(...) function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.providers.ibmutils.ibmutils.compare_circuits" title="qrem.providers.ibmutils.ibmutils.compare_circuits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compare_circuits</span></code></a>(circuit_labels[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.providers.ibmutils.ibmutils.ibm_to_qrem_restults" title="qrem.providers.ibmutils.ibmutils.ibm_to_qrem_restults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ibm_to_qrem_restults</span></code></a>(→ Dict[str, ...)</p></td>
+<td><p>Loads results from IBM backend into ExperimentResults object based on CircuitCollection</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.ibmutils.ibmutils.add_measurements">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.ibmutils.ibmutils.</span></span><span class="sig-name descname"><span class="pre">add_measurements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qiskit_circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qiskit.QuantumCircuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_reg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qiskit.QuantumRegister</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_reg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qiskit.ClassicalRegister</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_qubit_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.ibmutils.ibmutils.add_measurements" title="Link to this definition"></a></dt>
+<dd><p>Helper function that adds a measurement for every valid qubit defined in valid_qubit_indices list on existing qiskit_circuit (QuantumCircuit).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.ibmutils.ibmutils.circuits_translator_DDOT">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.ibmutils.ibmutils.</span></span><span class="sig-name descname"><span class="pre">circuits_translator_DDOT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qiskit_circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qiskit.QuantumCircuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_qubit_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">qiskit.QuantumCircuit</span></span></span><a class="headerlink" href="#qrem.providers.ibmutils.ibmutils.circuits_translator_DDOT" title="Link to this definition"></a></dt>
+<dd><p>Helper method that creates DDOT circuits in format native to QISKIT and applies to existing (empty) qiskit_circuit,
+based on the passed circuits and valid_qubit_indices, specifying what gates should be applied to what qubits.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.ibmutils.ibmutils.circuits_translator_QDOT">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.ibmutils.ibmutils.</span></span><span class="sig-name descname"><span class="pre">circuits_translator_QDOT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qiskit_circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qiskit.QuantumCircuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_qubit_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">qiskit.QuantumCircuit</span></span></span><a class="headerlink" href="#qrem.providers.ibmutils.ibmutils.circuits_translator_QDOT" title="Link to this definition"></a></dt>
+<dd><p>Helper method that creates QDOT circuits in format native to QISKIT and applies to existing (empty) qiskit_circuit,
+based on the passed circuits and valid_qubit_indices, specifying what gates should be applied to what qubits.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.ibmutils.ibmutils.transpile_circuits">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.ibmutils.ibmutils.</span></span><span class="sig-name descname"><span class="pre">transpile_circuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qiskit_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">qiskit.QuantumCircuit</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.ibmutils.ibmutils.transpile_circuits" title="Link to this definition"></a></dt>
+<dd><p>Helper method that transpiles circuits for the device. Optimization methodd set now to 0</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.ibmutils.ibmutils.download_results">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.ibmutils.ibmutils.</span></span><span class="sig-name descname"><span class="pre">download_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">qiskit_ibm_runtime.IBMBackend</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">qiskit_ibm_provider.IBMBackend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_IDs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_jobs_backup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.ibmutils.ibmutils.download_results" title="Link to this definition"></a></dt>
+<dd><p>Executes circuits prepared in QISKIT format (qiskit_circuits) on the backend provided by a qrem.providers.ibm.connection(…) function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>provider</strong> (<em>IBMProvider</em>) – </p></li>
+<li><p><strong>job_IDs</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>backup</strong> (<em>Union</em><em>[</em><em>bool</em><em>,</em><em>str</em><em>,</em><em>Path</em><em>]</em><em>=False</em>) – Should original results be backed up somewhere (mostly for debugging)</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em>) – Should original results overwrite any existing file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>job_id_list</strong> – Lsit of submitted job IDs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.ibmutils.ibmutils.compare_circuits">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.ibmutils.ibmutils.</span></span><span class="sig-name descname"><span class="pre">compare_circuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_circuits_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../qtypes/index.html#qrem.qtypes.CircuitCollection" title="qrem.qtypes.CircuitCollection"><span class="pre">qrem.qtypes.CircuitCollection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.providers.ibmutils.ibmutils.compare_circuits" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.providers.ibmutils.ibmutils.ibm_to_qrem_restults">
+<span class="sig-prename descclassname"><span class="pre">qrem.providers.ibmutils.ibmutils.</span></span><span class="sig-name descname"><span class="pre">ibm_to_qrem_restults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qrem_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../qtypes/index.html#qrem.qtypes.CircuitCollection" title="qrem.qtypes.CircuitCollection"><span class="pre">qrem.qtypes.CircuitCollection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pkl'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.bool_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int_</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.providers.ibmutils.ibmutils.ibm_to_qrem_restults" title="Link to this definition"></a></dt>
+<dd><p>Loads results from IBM backend into ExperimentResults object based on CircuitCollection</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../data_converters/index.html" class="btn btn-neutral float-left" title="qrem.providers.ibmutils.data_converters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../simutils/index.html" class="btn btn-neutral float-right" title="qrem.providers.simutils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

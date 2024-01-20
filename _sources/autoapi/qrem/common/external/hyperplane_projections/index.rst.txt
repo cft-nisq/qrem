@@ -1,0 +1,122 @@
+:py:mod:`qrem.common.external.hyperplane_projections`
+=====================================================
+
+.. py:module:: qrem.common.external.hyperplane_projections
+
+.. autoapi-nested-parse::
+
+   Adapted from:
+   https://github.com/Hannoskaj/Hyperplane_Intersection_Projection
+
+   Based on reference:
+   Projected Least-Squares Quantum Process Tomography
+   Trystan Surawy-Stepney, Jonas Kahn, Richard Kueng, and Madalin Guta,
+   https://arxiv.org/pdf/2107.01060.pdf
+
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.hyperplane_projections.proj_TP
+   qrem.common.external.hyperplane_projections.final_CPTP_by_mixing
+   qrem.common.external.hyperplane_projections.ensure_trace
+   qrem.common.external.hyperplane_projections.new_proj_CP_threshold
+   qrem.common.external.hyperplane_projections.proj_CP_threshold
+   qrem.common.external.hyperplane_projections.step2
+   qrem.common.external.hyperplane_projections.la
+   qrem.common.external.hyperplane_projections.step
+   qrem.common.external.hyperplane_projections.HIP_switch
+   qrem.common.external.hyperplane_projections.increasing_steps
+
+
+
+.. py:function:: proj_TP(rho)
+
+   Projects the Choi matrix rho of a channel on trace-preserving channels.
+
+
+.. py:function:: final_CPTP_by_mixing(rho, full_output=False)
+
+   Assumed to be in TP.
+
+
+.. py:function:: ensure_trace(eigvals)
+
+   Assumes sum of eigvals is at least one.
+
+   Finds the value l so that $\sum (\lambda_i - l)_+ = 1$
+   and set the eigenvalues $\lambda_i$ to $(\lambda_i - l)_+$.
+
+
+.. py:function:: new_proj_CP_threshold(rho, free_trace=True, full_output=False, thres_least_ev=False)
+
+   If thres_least_ev=False and free_trace=False, then projects rho on CP
+   trace_one operators.
+
+   More generally, changes the eigenvalues without changing the eigenvectors:
+   * if free_trace=True and thres_least_ev=False, then projects on CP operators,
+   with no trace condition.
+   * if thres_least_ev=True, free_trace is ignored. Then we threshold by minus
+   the least eigenvalues before projecting on CP trace-one operator, if we
+   can do that without modifying any eigenvalue by more than threshold. If we
+   cannot, we increase the largest eigenvalues by threshold, until we arrive at
+   trace one. The eigenvalue that allows passing 1 is set to the value to get a
+   sum of exactly one, and all the remaining ones are set to zero.
+
+
+.. py:function:: proj_CP_threshold(rho, free_trace=True, full_output=False, thres_least_ev=False)
+
+   If thres_least_ev=False and free_trace=False, then projects rho on CP
+   trace_one operators.
+
+   More generally, changes the eigenvalues without changing the eigenvectors:
+   * if free_trace=True and thres_least_ev=False, then projects on CP operators,
+   with no trace condition.
+   * if thres_least_ev=True, free_trace is ignored. Then we bound from below all
+   eigenvalues by their original value plus the least eigenvalue (which is negative).
+   Then all the lower eigenvalues take the lower bound (or zero if it is negative),
+   all the higher eigenvalues are unchanged, and there is one eigenvalue in the middle
+   that gets a value between its lower bound and its original value, to ensure the
+   trace is one.
+
+
+.. py:function:: step2(XW, target)
+
+   Finds a (big) subset of hyperplanes, including the last one, such that
+   the projection of the current point on the intersection of the corresponding
+   half-spaces is the projection on the intersection of hyperplanes.
+
+   Input: XW is the matrix of the scalar products between the different
+   non-normalized normal directions projected on the subspace TP, written w_i
+   in the main functions.
+   target is the intercept of the hyperplanes with respect to the starting point,
+   on the scale given by w_i.
+
+   Outputs which hyperplanes are kept in subset, and the coefficients on their
+   respective w_i in coeffs.
+
+
+.. py:function:: la(XWb, sq_norm_xn)
+
+
+.. py:function:: step(XW, sq_norm_xn)
+
+
+.. py:function:: HIP_switch(rho, HIP_to_alt_switch='first', alt_to_HIP_switch='cos', maxiter=200, depo_tol=0.001, depo_rtol=0.1, min_cos=0.99, alt_steps=4, missing_w=1, min_part=0.3, HIP_steps=10)
+
+
+.. py:function:: increasing_steps(step, start=None, maxi=N.inf)
+
+   Yields a generator, increasing each output by the same.
+   If start is given, starts at start instead of step.
+   If maxi is given, always yields maxi when the sum of steps exceeds maxi.
+
+

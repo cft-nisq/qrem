@@ -1,0 +1,14 @@
+:py:mod:`qrem.cn.simtools.noisy_simulationsKKM`
+===============================================
+
+.. py:module:: qrem.cn.simtools.noisy_simulationsKKM
+
+
+Module Contents
+---------------
+
+.. py:data:: number_of_qubits
+   :value: 100
+
+   
+

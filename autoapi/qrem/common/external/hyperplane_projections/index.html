@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.external.hyperplane_projections &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="qrem.common.tomography" href="../../tomography/index.html" />
+    <link rel="prev" title="qrem.common.external.ncpol2sdpa.steering_hierarchy" href="../ncpol2sdpa/steering_hierarchy/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.hyperplane_projections</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/autoapi/qrem/common/external/hyperplane_projections/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.external.hyperplane_projections">
+<span id="qrem-common-external-hyperplane-projections"></span><h1><a class="reference internal" href="#module-qrem.common.external.hyperplane_projections" title="qrem.common.external.hyperplane_projections"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.hyperplane_projections</span></code></a><a class="headerlink" href="#module-qrem.common.external.hyperplane_projections" title="Link to this heading"></a></h1>
+<p>Adapted from:
+<a class="reference external" href="https://github.com/Hannoskaj/Hyperplane_Intersection_Projection">https://github.com/Hannoskaj/Hyperplane_Intersection_Projection</a></p>
+<p>Based on reference:
+Projected Least-Squares Quantum Process Tomography
+Trystan Surawy-Stepney, Jonas Kahn, Richard Kueng, and Madalin Guta,
+<a class="reference external" href="https://arxiv.org/pdf/2107.01060.pdf">https://arxiv.org/pdf/2107.01060.pdf</a></p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.proj_TP" title="qrem.common.external.hyperplane_projections.proj_TP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proj_TP</span></code></a>(rho)</p></td>
+<td><p>Projects the Choi matrix rho of a channel on trace-preserving channels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.final_CPTP_by_mixing" title="qrem.common.external.hyperplane_projections.final_CPTP_by_mixing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">final_CPTP_by_mixing</span></code></a>(rho[, full_output])</p></td>
+<td><p>Assumed to be in TP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.ensure_trace" title="qrem.common.external.hyperplane_projections.ensure_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_trace</span></code></a>(eigvals)</p></td>
+<td><p>Assumes sum of eigvals is at least one.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.new_proj_CP_threshold" title="qrem.common.external.hyperplane_projections.new_proj_CP_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">new_proj_CP_threshold</span></code></a>(rho[, free_trace, full_output, ...])</p></td>
+<td><p>If thres_least_ev=False and free_trace=False, then projects rho on CP</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.proj_CP_threshold" title="qrem.common.external.hyperplane_projections.proj_CP_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proj_CP_threshold</span></code></a>(rho[, free_trace, full_output, ...])</p></td>
+<td><p>If thres_least_ev=False and free_trace=False, then projects rho on CP</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.step2" title="qrem.common.external.hyperplane_projections.step2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step2</span></code></a>(XW, target)</p></td>
+<td><p>Finds a (big) subset of hyperplanes, including the last one, such that</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.la" title="qrem.common.external.hyperplane_projections.la"><code class="xref py py-obj docutils literal notranslate"><span class="pre">la</span></code></a>(XWb, sq_norm_xn)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.step" title="qrem.common.external.hyperplane_projections.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>(XW, sq_norm_xn)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.HIP_switch" title="qrem.common.external.hyperplane_projections.HIP_switch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HIP_switch</span></code></a>(rho[, HIP_to_alt_switch, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.hyperplane_projections.increasing_steps" title="qrem.common.external.hyperplane_projections.increasing_steps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">increasing_steps</span></code></a>(step[, start, maxi])</p></td>
+<td><p>Yields a generator, increasing each output by the same.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.proj_TP">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">proj_TP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.proj_TP" title="Link to this definition"></a></dt>
+<dd><p>Projects the Choi matrix rho of a channel on trace-preserving channels.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.final_CPTP_by_mixing">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">final_CPTP_by_mixing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.final_CPTP_by_mixing" title="Link to this definition"></a></dt>
+<dd><p>Assumed to be in TP.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.ensure_trace">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">ensure_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eigvals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.ensure_trace" title="Link to this definition"></a></dt>
+<dd><p>Assumes sum of eigvals is at least one.</p>
+<p>Finds the value l so that $sum (lambda_i - l)_+ = 1$
+and set the eigenvalues $lambda_i$ to $(lambda_i - l)_+$.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.new_proj_CP_threshold">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">new_proj_CP_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">free_trace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thres_least_ev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.new_proj_CP_threshold" title="Link to this definition"></a></dt>
+<dd><p>If thres_least_ev=False and free_trace=False, then projects rho on CP
+trace_one operators.</p>
+<p>More generally, changes the eigenvalues without changing the eigenvectors:
+* if free_trace=True and thres_least_ev=False, then projects on CP operators,
+with no trace condition.
+* if thres_least_ev=True, free_trace is ignored. Then we threshold by minus
+the least eigenvalues before projecting on CP trace-one operator, if we
+can do that without modifying any eigenvalue by more than threshold. If we
+cannot, we increase the largest eigenvalues by threshold, until we arrive at
+trace one. The eigenvalue that allows passing 1 is set to the value to get a
+sum of exactly one, and all the remaining ones are set to zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.proj_CP_threshold">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">proj_CP_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">free_trace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thres_least_ev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.proj_CP_threshold" title="Link to this definition"></a></dt>
+<dd><p>If thres_least_ev=False and free_trace=False, then projects rho on CP
+trace_one operators.</p>
+<p>More generally, changes the eigenvalues without changing the eigenvectors:
+* if free_trace=True and thres_least_ev=False, then projects on CP operators,
+with no trace condition.
+* if thres_least_ev=True, free_trace is ignored. Then we bound from below all
+eigenvalues by their original value plus the least eigenvalue (which is negative).
+Then all the lower eigenvalues take the lower bound (or zero if it is negative),
+all the higher eigenvalues are unchanged, and there is one eigenvalue in the middle
+that gets a value between its lower bound and its original value, to ensure the
+trace is one.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.step2">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">step2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">XW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.step2" title="Link to this definition"></a></dt>
+<dd><p>Finds a (big) subset of hyperplanes, including the last one, such that
+the projection of the current point on the intersection of the corresponding
+half-spaces is the projection on the intersection of hyperplanes.</p>
+<p>Input: XW is the matrix of the scalar products between the different
+non-normalized normal directions projected on the subspace TP, written w_i
+in the main functions.
+target is the intercept of the hyperplanes with respect to the starting point,
+on the scale given by w_i.</p>
+<p>Outputs which hyperplanes are kept in subset, and the coefficients on their
+respective w_i in coeffs.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.la">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">la</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">XWb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sq_norm_xn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.la" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.step">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">XW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sq_norm_xn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.step" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.HIP_switch">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">HIP_switch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">HIP_to_alt_switch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_to_HIP_switch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cos'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depo_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depo_rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_part</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">HIP_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.HIP_switch" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.hyperplane_projections.increasing_steps">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.hyperplane_projections.</span></span><span class="sig-name descname"><span class="pre">increasing_steps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">N.inf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.hyperplane_projections.increasing_steps" title="Link to this definition"></a></dt>
+<dd><p>Yields a generator, increasing each output by the same.
+If start is given, starts at start instead of step.
+If maxi is given, always yields maxi when the sum of steps exceeds maxi.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../ncpol2sdpa/steering_hierarchy/index.html" class="btn btn-neutral float-left" title="qrem.common.external.ncpol2sdpa.steering_hierarchy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../tomography/index.html" class="btn btn-neutral float-right" title="qrem.common.tomography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

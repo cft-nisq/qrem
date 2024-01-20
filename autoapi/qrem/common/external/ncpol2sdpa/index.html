@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.external.ncpol2sdpa &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="qrem.common.external.ncpol2sdpa.chordal_extension" href="chordal_extension/index.html" />
+    <link rel="prev" title="qrem.common.external.CBB.spin_models" href="../CBB/spin_models/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/autoapi/qrem/common/external/ncpol2sdpa/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.external.ncpol2sdpa">
+<span id="qrem-common-external-ncpol2sdpa"></span><h1><a class="reference internal" href="#module-qrem.common.external.ncpol2sdpa" title="qrem.common.external.ncpol2sdpa"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa</span></code></a><a class="headerlink" href="#module-qrem.common.external.ncpol2sdpa" title="Link to this heading"></a></h1>
+<section id="ncpol2sdpa">
+<dl>
+<dt>Ncpol2SDPA package by Peter Wittek. Provides:</dt><dd><ol class="arabic simple">
+<li><p>A converter from a polynomial optimization problems of commuting and
+noncommuting variables to a semidefinite programming relaxation.</p></li>
+<li><p>Helper functions to define physics problems.</p></li>
+</ol>
+<p>As current version of the package available on PyPI contains minor issues,
+original package was moved and modified to be used as a submodule of QREM package.</p>
+</dd>
+</dl>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chordal_extension/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.chordal_extension</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="cvxpy_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.cvxpy_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faacets_relaxation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.faacets_relaxation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="moroder_hierarchy/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.moroder_hierarchy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mosek_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.mosek_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="nc_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.nc_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.physics_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="picos_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.picos_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdm_hierarchy/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.rdm_hierarchy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdp_relaxation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdp_relaxation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdpa_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdpa_utils</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="solver_common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.solver_common</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="steering_hierarchy/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.steering_hierarchy</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.FaacetsRelaxation" title="qrem.common.external.ncpol2sdpa.FaacetsRelaxation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FaacetsRelaxation</span></code></a></p></td>
+<td><p>Class for wrapping around a Faacets relaxation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation" title="qrem.common.external.ncpol2sdpa.SdpRelaxation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SdpRelaxation</span></code></a></p></td>
+<td><p>Class for obtaining sparse SDP relaxation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy" title="qrem.common.external.ncpol2sdpa.SteeringHierarchy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SteeringHierarchy</span></code></a></p></td>
+<td><p>Class for obtaining a step in the steering hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.MoroderHierarchy" title="qrem.common.external.ncpol2sdpa.MoroderHierarchy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MoroderHierarchy</span></code></a></p></td>
+<td><p>Class for obtaining a step in the Moroder hierarchy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.RdmHierarchy" title="qrem.common.external.ncpol2sdpa.RdmHierarchy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RdmHierarchy</span></code></a></p></td>
+<td><p>Class for obtaining a level in the reduced density matrix method</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.Probability" title="qrem.common.external.ncpol2sdpa.Probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Probability</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.generate_operators" title="qrem.common.external.ncpol2sdpa.generate_operators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_operators</span></code></a>(name[, n_vars, hermitian, commutative])</p></td>
+<td><p>Generates a number of commutative or noncommutative operators</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.generate_variables" title="qrem.common.external.ncpol2sdpa.generate_variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_variables</span></code></a>(name[, n_vars, hermitian, commutative])</p></td>
+<td><p>Generates a number of commutative or noncommutative variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.get_monomials" title="qrem.common.external.ncpol2sdpa.get_monomials"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_monomials</span></code></a>(variables, degree)</p></td>
+<td><p>Generates all noncommutative monomials up to a degree</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.flatten" title="qrem.common.external.ncpol2sdpa.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten</span></code></a>(lol)</p></td>
+<td><p>Flatten a list of lists to a list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.read_sdpa_out" title="qrem.common.external.ncpol2sdpa.read_sdpa_out"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sdpa_out</span></code></a>(filename[, solutionmatrix, status, sdp])</p></td>
+<td><p>Helper function to parse the output file of SDPA.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.bosonic_constraints" title="qrem.common.external.ncpol2sdpa.bosonic_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bosonic_constraints</span></code></a>(a)</p></td>
+<td><p>Return  a set of constraints that define fermionic ladder operators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.fermionic_constraints" title="qrem.common.external.ncpol2sdpa.fermionic_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fermionic_constraints</span></code></a>(a)</p></td>
+<td><p>Return  a set of constraints that define fermionic ladder operators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.pauli_constraints" title="qrem.common.external.ncpol2sdpa.pauli_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pauli_constraints</span></code></a>(X, Y, Z)</p></td>
+<td><p>Return  a set of constraints that define Pauli spin operators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.get_neighbors" title="qrem.common.external.ncpol2sdpa.get_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbors</span></code></a>(index, lattice_length[, width, periodic])</p></td>
+<td><p>Get the forward neighbors of a site in a lattice.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.get_next_neighbors" title="qrem.common.external.ncpol2sdpa.get_next_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_next_neighbors</span></code></a>(indices, lattice_length[, width, ...])</p></td>
+<td><p>Get the forward neighbors at a given distance of a site or set of sites</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.correlator" title="qrem.common.external.ncpol2sdpa.correlator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">correlator</span></code></a>(A, B)</p></td>
+<td><p>Correlators between the probabilities of two parties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.generate_measurements" title="qrem.common.external.ncpol2sdpa.generate_measurements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_measurements</span></code></a>(party, label)</p></td>
+<td><p>Generate variables that behave like measurements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.projective_measurement_constraints" title="qrem.common.external.ncpol2sdpa.projective_measurement_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projective_measurement_constraints</span></code></a>(*parties)</p></td>
+<td><p>Return a set of constraints that define projective measurements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.maximum_violation" title="qrem.common.external.ncpol2sdpa.maximum_violation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum_violation</span></code></a>(A_configuration, B_configuration, I, ...)</p></td>
+<td><p>Get the maximum violation of a two-party Bell inequality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.external.ncpol2sdpa.define_objective_with_I" title="qrem.common.external.ncpol2sdpa.define_objective_with_I"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_objective_with_I</span></code></a>(I, *args)</p></td>
+<td><p>Define a polynomial using measurements and an I matrix describing a Bell</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.FaacetsRelaxation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">FaacetsRelaxation</span></span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.FaacetsRelaxation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdp_relaxation/index.html#qrem.common.external.ncpol2sdpa.sdp_relaxation.Relaxation" title="qrem.common.external.ncpol2sdpa.sdp_relaxation.Relaxation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdp_relaxation.Relaxation</span></code></a></p>
+<p>Class for wrapping around a Faacets relaxation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.FaacetsRelaxation.get_relaxation">
+<span class="sig-name descname"><span class="pre">get_relaxation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.FaacetsRelaxation.get_relaxation" title="Link to this definition"></a></dt>
+<dd><p>Get the sparse SDP relaxation of a Bell inequality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A_configuration</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int.</em>) – The definition of measurements of Alice.</p></li>
+<li><p><strong>B_configuration</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int.</em>) – The definition of measurements of Bob.</p></li>
+<li><p><strong>I</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int.</em>) – The matrix describing the Bell inequality in the
+Collins-Gisin picture.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">SdpRelaxation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Relaxation</span></code></p>
+<p>Class for obtaining sparse SDP relaxation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variables</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>
+or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>
+or a list of list.) – Commutative or noncommutative, Hermitian or nonhermiatian
+variables, possibly a list of list of variables if the
+hierarchy is not NPA.</p></li>
+<li><p><strong>parameters</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>
+or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>
+or a list of list.) – Optional symbolic variables for which moments are not
+generated.</p></li>
+<li><p><strong>verbose</strong> (<em>int.</em>) – <p>Optional parameter for level of verbosity:</p>
+<ul>
+<li><p>0: quiet (default)</p></li>
+<li><p>1: verbose</p></li>
+<li><p>2: debug level</p></li>
+</ul>
+</p></li>
+<li><p><strong>normalized</strong> (<em>bool.</em>) – Optional parameter for changing the normalization of
+states over which the optimization happens. Turn it off
+if further processing is done on the SDP matrix before
+solving it.</p></li>
+<li><p><strong>parallel</strong> (<em>bool.</em>) – Optional parameter for allowing parallel computations.</p></li>
+<li><p><strong>number_of_threads</strong> (<em>int.</em>) – set the number of threads if parallel is True. If None, use cpu_count() of multiprocess.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_sets`</span></span></dt>
+<dd><p>The monomial sets that generate the moment matrix blocks.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_index`</span></span></dt>
+<dd><p>Dictionary that maps monomials to SDP variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`constraints`</span></span></dt>
+<dd><p>The complete set of constraints after preprocesssing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`primal`</span></span></dt>
+<dd><p>The primal optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`dual`</span></span></dt>
+<dd><p>The dual optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`x_mat`</span></span></dt>
+<dd><p>The primal solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`y_mat`</span></span></dt>
+<dd><p>The dual solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`solution_time`</span></span></dt>
+<dd><p>The amount of time taken to solve the relaxation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`status`</span></span></dt>
+<dd><p>The solution status of the relaxation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._process_monomial">
+<span class="sig-name descname"><span class="pre">_process_monomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monomial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._process_monomial" title="Link to this definition"></a></dt>
+<dd><p>Process a single monomial when building the moment matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._push_monomial">
+<span class="sig-name descname"><span class="pre">_push_monomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monomial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lenB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prevent_substitutions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._push_monomial" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._generate_moment_matrix">
+<span class="sig-name descname"><span class="pre">_generate_moment_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processed_entries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monomialsA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monomialsB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ppt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._generate_moment_matrix" title="Link to this definition"></a></dt>
+<dd><p>Generate the moment matrix of monomials.</p>
+<p>Arguments:
+n_vars – current number of variables
+block_index – current block index in the SDP matrix
+monomials – <a href="#id1"><span class="problematic" id="id2">|W_d|</span></a> set of words of length up to the relaxation level</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._generate_all_moment_matrix_blocks">
+<span class="sig-name descname"><span class="pre">_generate_all_moment_matrix_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._generate_all_moment_matrix_blocks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._get_index_of_monomial">
+<span class="sig-name descname"><span class="pre">_get_index_of_monomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enablesubstitution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daggered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._get_index_of_monomial" title="Link to this definition"></a></dt>
+<dd><p>Returns the index of a monomial.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__push_facvar_sparse">
+<span class="sig-name descname"><span class="pre">__push_facvar_sparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polynomial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__push_facvar_sparse" title="Link to this definition"></a></dt>
+<dd><p>Calculate the sparse vector representation of a polynomial
+and pushes it to the F structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._get_facvar">
+<span class="sig-name descname"><span class="pre">_get_facvar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polynomial</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._get_facvar" title="Link to this definition"></a></dt>
+<dd><p>Return dense vector representation of a polynomial. This function is
+nearly identical to __push_facvar_sparse, but instead of pushing
+sparse entries to the constraint matrices, it returns a dense
+vector.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__process_inequalities">
+<span class="sig-name descname"><span class="pre">__process_inequalities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__process_inequalities" title="Link to this definition"></a></dt>
+<dd><p>Generate localizing matrices</p>
+<p>Arguments:
+inequalities – list of inequality constraints
+monomials    – localizing monomials
+block_index – the current block index in constraint matrices of the</p>
+<blockquote>
+<div><p>SDP relaxation</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__process_equalities">
+<span class="sig-name descname"><span class="pre">__process_equalities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentequalities</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__process_equalities" title="Link to this definition"></a></dt>
+<dd><p>Generate localizing matrices</p>
+<p>Arguments:
+equalities – list of equality constraints
+equalities – list of moment equality constraints</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__remove_equalities">
+<span class="sig-name descname"><span class="pre">__remove_equalities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentequalities</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__remove_equalities" title="Link to this definition"></a></dt>
+<dd><p>Attempt to remove equalities by solving the linear equations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__duplicate_momentmatrix">
+<span class="sig-name descname"><span class="pre">__duplicate_momentmatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__duplicate_momentmatrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__add_new_momentmatrix">
+<span class="sig-name descname"><span class="pre">__add_new_momentmatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__add_new_momentmatrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__impose_ppt">
+<span class="sig-name descname"><span class="pre">__impose_ppt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__impose_ppt" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__add_extra_momentmatrices">
+<span class="sig-name descname"><span class="pre">__add_extra_momentmatrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extramomentmatrices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__add_extra_momentmatrices" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__parse_expression">
+<span class="sig-name descname"><span class="pre">__parse_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__parse_expression" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._calculate_block_structure">
+<span class="sig-name descname"><span class="pre">_calculate_block_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentinequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extramomentmatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removeequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_struct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._calculate_block_structure" title="Link to this definition"></a></dt>
+<dd><p>Calculates the block_struct array for the output file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__generate_monomial_sets">
+<span class="sig-name descname"><span class="pre">__generate_monomial_sets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extramonomials</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__generate_monomial_sets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation._estimate_n_vars">
+<span class="sig-name descname"><span class="pre">_estimate_n_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation._estimate_n_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__add_parameters">
+<span class="sig-name descname"><span class="pre">__add_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__add_parameters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__wipe_F_from_constraints">
+<span class="sig-name descname"><span class="pre">__wipe_F_from_constraints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__wipe_F_from_constraints" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.process_constraints">
+<span class="sig-name descname"><span class="pre">process_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentinequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removeequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.process_constraints" title="Link to this definition"></a></dt>
+<dd><p>Process the constraints and generate localizing matrices. Useful
+only if the moment matrix already exists. Call it if you want to
+replace your constraints. The number of the respective types of
+constraints and the maximum degree of each constraint must remain the
+same.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inequalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter to list inequality constraints.</p></li>
+<li><p><strong>equalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter to list equality constraints.</p></li>
+<li><p><strong>momentinequalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter of inequalities defined
+on moments.</p></li>
+<li><p><strong>momentequalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter of equalities defined
+on moments.</p></li>
+<li><p><strong>removeequalities</strong> (<em>bool.</em>) – Optional parameter to attempt removing the
+equalities by solving the linear equations.</p></li>
+<li><p><strong>removeequalities</strong> – Optional parameter to attempt removing the
+equalities by solving the linear equations.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.set_objective">
+<span class="sig-name descname"><span class="pre">set_objective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objective</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraobjexpr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.set_objective" title="Link to this definition"></a></dt>
+<dd><p>Set or change the objective function of the polynomial optimization
+problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objective</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.expr.Expr</span></code>) – Describes the objective function.</p></li>
+<li><p><strong>extraobjexpr</strong> (<em>str.</em>) – Optional parameter of a string expression of a
+linear combination of moment matrix elements to be
+included in the objective function</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.__getitem__" title="Link to this definition"></a></dt>
+<dd><p>Obtained the value for a polynomial in a solved relaxation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<cite>sympy.core.exp.Expr</cite>) – The polynomial.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value of the polynomial extracted from the solved SDP.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.get_sos_decomposition">
+<span class="sig-name descname"><span class="pre">get_sos_decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.get_sos_decomposition" title="Link to this definition"></a></dt>
+<dd><p>Given a solution of the dual problem, it returns the SOS
+decomposition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>threshold</strong> (<em>float.</em>) – Optional parameter for specifying the threshold value
+below which the eigenvalues and entries of the
+eigenvectors are disregarded.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The SOS decomposition of [sigma_0, sigma_1, …, sigma_m]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.extract_dual_value">
+<span class="sig-name descname"><span class="pre">extract_dual_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monomial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.extract_dual_value" title="Link to this definition"></a></dt>
+<dd><p>Given a solution of the dual problem and a monomial, it returns the
+inner product of the corresponding coefficient matrix and the dual
+solution. It can be restricted to certain blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>monomial</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – The monomial for which the value is requested.</p></li>
+<li><p><strong>monomial</strong> – The monomial for which the value is requested.</p></li>
+<li><p><strong>blocks</strong> (list of <cite>int</cite>.) – Optional parameter to specify the blocks to be included.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value of the monomial in the solved relaxation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.find_solution_ranks">
+<span class="sig-name descname"><span class="pre">find_solution_ranks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baselevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.find_solution_ranks" title="Link to this definition"></a></dt>
+<dd><p>Helper function to detect rank loop in the solution matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdpRelaxation</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ncpol2sdpa.SdpRelaxation</span></code>.) – The SDP relaxation.</p></li>
+<li><p><strong>x_mat</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.array</span></code>.) – Optional parameter providing the primal solution of the
+moment matrix. If not provided, the solution is extracted
+from the sdpRelaxation object.</p></li>
+<li><p><strong>base_level</strong> (<em>int.</em>) – Optional parameter for specifying the lower level
+relaxation for which the rank loop should be tested
+against.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of int – the ranks of the solution matrix with in the
+order of increasing degree.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.get_dual">
+<span class="sig-name descname"><span class="pre">get_dual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.get_dual" title="Link to this definition"></a></dt>
+<dd><p>Given a solution of the dual problem and a constraint of any type,
+it returns the corresponding block in the dual solution. If it is an
+equality constraint that was converted to a pair of inequalities, it
+returns a two-tuple of the matching dual blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>constraint</strong> – The constraint.</p></li>
+<li><p><strong>y_mat</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.array</span></code>.) – Optional parameter providing the dual solution of the
+SDP. If not provided, the solution is extracted
+from the sdpRelaxation object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The corresponding block in the dual solution.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.array</span></code> or a tuple thereof.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.write_to_file">
+<span class="sig-name descname"><span class="pre">write_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.write_to_file" title="Link to this definition"></a></dt>
+<dd><p>Write the relaxation to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str.</em>) – The name of the file to write to. The type can be
+autodetected from the extension: .dat-s for SDPA,
+.task for mosek or .csv for human readable format.</p></li>
+<li><p><strong>filetype</strong> (<em>str.</em>) – Optional parameter to define the filetype. It can be
+“sdpa” for SDPA , “mosek” for Mosek, or “csv” for
+human readable format.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.save_monomial_index">
+<span class="sig-name descname"><span class="pre">save_monomial_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.save_monomial_index" title="Link to this definition"></a></dt>
+<dd><p>Write the monomial index to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str.</em>) – The name of the file to write to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.convert_to_cvxpy">
+<span class="sig-name descname"><span class="pre">convert_to_cvxpy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.convert_to_cvxpy" title="Link to this definition"></a></dt>
+<dd><p>Convert an SDP relaxation to a CVXPY problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">cvxpy.Problem</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.convert_to_picos">
+<span class="sig-name descname"><span class="pre">convert_to_picos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">duplicate_moment_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.convert_to_picos" title="Link to this definition"></a></dt>
+<dd><p>Convert the SDP relaxation to a PICOS problem such that the exported
+.dat-s file is extremely sparse, there is not penalty imposed in terms
+of SDP variables or number of constraints. This conversion can be used
+for imposing extra constraints on the moment matrix, such as partial
+transpose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>duplicate_moment_matrix</strong> (<em>bool.</em>) – Optional parameter to add an
+unconstrained moment matrix to the
+problem with the same structure as the
+moment matrix with the PSD constraint.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">picos.Problem</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.convert_to_mosek">
+<span class="sig-name descname"><span class="pre">convert_to_mosek</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.convert_to_mosek" title="Link to this definition"></a></dt>
+<dd><p>Convert an SDP relaxation to a MOSEK task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mosek.Task</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SdpRelaxation.get_relaxation">
+<span class="sig-name descname"><span class="pre">get_relaxation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objective</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentinequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentsubstitutions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removeequalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extramonomials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extramomentmatrices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraobjexpr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">localizing_monomials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chordal_extension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SdpRelaxation.get_relaxation" title="Link to this definition"></a></dt>
+<dd><p>Get the SDP relaxation of a noncommutative polynomial optimization
+problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>int.</em>) – The level of the relaxation. The value -1 will skip
+automatic monomial generation and use only the monomials
+supplied by the option <cite>extramonomials</cite>.</p></li>
+<li><p><strong>obj</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter to describe the objective function.</p></li>
+<li><p><strong>inequalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter to list inequality constraints.</p></li>
+<li><p><strong>equalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter to list equality constraints.</p></li>
+<li><p><strong>substitutions</strong> (dict of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter containing monomials that can
+be replaced (e.g., idempotent variables).</p></li>
+<li><p><strong>momentinequalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter of inequalities defined
+on moments.</p></li>
+<li><p><strong>momentequalities</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter of equalities defined
+on moments.</p></li>
+<li><p><strong>momentsubstitutions</strong> (dict of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional parameter containing moments that
+can be replaced.</p></li>
+<li><p><strong>removeequalities</strong> (<em>bool.</em>) – Optional parameter to attempt removing the
+equalities by solving the linear equations.</p></li>
+<li><p><strong>extramonomials</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.exp.Expr</span></code>.) – Optional paramter of monomials to be included,
+on top of the requested level of relaxation.</p></li>
+<li><p><strong>extramomentmatrices</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>str.</em>) – Optional paramter of duplicating or adding
+moment matrices.  A new moment matrix can be
+unconstrained (“”), a copy  of the first one
+(“copy”), and satisfying a partial positivity
+constraint (“ppt”). Each new moment matrix is
+requested as a list of string of these options.
+For instance, adding a single new moment matrix
+as a copy of the first would be
+<code class="docutils literal notranslate"><span class="pre">extramomentmatrices=[[&quot;copy&quot;]]</span></code>.</p></li>
+<li><p><strong>extraobjexpr</strong> (<em>str.</em>) – Optional parameter of a string expression of a
+linear combination of moment matrix elements to be
+included in the objective function.</p></li>
+<li><p><strong>localizing_monomials</strong> (list of list of <cite>sympy.core.exp.Expr</cite>.) – Optional parameter to specify sets of
+localizing monomials for each constraint.
+The internal order of constraints is
+inequalities first, followed by the
+equalities. If the parameter is specified,
+but for a certain constraint the automatic
+localization is requested, leave None in
+its place in this parameter.</p></li>
+<li><p><strong>chordal_extension</strong> (<em>bool.</em>) – Optional parameter to request a sparse
+chordal extension.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">SteeringHierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix_var_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mark_conjugate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdp_relaxation/index.html#qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation" title="qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation</span></code></a></p>
+<p>Class for obtaining a step in the steering hierarchy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variables</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>
+or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>
+or a list of list.) – Commutative or noncommutative, Hermitian or nonhermiatian
+variables.</p></li>
+<li><p><strong>verbose</strong> (<em>int.</em>) – <p>Optional parameter for level of verbosity:</p>
+<ul>
+<li><p>0: quiet</p></li>
+<li><p>1: verbose</p></li>
+<li><p>2: debug level</p></li>
+</ul>
+</p></li>
+<li><p><strong>matrix_var_dim</strong> (<em>int.</em>) – Optional parameter to specify the size of matrix
+variable blocks</p></li>
+<li><p><strong>mark_conjugate</strong> (<em>bool.</em>) – Use this optional parameter to generate a symbolic
+representation of the steering hierarchy for export.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_sets`</span></span></dt>
+<dd><p>The monomial sets that generate the moment matrix blocks.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_index`</span></span></dt>
+<dd><p>Dictionary that maps monomials to SDP variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`constraints`</span></span></dt>
+<dd><p>The complete set of constraints after preprocesssing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`primal`</span></span></dt>
+<dd><p>The primal optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`dual`</span></span></dt>
+<dd><p>The dual optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`x_mat`</span></span></dt>
+<dd><p>The primal solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`y_mat`</span></span></dt>
+<dd><p>The dual solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`solution_time`</span></span></dt>
+<dd><p>The amount of time taken to solve the relaxation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`status`</span></span></dt>
+<dd><p>The solution status of the relaxation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy.hierarchy_types">
+<span class="sig-name descname"><span class="pre">hierarchy_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['npa',</span> <span class="pre">'npa_chordal',</span> <span class="pre">'moroder']</span></em><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy.hierarchy_types" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy._process_monomial">
+<span class="sig-name descname"><span class="pre">_process_monomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monomial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy._process_monomial" title="Link to this definition"></a></dt>
+<dd><p>Process a single monomial when building the moment matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy._push_monomial">
+<span class="sig-name descname"><span class="pre">_push_monomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monomial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lenB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prevent_substitutions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy._push_monomial" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy.__add_matrix_variable">
+<span class="sig-name descname"><span class="pre">__add_matrix_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lenB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conjugate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy.__add_matrix_variable" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy.__get_trace_facvar">
+<span class="sig-name descname"><span class="pre">__get_trace_facvar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polynomial</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy.__get_trace_facvar" title="Link to this definition"></a></dt>
+<dd><p>Return dense vector representation of a polynomial. This function is
+nearly identical to __push_facvar_sparse, but instead of pushing
+sparse entries to the constraint matrices, it returns a dense
+vector.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy.set_objective">
+<span class="sig-name descname"><span class="pre">set_objective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objective</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraobjexpr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy.set_objective" title="Link to this definition"></a></dt>
+<dd><p>Set or change the objective function of the polynomial optimization
+problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objective</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.expr.Expr</span></code>) – Describes the objective function.</p></li>
+<li><p><strong>extraobjexpr</strong> (<em>str.</em>) – Optional parameter of a string expression of a
+linear combination of moment matrix elements to be
+included in the objective function</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy._calculate_block_structure">
+<span class="sig-name descname"><span class="pre">_calculate_block_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentinequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extramomentmatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removeequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_struct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy._calculate_block_structure" title="Link to this definition"></a></dt>
+<dd><p>Calculates the block_struct array for the output file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy._estimate_n_vars">
+<span class="sig-name descname"><span class="pre">_estimate_n_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy._estimate_n_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.SteeringHierarchy.write_to_file">
+<span class="sig-name descname"><span class="pre">write_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.SteeringHierarchy.write_to_file" title="Link to this definition"></a></dt>
+<dd><p>Write the relaxation to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str.</em>) – The name of the file to write to. The type can be
+autodetected from the extension: .dat-s for SDPA,
+.task for mosek, .csv for human readable format, or
+.txt for a symbolic export</p></li>
+<li><p><strong>filetype</strong> (<em>str.</em>) – Optional parameter to define the filetype. It can be
+“sdpa” for SDPA , “mosek” for Mosek, “csv” for
+human readable format, or “txt” for a symbolic export.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.MoroderHierarchy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">MoroderHierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ppt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.MoroderHierarchy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdp_relaxation/index.html#qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation" title="qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation</span></code></a></p>
+<p>Class for obtaining a step in the Moroder hierarchy
+(<a class="reference external" href="http://dx.doi.org/10.1103/PhysRevLett.111.030501">doi:10.1103/PhysRevLett.111.030501</a>)
+:param variables: Commutative or noncommutative, Hermitian or nonhermiatian</p>
+<blockquote>
+<div><p>variables, possibly a list of list of variables if the
+hierarchy is not NPA.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>
+or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>
+or a list of list.) – Optional symbolic variables for which moments are not
+generated.</p></li>
+<li><p><strong>verbose</strong> (<em>int.</em>) – <p>Optional parameter for level of verbosity:</p>
+<ul>
+<li><p>0: quiet</p></li>
+<li><p>1: verbose</p></li>
+<li><p>2: debug level</p></li>
+</ul>
+</p></li>
+<li><p><strong>normalized</strong> (<em>bool.</em>) – Optional parameter for changing the normalization of
+states over which the optimization happens. Turn it off
+if further processing is done on the SDP matrix before
+solving it.</p></li>
+<li><p><strong>ppt</strong> (<em>bool.</em>) – Optional parameter to impose a partial positivity constraint
+on the moment matrix.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_sets`</span></span></dt>
+<dd><p>The monomial sets that generate the moment matrix</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">blocks.</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_index`</span></span></dt>
+<dd><p>Dictionary that maps monomials to SDP variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`constraints`</span></span></dt>
+<dd><p>The complete set of constraints after preprocesssing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`primal`</span></span></dt>
+<dd><p>The primal optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`dual`</span></span></dt>
+<dd><p>The dual optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`x_mat`</span></span></dt>
+<dd><p>The primal solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`y_mat`</span></span></dt>
+<dd><p>The dual solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`solution_time`</span></span></dt>
+<dd><p>The amount of time taken to solve the relaxation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`status`</span></span></dt>
+<dd><p>The solution status of the relaxation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.MoroderHierarchy._generate_all_moment_matrix_blocks">
+<span class="sig-name descname"><span class="pre">_generate_all_moment_matrix_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.MoroderHierarchy._generate_all_moment_matrix_blocks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.MoroderHierarchy._calculate_block_structure">
+<span class="sig-name descname"><span class="pre">_calculate_block_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentinequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extramomentmatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removeequalities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_struct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.MoroderHierarchy._calculate_block_structure" title="Link to this definition"></a></dt>
+<dd><p>Calculates the block_struct array for the output file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.MoroderHierarchy._estimate_n_vars">
+<span class="sig-name descname"><span class="pre">_estimate_n_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.MoroderHierarchy._estimate_n_vars" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.RdmHierarchy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">RdmHierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circulant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.RdmHierarchy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdp_relaxation/index.html#qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation" title="qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation</span></code></a></p>
+<p>Class for obtaining a level in the reduced density matrix method
+:param variables: Commutative or noncommutative, Hermitian or nonhermiatian</p>
+<blockquote>
+<div><p>variables, possibly a list of list of variables if the
+hierarchy is not NPA.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>
+or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>
+or a list of list.) – Optional symbolic variables for which moments are not
+generated.</p></li>
+<li><p><strong>verbose</strong> (<em>int.</em>) – <p>Optional parameter for level of verbosity:</p>
+<ul>
+<li><p>0: quiet</p></li>
+<li><p>1: verbose</p></li>
+<li><p>2: debug level</p></li>
+</ul>
+</p></li>
+<li><p><strong>normalized</strong> (<em>bool.</em>) – Optional parameter for changing the normalization of
+states over which the optimization happens. Turn it off
+if further processing is done on the SDP matrix before
+solving it.</p></li>
+<li><p><strong>ppt</strong> (<em>bool.</em>) – Optional parameter to impose a partial positivity constraint
+on the moment matrix.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_sets`</span></span></dt>
+<dd><p>The monomial sets that generate the moment matrix blocks.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`monomial_index`</span></span></dt>
+<dd><p>Dictionary that maps monomials to SDP variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`constraints`</span></span></dt>
+<dd><p>The complete set of constraints after preprocesssing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`primal`</span></span></dt>
+<dd><p>The primal optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`dual`</span></span></dt>
+<dd><p>The dual optimal value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`x_mat`</span></span></dt>
+<dd><p>The primal solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`y_mat`</span></span></dt>
+<dd><p>The dual solution matrix.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`solution_time`</span></span></dt>
+<dd><p>The amount of time taken to solve the relaxation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">-</span> <span class="pre">`status`</span></span></dt>
+<dd><p>The solution status of the relaxation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.RdmHierarchy._push_monomials">
+<span class="sig-name descname"><span class="pre">_push_monomials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monomials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.RdmHierarchy._push_monomials" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.RdmHierarchy.__second_moments">
+<span class="sig-name descname"><span class="pre">__second_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monomialsA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processed_entries</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.RdmHierarchy.__second_moments" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.RdmHierarchy.__fourth_moments">
+<span class="sig-name descname"><span class="pre">__fourth_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monomialsA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processed_entries</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.RdmHierarchy.__fourth_moments" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.RdmHierarchy._generate_moment_matrix">
+<span class="sig-name descname"><span class="pre">_generate_moment_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processed_entries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monomialsA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monomialsB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ppt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.RdmHierarchy._generate_moment_matrix" title="Link to this definition"></a></dt>
+<dd><p>Generate the moment matrix of monomials.</p>
+<p>Arguments:
+n_vars – current number of variables
+block_index – current block index in the SDP matrix
+monomials – <a href="#id3"><span class="problematic" id="id4">|W_d|</span></a> set of words of length up to the relaxation level</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.generate_operators">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">generate_operators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hermitian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commutative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.generate_operators" title="Link to this definition"></a></dt>
+<dd><p>Generates a number of commutative or noncommutative operators</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str.</em>) – The prefix in the symbolic representation of the noncommuting
+variables. This will be suffixed by a number from 0 to
+n_vars-1 if n_vars &gt; 1.</p></li>
+<li><p><strong>n_vars</strong> (<em>int.</em>) – The number of variables.</p></li>
+<li><p><strong>hermitian</strong> (<em>bool.</em>) – Optional parameter to request Hermitian variables .</p></li>
+<li><p><strong>commutative</strong> (<em>bool.</em>) – Optional parameter to request commutative variables.
+Commutative variables are Hermitian by default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code> or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>
+variables</p>
+</dd>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">generate_variables</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">commutative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">￼[y0, y1]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.generate_variables">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">generate_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hermitian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commutative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.generate_variables" title="Link to this definition"></a></dt>
+<dd><p>Generates a number of commutative or noncommutative variables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str.</em>) – The prefix in the symbolic representation of the noncommuting
+variables. This will be suffixed by a number from 0 to
+n_vars-1 if n_vars &gt; 1.</p></li>
+<li><p><strong>n_vars</strong> (<em>int.</em>) – The number of variables.</p></li>
+<li><p><strong>hermitian</strong> (<em>bool.</em>) – Optional parameter to request Hermitian variables .</p></li>
+<li><p><strong>commutative</strong> (<em>bool.</em>) – Optional parameter to request commutative variables.
+Commutative variables are Hermitian by default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code> or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>
+variables or <cite>sympy.Symbol</cite></p>
+</dd>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">generate_variables</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">commutative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">￼[y0, y1]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.get_monomials">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">get_monomials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.get_monomials" title="Link to this definition"></a></dt>
+<dd><p>Generates all noncommutative monomials up to a degree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variables</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>
+or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>.) – The noncommutative variables to generate monomials from</p></li>
+<li><p><strong>degree</strong> (<em>int.</em>) – The maximum degree.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of monomials.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.flatten">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.flatten" title="Link to this definition"></a></dt>
+<dd><p>Flatten a list of lists to a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lol</strong> (<em>list</em><em> of </em><em>list.</em>) – A list of lists in arbitrary depth.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>flat list of elements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.read_sdpa_out">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">read_sdpa_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solutionmatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sdp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.read_sdpa_out" title="Link to this definition"></a></dt>
+<dd><p>Helper function to parse the output file of SDPA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str.</em>) – The name of the SDPA output file.</p></li>
+<li><p><strong>solutionmatrix</strong> (<em>bool.</em>) – Optional parameter for retrieving the solution.</p></li>
+<li><p><strong>status</strong> (<em>bool.</em>) – Optional parameter for retrieving the status.</p></li>
+<li><p><strong>sdp</strong> (<em>sdp.</em>) – Optional parameter to add the solution to a
+relaxation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple of two floats and optionally two lists of <cite>numpy.array</cite> and
+a status string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.bosonic_constraints">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">bosonic_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.bosonic_constraints" title="Link to this definition"></a></dt>
+<dd><p>Return  a set of constraints that define fermionic ladder operators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>.) – The non-Hermitian variables.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a dict of substitutions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.fermionic_constraints">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">fermionic_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.fermionic_constraints" title="Link to this definition"></a></dt>
+<dd><p>Return  a set of constraints that define fermionic ladder operators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.Operator</span></code>.) – The non-Hermitian variables.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a dict of substitutions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.pauli_constraints">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">pauli_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.pauli_constraints" title="Link to this definition"></a></dt>
+<dd><p>Return  a set of constraints that define Pauli spin operators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>.) – List of Pauli X operator on sites.</p></li>
+<li><p><strong>Y</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>.) – List of Pauli Y operator on sites.</p></li>
+<li><p><strong>Z</strong> (list of <code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>.) – List of Pauli Z operator on sites.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple of substitutions and equalities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.get_neighbors">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">get_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lattice_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.get_neighbors" title="Link to this definition"></a></dt>
+<dd><p>Get the forward neighbors of a site in a lattice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int.</em>) – Linear index of operator.</p></li>
+<li><p><strong>lattice_length</strong> (<em>int.</em>) – The size of the 2D lattice in either dimension</p></li>
+<li><p><strong>width</strong> (<em>int.</em>) – Optional parameter to define width.</p></li>
+<li><p><strong>periodic</strong> (<em>bool</em>) – Optional parameter to indicate periodic boundary
+conditions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of int – the neighbors in linear index.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.get_next_neighbors">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">get_next_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lattice_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.get_next_neighbors" title="Link to this definition"></a></dt>
+<dd><p>Get the forward neighbors at a given distance of a site or set of sites
+in a lattice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int.</em>) – Linear index of operator.</p></li>
+<li><p><strong>lattice_length</strong> (<em>int.</em>) – The size of the 2D lattice in either dimension</p></li>
+<li><p><strong>width</strong> (<em>int.</em>) – Optional parameter to define width.</p></li>
+<li><p><strong>distance</strong> – Optional parameter to define distance.</p></li>
+<li><p><strong>periodic</strong> (<em>bool</em>) – Optional parameter to indicate periodic boundary
+conditions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of int – the neighbors at given distance in linear index.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.correlator">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">correlator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.correlator" title="Link to this definition"></a></dt>
+<dd><p>Correlators between the probabilities of two parties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (list of list of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>.) – Measurements of Alice.</p></li>
+<li><p><strong>B</strong> (list of list of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>.) – Measurements of Bob.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of correlators.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.generate_measurements">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">generate_measurements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">party</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.generate_measurements" title="Link to this definition"></a></dt>
+<dd><p>Generate variables that behave like measurements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>party</strong> (<em>list</em><em> of </em><em>int.</em>) – The list of number of measurement outputs a party has.</p></li>
+<li><p><strong>label</strong> (<em>str.</em>) – The label to be given to the symbolic variables.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of list of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.physics.quantum.operator.HermitianOperator</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.projective_measurement_constraints">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">projective_measurement_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">parties</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.projective_measurement_constraints" title="Link to this definition"></a></dt>
+<dd><p>Return a set of constraints that define projective measurements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parties</strong> – Measurements of different parties.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>substitutions containing idempotency, orthogonality and
+commutation relations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.maximum_violation">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">maximum_violation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.maximum_violation" title="Link to this definition"></a></dt>
+<dd><p>Get the maximum violation of a two-party Bell inequality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A_configuration</strong> (<em>list</em><em> of </em><em>int.</em>) – Measurement settings of Alice.</p></li>
+<li><p><strong>B_configuration</strong> (<em>list</em><em> of </em><em>int.</em>) – Measurement settings of Bob.</p></li>
+<li><p><strong>I</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int.</em>) – The I matrix of a Bell inequality in the Collins-Gisin notation.</p></li>
+<li><p><strong>level</strong> (<em>int.</em>) – Level of relaxation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple of primal and dual solutions of the SDP relaxation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.define_objective_with_I">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">define_objective_with_I</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.define_objective_with_I" title="Link to this definition"></a></dt>
+<dd><p>Define a polynomial using measurements and an I matrix describing a Bell
+inequality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>I</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int.</em>) – The I matrix of a Bell inequality in the Collins-Gisin notation.</p></li>
+<li><p><strong>args</strong> – Either the measurements of Alice and Bob or a <cite>Probability</cite>
+class describing their measurement operators.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.expr.Expr</span></code> – the objective function to be
+solved as a minimization problem to find the maximum quantum
+violation. Note that the sign is flipped compared to the Bell
+inequality.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.Probability">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.external.ncpol2sdpa.</span></span><span class="sig-name descname"><span class="pre">Probability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.Probability" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.Probability.get_all_operators">
+<span class="sig-name descname"><span class="pre">get_all_operators</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.Probability.get_all_operators" title="Link to this definition"></a></dt>
+<dd><p>Return all operators across all parties and measurements to supply
+them to the <cite>ncpol2sdpa.SdpRelaxation</cite> class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.Probability._monomial_generator">
+<span class="sig-name descname"><span class="pre">_monomial_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monomials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.Probability._monomial_generator" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.Probability.get_extra_monomials">
+<span class="sig-name descname"><span class="pre">get_extra_monomials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.Probability.get_extra_monomials" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.Probability._convert_marginal_index">
+<span class="sig-name descname"><span class="pre">_convert_marginal_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.Probability._convert_marginal_index" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.external.ncpol2sdpa.Probability.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marginal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.external.ncpol2sdpa.Probability.__call__" title="Link to this definition"></a></dt>
+<dd><p>Obtain your probabilities in the p(ab…|xy…) notation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output</strong> (<em>list</em><em> of </em><em>ints.</em>) – Conditional output as [a, b, …]</p></li>
+<li><p><strong>input</strong> (<em>list</em><em> of </em><em>ints.</em>) – The input to condition on as [x, y, …]</p></li>
+<li><p><strong>marginal</strong> (<em>list</em><em> of </em><em>str.</em>) – Optional parameter. If it is a marginal, then you can
+define which party or parties it belongs to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>polynomial of <cite>sympy.physics.quantum.HermitianOperator</cite>.</p>
+</dd>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<p>For the CHSH scenario, to get p(10|01), write</p>
+<blockquote>
+<div><p>P([1,0], [0,1])</p>
+</div></blockquote>
+<p>To get the marginal p_A(0|1), write</p>
+<blockquote>
+<div><p>P([0], [1], [‘A’])</p>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../CBB/spin_models/index.html" class="btn btn-neutral float-left" title="qrem.common.external.CBB.spin_models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chordal_extension/index.html" class="btn btn-neutral float-right" title="qrem.common.external.ncpol2sdpa.chordal_extension" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

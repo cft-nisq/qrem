@@ -1,0 +1,38 @@
+:py:mod:`qrem.cn.simtools.custom_model_creator`
+===============================================
+
+.. py:module:: qrem.cn.simtools.custom_model_creator
+
+
+Module Contents
+---------------
+
+.. py:data:: directory
+   :value: '/home/kasiakm/Documents/QREM_DATA/Simulations100q/'
+
+   
+
+.. py:data:: number_of_qubits
+   :value: 100
+
+   
+
+.. py:data:: specifications
+   :value: [[[10, 10]], [[5, 20]]]
+
+   
+
+.. py:data:: count
+   :value: 0
+
+   
+
+.. py:data:: first_label_number
+   :value: 0
+
+   
+
+.. py:data:: model
+
+   
+

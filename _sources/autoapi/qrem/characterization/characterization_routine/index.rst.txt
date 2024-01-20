@@ -1,0 +1,69 @@
+:py:mod:`qrem.characterization.characterization_routine`
+========================================================
+
+.. py:module:: qrem.characterization.characterization_routine
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.characterization.characterization_routine.execute_characterization_workflow
+
+
+
+.. py:function:: execute_characterization_workflow(characterization_data_container: Type[qrem.qtypes.characterization_data.CharacterizationData], name_id='', perform_noise_model_reconstruction=True, find_neighbors=False)
+
+   A function that performs analysis of experimental data and provides various characteristics of readout noise as well as reconstructs a CN redout noise model. It returns a list of reconstructed CNModelData objects with noise models data.
+   In addition, it saves data about correlation coefficients and reduced POVMs into files.
+
+
+   It is used to:
+
+   1) Perform full characterization workflow
+   2) As an initial step before running mitigation routine
+
+
+   :param results_dictionary: Stores results of a characterization experiment.
+   :type results_dictionary: dictionary (key - string encoding experimental setting , value - dictionary with experimental results i.e. key - string encoding outcome bits, values- number of occurrences of a given outcome  )
+   :param marginals_dictionary: Optional parameter that allows to input precomputed marginal probability distributions into characterization routine. Stores marginal probability distributions for marginals.
+   :type marginals_dictionary: dictionary (key - string encoding experimental setting , value - dictionary with experimental results i.e. key - tuple encoding qubits in a marginal values- marginal probability distribution for a given marginal  )
+   :param experiment_type: String encoding type of characterization experiment. Possible values: Diagonal detector overlapping tomography -  'DDOT' Quantum detector overlapping tomography - 'QDOT'
+   :type experiment_type: string
+   :param data_directory: A string specifying path where results of characterization procedure are saved.
+   :type data_directory: string
+   :param number_of_benchmark_circuits: The number of experiments from results_dictionary to be used in benchmarks. For number_of_benchmark_circuits > 0 the corresponding cumber of entries from results_dictionary is excluded from characterization procedure.
+   :type number_of_benchmark_circuits: integer
+   :param return_old_mitigation_data: Specifies whether old mitigation data are returned. Probably it should be excluded from the final release. It stays for now for debugging purposes.
+   :type return_old_mitigation_data: bool
+   :param perform_clustering: To be removed in final release: Specifies whether clustering algorithms to find noise model
+   :type perform_clustering: bool
+
+   :returns: **characterization_data_dictionary** -- A dictionary with results of characterization procedure
+
+             Structure:
+                 Key: 'noise_models_list' - a list of noise models that is a result of clustering
+
+                 Key: 'benchmarks_results_dictionary' - a dictionary with results to be used for benchmarks, empty unless number_of_benchmark_circuits > 0
+
+                 Key: 'benchmarks_marginals_dictionary' - a dictionary with marginals to be used for benchmarks, empty unless number_of_benchmark_circuits > 0
+
+                 Key: 'POVMs_dictionary' - a dictionary with two qubit POVMs
+
+                 Key: 'correlations_data' - a dictionary with correlation coefficients
+
+                 Old mitigation data:
+                 the rest of the keys is used to perform "old mitigation", it should be probably removed before final release, here it is used for debugging purposes
+   :rtype: dictionary
+
+       a value in a string
+
+   :raises KeyError: when a key error
+   :raises OtherError: when an other error
+
+

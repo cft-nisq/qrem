@@ -1,0 +1,118 @@
+:py:mod:`qrem.mitigation.mitigation_routines`
+=============================================
+
+.. py:module:: qrem.mitigation.mitigation_routines
+
+.. autoapi-nested-parse::
+
+   Collection of functions used in benchmarking CN noise models. Used to compute results of error mitigation for a set of benchmark Hamiltonians and reconstructed CN noise models.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.mitigation.mitigation_routines.compute_mitigation_errors
+   qrem.mitigation.mitigation_routines.compute_mitigation_error_median_mean
+   qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonian
+   qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonians_set
+   qrem.mitigation.mitigation_routines.estimate_mitigated_energy_over_noise_models
+   qrem.mitigation.mitigation_routines.compute_noisy_energy_over_noise_models
+   qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonians_set
+   qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonian
+   qrem.mitigation.mitigation_routines.compute_noisy_energy_prediction
+
+
+
+.. py:function:: compute_mitigation_errors(mitigation_data: qrem.qtypes.mitigation_data.MitigationData, hamiltonian_energy_dictionary, number_of_qubits) -> Dict
+
+   Function computes error of readout error mitigation benchmark for a set results for different CN noise models.
+   Used in error mitigation benchmarks.
+
+   :param mitigated_energy_dictionary: Dictionary storing values of energies after error mitigation for different noise models.
+   :type mitigated_energy_dictionary: dictionary (key - tuple (cluster structure), value - dictionary)
+   :param hamiltonian_dictionary: Dictionary storing estimation of ideal energy eigenvalue of a eigen/ground state for a Hamiltonian used in benchmarks.
+   :type hamiltonian_dictionary: dictionary
+   :param number of qubits: Number of qubits of a device
+   :type number of qubits: int
+
+   :returns: **noise_models_mitigated_energy_dictionary_error** -- A dictionary storing errors of error mitigation for Hamiltonians used in benchmarks and different CN noise models
+   :rtype: Dictionary (key - Tuple (clusters structure), Value - Dictionary (key Hamiltonian index, value - energy mitigation error))
+
+
+.. py:function:: compute_mitigation_error_median_mean(mitigation_data: type[qrem.qtypes.mitigation_data.MitigationData], print_results: bool = False)
+
+   Function computes median and mean for a dictionary storing errors of error mitigation for Hamiltonians used in benchmarks and different CN noise models
+   Used in analysis of error mitigation performance.
+
+   :param mitigation_errors_dictionary: A dictionary storing errors of error mitigation for Hamiltonians used in benchmarks and different CN noise models
+   :type mitigation_errors_dictionary: Dictionary (key - Tuple (clusters structure), Value - Dictionary (key Hamiltonian index, value - energy mitigation error))
+
+   print_results: bool (default False)
+       Optional parameter indicating if results are printed
+
+   :returns: Dictionary storing results of the analysis: median and mean of error mitigation over a Hamiltonian set for different noise models
+   :rtype: benchmark_results_mean_median_dictionary - Dictionary
+
+
+.. py:function:: estimate_mitigated_energy_for_hamiltonian(results_dictionary: dict[str, dict[str, int]], hamiltonian_dictionary: dict[str, dict], noise_model: type[qrem.qtypes.CNModelData], ensure_proper_probability_distribution: bool = True, product_mitigation: bool = False, return_marginals: bool = False)
+
+   Function performs error mitigation based on CN noise model for a particular Hamiltonain and measurement statistics. It is used in usecases and benchmarks. It calls routines from cn/mitigation module.
+
+   :param results_dictionary:    Dictionary of experimental results to be mitigated
+
+                              hamiltonian_dictionary: dictionary
+                                 Dictionary storing hamiltonian data, in this function only weights_dictionary is used
+   :type results_dictionary: dictionary (key - string, value - dictionary)
+   :param noise_model: Stores information about noise model used in mitigation
+   :type noise_model: instance of CNModelData class
+   :param ensure_proper_probability_distribution: Controls whether in mitigation one uses proper probability distributions or possibly pseudo probability distributions
+   :type ensure_proper_probability_distribution: bool (optional, by default set to True)
+   :param product_mitigation: Used for debugging purposes, probably should be removed for final release
+   :type product_mitigation: bool (optional)
+   :param return marginals: Used for debugging purposes, probably should be removed for final release
+   :type return marginals: bool
+
+
+.. py:function:: estimate_mitigated_energy_for_hamiltonians_set(results_dictionary: dict[str, dict[str, int]], hamiltonians_dictionary: dict[str, dict], noise_model: type[qrem.qtypes.CNModelData], ensure_proper_probability_distribution: bool = True, product_mitigation: bool = False, return_marginals: bool = False)
+
+   Function performs error mitigation based on CN noise model for a set Hamiltonains and set of measurement results. It is used in usecases and benchmarks.
+   Due to QREM convention mitigated measurement statistics from one input state are used to estimate energy of one hamiltonian.
+   Function calls estimate_mitigated_energy_for_hamiltonian routine.
+
+   :param results_dictionary:    Dictionary of experimental results to be mitigated
+
+                              hamiltonians_dictionary: dictionary
+                                 Dictionary storing hamiltonians datad
+   :type results_dictionary: dictionary (key - string, value - dictionary)
+   :param noise_model: Stores information about noise model used in mitigation
+   :type noise_model: instance of CNModelData class
+   :param ensure_proper_probability_distribution: Controls whether in mitigation one uses proper probability distributions or possibly pseudo probability distributions
+   :type ensure_proper_probability_distribution: bool (optional, by default set to True)
+   :param product_mitigation: Used for debugging purposes, probably should be removed for final release
+   :type product_mitigation: bool (optional)
+   :param return marginals: Used for debugging purposes, probably should be removed for final release
+   :type return marginals: bool
+
+
+.. py:function:: estimate_mitigated_energy_over_noise_models(characterization_data: type[qrem.qtypes.characterization_data.CharacterizationData], hamiltonians_dictionary, ensure_proper_probability_distribution=True, return_marginals=False)
+
+
+.. py:function:: compute_noisy_energy_over_noise_models(characterization_data: type[qrem.qtypes.characterization_data.CharacterizationData], hamiltonians_dictionary)
+
+
+.. py:function:: compute_noisy_energy_for_hamiltonians_set(results_dictionary: dict[str, dict[str, int]], hamiltonians_dictionary: dict[str, dict], noise_model: type[qrem.qtypes.CNModelData])
+
+
+.. py:function:: compute_noisy_energy_for_hamiltonian(hamiltonian_dictionary: dict[str, dict], noise_model: type[qrem.qtypes.CNModelData], input_state)
+
+
+.. py:function:: compute_noisy_energy_prediction(noise_model: type[qrem.qtypes.CNModelData], weights_dictionary: Dict, input_state)
+
+

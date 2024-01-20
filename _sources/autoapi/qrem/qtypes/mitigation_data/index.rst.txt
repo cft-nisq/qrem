@@ -1,0 +1,43 @@
+:py:mod:`qrem.qtypes.mitigation_data`
+=====================================
+
+.. py:module:: qrem.qtypes.mitigation_data
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.mitigation_data.MitigationData
+
+
+
+
+.. py:class:: MitigationData
+
+
+   Bases: :py:obj:`qrem.qtypes.datastructure_base.DataStructureBase`
+
+   Class storing results of mitigation
+
+
+   .. py:attribute:: noise_models_mitigation_results_dictionary
+      :type: Dict[str, Dict[Tuple[int], Dict[int, float]]]
+
+      
+
+   .. py:attribute:: noise_models_mitigated_energy_dictionary_error
+      :type: Dict[Tuple[int], Dict[int, float]]
+
+      
+
+   .. py:attribute:: noise_models_mitigated_energy_dictionary_error_statistics
+      :type: Dict[str, Dict[Tuple[int], Dict[int, float]]]
+
+      
+
+

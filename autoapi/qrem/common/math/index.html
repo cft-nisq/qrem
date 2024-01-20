@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.math &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.common.povmtools" href="../povmtools/index.html" />
+    <link rel="prev" title="qrem.common.io" href="../io/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.math</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/common/math/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.math">
+<span id="qrem-common-math"></span><h1><a class="reference internal" href="#module-qrem.common.math" title="qrem.common.math"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.math</span></code></a><a class="headerlink" href="#module-qrem.common.math" title="Link to this heading"></a></h1>
+<section id="qrem-math-module">
+<p>qrem.common.math module contains all mathematical funcitons,
+that are useful and used throughout the qrem package.</p>
+<p class="rubric">Notes</p>
+<p>&#64;authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+&#64;contact: <a class="reference external" href="mailto:michal&#46;oszmaniec&#37;&#52;&#48;cft&#46;edu&#46;pl">michal<span>&#46;</span>oszmaniec<span>&#64;</span>cft<span>&#46;</span>edu<span>&#46;</span>pl</a></p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.Constants" title="qrem.common.math.Constants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Constants</span></code></a></p></td>
+<td><p>Contains static methods that return helpful mathematical constants, matrices, arrays etc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.GeneralTensorCalculator" title="qrem.common.math.GeneralTensorCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralTensorCalculator</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.outer_product" title="qrem.common.math.outer_product"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outer_product</span></code></a>(ket1[, ket2])</p></td>
+<td><p>Outer product of two vectors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.ketbra" title="qrem.common.math.ketbra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ketbra</span></code></a>(ket)</p></td>
+<td><p>Ketbra operation. Can be simplified with numpy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.matrix_zero_check" title="qrem.common.math.matrix_zero_check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix_zero_check</span></code></a>(→ bool)</p></td>
+<td><p>Functions that checks if matrix is zero. Wraps numpy allclose.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.identity_check" title="qrem.common.math.identity_check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identity_check</span></code></a>(→ bool)</p></td>
+<td><p>Function that checks if matrix is identity (up to global phase), with significant_digits accuracy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.round_array_to_ndigits" title="qrem.common.math.round_array_to_ndigits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">round_array_to_ndigits</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>perform round operation on a given array m_a.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.is_pauli_x" title="qrem.common.math.is_pauli_x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_pauli_x</span></code></a>(→ bool)</p></td>
+<td><p>Is a matrix an X Pauli Sigma?</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.is_matrix_stochastic" title="qrem.common.math.is_matrix_stochastic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_matrix_stochastic</span></code></a>(→ bool)</p></td>
+<td><p>Test stochasticity of a given input matrix: left|right|ortho. Default is left.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.spectral_decomposition" title="qrem.common.math.spectral_decomposition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectral_decomposition</span></code></a>(matrix[, hermitian])</p></td>
+<td><p>Perform the spectral decomposition of a matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.kronecker_product" title="qrem.common.math.kronecker_product"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kronecker_product</span></code></a>(→ numpy.typing.NDArray)</p></td>
+<td><p>applies kronecker product to all arrays in the arguments list</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.get_density_matrix" title="qrem.common.math.get_density_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_density_matrix</span></code></a>(ket)</p></td>
+<td><p>Convert a ket (state vector) into a density matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.get_offdiagonal_of_matrix" title="qrem.common.math.get_offdiagonal_of_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_offdiagonal_of_matrix</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Extract the off-diagonal part of a matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.apply_unitary_channel" title="qrem.common.math.apply_unitary_channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_unitary_channel</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Apply unitary channel to a matrix: unitary_operator &#64; matrix_to_be_rotated &#64; np.matrix.getH(unitary_operator)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.get_k_local_subsets" title="qrem.common.math.get_k_local_subsets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_k_local_subsets</span></code></a>(→ List)</p></td>
+<td><p>Create all subsets of size (locality) k=subset_size  of n=number_of_elements elements set.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.get_sample_from_multinomial_distribution" title="qrem.common.math.get_sample_from_multinomial_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sample_from_multinomial_distribution</span></code></a>(→ int)</p></td>
+<td><p>Draw one single sample from multinomial distribution (numpy implementation only for now)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.compute_TVD" title="qrem.common.math.compute_TVD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_TVD</span></code></a>(p, q)</p></td>
+<td><p>Calculation of TVD between two probability distributions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.permute_composite_matrix" title="qrem.common.math.permute_composite_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permute_composite_matrix</span></code></a>(qubits_list, noise_matrix)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.permute_composite_vector" title="qrem.common.math.permute_composite_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permute_composite_vector</span></code></a>(qubits_list, vector)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.qubit_swap" title="qrem.common.math.qubit_swap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qubit_swap</span></code></a>(n[, transposition])</p></td>
+<td><p>Create a swap operation matrix for two qubits in a Hilbert space of dimension 2^n.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.permute_vector" title="qrem.common.math.permute_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permute_vector</span></code></a>(vector, n, transposition)</p></td>
+<td><p>Apply a qubit swap operation to a vector in a Hilbert space of dimension 2^n.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.permute_matrix" title="qrem.common.math.permute_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permute_matrix</span></code></a>(matrix, n, transposition)</p></td>
+<td><p>Apply a qubit swap operation to a matrix in a Hilbert space of dimension 2^n.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.partial_trace" title="qrem.common.math.partial_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partial_trace</span></code></a>(→ numpy.array)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.check_trace_preservation" title="qrem.common.math.check_trace_preservation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_trace_preservation</span></code></a>() → bool)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.math.check_complete_positivity" title="qrem.common.math.check_complete_positivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_complete_positivity</span></code></a>() → bool)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.math.check_complete_positivity_and_trace_preservation" title="qrem.common.math.check_complete_positivity_and_trace_preservation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_complete_positivity_and_trace_preservation</span></code></a>(→ bool)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.math.Constants">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">Constants</span></span><a class="headerlink" href="#qrem.common.math.Constants" title="Link to this definition"></a></dt>
+<dd><p>Contains static methods that return helpful mathematical constants, matrices, arrays etc.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.math.Constants.pauli_dict_test">
+<span class="sig-name descname"><span class="pre">pauli_dict_test</span></span><a class="headerlink" href="#qrem.common.math.Constants.pauli_dict_test" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>test for attribute documentation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The choice to use static methods rather than variables was made for documentation/pylint readability.
+Before Python 3.11 the way to go would be to wrap &#64;classmethod around &#64;property, so you could access this methods as e.g Constant.pauli_sigmas[‘id’].
+It is only possible however in Python 3.9-3.10.</p>
+<p>Another possibility would be to use (i) module variable or (ii) class variable, however first one is hard to document to provide
+e.g. nice hints in PyCharm or VSCode, with the second you can do this for example with Attributes section at class-level docstring,
+but it won’t give you e.g. nice hover hints in VSCode.
+For that reason now we need to bear with a bit ugly:
+Constant.pauli_sigmas()[‘id’]</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">pauli_dict_test</span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.Constants.pauli_sigmas">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_sigmas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.Constants.pauli_sigmas" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary with Paili sigmas: id, I, X, Y, Z; all dictionary values are numpy arrays with complex elements.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.Constants.bell_states">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bell_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.Constants.bell_states" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary with Bell states : phi+, phi-; psi+; psi-; all dictionary values are numpy arrays.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.Constants.standard_gates">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">standard_gates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.Constants.standard_gates" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary with Standard Gates : 1,I,id,X,Y,Z,S,T,H,SWAP; all dictionary values are numpy complex arrays.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.Constants.pauli_eigenkets">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_eigenkets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.Constants.pauli_eigenkets" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary with Pauli Eigenkets : x+,x-,y+,y-,z+,zi; all dictionary values are numpy complex arrays.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.Constants.pauli_eigenkets_listed">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_eigenkets_listed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ZXY'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.Constants.pauli_eigenkets_listed" title="Link to this definition"></a></dt>
+<dd><p>Returns a list with Pauli Eigenkets, Default order z+z-x+x-y+y-. Order is defined by a strin, e.g. “ZYX or “XYZ”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.Constants.pauli_measurements">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pauli_measurements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.Constants.pauli_measurements" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary with Pauli Measurments on ‘X’, ‘Y’, ‘Z’.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.outer_product">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">outer_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ket1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ket2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.outer_product" title="Link to this definition"></a></dt>
+<dd><p>Outer product of two vectors.</p>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>PP: should it just be np.outer(ket1, ket2)?</p></li>
+<li><p>MO: what about complex entries?</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.ketbra">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">ketbra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ket</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.ketbra" title="Link to this definition"></a></dt>
+<dd><p>Ketbra operation. Can be simplified with numpy</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.matrix_zero_check">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">matrix_zero_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">potential_zero_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significant_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SIGNIFICANT_DIGITS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.math.matrix_zero_check" title="Link to this definition"></a></dt>
+<dd><p>Functions that checks if matrix is zero. Wraps numpy allclose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>potential_zero_matrix</strong> (<em>NDArray</em>) – </p></li>
+<li><p><strong>significant_digits</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if matrix is 0 with given significant digits accuracy</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.identity_check">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">identity_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significant_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SIGNIFICANT_DIGITS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.math.identity_check" title="Link to this definition"></a></dt>
+<dd><p>Function that checks if matrix is identity (up to global phase), with significant_digits accuracy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If matrix is identity  returns True</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.round_array_to_ndigits">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">round_array_to_ndigits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significant_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SIGNIFICANT_DIGITS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.math.round_array_to_ndigits" title="Link to this definition"></a></dt>
+<dd><p>perform round operation on a given array m_a.</p>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>PP: refactored from some very werid construction. Should have the same functionality.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.is_pauli_x">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">is_pauli_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_a</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.math.is_pauli_x" title="Link to this definition"></a></dt>
+<dd><p>Is a matrix an X Pauli Sigma?</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.is_matrix_stochastic">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">is_matrix_stochastic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">potentially_stochastic_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stochasticity_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'left'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significant_digits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SIGNIFICANT_DIGITS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.math.is_matrix_stochastic" title="Link to this definition"></a></dt>
+<dd><p>Test stochasticity of a given input matrix: left|right|ortho. Default is left.
+You can specify significant digits of the check, default is 9 (accuracy 10^9).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>potentially_stochastic_matrix</strong> (<em>NDArray</em>) – </p></li>
+<li><p><strong>stochasticity_type</strong> (<em>{'left'</em><em>, </em><em>'right'</em><em>, </em><em>'ortho'</em><em>, </em><em>'doubly'}</em>) – string specyfing what type of stochasticity we want to tests; otrho option is equal to doubly</p></li>
+<li><p><strong>significant_digits</strong> – significant digits specifying the accuracy to which entries need to be positive rows/ columns</p></li>
+<li><p><strong>default=9</strong> – significant digits specifying the accuracy to which entries need to be positive rows/ columns</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>is matrix stochastic</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Wrong stochasticity_type of stochasticity</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.spectral_decomposition">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">spectral_decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hermitian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.spectral_decomposition" title="Link to this definition"></a></dt>
+<dd><p>Perform the spectral decomposition of a matrix.</p>
+<p>Decomposes a matrix into its eigenvalues and the corresponding projectors.
+This function can handle both Hermitian and non-Hermitian matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>np.ndarray</em>) – The matrix to be decomposed.</p></li>
+<li><p><strong>hermitian</strong> (<em>bool</em><em>, </em><em>optional</em>) – A flag indicating whether the matrix is Hermitian (default is False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple (eigenvalues, projectors), where ‘eigenvalues’ is an array of eigenvalues
+and ‘projectors’ is a list of corresponding projector matrices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.kronecker_product">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">kronecker_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing.ArrayLike</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.typing.NDArray</span></span></span><a class="headerlink" href="#qrem.common.math.kronecker_product" title="Link to this definition"></a></dt>
+<dd><p>applies kronecker product to all arrays in the arguments list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.get_density_matrix">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">get_density_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ket</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.get_density_matrix" title="Link to this definition"></a></dt>
+<dd><p>Convert a ket (state vector) into a density matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ket</strong> (<em>array_like</em>) – The ket (state vector) to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The density matrix corresponding to the given ket.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.get_offdiagonal_of_matrix">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">get_offdiagonal_of_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.math.get_offdiagonal_of_matrix" title="Link to this definition"></a></dt>
+<dd><p>Extract the off-diagonal part of a matrix.</p>
+<p>This function calculates and returns the off-diagonal part of a given matrix, setting its diagonal elements to zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>matrix</strong> (<em>np.ndarray</em>) – The matrix from which to extract the off-diagonal part.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The off-diagonal part of the input matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.apply_unitary_channel">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">apply_unitary_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix_to_be_rotated</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unitary_operator</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.math.apply_unitary_channel" title="Link to this definition"></a></dt>
+<dd><p>Apply unitary channel to a matrix: unitary_operator &#64; matrix_to_be_rotated &#64; np.matrix.getH(unitary_operator)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.get_k_local_subsets">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">get_k_local_subsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_sizes_up_to_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#qrem.common.math.get_k_local_subsets" title="Link to this definition"></a></dt>
+<dd><p>Create all subsets of size (locality) k=subset_size  of n=number_of_elements elements set.
+If all_sizes_up_to_k is set to True, will return all subsets of size from 1 up to k.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number_of_elements</strong> (<em>int</em>) – number of qubits</p></li>
+<li><p><strong>subset_size</strong> (<em>int</em>) – max number of element in a subset</p></li>
+<li><p><strong>all_sizes_up_to_k</strong> (<em>bool</em>) – should all sizes from 1 up to k be taken into consideration</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of all subsets up to k=subset_size number of elements</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.get_sample_from_multinomial_distribution">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">get_sample_from_multinomial_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability_distribution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.typing.ArrayLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'numpy'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qrem.common.math.get_sample_from_multinomial_distribution" title="Link to this definition"></a></dt>
+<dd><p>Draw one single sample from multinomial distribution (numpy implementation only for now)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>probability_distribution</strong> (<em>List</em><em>(</em><em>int</em><em>)</em>) – list of probability distribution values</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – method of drawing, currently based on numpy random and multinomial functions</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – seed to initialize numpy random. Default is None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>single sample</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.compute_TVD">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">compute_TVD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.compute_TVD" title="Link to this definition"></a></dt>
+<dd><p>Calculation of TVD between two probability distributions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.permute_composite_matrix">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">permute_composite_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.permute_composite_matrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.permute_composite_vector">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">permute_composite_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.permute_composite_vector" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.qubit_swap">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">qubit_swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transposition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.qubit_swap" title="Link to this definition"></a></dt>
+<dd><p>Create a swap operation matrix for two qubits in a Hilbert space of dimension 2^n.</p>
+<p>This function generates a unitary matrix representing the SWAP operation
+between two specified qubits in a quantum system of ‘n’ qubits.
+The qubits are identified by their positions in the quantum register,
+with numbering starting from 1 for convenience.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – The number of qubits in the quantum system.</p></li>
+<li><p><strong>transposition</strong> (<em>tuple</em><em> of </em><em>int</em><em>, </em><em>optional</em>) – A tuple (i, j) representing the qubits to be swapped,
+where i and j are the positions of the qubits in the quantum register,
+starting from 1. Default is (1, 1), meaning no swap is performed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A 2^n x 2^n unitary matrix representing the SWAP operation
+between the specified qubits in a quantum register of ‘n’ qubits.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.permute_vector">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">permute_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transposition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.permute_vector" title="Link to this definition"></a></dt>
+<dd><p>Apply a qubit swap operation to a vector in a Hilbert space of dimension 2^n.</p>
+<p>This function permutes the components of a quantum state vector according
+to a specified SWAP operation between two qubits in a quantum system
+of ‘n’ qubits. The permutation is defined by a SWAP matrix generated
+by the ‘qubit_swap’ function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector</strong> (<em>np.ndarray</em>) – The quantum state vector to be permuted, represented as a numpy array.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – The number of qubits in the quantum system.</p></li>
+<li><p><strong>transposition</strong> (<em>tuple</em><em> of </em><em>int</em>) – A tuple (i, j) specifying the qubits to be swapped. Numbering starts from 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The permuted quantum state vector after applying the SWAP operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.permute_matrix">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">permute_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transposition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.permute_matrix" title="Link to this definition"></a></dt>
+<dd><p>Apply a qubit swap operation to a matrix in a Hilbert space of dimension 2^n.</p>
+<p>This function permutes the rows and columns of a square matrix
+according to a specified SWAP operation between two qubits in a quantum system
+of ‘n’ qubits. The permutation is carried out by conjugating the matrix with
+the SWAP matrix generated by the ‘qubit_swap’ function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>np.ndarray</em>) – The matrix to be permuted, represented as a numpy array.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – The number of qubits in the quantum system.</p></li>
+<li><p><strong>transposition</strong> (<em>tuple</em><em> of </em><em>int</em>) – A tuple (i, j) specifying the qubits to be swapped. Numbering starts from 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The permuted matrix after applying the SWAP operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.partial_trace">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">partial_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#qrem.common.math.partial_trace" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.check_trace_preservation">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">check_trace_preservation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10**-3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.math.check_trace_preservation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.check_complete_positivity">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">check_complete_positivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10**-6</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.math.check_complete_positivity" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.math.check_complete_positivity_and_trace_preservation">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">check_complete_positivity_and_trace_preservation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#qrem.common.math.check_complete_positivity_and_trace_preservation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.common.math.</span></span><span class="sig-name descname"><span class="pre">GeneralTensorCalculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">kronecker_product</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator.calculate_tensor">
+<span class="sig-name descname"><span class="pre">calculate_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator.calculate_tensor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator.calculate_tensor_to_increasing_list">
+<span class="sig-name descname"><span class="pre">calculate_tensor_to_increasing_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator.calculate_tensor_to_increasing_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator.__get_increasing_objects_dict_from_list">
+<span class="sig-name descname"><span class="pre">__get_increasing_objects_dict_from_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator.__get_increasing_objects_dict_from_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator.count_tensor_value_for_combination">
+<span class="sig-name descname"><span class="pre">count_tensor_value_for_combination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator.count_tensor_value_for_combination" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator.__get_indices_combinations">
+<span class="sig-name descname"><span class="pre">__get_indices_combinations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator.__get_indices_combinations" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator.__initialize_tensor">
+<span class="sig-name descname"><span class="pre">__initialize_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices_combination</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator.__initialize_tensor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qrem.common.math.GeneralTensorCalculator.__initialize_combination_path">
+<span class="sig-name descname"><span class="pre">__initialize_combination_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">combination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.math.GeneralTensorCalculator.__initialize_combination_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../io/index.html" class="btn btn-neutral float-left" title="qrem.common.io" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../povmtools/index.html" class="btn btn-neutral float-right" title="qrem.common.povmtools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

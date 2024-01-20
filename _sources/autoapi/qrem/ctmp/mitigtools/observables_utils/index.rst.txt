@@ -1,0 +1,38 @@
+:py:mod:`qrem.ctmp.mitigtools.observables_utils`
+================================================
+
+.. py:module:: qrem.ctmp.mitigtools.observables_utils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.ctmp.mitigtools.observables_utils.convert
+   qrem.ctmp.mitigtools.observables_utils.evaluate
+   qrem.ctmp.mitigtools.observables_utils.sample
+   qrem.ctmp.mitigtools.observables_utils.delta
+   qrem.ctmp.mitigtools.observables_utils.random_element
+
+
+
+.. py:function:: convert(obs: List[List], n: int) -> numpy.array
+
+
+.. py:function:: evaluate(obs: List[List], x: numpy.array) -> float
+
+
+.. py:function:: sample(model: qrem.qtypes.CTMPModelData, alpha: int, input_state: str) -> str
+
+
+.. py:function:: delta(x: str, indices: Tuple[int]) -> numpy.array
+
+
+.. py:function:: random_element(counts: Dict[str, int]) -> str
+
+

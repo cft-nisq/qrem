@@ -1,0 +1,30 @@
+:py:mod:`qrem.benchmarks.benchmarks_functions`
+==============================================
+
+.. py:module:: qrem.benchmarks.benchmarks_functions
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.benchmarks.benchmarks_functions.calculate_pairs_marginals_from_tensor_model_fixed_input
+   qrem.benchmarks.benchmarks_functions.get_noisy_marginals_within_cluster
+   qrem.benchmarks.benchmarks_functions.get_noisy_energy_product_noise_model
+
+
+
+.. py:function:: calculate_pairs_marginals_from_tensor_model_fixed_input(input_state: str, noise_matrices_dictionary: Dict[Tuple[int], numpy.ndarray], needed_pairs, get_also_1q_marginals=True)
+
+
+.. py:function:: get_noisy_marginals_within_cluster(input_state: str, cluster_noise_matrix: numpy.ndarray, subsets_of_interest: List[Union[Tuple[int], List[int]]], qubits_mapping: Dict[int, int]) -> Dict[Tuple[int], numpy.ndarray]
+
+
+.. py:function:: get_noisy_energy_product_noise_model(input_state, noise_matrices_dictionary, weights_dictionary_tuples, needed_pairs=None)
+
+

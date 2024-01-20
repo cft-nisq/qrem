@@ -1,0 +1,144 @@
+:py:mod:`qrem`
+==============
+
+.. py:module:: qrem
+
+.. autoapi-nested-parse::
+
+   **qrem** module is the main module of the whole package.
+   It contains all qrem code after refactoring into upcoming version 1.0.0. Currently it holds
+   most important data structures and common functions used in the freamework. The main subpackages are:
+
+
+   - **common**: contains all common functions, utilities, connection to quantum backends etc. used throughout whole qrem package
+
+   - **characterization**: submodule containing functions necessary for readout noise characterization with QREM package
+
+   - **mitigation**: submodule containing functions necessary for readout noise mitigation with QREM package
+
+   - **cn**: subpackage containing cluster-neighbours approach implementation
+
+   - **ctmp**: Mitigation procedure as described in Bravyi et al.
+
+   - **pipelines**: scripts containing executions of most common characterisation/mitigation routines from data generation, sending to quantum machine down to characterization and mitigation.
+
+   - **providers**: contains all utilities necessary for connection to quantum backends etc. used throughout whole qrem package
+
+   - **qtypes**: most important data holder classess used throughout the package
+
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   benchmarks/index.rst
+   characterization/index.rst
+   cn/index.rst
+   common/index.rst
+   ctmp/index.rst
+   mitigation/index.rst
+   pipelines/index.rst
+   providers/index.rst
+   qtypes/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.QremConfigLoader
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qprint
+   qrem.load_config
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.__version__
+
+
+.. py:function:: qprint(colored_string: str, stuff_to_print='', color='CYAN', print_floors=False) -> None
+
+   Print colored text with optional additional information.
+   FUTURE: Should be extended/changed to have also logging capabilities
+
+   :param colored_string: The main text to be printed with color.
+   :type colored_string: str
+   :param stuff_to_print: Additional information to be printed without color (default is '').
+   :type stuff_to_print: str or any, optional
+   :param color: The color for the main text (default is 'CYAN').
+   :type color: {'CYAN', 'RED', 'YELLOW', 'GREEN', 'BLUE'}, optional
+   :param print_floors: Whether to print floor separators (default is False).
+   :type print_floors: bool, optional
+
+   .. rubric:: Examples
+
+   >>> qprint("Hello, World!", color='GREEN')
+   >>> qprint("Error:", "Something went wrong", color='RED')
+
+
+.. py:class:: QremConfigLoader
+
+
+   .. py:attribute:: config_parser
+
+      
+
+   .. py:method:: load(default_path=str(example_config_ibm_path), as_dict=False)
+
+      Processes a config file specific for QREM.
+
+      :param cmd_args: Command line arguments (default is None).
+      :type cmd_args: list, optional
+      :param default_path: Path to the default config file (default is 'default.ini' located within "qrem/config" path of the module ).
+      :type default_path: str, optional
+      :param as_dict: If True, returns the configuration as a dictionary (default is False).
+      :type as_dict: bool, optional
+
+      :returns: The parsed configuration.
+      :rtype: configargparse.Namespace or dict
+
+
+   .. py:method:: values()
+
+      Return summary of configuration values
+
+
+   .. py:method:: help()
+
+      Print help for preparation of the config file
+
+
+
+.. py:data:: __version__
+
+   
+
+.. py:function:: load_config(cmd_args=None, path: str = None, verbose_log=False)
+
+   Loads config for running main QREM pipeline
+
+   :param path: Path to the config file to load
+   :type path: str, default = None
+   :param verbose_log: turn on verbose logging for more printouts with info
+   :type verbose_log: bool, default=False
+
+

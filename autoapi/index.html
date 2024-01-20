@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qiskit_utilities" href="qiskit_utilities/index.html" />
+    <link rel="prev" title="qrem.qtypes.qunatum_detector_tomography_data" href="qrem/qtypes/qunatum_detector_tomography_data/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrem/index.html">qrem package API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">full code API (+deprecated)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qrem/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit_utilities</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="QDT_qiskit/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">QDT_qiskit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyquil_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyquil_utilities</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="QDT_pyquill/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">QDT_pyquill</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions_aws_rigetti/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">functions_aws_rigetti</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_constants/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plotting_constants</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark_plots_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">benchmark_plots_functions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="device_constants/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">device_constants</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualisation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="article_plots_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">article_plots_functions</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autoapi/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This page contains API reference documentation for qrem package <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qrem/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qrem/benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/benchmarks/benchmarks_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks.benchmarks_functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/benchmarks/hamiltonians/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks.hamiltonians</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/characterization/characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/characterization/characterization_routine/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.characterization_routine</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/characterization/clustering_algorithms/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.clustering_algorithms</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/characterization/neighbors_algorithms/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.neighbors_algorithms</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/cn/mitigtools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.mitigtools</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/cn/modeltools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.modeltools</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/cn/simtools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.simtools</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/cn/simtools/auxiliary_merging_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.simtools.auxiliary_merging_functions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/cn/simtools/custom_model_creator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.simtools.custom_model_creator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/cn/simtools/noisy_simulationsKKM/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.simtools.noisy_simulationsKKM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/cn/mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/cn/simulation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn.simulation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/experiment/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/common/experiment/tomoutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.tomoutils</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/experiment/tomoutils/algortithmic_circuits/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.tomoutils.algortithmic_circuits</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/common/experiment/information_completeness/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.information_completeness</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/common/experiment/tomography/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.tomography</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/external/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/common/external/CBB/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.CBB</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/CBB/branchandbound_tools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.CBB.branchandbound_tools</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/CBB/spin_models/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.CBB.spin_models</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/chordal_extension/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.chordal_extension</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/cvxpy_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.cvxpy_utils</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/faacets_relaxation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.faacets_relaxation</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/moroder_hierarchy/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.moroder_hierarchy</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/mosek_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.mosek_utils</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/nc_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.nc_utils</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/physics_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.physics_utils</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/picos_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.picos_utils</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/rdm_hierarchy/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.rdm_hierarchy</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/sdp_relaxation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdp_relaxation</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/sdpa_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.sdpa_utils</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/solver_common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.solver_common</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="qrem/common/external/ncpol2sdpa/steering_hierarchy/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.ncpol2sdpa.steering_hierarchy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/common/external/hyperplane_projections/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.external.hyperplane_projections</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/tomography/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.tomography</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/common/tomography/tomography/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.tomography.tomography</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/constants/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.constants</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/convert/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.convert</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/io/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.io</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/math/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.math</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/povmtools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.povmtools</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/printer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.printer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/probability/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.probability</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/registers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.registers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/scipy_optimizers_wrappers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.scipy_optimizers_wrappers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/common/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/ctmp/mitigtools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.mitigtools</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/ctmp/mitigtools/mitig_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.mitigtools.mitig_utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/ctmp/mitigtools/observables_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.mitigtools.observables_utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/ctmp/modeltools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.modeltools</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/ctmp/modeltools/ground_state_estimation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.modeltools.ground_state_estimation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/ctmp/modeltools/qubit_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.modeltools.qubit_utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/ctmp/simtools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.simtools</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/ctmp/simtools/sampling_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.simtools.sampling_utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/ctmp/mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/ctmp/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/ctmp/simulation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp.simulation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/mitigation/mitigation_routines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation.mitigation_routines</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/pipelines/qdot_test/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines.qdot_test</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/pipelines/run_aws_experiment/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines.run_aws_experiment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/pipelines/run_ibm_experiment/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines.run_ibm_experiment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/pipelines/run_simulation_experiment/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines.run_simulation_experiment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/pipelines/simulate_experiment/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines.simulate_experiment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/pipelines/test_mitigation_workflow/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines.test_mitigation_workflow</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/providers/awsutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.awsutils</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/providers/awsutils/aws_braket_runner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.awsutils.aws_braket_runner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/providers/awsutils/awsutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.awsutils.awsutils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/providers/ibmutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.ibmutils</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/providers/ibmutils/data_converters/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.ibmutils.data_converters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qrem/providers/ibmutils/ibmutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.ibmutils.ibmutils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/providers/simutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.simutils</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qrem/providers/simutils/simutils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.simutils.simutils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/providers/aws_braket/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.aws_braket</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/providers/ibm/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.ibm</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/providers/simulation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers.simulation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qrem/qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/characterization_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.characterization_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/circuit_collection/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.circuit_collection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/cn_noise_model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.cn_noise_model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/ctmp_noise_model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.ctmp_noise_model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/datastructure_base/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.datastructure_base</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/experiment_results/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.experiment_results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/mitigation_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.mitigation_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="qrem/qtypes/qunatum_detector_tomography_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes.qunatum_detector_tomography_data</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit_utilities</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="QDT_qiskit/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">QDT_qiskit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyquil_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyquil_utilities</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="QDT_pyquill/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">QDT_pyquill</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions_aws_rigetti/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">functions_aws_rigetti</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting_constants/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plotting_constants</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark_plots_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">benchmark_plots_functions</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="device_constants/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">device_constants</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="article_plots_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">article_plots_functions</span></code></a></li>
+</ul>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Created with <a class="reference external" href="https://github.com/readthedocs/sphinx-autoapi">sphinx-autoapi</a></p>
+</aside>
+</aside>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qrem/qtypes/qunatum_detector_tomography_data/index.html" class="btn btn-neutral float-left" title="qrem.qtypes.qunatum_detector_tomography_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qiskit_utilities/index.html" class="btn btn-neutral float-right" title="qiskit_utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+:py:mod:`qrem.characterization`
+===============================
+
+.. py:module:: qrem.characterization
+
+.. autoapi-nested-parse::
+
+   QREM Characterisation Module
+   ============================
+
+   This subpackage `qrem.characterisation` provides a suite of modules fro quantum error characterisation.
+   Detailed documentation coming soon.
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   characterization/index.rst
+   characterization_routine/index.rst
+   clustering_algorithms/index.rst
+   neighbors_algorithms/index.rst
+
+

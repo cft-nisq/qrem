@@ -1,0 +1,38 @@
+:py:mod:`benchmark_plots_functions`
+===================================
+
+.. py:module:: benchmark_plots_functions
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   benchmark_plots_functions.create_coherence_bound_histogram_data
+   benchmark_plots_functions.create_POVMs_distance_histogram
+   benchmark_plots_functions.create_correlations_distance_histogram
+   benchmark_plots_functions.create_coherence_bound_histogram
+   benchmark_plots_functions.create_error_mitigation_histogram
+
+
+
+.. py:function:: create_coherence_bound_histogram_data(coherence_bound_dictionary)
+
+
+.. py:function:: create_POVMs_distance_histogram(POVMs_errors, number_of_qubits, distance_type=('worst_case', 'classical'), path_to_save=None)
+
+
+.. py:function:: create_correlations_distance_histogram(correlations_coefficients_matrix, path_to_save=None)
+
+
+.. py:function:: create_coherence_bound_histogram(coherence_bound_dictionary: Dict, path_to_save=None)
+
+
+.. py:function:: create_error_mitigation_histogram(mitigation_data: type[qrem.qtypes.mitigation_data.MitigationData], energy_dictionary: Dict, number_of_qubits: int, noise_models_predicted_energy_dictionary=None, draw_prediction=False, plot_title='', path_to_save=None)
+
+

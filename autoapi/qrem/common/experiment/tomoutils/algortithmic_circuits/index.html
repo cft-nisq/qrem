@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.experiment.tomoutils.algortithmic_circuits &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="qrem.common.experiment.information_completeness" href="../../information_completeness/index.html" />
+    <link rel="prev" title="qrem.common.experiment.tomoutils" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.tomoutils</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.tomoutils.algortithmic_circuits</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../../_sources/autoapi/qrem/common/experiment/tomoutils/algortithmic_circuits/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.experiment.tomoutils.algortithmic_circuits">
+<span id="qrem-common-experiment-tomoutils-algortithmic-circuits"></span><h1><a class="reference internal" href="#module-qrem.common.experiment.tomoutils.algortithmic_circuits" title="qrem.common.experiment.tomoutils.algortithmic_circuits"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.tomoutils.algortithmic_circuits</span></code></a><a class="headerlink" href="#module-qrem.common.experiment.tomoutils.algortithmic_circuits" title="Link to this heading"></a></h1>
+<p>Combinatorial Quantum Circuit Generation Submodule</p>
+<p>This module contains functions for generating and completing quantum circuits for quantum experiments, particularly in quantum tomography. It provides methods to generate combinatorial circuits, complete circuits based on missing symbols in given subsets, and find optimal partitions of qubit subsets for circuit analysis. The functions support various types of quantum experiments and are designed to handle different quantum tomography methods.</p>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>generate_combinatorial_circuits:</dt><dd><p>Generates a set of combinatorial circuits for a given quantum experiment.</p>
+</dd>
+<dt>complete_on_subset:</dt><dd><p>Completes a set of circuits by adding missing symbols in specified subsets.</p>
+</dd>
+<dt>find_partition:</dt><dd><p>Finds an optimal partition of qubit subsets for circuit analysis.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.generate_combinatorial_circuits" title="qrem.common.experiment.tomoutils.algortithmic_circuits.generate_combinatorial_circuits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_combinatorial_circuits</span></code></a>(→ numpy.array)</p></td>
+<td><p>Generates a set of combinatorial circuits for quantum tomography experiments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.complete_on_subset" title="qrem.common.experiment.tomoutils.algortithmic_circuits.complete_on_subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complete_on_subset</span></code></a>(experiment_type, circuit_list, ...)</p></td>
+<td><p>Completes a given set of circuits by adding circuits with absent symbols for a specified subset of qubits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.find_partition" title="qrem.common.experiment.tomoutils.algortithmic_circuits.find_partition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_partition</span></code></a>(subset_list, n)</p></td>
+<td><p>Finds an optimal partition of a list of qubit subsets for circuit analysis.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.experiments" title="qrem.common.experiment.tomoutils.algortithmic_circuits.experiments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">experiments</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.experiment.tomoutils.algortithmic_circuits.generate_combinatorial_circuits">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.tomoutils.algortithmic_circuits.</span></span><span class="sig-name descname"><span class="pre">generate_combinatorial_circuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_locality</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.generate_combinatorial_circuits" title="Link to this definition"></a></dt>
+<dd><p>Generates a set of combinatorial circuits for quantum tomography experiments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>experiment_type</strong> (<em>str</em>) – The type of quantum experiment (e.g., DDOT, QDOT) which defines the set of symbols used for encoding gates.</p></li>
+<li><p><strong>number_of_qubits</strong> (<em>int</em>) – The number of qubits involved in the experiment.</p></li>
+<li><p><strong>subset_locality</strong> (<em>int</em>) – The number of qubits on which each circuit acts.</p></li>
+<li><p><strong>symbols</strong> (<em>List</em><em>, </em><em>optional</em>) – A list of symbols to be used in the circuits. If None, defaults to a range based on the number of symbols for the experiment.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An array of generated quantum circuits, each circuit represented as a list of symbols.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the provided experiment type is not recognized.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.experiment.tomoutils.algortithmic_circuits.complete_on_subset">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.tomoutils.algortithmic_circuits.</span></span><span class="sig-name descname"><span class="pre">complete_on_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circuit_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absent_symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.complete_on_subset" title="Link to this definition"></a></dt>
+<dd><p>Completes a given set of circuits by adding circuits with absent symbols for a specified subset of qubits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>experiment_type</strong> (<em>str</em>) – The type of quantum experiment, dictating the encoding of gates.</p></li>
+<li><p><strong>circuit_list</strong> (<em>List</em>) – The list of existing quantum circuits.</p></li>
+<li><p><strong>subset</strong> (<em>Tuple</em>) – A tuple of qubits for which absent symbols need to be added.</p></li>
+<li><p><strong>absent_symbols</strong> (<em>List</em>) – A list of symbols absent in the subset that need to be included in the new circuits.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An updated list of quantum circuits, including the newly added circuits covering the absent symbols.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the provided experiment type is not recognized.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.experiment.tomoutils.algortithmic_circuits.find_partition">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.tomoutils.algortithmic_circuits.</span></span><span class="sig-name descname"><span class="pre">find_partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subset_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.find_partition" title="Link to this definition"></a></dt>
+<dd><p>Finds an optimal partition of a list of qubit subsets for circuit analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subset_list</strong> (<em>List</em>) – A list of subsets of qubits to be partitioned.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – The total number of qubits in the experiment.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of subsets that form an optimal partition for circuit analysis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The function aims to find a partition that evenly distributes the qubits across the subsets, ensuring efficient analysis.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.experiment.tomoutils.algortithmic_circuits.experiments">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.tomoutils.algortithmic_circuits.</span></span><span class="sig-name descname"><span class="pre">experiments</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['DDOT',</span> <span class="pre">'QDOT']</span></em><a class="headerlink" href="#qrem.common.experiment.tomoutils.algortithmic_circuits.experiments" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="qrem.common.experiment.tomoutils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../information_completeness/index.html" class="btn btn-neutral float-right" title="qrem.common.experiment.information_completeness" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

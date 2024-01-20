@@ -1,0 +1,500 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.sdp_relaxation`
+========================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.sdp_relaxation
+
+.. autoapi-nested-parse::
+
+   The module converts a noncommutative optimization problem provided in SymPy
+   format to an SDPA semidefinite programming problem.
+
+   Created on Sun May 26 15:06:17 2013
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.sdp_relaxation.Relaxation
+   qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.sdp_relaxation.imap
+   qrem.common.external.ncpol2sdpa.sdp_relaxation.have_ipython
+
+
+.. py:data:: imap
+
+   
+
+.. py:data:: have_ipython
+   :value: True
+
+   
+
+.. py:class:: Relaxation
+
+
+   Bases: :py:obj:`object`
+
+   .. py:method:: solve(solver=None, solverparameters=None)
+
+      Call a solver on the SDP relaxation. Upon successful solution, it
+      returns the primal and dual objective values along with the solution
+      matrices. It also sets these values in the `sdpRelaxation` object,
+      along with some status information.
+
+      :param sdpRelaxation: The SDP relaxation to be solved.
+      :type sdpRelaxation: :class:`ncpol2sdpa.SdpRelaxation`.
+      :param solver: The solver to be called, either `None`, "sdpa", "mosek",
+                     "cvxpy", "scs", or "cvxopt". The default is `None`,
+                     which triggers autodetect.
+      :type solver: str.
+      :param solverparameters: Parameters to be passed to the solver. Actual
+                               options depend on the solver:
+
+                               SDPA:
+
+                                 - `"executable"`:
+                                   Specify the executable for SDPA. E.g.,
+                                   `"executable":"/usr/local/bin/sdpa"`, or
+                                   `"executable":"sdpa_gmp"`
+                                 - `"paramsfile"`: Specify the parameter file
+
+                               Mosek:
+                               Refer to the Mosek documentation. All
+                               arguments are passed on.
+
+                               Cvxopt:
+                               Refer to the PICOS documentation. All
+                               arguments are passed on.
+
+                               Cvxpy:
+                               Refer to the Cvxpy documentation. All
+                               arguments are passed on.
+
+                               SCS:
+                               Refer to the Cvxpy documentation. All
+                               arguments are passed on.
+
+      :type solverparameters: dict of str.
+
+
+
+.. py:class:: SdpRelaxation(variables, parameters=None, verbose=0, normalized=True, parallel=False, number_of_threads=None)
+
+
+   Bases: :py:obj:`Relaxation`
+
+   Class for obtaining sparse SDP relaxation.
+
+   :param variables: Commutative or noncommutative, Hermitian or nonhermiatian
+                     variables, possibly a list of list of variables if the
+                     hierarchy is not NPA.
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param parameters: Optional symbolic variables for which moments are not
+                      generated.
+   :type parameters: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param verbose: Optional parameter for level of verbosity:
+
+                      * 0: quiet (default)
+                      * 1: verbose
+                      * 2: debug level
+   :type verbose: int.
+   :param normalized: Optional parameter for changing the normalization of
+                      states over which the optimization happens. Turn it off
+                      if further processing is done on the SDP matrix before
+                      solving it.
+   :type normalized: bool.
+   :param parallel: Optional parameter for allowing parallel computations.
+   :type parallel: bool.
+   :param number_of_threads: set the number of threads if parallel is True. If None, use cpu_count() of multiprocess.
+   :type number_of_threads: int.
+
+   .. attribute:: - `monomial_sets`
+
+      The monomial sets that generate the moment matrix blocks.
+
+   .. attribute:: - `monomial_index`
+
+      Dictionary that maps monomials to SDP variables.
+
+   .. attribute:: - `constraints`
+
+      The complete set of constraints after preprocesssing.
+
+   .. attribute:: - `primal`
+
+      The primal optimal value.
+
+   .. attribute:: - `dual`
+
+      The dual optimal value.
+
+   .. attribute:: - `x_mat`
+
+      The primal solution matrix.
+
+   .. attribute:: - `y_mat`
+
+      The dual solution matrix.
+
+   .. attribute:: - `solution_time`
+
+      The amount of time taken to solve the relaxation.
+
+   .. attribute:: - `status`
+
+      The solution status of the relaxation.
+
+   .. py:method:: _process_monomial(monomial, n_vars)
+
+      Process a single monomial when building the moment matrix.
+
+
+
+   .. py:method:: _push_monomial(monomial, n_vars, row_offset, rowA, columnA, N, rowB, columnB, lenB, prevent_substitutions=False)
+
+
+   .. py:method:: _generate_moment_matrix(n_vars, block_index, processed_entries, monomialsA, monomialsB, ppt=False)
+
+      Generate the moment matrix of monomials.
+
+      Arguments:
+      n_vars -- current number of variables
+      block_index -- current block index in the SDP matrix
+      monomials -- |W_d| set of words of length up to the relaxation level
+
+
+   .. py:method:: _generate_all_moment_matrix_blocks(n_vars, block_index)
+
+
+   .. py:method:: _get_index_of_monomial(element, enablesubstitution=True, daggered=False)
+
+      Returns the index of a monomial.
+
+
+
+   .. py:method:: __push_facvar_sparse(polynomial, block_index, row_offset, i, j)
+
+      Calculate the sparse vector representation of a polynomial
+      and pushes it to the F structure.
+
+
+   .. py:method:: _get_facvar(polynomial)
+
+      Return dense vector representation of a polynomial. This function is
+      nearly identical to __push_facvar_sparse, but instead of pushing
+      sparse entries to the constraint matrices, it returns a dense
+      vector.
+
+
+   .. py:method:: __process_inequalities(block_index)
+
+      Generate localizing matrices
+
+      Arguments:
+      inequalities -- list of inequality constraints
+      monomials    -- localizing monomials
+      block_index -- the current block index in constraint matrices of the
+                     SDP relaxation
+
+
+   .. py:method:: __process_equalities(equalities, momentequalities)
+
+      Generate localizing matrices
+
+      Arguments:
+      equalities -- list of equality constraints
+      equalities -- list of moment equality constraints
+
+
+   .. py:method:: __remove_equalities(equalities, momentequalities)
+
+      Attempt to remove equalities by solving the linear equations.
+
+
+
+   .. py:method:: __duplicate_momentmatrix(original_n_vars, n_vars, block_index)
+
+
+   .. py:method:: __add_new_momentmatrix(n_vars, block_index)
+
+
+   .. py:method:: __impose_ppt(block_index)
+
+
+   .. py:method:: __add_extra_momentmatrices(extramomentmatrices, n_vars, block_index)
+
+
+   .. py:method:: __parse_expression(expr, row_offset, line=None)
+
+
+   .. py:method:: _calculate_block_structure(inequalities, equalities, momentinequalities, momentequalities, extramomentmatrix, removeequalities, block_struct=None)
+
+      Calculates the block_struct array for the output file.
+
+
+
+   .. py:method:: __generate_monomial_sets(extramonomials)
+
+
+   .. py:method:: _estimate_n_vars()
+
+
+   .. py:method:: __add_parameters()
+
+
+   .. py:method:: __wipe_F_from_constraints()
+
+
+   .. py:method:: process_constraints(inequalities=None, equalities=None, momentinequalities=None, momentequalities=None, block_index=0, removeequalities=False)
+
+      Process the constraints and generate localizing matrices. Useful
+      only if the moment matrix already exists. Call it if you want to
+      replace your constraints. The number of the respective types of
+      constraints and the maximum degree of each constraint must remain the
+      same.
+
+      :param inequalities: Optional parameter to list inequality constraints.
+      :type inequalities: list of :class:`sympy.core.exp.Expr`.
+      :param equalities: Optional parameter to list equality constraints.
+      :type equalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentinequalities: Optional parameter of inequalities defined
+                                 on moments.
+      :type momentinequalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentequalities: Optional parameter of equalities defined
+                               on moments.
+      :type momentequalities: list of :class:`sympy.core.exp.Expr`.
+      :param removeequalities: Optional parameter to attempt removing the
+                               equalities by solving the linear equations.
+
+      :param removeequalities: Optional parameter to attempt removing the
+                               equalities by solving the linear equations.
+      :type removeequalities: bool.
+
+
+   .. py:method:: set_objective(objective, extraobjexpr=None)
+
+      Set or change the objective function of the polynomial optimization
+      problem.
+
+      :param objective: Describes the objective function.
+      :type objective: :class:`sympy.core.expr.Expr`
+      :param extraobjexpr: Optional parameter of a string expression of a
+                           linear combination of moment matrix elements to be
+                           included in the objective function
+      :type extraobjexpr: str.
+
+
+   .. py:method:: __getitem__(index)
+
+      Obtained the value for a polynomial in a solved relaxation.
+
+      :param index: The polynomial.
+      :type index: `sympy.core.exp.Expr`
+
+      :returns: The value of the polynomial extracted from the solved SDP.
+      :rtype: float
+
+
+   .. py:method:: get_sos_decomposition(threshold=0.0)
+
+      Given a solution of the dual problem, it returns the SOS
+      decomposition.
+
+      :param threshold: Optional parameter for specifying the threshold value
+                        below which the eigenvalues and entries of the
+                        eigenvectors are disregarded.
+      :type threshold: float.
+      :returns: The SOS decomposition of [sigma_0, sigma_1, ..., sigma_m]
+      :rtype: list of :class:`sympy.core.exp.Expr`.
+
+
+   .. py:method:: extract_dual_value(monomial, blocks=None)
+
+      Given a solution of the dual problem and a monomial, it returns the
+      inner product of the corresponding coefficient matrix and the dual
+      solution. It can be restricted to certain blocks.
+
+      :param monomial: The monomial for which the value is requested.
+      :type monomial: :class:`sympy.core.exp.Expr`.
+      :param monomial: The monomial for which the value is requested.
+      :type monomial: :class:`sympy.core.exp.Expr`.
+      :param blocks: Optional parameter to specify the blocks to be included.
+      :type blocks: list of `int`.
+      :returns: The value of the monomial in the solved relaxation.
+      :rtype: float.
+
+
+   .. py:method:: find_solution_ranks(xmat=None, baselevel=0)
+
+      Helper function to detect rank loop in the solution matrix.
+
+      :param sdpRelaxation: The SDP relaxation.
+      :type sdpRelaxation: :class:`ncpol2sdpa.SdpRelaxation`.
+      :param x_mat: Optional parameter providing the primal solution of the
+                    moment matrix. If not provided, the solution is extracted
+                    from the sdpRelaxation object.
+      :type x_mat: :class:`numpy.array`.
+      :param base_level: Optional parameter for specifying the lower level
+                         relaxation for which the rank loop should be tested
+                         against.
+      :type base_level: int.
+      :returns: list of int -- the ranks of the solution matrix with in the
+                order of increasing degree.
+
+
+   .. py:method:: get_dual(constraint, ymat=None)
+
+      Given a solution of the dual problem and a constraint of any type,
+      it returns the corresponding block in the dual solution. If it is an
+      equality constraint that was converted to a pair of inequalities, it
+      returns a two-tuple of the matching dual blocks.
+
+      :param constraint: The constraint.
+      :type index: `sympy.core.exp.Expr`
+      :param y_mat: Optional parameter providing the dual solution of the
+                    SDP. If not provided, the solution is extracted
+                    from the sdpRelaxation object.
+      :type y_mat: :class:`numpy.array`.
+      :returns: The corresponding block in the dual solution.
+      :rtype: :class:`numpy.array` or a tuple thereof.
+
+
+   .. py:method:: write_to_file(filename, filetype=None)
+
+      Write the relaxation to a file.
+
+      :param filename: The name of the file to write to. The type can be
+                       autodetected from the extension: .dat-s for SDPA,
+                       .task for mosek or .csv for human readable format.
+      :type filename: str.
+      :param filetype: Optional parameter to define the filetype. It can be
+                       "sdpa" for SDPA , "mosek" for Mosek, or "csv" for
+                       human readable format.
+      :type filetype: str.
+
+
+   .. py:method:: save_monomial_index(filename)
+
+      Write the monomial index to a file.
+
+      :param filename: The name of the file to write to.
+      :type filename: str.
+
+
+   .. py:method:: convert_to_cvxpy()
+
+      Convert an SDP relaxation to a CVXPY problem.
+
+      :returns: :class:`cvxpy.Problem`.
+
+
+   .. py:method:: convert_to_picos(duplicate_moment_matrix=False)
+
+      Convert the SDP relaxation to a PICOS problem such that the exported
+      .dat-s file is extremely sparse, there is not penalty imposed in terms
+      of SDP variables or number of constraints. This conversion can be used
+      for imposing extra constraints on the moment matrix, such as partial
+      transpose.
+
+      :param duplicate_moment_matrix: Optional parameter to add an
+                                      unconstrained moment matrix to the
+                                      problem with the same structure as the
+                                      moment matrix with the PSD constraint.
+      :type duplicate_moment_matrix: bool.
+
+      :returns: :class:`picos.Problem`.
+
+
+   .. py:method:: convert_to_mosek()
+
+      Convert an SDP relaxation to a MOSEK task.
+
+      :returns: :class:`mosek.Task`.
+
+
+   .. py:method:: get_relaxation(level, objective=None, inequalities=None, equalities=None, substitutions=None, momentinequalities=None, momentequalities=None, momentsubstitutions=None, removeequalities=False, extramonomials=None, extramomentmatrices=None, extraobjexpr=None, localizing_monomials=None, chordal_extension=False)
+
+      Get the SDP relaxation of a noncommutative polynomial optimization
+      problem.
+
+      :param level: The level of the relaxation. The value -1 will skip
+                    automatic monomial generation and use only the monomials
+                    supplied by the option `extramonomials`.
+      :type level: int.
+      :param obj: Optional parameter to describe the objective function.
+      :type obj: :class:`sympy.core.exp.Expr`.
+      :param inequalities: Optional parameter to list inequality constraints.
+      :type inequalities: list of :class:`sympy.core.exp.Expr`.
+      :param equalities: Optional parameter to list equality constraints.
+      :type equalities: list of :class:`sympy.core.exp.Expr`.
+      :param substitutions: Optional parameter containing monomials that can
+                            be replaced (e.g., idempotent variables).
+      :type substitutions: dict of :class:`sympy.core.exp.Expr`.
+      :param momentinequalities: Optional parameter of inequalities defined
+                                 on moments.
+      :type momentinequalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentequalities: Optional parameter of equalities defined
+                               on moments.
+      :type momentequalities: list of :class:`sympy.core.exp.Expr`.
+      :param momentsubstitutions: Optional parameter containing moments that
+                                  can be replaced.
+      :type momentsubstitutions: dict of :class:`sympy.core.exp.Expr`.
+      :param removeequalities: Optional parameter to attempt removing the
+                               equalities by solving the linear equations.
+      :type removeequalities: bool.
+      :param extramonomials: Optional paramter of monomials to be included,
+                             on top of the requested level of relaxation.
+      :type extramonomials: list of :class:`sympy.core.exp.Expr`.
+      :param extramomentmatrices: Optional paramter of duplicating or adding
+                             moment matrices.  A new moment matrix can be
+                             unconstrained (""), a copy  of the first one
+                             ("copy"), and satisfying a partial positivity
+                             constraint ("ppt"). Each new moment matrix is
+                             requested as a list of string of these options.
+                             For instance, adding a single new moment matrix
+                             as a copy of the first would be
+                             ``extramomentmatrices=[["copy"]]``.
+      :type extramomentmatrices: list of list of str.
+      :param extraobjexpr: Optional parameter of a string expression of a
+                           linear combination of moment matrix elements to be
+                           included in the objective function.
+      :type extraobjexpr: str.
+      :param localizing_monomials: Optional parameter to specify sets of
+                                   localizing monomials for each constraint.
+                                   The internal order of constraints is
+                                   inequalities first, followed by the
+                                   equalities. If the parameter is specified,
+                                   but for a certain constraint the automatic
+                                   localization is requested, leave None in
+                                   its place in this parameter.
+      :type localizing_monomials: list of list of `sympy.core.exp.Expr`.
+      :param chordal_extension: Optional parameter to request a sparse
+                                chordal extension.
+      :type chordal_extension: bool.
+
+
+
+

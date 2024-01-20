@@ -1,0 +1,62 @@
+:py:mod:`qrem.characterization.neighbors_algorithms`
+====================================================
+
+.. py:module:: qrem.characterization.neighbors_algorithms
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.characterization.neighbors_algorithms.find_neighbors_of_cluster_holistic
+   qrem.characterization.neighbors_algorithms.find_all_neighborhoods_holistic
+   qrem.characterization.neighbors_algorithms.find_all_neighborhoods
+
+
+
+.. py:function:: find_neighbors_of_cluster_holistic(cluster: List[int], characterization_data, qubit_indices, maximal_size: int, chopping_threshold: Optional[float] = 0.0, correlation_threshold: float = 0.001) -> List[int]
+
+   For a given cluster of qubits, find qubits which are their neighbors, i.e., they affect the
+   noise matrix of cluster significantly. Figure of merit for correlations here is:
+
+   c_{j -> cluster} = 1/2 || Lambda_{cluster}^{Y_j='0'}- Lambda_{cluster}^{Y_j='1'}||_{l1}
+
+   where Lambda_{cluster}^{Y_j} is the noise matrix describing noise on qubits in "cluster"
+   provided that input state of qubit "j" was "Y_j".
+   See also description of self._compute_clusters_pairwise.
+
+
+   :param cluster: list of labels of qubits in a cluster
+   :param maximal_size: maximal allowed size of the set "cluster+neighborhood"
+   :param chopping_threshold: numerical value, for which correlations lower than
+         chopping_threshold are set to 0.
+         If not provided, it adds all_neighbors until maximal_size is met.
+
+
+
+   :return: neighbors_list: list of lists, each representing a single cluster
+
+
+.. py:function:: find_all_neighborhoods_holistic(characterization_data, qubits_indices, clusters_tuple, maximal_size, chopping_threshold: float, show_progress_bar: Optional[bool] = False) -> Dict[str, List[int]]
+
+   Run self._find_neighbors_of_cluster_holistic for all clusters.
+
+   :param maximal_size: maximal allowed size of the set "cluster+neighborhood"
+   :param chopping_threshold: numerical value, for which correlations lower than
+         chopping_threshold are set to 0.
+         If not provided, it adds all_neighbors until maximal_size is met.
+   :param show_progress_bar: specify whether to show progress bar
+
+
+   :return: neighbors_dictionary: dictionary where KEY is label for cluster,
+                                  and VALUE is list of its neighbors
+
+
+.. py:function:: find_all_neighborhoods(characterization_data, clusters_tuple, qubit_indices, maximal_size: int, method: Optional[str] = 'holistic', method_kwargs: Optional[dict] = None)
+
+

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.constants &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.common.convert" href="../convert/index.html" />
+    <link rel="prev" title="qrem.common.config" href="../config/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.constants</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/common/constants/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.constants">
+<span id="qrem-common-constants"></span><h1><a class="reference internal" href="#module-qrem.common.constants" title="qrem.common.constants"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.constants</span></code></a><a class="headerlink" href="#module-qrem.common.constants" title="Link to this heading"></a></h1>
+<section id="constants-module-for-qrem">
+<p>Constants Module in the QREM (Quantum Readout Error Mitigation) package defines various
+constants and configurations used throughout the project. These constants are central to maintaining
+consistency and accuracy in quantum computations and data handling.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.constants.SIGNIFICANT_DIGITS">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">SIGNIFICANT_DIGITS</span></span><a class="headerlink" href="#qrem.common.constants.SIGNIFICANT_DIGITS" title="Link to this definition"></a></dt>
+<dd><p>The default number of significant digits to be used in numerical computations within QREM.
+Currently set to 9, this value determines the precision level for general numerical outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.constants.SIGNIFICANT_DIGITS_POVM">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">SIGNIFICANT_DIGITS_POVM</span></span><a class="headerlink" href="#qrem.common.constants.SIGNIFICANT_DIGITS_POVM" title="Link to this definition"></a></dt>
+<dd><p>Defines the number of significant digits specifically for computations involving Positive
+Operator-Valued Measures (POVMs). A precision of 7 significant digits is used for these
+specialized calculations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.constants.EXPERIMENT_TYPE_SYMBOLS">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">EXPERIMENT_TYPE_SYMBOLS</span></span><a class="headerlink" href="#qrem.common.constants.EXPERIMENT_TYPE_SYMBOLS" title="Link to this definition"></a></dt>
+<dd><p>A dictionary mapping different types of quantum experiments to specific numerical codes.
+Each experiment type, such as ‘qdot’, ‘ddot’, etc. , is associated with a unique integer.
+These codes are used for categorizing and identifying experiments within the QREM system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.constants.CIRCUIT_DATA_TYPE">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">CIRCUIT_DATA_TYPE</span></span><a class="headerlink" href="#qrem.common.constants.CIRCUIT_DATA_TYPE" title="Link to this definition"></a></dt>
+<dd><p>Specifies the data type for storing circuit data, using NumPy’s <cite>dtype</cite> for efficient and
+consistent data handling. Set to <cite>np.uint8</cite>, it optimizes memory usage for circuit representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.dtype</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.constants.CIRC_EFFECT_DISTANCE">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">CIRC_EFFECT_DISTANCE</span></span><a class="headerlink" href="#qrem.common.constants.CIRC_EFFECT_DISTANCE" title="Link to this definition"></a></dt>
+<dd><p>A constant defining a threshold or reference distance value used in circuit total count estimations.
+This parameter plays a role in calculations related to the spatial aspects of circuit layouts or effects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qrem.common.constants.CIRC_PROBABILITY_OF_FAIL">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">CIRC_PROBABILITY_OF_FAIL</span></span><a class="headerlink" href="#qrem.common.constants.CIRC_PROBABILITY_OF_FAIL" title="Link to this definition"></a></dt>
+<dd><p>Represents the estimated probability of failure for a given circuit. Set to 0.5, this constant is
+used in various probabilistic analyses and estimations regarding circuit performance and reliability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<ul>
+<li><p>The choice of significant digits, both general and POVM-specific, reflects a balance between
+computational efficiency and the precision required for quantum computations.</p></li>
+<li><p>The <cite>EXPERIMENT_TYPE_SYMBOLS</cite> dictionary can be expanded as new types of quantum experiments are
+incorporated into the QREM project.</p></li>
+<li><p>The <cite>CIRCUIT_DATA_TYPE</cite> is aligned with the typical data requirements for quantum circuits, ensuring
+that the data structures used are both memory-efficient and sufficient for the intended computations.</p></li>
+<li><p>The <cite>CIRC_EFFECT_DISTANCE</cite> and <cite>CIRC_PROBABILITY_OF_FAIL</cite> constants are crucial for simulations and
+estimations that factor in circuit layout and reliability within quantum experiments.</p>
+<blockquote>
+<div><p>&#64;authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+&#64;contact: <a class="reference external" href="mailto:michal&#46;oszmaniec&#37;&#52;&#48;cft&#46;edu&#46;pl">michal<span>&#46;</span>oszmaniec<span>&#64;</span>cft<span>&#46;</span>edu<span>&#46;</span>pl</a></p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">SIGNIFICANT_DIGITS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">SIGNIFICANT_DIGITS_POVM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.constants.EXPERIMENT_TYPE_SYMBLOS">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">EXPERIMENT_TYPE_SYMBLOS</span></span><a class="headerlink" href="#qrem.common.constants.EXPERIMENT_TYPE_SYMBLOS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">CIRCUIT_DATA_TYPE</span></span><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">CIRC_EFFECT_DISTANCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.constants.</span></span><span class="sig-name descname"><span class="pre">CIRC_PROBABILITY_OF_FAIL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.5</span></em><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../config/index.html" class="btn btn-neutral float-left" title="qrem.common.config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../convert/index.html" class="btn btn-neutral float-right" title="qrem.common.convert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

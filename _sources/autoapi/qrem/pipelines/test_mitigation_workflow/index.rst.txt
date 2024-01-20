@@ -1,0 +1,14 @@
+:py:mod:`qrem.pipelines.test_mitigation_workflow`
+=================================================
+
+.. py:module:: qrem.pipelines.test_mitigation_workflow
+
+
+Module Contents
+---------------
+
+.. py:data:: number_of_qubits
+   :value: 10
+
+   
+

@@ -1,0 +1,64 @@
+:py:mod:`qrem.ctmp.modeltools.ground_state_estimation`
+======================================================
+
+.. py:module:: qrem.ctmp.modeltools.ground_state_estimation
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.ctmp.modeltools.ground_state_estimation.estimate_gamma
+   qrem.ctmp.modeltools.ground_state_estimation.generate_random_ground_states
+   qrem.ctmp.modeltools.ground_state_estimation.generate_commuting_measurements
+   qrem.ctmp.modeltools.ground_state_estimation.get_symbolic_hamiltonian_from_weights_dictionary
+   qrem.ctmp.modeltools.ground_state_estimation.find_ground_state_with_SDP_relaxations
+   qrem.ctmp.modeltools.ground_state_estimation.__convert_rates_dictionary_into_hamiltonian
+   qrem.ctmp.modeltools.ground_state_estimation._find_optimal_noise_strength_CTMP_SDP_relaxation
+   qrem.ctmp.modeltools.ground_state_estimation.__extract_ground_state_from_moments_matrix
+
+
+
+.. py:function:: estimate_gamma(n: int, rates: List[Tuple]) -> numpy.float
+
+   Glue function to access old code
+
+
+
+.. py:function:: generate_random_ground_states(n_qubits: int, n_hamiltonians: int, clause_density: float) -> List[Tuple]
+
+   Generates a collectinon of ground state approximations for random Hamiltonians together with ground state
+   energy lower and upper bound.
+
+   Returns a list of tuples (state, low, up), where:
+   state - string describing the approximate ground state
+   low, up - lower and upper bound on the ground state energy
+   h - Hamiltonian
+
+
+.. py:function:: generate_commuting_measurements(party, label)
+
+   Code below copy pasted from Filip's code
+
+
+
+.. py:function:: get_symbolic_hamiltonian_from_weights_dictionary(weights_dictionary: Dict[Tuple[int], float], spins)
+
+
+.. py:function:: find_ground_state_with_SDP_relaxations(weights_dictionary: Dict[Tuple[int], float], number_of_qubits: int, hierarchy_level: Optional[float] = 2, get_also_upper_bound=True, return_ground_state_approximation=False, solver_name='cvxpy')
+
+
+.. py:function:: __convert_rates_dictionary_into_hamiltonian(ctmp_rates_dictionary, number_of_qubits)
+
+
+.. py:function:: _find_optimal_noise_strength_CTMP_SDP_relaxation(ctmp_rates_dictionary: Dict[Tuple[int], Dict[str, float]], number_of_qubits: int, hierarchy_level: Optional[int] = 1) -> Tuple[float]
+
+
+.. py:function:: __extract_ground_state_from_moments_matrix(moments_matrix, number_of_qubits)
+
+

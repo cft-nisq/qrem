@@ -1,0 +1,16 @@
+:py:mod:`qrem.common.external.CBB`
+==================================
+
+.. py:module:: qrem.common.external.CBB
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   branchandbound_tools/index.rst
+   spin_models/index.rst
+
+

@@ -1,0 +1,215 @@
+:py:mod:`qrem.common.utils`
+===========================
+
+.. py:module:: qrem.common.utils
+
+.. autoapi-nested-parse::
+
+   Quantum Readout Error Mitigation (QREM) Utils Module
+   ==========================================================
+
+   qrem.common.utils module contains all helpful functions used throughout the projcets.
+
+   Current contents of this module will relate to:
+   - dit/bitstring conversions
+   - python/numpy format conversions
+   - boolean operators on lists (that treat lists as sets)
+   - other helpful functions not covered elswhere
+
+   Utils Module May be split into other modules in the future.
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.utils.lists_intersection
+   qrem.common.utils.lists_difference
+   qrem.common.utils.lists_sum
+   qrem.common.utils.lists_sum_multiple
+   qrem.common.utils.lists_intersection_multiple
+   qrem.common.utils.check_for_multiple_occurences
+   qrem.common.utils.enumerate_dict
+   qrem.common.utils.sort_things
+   qrem.common.utils.swap_keys_and_values
+   qrem.common.utils.map_index_to_order
+   qrem.common.utils.wrapped_multiprocessing_function
+   qrem.common.utils.get_full_object_size
+   qrem.common.utils.get_historical_experiments_number_of_qubits
+
+
+
+.. py:function:: lists_intersection(lst1: list, lst2: list)
+
+   Intersection of 2 lists lst1 and lst2 after conversion of both to sets.
+
+   :rtype: list
+
+   .. rubric:: Notes
+
+   Multiple entries within each of the lists will merge
+
+
+.. py:function:: lists_difference(lst1: list, lst2: list)
+
+   Difference between 2 lists lst1 and lst2 after conversion of both to sets.
+
+   :rtype: list
+
+   .. rubric:: Notes
+
+   Multiple entries within each of the lists will merge
+
+
+.. py:function:: lists_sum(lst1: list, lst2: list)
+
+   Union between 2 lists lst1 and lst2 after conversion of both to sets.
+
+   :rtype: list
+
+   .. rubric:: Notes
+
+   Multiple entries within each of the lists will merge
+
+
+.. py:function:: lists_sum_multiple(lists: List[list])
+
+   Union between all lists in the input  list of lists (lists) after conversion to sets.
+
+   :rtype: list
+
+   .. rubric:: Notes
+
+   Multiple entries within each of the lists will merge
+
+
+.. py:function:: lists_intersection_multiple(lists: List[list])
+
+   Intersection of all lists in the input  list of lists (lists) after conversion  to sets. Returns a list.
+
+   .. rubric:: Notes
+
+   Multiple entries within each of the lists will merge
+
+
+.. py:function:: check_for_multiple_occurences(lists: List[list]) -> bool
+
+   Checks for duplicate elements between multiple lists. Multiple occurences within each of lists are not taken into consideration
+
+   :rtype: bool
+
+
+.. py:function:: enumerate_dict(list: List[int]) -> Dict
+
+   This function takes in a list 'list' and returns a dictionary where the keys are the indices of the elements in 'some_list'
+   and the values are the elements themselves.
+
+   :param list: list to be enumerated
+   :type list: List[int]
+
+
+.. py:function:: sort_things(stuff_to_sort: Iterable, according_to_what: Iterable) -> Iterable
+
+   Sort stuff according to some other stuff assuming that the stuff_to_sort
+   is sorted in natural order (0, 1, 2, ...)
+
+
+.. py:function:: swap_keys_and_values(enumerated_dict: Dict[int, int]) -> Dict[int, int]
+
+   This function takes in a dictionary 'enumerate' where the keys are integers and the values are also integers.
+   It returns a new dictionary where the keys and values are reversed from the input dictionary
+
+    Parameters
+    ----------
+    enumerated_dict: Dict[int, int]
+
+
+
+
+.. py:function:: map_index_to_order(indices: List[int]) -> Dict[str, int]
+
+   Given indices list, enumerate them and return map which is inverse of enumerate
+   :param indices: list of indices (e.g. qubit indices), that will be mapped in a dict to their natural order
+   :type indices: List[int]
+
+
+.. py:function:: wrapped_multiprocessing_function(tuple_of_main_arguments: List[tuple], additional_kwargs: dict, function_to_multiprocess: Callable, number_of_threads: Optional[int] = None, printing=False)
+
+   Wrapper for executing a custom defined function using multiprocessing over a list of variable arguments.
+   Additional list of constant arguments can be provided
+
+   :param tuple_of_main_arguments: This is list of tuples that is divided into batches that are passed to different threads of
+                                   multiprocessing. This, therefore should be set of VARIABLE arguments that are passed to the
+                                   function of interest
+   :type tuple_of_main_arguments: List[tuple]
+   :param additional_kwargs: This is dictionary of arguments that are CONSTANT for all function evaluations.
+                             The dictionary is COPIED for each thread and passed to the function.
+   :type additional_kwargs: dict
+   :param function_to_multiprocess:
+   :type function_to_multiprocess: Callable
+   :param number_of_threads:
+   :type number_of_threads: int
+
+
+.. py:function:: get_full_object_size(obj, seen=None)
+
+   Recursively calculates the total size in bytes of a Python object, including all objects referenced by it.
+
+   :param obj: The object for which the size needs to be calculated.
+   :type obj: Any
+   :param seen: A set to keep track of objects already visited to avoid infinite recursion.
+   :type seen: set, optional
+
+   :returns: The total size in bytes of the object and its referenced objects.
+   :rtype: int
+
+   .. rubric:: Examples
+
+   >>> get_full_object_size(42)
+   28
+
+   >>> get_full_object_size("Hello, World!")
+   38
+
+   >>> class CustomObject:
+   ...     def __init__(self):
+   ...         self.data = [1, 2, 3]
+   ...
+   >>> obj = CustomObject()
+   >>> get_full_object_size(obj)
+   244
+
+   >>> data = {'a': [1, 2, 3], 'b': (4, 5, 6)}
+   >>> get_full_object_size(data)
+   282
+
+   >>> class RecursiveObject:
+   ...     def __init__(self):
+   ...         self.data = None
+   ...
+   >>> obj1 = RecursiveObject()
+   >>> obj2 = RecursiveObject()
+   >>> obj1.data = obj2
+   >>> obj2.data = obj1
+   >>> get_full_object_size(obj1)
+   136
+
+
+.. py:function:: get_historical_experiments_number_of_qubits(backend_name: str)
+
+   A helper function that returns number of qubits for a given backend name that is no longer available.
+
+
+

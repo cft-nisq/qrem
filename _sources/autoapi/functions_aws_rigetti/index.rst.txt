@@ -1,0 +1,58 @@
+:py:mod:`functions_aws_rigetti`
+===============================
+
+.. py:module:: functions_aws_rigetti
+
+.. autoapi-nested-parse::
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   functions_aws_rigetti._apply_elementary_gate_native
+   functions_aws_rigetti._apply_pauli_eigenstate
+
+
+
+.. py:function:: _apply_elementary_gate_native(quantum_circuit: braket.circuits.Circuit, qubit_index: int, gate_label: str) -> braket.circuits.Circuit
+
+   Decomposes quantum gate into elementary rotations in pyquil and adds it to a circuit.
+
+   :param quantum_circuit: Object to which a gate should be added
+   :type quantum_circuit: braket.circuits.Circuit
+
+   :param qubit_index: Qubit on which gate should act.
+   :type qubit_index: int
+
+   :param gate_label: Symbolic label of the gate. If not supported, returns error.
+   Supported gates = ["I", "X", "Y", "Z", "H", "S", "S*", "T", "T*"]
+   :type gate_label: str
+
+   :return: "quantum circuit" with a target gate appended.
+   :rtype: braket.circuits.Circuit
+
+
+.. py:function:: _apply_pauli_eigenstate(eigenstate_index: int, quantum_circuit: braket.circuits.Circuit, qubit_index: int)
+
+   :param eigenstate_index:
+   :type eigenstate_index:
+   :param quantum_circuit:
+   :type quantum_circuit:
+   :param qubit_index:
+   :type qubit_index:
+   :return:
+   :rtype:
+
+

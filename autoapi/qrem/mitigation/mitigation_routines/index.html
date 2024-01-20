@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.mitigation.mitigation_routines &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.pipelines" href="../../pipelines/index.html" />
+    <link rel="prev" title="qrem.mitigation" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-mitigation-module">This subpackage <cite>qrem.mitigation</cite> provides a suite of modules for readout error mitigation.
+Detailed documentation coming soon.</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation.mitigation_routines</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/mitigation/mitigation_routines/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.mitigation.mitigation_routines">
+<span id="qrem-mitigation-mitigation-routines"></span><h1><a class="reference internal" href="#module-qrem.mitigation.mitigation_routines" title="qrem.mitigation.mitigation_routines"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation.mitigation_routines</span></code></a><a class="headerlink" href="#module-qrem.mitigation.mitigation_routines" title="Link to this heading"></a></h1>
+<p>Collection of functions used in benchmarking CN noise models. Used to compute results of error mitigation for a set of benchmark Hamiltonians and reconstructed CN noise models.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.compute_mitigation_errors" title="qrem.mitigation.mitigation_routines.compute_mitigation_errors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_mitigation_errors</span></code></a>(→ Dict)</p></td>
+<td><p>Function computes error of readout error mitigation benchmark for a set results for different CN noise models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.compute_mitigation_error_median_mean" title="qrem.mitigation.mitigation_routines.compute_mitigation_error_median_mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_mitigation_error_median_mean</span></code></a>(mitigation_data)</p></td>
+<td><p>Function computes median and mean for a dictionary storing errors of error mitigation for Hamiltonians used in benchmarks and different CN noise models</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonian" title="qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_mitigated_energy_for_hamiltonian</span></code></a>(...[, ...])</p></td>
+<td><p>Function performs error mitigation based on CN noise model for a particular Hamiltonain and measurement statistics. It is used in usecases and benchmarks. It calls routines from cn/mitigation module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonians_set" title="qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonians_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_mitigated_energy_for_hamiltonians_set</span></code></a>(...[, ...])</p></td>
+<td><p>Function performs error mitigation based on CN noise model for a set Hamiltonains and set of measurement results. It is used in usecases and benchmarks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.estimate_mitigated_energy_over_noise_models" title="qrem.mitigation.mitigation_routines.estimate_mitigated_energy_over_noise_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_mitigated_energy_over_noise_models</span></code></a>(...[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_over_noise_models" title="qrem.mitigation.mitigation_routines.compute_noisy_energy_over_noise_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_noisy_energy_over_noise_models</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonians_set" title="qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonians_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_noisy_energy_for_hamiltonians_set</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonian" title="qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_noisy_energy_for_hamiltonian</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_prediction" title="qrem.mitigation.mitigation_routines.compute_noisy_energy_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_noisy_energy_prediction</span></code></a>(noise_model, ...)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.compute_mitigation_errors">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">compute_mitigation_errors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mitigation_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../qtypes/mitigation_data/index.html#qrem.qtypes.mitigation_data.MitigationData" title="qrem.qtypes.mitigation_data.MitigationData"><span class="pre">qrem.qtypes.mitigation_data.MitigationData</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonian_energy_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.compute_mitigation_errors" title="Link to this definition"></a></dt>
+<dd><p>Function computes error of readout error mitigation benchmark for a set results for different CN noise models.
+Used in error mitigation benchmarks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mitigated_energy_dictionary</strong> (<em>dictionary</em><em> (</em><em>key - tuple</em><em> (</em><em>cluster structure</em><em>)</em><em>, </em><em>value - dictionary</em><em>)</em>) – Dictionary storing values of energies after error mitigation for different noise models.</p></li>
+<li><p><strong>hamiltonian_dictionary</strong> (<em>dictionary</em>) – Dictionary storing estimation of ideal energy eigenvalue of a eigen/ground state for a Hamiltonian used in benchmarks.</p></li>
+<li><p><strong>qubits</strong> (<em>number of</em>) – Number of qubits of a device</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>noise_models_mitigated_energy_dictionary_error</strong> – A dictionary storing errors of error mitigation for Hamiltonians used in benchmarks and different CN noise models</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary (key - Tuple (clusters structure), Value - Dictionary (key Hamiltonian index, value - energy mitigation error))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.compute_mitigation_error_median_mean">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">compute_mitigation_error_median_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mitigation_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/mitigation_data/index.html#qrem.qtypes.mitigation_data.MitigationData" title="qrem.qtypes.mitigation_data.MitigationData"><span class="pre">qrem.qtypes.mitigation_data.MitigationData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.compute_mitigation_error_median_mean" title="Link to this definition"></a></dt>
+<dd><p>Function computes median and mean for a dictionary storing errors of error mitigation for Hamiltonians used in benchmarks and different CN noise models
+Used in analysis of error mitigation performance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mitigation_errors_dictionary</strong> (<em>Dictionary</em><em> (</em><em>key - Tuple</em><em> (</em><em>clusters structure</em><em>)</em><em>, </em><em>Value - Dictionary</em><em> (</em><em>key Hamiltonian index</em><em>, </em><em>value - energy mitigation error</em><em>)</em><em>)</em>) – A dictionary storing errors of error mitigation for Hamiltonians used in benchmarks and different CN noise models</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>print_results: bool (default False)</dt><dd><p>Optional parameter indicating if results are printed</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary storing results of the analysis: median and mean of error mitigation over a Hamiltonian set for different noise models</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>benchmark_results_mean_median_dictionary - Dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonian">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">estimate_mitigated_energy_for_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonian_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CNModelData" title="qrem.qtypes.CNModelData"><span class="pre">qrem.qtypes.CNModelData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_proper_probability_distribution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_mitigation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonian" title="Link to this definition"></a></dt>
+<dd><p>Function performs error mitigation based on CN noise model for a particular Hamiltonain and measurement statistics. It is used in usecases and benchmarks. It calls routines from cn/mitigation module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_dictionary</strong> (<em>dictionary</em><em> (</em><em>key - string</em><em>, </em><em>value - dictionary</em><em>)</em>) – <p>Dictionary of experimental results to be mitigated</p>
+<dl class="simple">
+<dt>hamiltonian_dictionary: dictionary</dt><dd><p>Dictionary storing hamiltonian data, in this function only weights_dictionary is used</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>noise_model</strong> (<em>instance</em><em> of </em><em>CNModelData class</em>) – Stores information about noise model used in mitigation</p></li>
+<li><p><strong>ensure_proper_probability_distribution</strong> (<em>bool</em><em> (</em><em>optional</em><em>, </em><em>by default set to True</em><em>)</em>) – Controls whether in mitigation one uses proper probability distributions or possibly pseudo probability distributions</p></li>
+<li><p><strong>product_mitigation</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – Used for debugging purposes, probably should be removed for final release</p></li>
+<li><p><strong>marginals</strong> (<em>return</em>) – Used for debugging purposes, probably should be removed for final release</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonians_set">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">estimate_mitigated_energy_for_hamiltonians_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonians_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CNModelData" title="qrem.qtypes.CNModelData"><span class="pre">qrem.qtypes.CNModelData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_proper_probability_distribution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_mitigation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_marginals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.estimate_mitigated_energy_for_hamiltonians_set" title="Link to this definition"></a></dt>
+<dd><p>Function performs error mitigation based on CN noise model for a set Hamiltonains and set of measurement results. It is used in usecases and benchmarks.
+Due to QREM convention mitigated measurement statistics from one input state are used to estimate energy of one hamiltonian.
+Function calls estimate_mitigated_energy_for_hamiltonian routine.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results_dictionary</strong> (<em>dictionary</em><em> (</em><em>key - string</em><em>, </em><em>value - dictionary</em><em>)</em>) – <p>Dictionary of experimental results to be mitigated</p>
+<dl class="simple">
+<dt>hamiltonians_dictionary: dictionary</dt><dd><p>Dictionary storing hamiltonians datad</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>noise_model</strong> (<em>instance</em><em> of </em><em>CNModelData class</em>) – Stores information about noise model used in mitigation</p></li>
+<li><p><strong>ensure_proper_probability_distribution</strong> (<em>bool</em><em> (</em><em>optional</em><em>, </em><em>by default set to True</em><em>)</em>) – Controls whether in mitigation one uses proper probability distributions or possibly pseudo probability distributions</p></li>
+<li><p><strong>product_mitigation</strong> (<em>bool</em><em> (</em><em>optional</em><em>)</em>) – Used for debugging purposes, probably should be removed for final release</p></li>
+<li><p><strong>marginals</strong> (<em>return</em>) – Used for debugging purposes, probably should be removed for final release</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.estimate_mitigated_energy_over_noise_models">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">estimate_mitigated_energy_over_noise_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/characterization_data/index.html#qrem.qtypes.characterization_data.CharacterizationData" title="qrem.qtypes.characterization_data.CharacterizationData"><span class="pre">qrem.qtypes.characterization_data.CharacterizationData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonians_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_proper_probability_distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_marginals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.estimate_mitigated_energy_over_noise_models" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.compute_noisy_energy_over_noise_models">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">compute_noisy_energy_over_noise_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/characterization_data/index.html#qrem.qtypes.characterization_data.CharacterizationData" title="qrem.qtypes.characterization_data.CharacterizationData"><span class="pre">qrem.qtypes.characterization_data.CharacterizationData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonians_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_over_noise_models" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonians_set">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">compute_noisy_energy_for_hamiltonians_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonians_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CNModelData" title="qrem.qtypes.CNModelData"><span class="pre">qrem.qtypes.CNModelData</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonians_set" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonian">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">compute_noisy_energy_for_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonian_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CNModelData" title="qrem.qtypes.CNModelData"><span class="pre">qrem.qtypes.CNModelData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_for_hamiltonian" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.mitigation.mitigation_routines.compute_noisy_energy_prediction">
+<span class="sig-prename descclassname"><span class="pre">qrem.mitigation.mitigation_routines.</span></span><span class="sig-name descname"><span class="pre">compute_noisy_energy_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/index.html#qrem.qtypes.CNModelData" title="qrem.qtypes.CNModelData"><span class="pre">qrem.qtypes.CNModelData</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.mitigation.mitigation_routines.compute_noisy_energy_prediction" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="qrem.mitigation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../pipelines/index.html" class="btn btn-neutral float-right" title="qrem.pipelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

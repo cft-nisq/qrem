@@ -1,0 +1,111 @@
+:py:mod:`qrem.common.experiment.information_completeness`
+=========================================================
+
+.. py:module:: qrem.common.experiment.information_completeness
+
+.. autoapi-nested-parse::
+
+   Information Completeness
+   ========================
+
+   This helper module provides functions for checking the completeness of a set of circuits.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.experiment.information_completeness.log_coefficient
+   qrem.common.experiment.information_completeness.circuits_number_estimation
+   qrem.common.experiment.information_completeness.information_completeness_verification_quantitative
+   qrem.common.experiment.information_completeness.information_completeness_verification_qualitative
+
+
+
+.. py:function:: log_coefficient(number_of_symbols, locality)
+
+   A helper function needed to compute probabilistic bound on number of circuits, for which all combinations of tomographic settings are realized for all subsets of locality k
+   :param number_of_symbols: number of different symbols used to construct tomographic circuits: 2 for DDOT circuits, 6 for QDOT circuits (overcomplete Pauli basis)
+   :type number_of_symbols: int
+   :param locality: locality of sets for which all the symbols should appear
+   :type locality: int
+
+   :rtype: A particular expression needed to calculate probabilistic bound on number of informationally (over)complete set of circuits
+
+
+.. py:function:: circuits_number_estimation(number_of_symbols, locality, number_of_qubits, probability)
+
+   Function cacluclating a probabilitic bound on number of circuits, for which all combinations of tomographic settings are realized for all subsets of locality k
+   :param number_of_symbols: number of different symbols used to construct tomographic circuits: 2 for DDOT circuits, 6 for QDOT circuits (overcomplete Pauli basis)
+   :type number_of_symbols: int
+   :param locality: locality of sets for which all tomographic settings should appear
+   :type locality: int
+   :param number_of_qubits: number of qubits for which tomographic circuits are realizeed
+   :param probability: accepted probability of bound failiure
+
+   :rtype: number of circuits needed to realize all combinations of tomographic settings for all subsets of given locality
+
+
+.. py:function:: information_completeness_verification_quantitative(tomographic_circuits_list, symbol_string_list, locality=2, subsets_list=None)
+
+   Function checking how many times a particular input setting to measurement tomography protocol is realized in a
+   given set of circuits for all subsets of qubits of a fixed locality
+
+
+   :param tomographic_circuits_list: the list of circuits that are used for measurement tomography protocol
+   :type tomographic_circuits_list: list
+   :param locality: number corresponding to locality of subsets for which information completness check is performed
+   :type locality: int
+   :param symbol_string:
+   :type symbol_string: string
+   :param list of strings of symbols used to encode input settings:
+                                                                    subsets_list : list of tuples
+                                                                      list of qubits subsets for which check is performed, by defult set to None
+   :param e.g. for 6 state overcomplete Pauli basis it's ['0':
+                                                               subsets_list : list of tuples
+                                                                 list of qubits subsets for which check is performed, by defult set to None
+   :param '1':
+               subsets_list : list of tuples
+                 list of qubits subsets for which check is performed, by defult set to None
+   :param '2':
+               subsets_list : list of tuples
+                 list of qubits subsets for which check is performed, by defult set to None
+   :param '3':
+               subsets_list : list of tuples
+                 list of qubits subsets for which check is performed, by defult set to None
+   :param '4':
+               subsets_list : list of tuples
+                 list of qubits subsets for which check is performed, by defult set to None
+   :param '5']:
+                subsets_list : list of tuples
+                  list of qubits subsets for which check is performed, by defult set to None
+
+   :returns: * **symbols_subset_dictionary** (*dictionary a dictionary with keys of a form ((subset_of_qubits), input_setting)*)
+             * *(e.g. ((0,1),'50')  and values corresponding to the number of times that a given input_setting is*
+             * *realized for this particular subset*
+             * **missing_symbols** (*dictionary a dictionary with keys corresponding to qubit_subsets (e.g. (0,1)) and values*)
+             * *corresponding to list of settings that don't appear for a given subset e.g. ['00','15']*
+
+
+.. py:function:: information_completeness_verification_qualitative(tomographic_circuits_list, locality, symbol_string_list)
+
+   Function reports fraction of missing tomography settings in a given set of circuits for all subsets of qubits of a
+   fixed locality
+   :param tomographic_circuits_list: the list of circuits that are used for measurement tomography protocol
+   :type tomographic_circuits_list: list
+   :param locality: number corresponding to locality of subsets for which information completeness check is performed
+   :type locality: int
+   :param symbol_string_list: list of strings of symbols used to encode input settings, e.g. for 6 state overcomplete Pauli basis it's
+                              ['0','1','2','3','4','5']
+   :type symbol_string_list: string
+
+   :returns: **missing_symbols_fraction** -- a fraction of missing symbols for given subset structure
+   :rtype: real
+
+

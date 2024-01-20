@@ -1,0 +1,147 @@
+:py:mod:`visualisation`
+=======================
+
+.. py:module:: visualisation
+
+.. autoapi-nested-parse::
+
+   Classes for visualisation of detector tomography results.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   visualisation.DrawOnLayout
+   visualisation.DrawClusters
+   visualisation.ResultsForPlotting
+
+
+
+
+.. py:class:: DrawOnLayout(plotting_data)
+
+
+   Bases: :py:obj:`manim.Scene`
+
+   Class inheriting from manim class Scene (for details on this convention see manim documentation).
+   Images are rendered when this class' instance is created in the method 'draw_on_layout'
+   of the class ResultsForPlotting.
+
+   :param plotting_data (dict): dictionary with data about the device and processed experimental results, necessary for manim graph
+                                (for details see manim graph documentation), with values:
+                                    vertices (list[int]) : list of qubits in device, from 0 to #qubits - 1.
+                                    edges (list[tuple[int, int]]) : list of edges (i, j) to be plotted, where i and j are in vertices.
+                                    labels (bool|dict): dictionary whose keys are the vertices, and whose values are the corresponding
+                                                        vertex labels (rendered via, e.g., Text or manim Tex). Alternatively can be bool -
+                                                        if True, vertices are labelled with the integers from the list 'vertices'.
+                                    vertex_config (dict): dictionary with keyword arguments which apply to manim mobject used for vertices.
+                                    edge_config (dict): dictionary with keyword arguments which apply to manim mobject used for edges.
+                                    layout (dict[list]): dictionary where keys are vertices and values are list of coordinates [x, y, z].
+                                    (Optional) max_for_legend (float): maximal value to be displayed on the legend bar;
+                                                                       if not in keys, no legend is displayed.
+
+   .. py:method:: construct()
+
+
+
+.. py:class:: DrawClusters(clusters_list)
+
+
+   Bases: :py:obj:`manim.Scene`
+
+   Class inheriting from manim class Scene (for details on this convention see manim documentation).
+   Images are rendered when this class' instance is created in the method 'draw_clusters'
+   of the class ResultsForPlotting.
+
+   :param clusters_list (list(tuples[ints])): list of tuples, each containing indices of qubits assigned to one cluster
+
+   .. py:method:: construct()
+
+
+
+.. py:class:: ResultsForPlotting(device_data_dictionary, experiment_data_dictionary)
+
+
+   Class whose attributes contain experimental tomography data necessary for plotting. Its method prepare the data in
+   a format native to manim and create an instance of its class, which results in an image being rendered and saved.
+   TODO: add remark about indexing over all vs used qubits
+
+   .. py:method:: __identify_correlations_above_threshold(threshold)
+
+
+   .. py:method:: __prepare_basic_edge_config()
+
+
+   .. py:method:: __prepare_basic_vertex_config()
+
+
+   .. py:method:: __prepare_edge_config_for_correlations_above_threshold(correlations_threshold)
+
+
+   .. py:method:: __prepare_vertex_config_for_correlations_above_threshold()
+
+
+   .. py:method:: __prepare_data_for_draw_basic_layout()
+
+
+   .. py:method:: __prepare_data_for_draw_correlations_on_layout(threshold)
+
+
+   .. py:method:: set_clusters_list(clusters_list)
+
+
+   .. py:method:: draw_on_layout(what_to_draw='basic_layout', file_name=None, quality='high_quality', preview=True, correlations_threshold=0.01, verbosity='CRITICAL')
+
+      Method called by user to plot the experimental data on the device's layout.
+
+      :param what_to_draw (str): 'basic_layout' : qubits with labels and edges in layout are plotted.
+                                 'correlations_above_threshold' : on basic layout also edges with correlations
+                                                                  coefficient above a given threshold are plotted and
+                                                                  colored, with a color legend.
+      :type what_to_draw (str): specifies what data should be plotted. Options:
+      :param quality (str): [fourk_quality|production_quality|high_quality|medium_quality|low_quality|example_quality].
+      :type quality (str): quantifies the quality of rendered image. For details see manim docs.
+      :param preview (bool): Regardless of this parameter's value, the image is saved.
+      :type preview (bool): specifies whether the rendered image should be displayed in a user's default file viewer.
+      :param file_name (str):
+      :type file_name (str): name of the output image file. By default, it's set to 'what_to_draw'
+      :param correlations_threshold (float): in range [0, 1].
+      :type correlations_threshold (float): parameter for what_to_draw set to 'correlations_above_threshold',
+      :param verbosity (str):
+      :type verbosity (str): Verbosity of CLI output. [DEBUG|INFO|WARNING|ERROR|CRITICAL]
+
+
+   .. py:method:: draw_histogram(file_name='histogram', directory='', plot_title='Correlations histogram', plot_label='Distance name')
+
+      Method called by user to plot correlation coefficients on a histogram.
+      Saves the plot with 'file_name' in 'directory'.
+
+
+
+   .. py:method:: draw_heatmap(file_name='heatmap', directory='', plot_title='Correlation coefficients')
+
+      Method called by user to plot correlation coefficients on a heatmap.
+      Saves the plot with 'file_name' in 'directory'.
+
+
+
+   .. py:method:: draw_clusters(file_name='clusters', quality='high_quality', preview=True, verbosity='CRITICAL')
+
+          Method called by user to plot the clusters in abstract form.
+      :param quality (str): [fourk_quality|production_quality|high_quality|medium_quality|low_quality|example_quality].
+      :type quality (str): quantifies the quality of rendered image. For details see manim docs.
+      :param preview (bool): Regardless of this parameter's value, the image is saved.
+      :type preview (bool): specifies whether the rendered image should be displayed in a user's default file viewer.
+      :param file_name (str):
+      :type file_name (str): name of the output image file. By default, it's set to 'what_to_draw'
+      :param verbosity (str):
+      :type verbosity (str): Verbosity of CLI output. [DEBUG|INFO|WARNING|ERROR|CRITICAL]
+
+
+

@@ -1,0 +1,70 @@
+:py:mod:`qrem.pipelines.simulate_experiment`
+============================================
+
+.. py:module:: qrem.pipelines.simulate_experiment
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.pipelines.simulate_experiment.custom_model_creator
+   qrem.pipelines.simulate_experiment.intlist_to_string
+   qrem.pipelines.simulate_experiment.simulate_experiment
+   qrem.pipelines.simulate_experiment.simulate_noisy_experiment
+
+
+
+.. py:function:: custom_model_creator(number_of_qubits: int, model_specification: list[list[int]], directory_to_save: str, name_id: str = '', save_model: bool = True)
+
+   Function generates a random noise model for a given number of qubits and specified division into clusters, optionally saves a generated model
+   to a file for future use
+
+   :param number_of_qubits:
+   :type number_of_qubits: int
+   :param model_specification: list of pairs [[size1, number_of_clusters1],[size2,number_of_clusters_2]...] such that the total of
+                               size_i*number_of_clusters_i matches the total number of qubits
+   :type model_specification: list
+   :param directory_to_save: path to save the noise model
+   :type directory_to_save: str
+   :param name_id: customary name tag for the file with the noise model
+   :type name_id: str
+   :param save_model: if True the model is saved to a file
+   :type save_model: bool
+
+   :returns: **model**
+   :rtype: Type[CNModelData]
+
+   :raises Value Error if the model specification does not match the qubit number:
+
+
+.. py:function:: intlist_to_string(int_list)
+
+
+.. py:function:: simulate_experiment(circuits, number_of_shots, experiment_type='DDOT')
+
+   Function takes a collection of input circuits and the number of shots per circuit, returns a dictionary of ideal results with counts per result.
+   In the DDOT case the result is always identical to the input state. The "QDOT" case will not be used currently, but may be added.
+
+   Parameters:
+   ------------
+   circuits: List[str]
+       List of input states in a form of a list
+   number_of_shots: int
+       number of repetitions per circuit
+   experiment type: str
+       "DDOT" for the eigenstates of the computational basis only, "QDOT" sigma_x and sigma_y eigenstates allowed as well (not implemented yet)
+
+   Return:
+   results_dict: Dict
+       results in a format of {key=input_state: value:dict{result: counts}}
+
+
+.. py:function:: simulate_noisy_experiment(noise_model: type[qrem.qtypes.CNModelData], number_of_circuits: int, number_of_shots: int, data_directory: str, experiment_type: str = 'DDOT', name_id: str = '', save_data: bool = False, return_ideal_experiment_data: bool = False, new_data_format: bool = True, ground_states_circuits: List[numpy.array] = None)
+
+

@@ -1,0 +1,180 @@
+:py:mod:`qrem.common.experiment.tomography`
+===========================================
+
+.. py:module:: qrem.common.experiment.tomography
+
+.. autoapi-nested-parse::
+
+   Quantum Circuit Tomography
+   ==========================
+
+   This module provides functions for generating quantum circuits.
+   It is primarily used for preparing characterisation experimental setup for QREM package,
+   including the creation of random circuits and the computation of necessary circuit counts
+   based on various parameters. Functions include the ability to compute the optimal number
+   of circuits, create random circuits, check the completeness of circuit sets, generate
+   circuits with specific characteristics, and batch circuits for processing.
+
+   Functions
+   ---------
+       compute_number_of_circuits(experiment_type, number_of_qubits, subset_locality, ...):
+           Computes the optimal number of circuits for experiment preparation.
+
+       create_random_circuits(experiment_type, number_of_qubits, number_of_circuits):
+           Creates a list of random circuits for experiment preparation.
+
+       check_completeness(experiment_type, circuit_list, locality, symbols_list, subsets_list):
+           Checks the completeness of a given set of circuits.
+
+       generate_circuits(number_of_qubits, experiment_type, k_locality, ...):
+           Generates a set of circuits based on specified parameters.
+
+       batch_circuits(circuits_list, circuits_per_job):
+           Batches a list of circuits for efficient processing.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.experiment.tomography.compute_number_of_circuits
+   qrem.common.experiment.tomography.create_random_circuits
+   qrem.common.experiment.tomography.check_completeness
+   qrem.common.experiment.tomography.generate_circuits
+   qrem.common.experiment.tomography.batch_circuits
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.experiment.tomography.exp_types
+
+
+.. py:function:: compute_number_of_circuits(experiment_type: str, number_of_qubits: int, subset_locality: Optional[int], effect_distance: Optional[float] = constants.CIRC_EFFECT_DISTANCE, probability_of_fail: Optional[float] = constants.CIRC_PROBABILITY_OF_FAIL, limited_circuit_randomness: Optional[bool] = False, max_provider_circuit_count: Optional[int] = 4000) -> dict
+
+   Computes the optimal number of quantum circuits needed for the preparation stage of a quantum experiment.
+
+   :param experiment_type: The type of quantum experiment, e.g., DDOT, QDOT (Diagonal/Quantum Detector Overlapping Tomography), which defines the set of symbols used for encoding gates.
+   :type experiment_type: str
+   :param number_of_qubits: The number of qubits involved in the experiment.
+   :type number_of_qubits: int
+   :param subset_locality: The number of qubits on which the characterization will be performed. If 0, all qubits are considered.
+   :type subset_locality: int, optional
+   :param effect_distance: The tolerated distance between the estimated and actual effect operators.
+   :type effect_distance: float, optional
+   :param probability_of_fail: The probability of estimation error larger than the effect distance.
+   :type probability_of_fail: float, optional
+   :param limited_circuit_randomness: True if the number of circuit able to be processed is limited by quantum machine provider, False otherwise.
+   :type limited_circuit_randomness: bool, optional
+   :param max_provider_circuit_count: The maximum number of circuits a provider can handle.
+   :type max_provider_circuit_count: int, optional
+
+   :returns: A dictionary with keys 'number_of_repetitions', 'total_circuits_count', and 'random_circuits_count',
+             representing the computed values for the quantum experiment.
+   :rtype: dict
+
+   :raises ValueError: If the provided experiment type is not recognized.
+
+
+.. py:function:: create_random_circuits(experiment_type: str, number_of_qubits: int, number_of_circuits: int) -> List
+
+   Creates a list of random quantum circuits for the experiment preparation stage.
+
+   :param experiment_type: The type of quantum experiment (e.g., DDOT, QDOT) which defines the set of symbols used for encoding gates.
+   :type experiment_type: str
+   :param number_of_qubits: The number of qubits in the experiment.
+   :type number_of_qubits: int
+   :param number_of_circuits: The maximum number of circuits to be generated.
+   :type number_of_circuits: int
+
+   :returns: A list of randomly generated quantum circuits, each represented as a list of symbols encoding the gates acting on every qubit.
+   :rtype: List
+
+   :raises ValueError: If the provided experiment type is not recognized.
+
+
+.. py:function:: check_completeness(experiment_type: str, circuit_list: List, locality=2, symbols_list: Optional[List] = None, subsets_list=None)
+
+   Checks the completeness of a set of quantum circuits based on specified parameters.
+
+   :param experiment_type: The type of quantum experiment (e.g., DDOT, QDOT) which defines the set of symbols used for encoding gates.
+   :type experiment_type: str
+   :param circuit_list: The list of quantum circuits to check for completeness.
+   :type circuit_list: List
+   :param locality: The number of qubits each circuit should act on.
+   :type locality: int, optional
+   :param symbols_list: The list of symbols used in the circuits. If None, defaults to a range based on the number of symbols.
+   :type symbols_list: List, optional
+   :param subsets_list: A list of qubit subsets to check for completeness. If None, all possible combinations are considered.
+   :type subsets_list: List, optional
+
+   :returns: A dictionary where keys are tuples representing subsets of qubits and values are lists of missing symbols in those subsets.
+   :rtype: Dict
+
+   :raises ValueError: If the provided experiment type is not recognized.
+
+
+.. py:function:: generate_circuits(number_of_qubits: int, experiment_type: str = 'ddot', k_locality: Optional[int] = 2, add_random_circuits: Optional[bool] = True, symbols: Optional[List] = None, check_completness: Optional[bool] = True, limited_circuit_randomness: Optional[bool] = False, imposed_max_random_circuit_count: Optional[int] = 4000, imposed_max_number_of_shots: Optional[int] = 1000)
+
+   Generates a set of quantum circuits for characterisation experiment
+
+   :param number_of_qubits: The number of qubits for the circuits.
+   :type number_of_qubits: int
+   :param experiment_type: The type of quantum experiment (e.g., "ddot"), determining the encoding of gates.
+   :type experiment_type: str, optional
+   :param k_locality: The locality of the circuits, indicating how many qubits are involved in each.
+   :type k_locality: int, optional
+   :param add_random_circuits: Whether to add random circuits to the generated set.
+   :type add_random_circuits: bool, optional
+   :param symbols: Specific symbols to be used in the circuit generation.
+   :type symbols: List, optional
+   :param check_completeness: Flag to check the completeness of the generated circuits.
+   :type check_completeness: bool, optional
+   :param limited_circuit_randomness: Whether the randomness in circuit generation is limited.
+   :type limited_circuit_randomness: bool, optional
+   :param imposed_max_random_circuit_count: The maximum number of random circuits allowed.
+   :type imposed_max_random_circuit_count: int, optional
+   :param imposed_max_number_of_shots: The maximum number of shots (repetitions) for the circuits.
+   :type imposed_max_number_of_shots: int, optional
+
+   :returns: A tuple containing the generated circuits and related information, such as the number of circuits and the total circuit count.
+   :rtype: Tuple
+
+   .. rubric:: Notes
+
+   The function is still under development and needs further detailing in its implementation and return values.
+
+   :raises ValueError: If the provided experiment type is not recognized.
+
+
+.. py:function:: batch_circuits(circuits_list: List, circuits_per_job: int = 300)
+
+   Organizes a list of quantum circuits into batches for efficient processing.
+
+   :param circuits_list: A list of quantum circuits to be batched.
+   :type circuits_list: List
+   :param circuits_per_job: The maximum number of circuits to include in each batch.
+   :type circuits_per_job: int, optional
+
+   :returns: A list of batches, each containing a subset of the input circuits, suitable for processing or analysis.
+   :rtype: List
+
+   .. rubric:: Notes
+
+   The function automatically adjusts the size of the last batch to accommodate the remaining circuits if the total number of circuits is not divisible by the batch size.
+
+
+.. py:data:: exp_types
+   :value: ['coh']
+
+   
+

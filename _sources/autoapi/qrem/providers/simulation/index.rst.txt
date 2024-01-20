@@ -1,0 +1,43 @@
+:py:mod:`qrem.providers.simulation`
+===================================
+
+.. py:module:: qrem.providers.simulation
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.simulation.simulate_clean_experiment
+   qrem.providers.simulation.simulate_noisy_experiment
+
+
+
+.. py:function:: simulate_clean_experiment(circuits, number_of_shots, data_directory: str = None, experiment_type='DDOT', save_result=False, name_id='')
+
+   Function takes a collection of input circuits and the number of shots per circuit, returns a dictionary of ideal results with counts per result.
+   In the DDOT case the result is always identical to the input state. The "QDOT" case will not be used currently, but may be added.
+
+   Parameters:
+   ------------
+   circuits: List[str]
+       List of input states in a form of a list
+   number_of_shots: int
+       number of repetitions per circuit
+   experiment type: str
+       "DDOT" for the eigenstates of the computational basis only
+       "QDOT" sigma_x and sigma_y eigenstates allowed as well
+
+   Return:
+   results_dict: Dict
+       results in a format of {key=input_state: value:dict{result: counts}}
+
+
+.. py:function:: simulate_noisy_experiment(noise_model: type[qrem.qtypes.CNModelData], number_of_circuits: int, number_of_shots: int, data_directory: str = '', experiment_type: str = 'DDOT', name_id: str = '', save_data: bool = False, new_data_format: bool = True, ground_states_circuits: list = [], add_noise: bool = True)
+
+

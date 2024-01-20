@@ -1,0 +1,25 @@
+:py:mod:`qrem.benchmarks`
+=========================
+
+.. py:module:: qrem.benchmarks
+
+.. autoapi-nested-parse::
+
+   QREM Benchmarks Module
+   ======================
+
+   This subpackage `qrem.benchmarks` provides a suite of modules for benchmarking (creating hamiltonians etc.)
+   Detailed documentation coming soon.
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   benchmarks_functions/index.rst
+   hamiltonians/index.rst
+
+

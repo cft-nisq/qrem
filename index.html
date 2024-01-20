@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QREM - Quantum Readout Errors Mitigation &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="qrem" href="autoapi/qrem/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/qrem/index.html">qrem package API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">QREM - Quantum Readout Errors Mitigation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qrem-quantum-readout-errors-mitigation">
+<h1>QREM - Quantum Readout Errors Mitigation<a class="headerlink" href="#qrem-quantum-readout-errors-mitigation" title="Link to this heading"></a></h1>
+<p>This package provides a versatile set of tools for the characterization and mitigation of readout noise in NISQ devices. Standard characterization approaches become infeasible with the growing size of a device, since the number of circuits required to perform tomographic reconstruction of a measurement process grows exponentially in the number of qubits. In QREM  we use efficient techniques that circumvent those problems by focusing on reconstructing local properties of the readout noise.</p>
+<p>You can find article based on initial version of this package <a class="reference external" href="http://arxiv.org/abs/2311.10661">here - http://arxiv.org/abs/2311.10661</a> and the corresponding code used at the moment of writning the article <a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">here</a>.</p>
+<p><img src="https://quantin.pl/wp-content/uploads/2023/03/washington_26_04_2022_worst_case_classical_threshold_2.png"
+  alt="Plot of correlation coefficients determined in characterization on device layout"
+  title="Plot of correlation coefficients determined in characterization on device layout"
+  style="display: inline-block
+  margin: 0 auto
+  max-width: 400px"/></p>
+<section id="status-of-development">
+<h2>Status of development<a class="headerlink" href="#status-of-development" title="Link to this heading"></a></h2>
+<p>This package is released now as an alpha version, to gather feedback while it undergoes final adjustments prior to the first release. As it is under heavy development, existing functionalities might change, while new functionalities and notebooks are expected to be added in the future.</p>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>Current documentation (work in progress) is available <a class="reference external" href="https://cft-nisq.github.io/qrem/index.html">here</a></p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The two current main functionalities are:</p>
+<section id="noise-characterization">
+<h3><strong>Noise characterization</strong><a class="headerlink" href="#noise-characterization" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>experiment design</p></li>
+<li><p>hardware experiment implementation and data processing (on devices supported by qiskit/pyquil)</p></li>
+<li><p>readout noise characterisation</p></li>
+<li><p>learning of noise models</p></li>
+</ul>
+</section>
+<section id="noise-mitigation">
+<h3><strong>Noise mitigation</strong><a class="headerlink" href="#noise-mitigation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>mitigation based on noise model provided by user ( currently available is CN, CTMP is under development)</p></li>
+</ul>
+</section>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>The best way to install this package is to use pip (see <a class="reference external" href="https://pypi.org/project/qrem/">pypi website</a>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install qrem</span>
+</pre></div>
+</div>
+<p>This method will automatically install all required dependecies (see <a class="reference internal" href="#dependencies"><span class="xref myst">below for list of dependecies</span></a>).</p>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h2>
+<p>For <strong>qrem</strong> package to work properly, the following libraries should be present (and will install if you install via pip):</p>
+<ul class="simple">
+<li><p>“numpy &gt;= 1.18.0, &lt; 1.24”,</p></li>
+<li><p>“scipy &gt;= 1.7.0”,</p></li>
+<li><p>“tqdm &gt;= 4.46.0”,</p></li>
+<li><p>“colorama &gt;= 0.4.3”,</p></li>
+<li><p>“qiskit &gt;= 0.39.4”,</p></li>
+<li><p>“networkx &gt;= 0.12.0, &lt; 3.0”,</p></li>
+<li><p>“pandas &gt;= 1.5.0”,</p></li>
+<li><p>“picos &gt;= 2.4.0”,</p></li>
+<li><p>“qiskit-braket-provider &gt;= 0.0.3”,</p></li>
+<li><p>“qutip &gt;= 4.7.1”,</p></li>
+<li><p>“matplotlib &gt;= 3.6.0”,</p></li>
+<li><p>“seaborn &gt;= 0.12.0”,</p></li>
+<li><p>“sympy &gt;= 1.11.0”,</p></li>
+<li><p>“pyquil &gt;= 3.0.0”,</p></li>
+<li><p>“pyquil-for-azure-quantum”,</p></li>
+<li><p>“ipykernel &gt;= 6.1.0”,</p></li>
+<li><p>“configargparse &gt;= 1.5.0”,</p></li>
+<li><p>“python-dotenv &gt;= 1.0.0”,</p></li>
+<li><p>“pysat &gt;= 3.1.0”</p></li>
+</ul>
+</section>
+<section id="optional-dependencies">
+<h2>Optional dependencies<a class="headerlink" href="#optional-dependencies" title="Link to this heading"></a></h2>
+<p>Dependecies for visualizations:</p>
+<ul class="simple">
+<li><p>“manim &gt;= 0.17.2”</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p><strong>The workflow of this package is mainly based on works</strong>:</p>
+<p>[0]  Jan Tuziemski, Filip B. Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Piotr Podziemski, Michał Oszmaniec, “Efficient reconstruction, benchmarking and validation of cross-talk models in readout noise in near-term quantum devices”, <a class="reference external" href="https://arxiv.org/abs/2311.10661">arXiv:2311.10661</a></p>
+<p>[1] Filip B. Maciejewski, Zoltán Zimborás, Michał Oszmaniec, “Mitigation of readout noise in near-term quantum devices by classical post-processing based on detector tomography”, <a class="reference external" href="https://quantum-journal.org/papers/q-2020-04-24-257/">Quantum 4, 257 (2020)</a></p>
+<p>[2] Filip B. Maciejewski, Flavio Baccari, Zoltán Zimborás, Michał Oszmaniec, “Modeling and mitigation of cross-talk effects in readout noise with applications to the Quantum Approximate Optimization Algorithm”, <a class="reference external" href="https://quantum-journal.org/papers/q-2021-06-01-464/">Quantum 5, 464 (2021)</a></p>
+<p><strong>Further references:</strong></p>
+<p>[3]. Sergey Bravyi, Sarah Sheldon, Abhinav Kandala, David C. Mckay, Jay M. Gambetta, Mitigating measurement errors in multi-qubit experiments, <a class="reference external" href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.103.042605">Phys. Rev. A 103, 042605 (2021)</a></p>
+<p>[4]. Flavio Baccari, Christian Gogolin, Peter Wittek, and Antonio Acín, Verifying the output of quantum optimizers with ground-state energy lower bounds, <a class="reference external" href="https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.043163">Phys. Rev. Research 2, 043163 (2020)</a></p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<!-- # Thumbnails gallery
+
+```{nbgallery}
+example.ipynb
+``` -->
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="autoapi/qrem/index.html" class="btn btn-neutral float-right" title="qrem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

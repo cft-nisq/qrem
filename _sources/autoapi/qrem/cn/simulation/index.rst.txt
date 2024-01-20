@@ -1,0 +1,99 @@
+:py:mod:`qrem.cn.simulation`
+============================
+
+.. py:module:: qrem.cn.simulation
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.cn.simulation.create_random_noise_model
+   qrem.cn.simulation.create_custom_noise_model
+   qrem.cn.simulation.simulate_noise_results_dictionary
+   qrem.cn.simulation.simulate_noise_results_dictionary_old
+   qrem.cn.simulation.simulate_noise_results_dictionary__new_version
+
+
+
+.. py:function:: create_random_noise_model(number_of_qubits: int, clusters_specification: List[List], neighbors: List[Tuple] = None) -> type[qrem.qtypes.CNModelData]
+
+   Creates CNModelData with random noise. It used to generate data for tutorials.
+   Qubits are randomly assigned to clusters, number of clusters and their locality is specified by clusters_specification.
+   Noise matrices assigned for clusters are random stochastic matrices.
+
+
+
+   :param number_of_qubits - a number of qubits for which model is created:
+   :param clusters_specification - a nested list containing description of clusters to be created:
+                                                                                                   structure of the list [[element_1, element_2], ...]:
+                                                                                                       element_1 - integer encoding locality of a cluster
+                                                                                                       element_2 - number of clusters of given locality
+
+                                                                                                   e.g. [[3,1],[2,2]] encodes 1 3 qubit cluster and two 2 qubit clusters
+   :param neighbors - an optional parameter for neighbors specification:
+   :param by default set to None:
+
+   :returns: **noise_model** -- CNModelData object storing noise model data
+   :rtype: CNModelData object
+
+
+.. py:function:: create_custom_noise_model(number_of_qubits: int, noise_matrices_dictionary: dict) -> type[qrem.qtypes.CNModelData]
+
+   Creates CNModelData with data provided by the user. It used to debug mitigation routines.
+
+
+
+
+   :param number_of_qubits: A number of qubits for which model is created
+   :type number_of_qubits: integer
+   :param noise_matrices_dictionary: Dictionary specifying clusters and noise matrices. Key correspond to tupels of qubit indices belonging to the same cluster, values to corresponding nosie matrices.
+                                     E.g . (0,2) : 4 by 4 stochastic matrix
+   :type noise_matrices_dictionary: dictionary
+
+   :returns: **noise_model** -- CNModelData object storing noise model data
+   :rtype: CNModelData object
+
+
+.. py:function:: simulate_noise_results_dictionary(results_dictionary: Dict[str, Dict[str, int]], noise_model: type[qrem.qtypes.CNModelData], neighborhoods_tuples: Optional[Dict[Tuple[int], List[int]]] = {}) -> Dict[str, Dict]
+
+   Function simulates readout noise according to a noise model specified CNModelData on experimental data.
+   It is used in tutorials. Function loops over provided (noiseless) results dictionary and transforms the
+   counts according to a product probability distribution specified by a CN noise model.
+
+   :param results_dictionary: dictionary with results of an experiment
+   :type results_dictionary: dictionary
+   :param noise_model: CNModelData object storing noise model data
+   :type noise_model: CNModelData object
+
+   :returns: dictionary with results of a an experiment with added readout noise
+   :rtype: noisy_results_total
+
+
+.. py:function:: simulate_noise_results_dictionary_old(results_dictionary: Dict[str, Dict[str, int]], noise_model: type[qrem.qtypes.CNModelData], neighborhoods_tuples: Optional[Dict[Tuple[int], List[int]]] = {}) -> Dict[str, Dict]
+
+   DEPRECATED: This function is replaced by the optimized version simulate_noise_results_dictionary()
+
+
+.. py:function:: simulate_noise_results_dictionary__new_version(results_dictionary: Dict[str, Dict[str, int]], noise_model: type[qrem.qtypes.CNModelData], neighborhoods_tuples: Optional[Dict[Tuple[int], List[int]]] = {}) -> Dict[str, Dict]
+
+   DEPRECATED: This function is replaced by the optimized version simulate_noise_results_dictionary()
+
+   Function simulate readout noise according to a noise model specified CNModelData on experimental data.
+   It is used in tutorials. Function loops over provided (noiseless) results dictionary and transforms the
+   counts according to a product probability distribution specified by a CN noise model.
+
+   :param results_dictionary: dictionary with results of an experiment
+   :type results_dictionary: dictionary
+   :param noise_model: CNModelData object storing noise model data
+   :type noise_model: CNModelData object
+
+   :returns: dictionary with results of a an experiment with added readout noise
+   :rtype: noisy_results_total
+
+

@@ -1,0 +1,159 @@
+:py:mod:`qrem.common.printer`
+=============================
+
+.. py:module:: qrem.common.printer
+
+.. autoapi-nested-parse::
+
+   QREM Printer Module
+   ===================
+
+   qrem.common.printer module contains helpful functions for logging and console printouts.
+
+   For now, it contains only console printing capabilities. In the future, it may provide options to log output to a specified log path, print on the console, or both.
+
+   Current contents of this module include:
+   - `round_matrix_for_print`: Round a matrix with specified decimal precision while handling Python artifacts.
+   - `zeros_to_dots_for_print`: Replace zeros with dots in a matrix for printing.
+   - `qprint`: Print colored text with optional additional information.
+   - `warprint`: Wrapper for `qprint` with a default color of 'YELLOW'.
+   - `errprint`: Wrapper for `qprint` with a default color of 'RED'.
+   - `qprint_array`: Print a human-readable representation of an array.
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.printer.round_matrix_for_print
+   qrem.common.printer.zeros_to_dots_for_print
+   qrem.common.printer.qprint
+   qrem.common.printer.warprint
+   qrem.common.printer.errprint
+   qrem.common.printer.qprint_array
+
+
+
+.. py:function:: round_matrix_for_print(matrix_to_be_rounded: numpy.typing.NDArray, decimal: int = 3) -> numpy.typing.NDArray
+
+   Round a matrix with specified decimal precision while handling Python artifact ssuch as "-0.", "0j" etc.
+
+   :param matrix_to_be_rounded: The matrix to be rounded.
+   :type matrix_to_be_rounded: npt.NDArray
+   :param decimal: The number of decimal places to round to (default is 3).
+   :type decimal: int, optional
+
+   :returns: The rounded matrix.
+   :rtype: npt.NDArray
+
+   .. rubric:: Examples
+
+   >>> matrix = np.array([[0.123456, -0.0], [1.2345678, 0.0]])
+   >>> round_matrix_for_print(matrix)
+   array([[0.123, 0.   ],
+          [1.235, 0.   ]])
+
+
+.. py:function:: zeros_to_dots_for_print(matrix, rounding_decimal=3) -> numpy.typing.NDArray
+
+   Replace zeros with dots in a matrix for printing.
+
+   :param matrix: The matrix to be printed.
+   :type matrix: npt.NDArray
+   :param rounding_decimal: The number of decimal places to consider as zero (default is 3).
+   :type rounding_decimal: int, optional
+
+   :returns: The matrix with zeros replaced by dots.
+   :rtype: npt.NDArray
+
+   .. rubric:: Examples
+
+   >>> matrix = np.array([[0.001, 0.0], [0.0, 0.002]])
+   >>> zeros_to_dots_for_print(matrix)
+   array([['0.001', '.'],
+          ['.', '0.002']], dtype='<U32')
+
+
+.. py:function:: qprint(colored_string: str, stuff_to_print='', color='CYAN', print_floors=False) -> None
+
+   Print colored text with optional additional information.
+   FUTURE: Should be extended/changed to have also logging capabilities
+
+   :param colored_string: The main text to be printed with color.
+   :type colored_string: str
+   :param stuff_to_print: Additional information to be printed without color (default is '').
+   :type stuff_to_print: str or any, optional
+   :param color: The color for the main text (default is 'CYAN').
+   :type color: {'CYAN', 'RED', 'YELLOW', 'GREEN', 'BLUE'}, optional
+   :param print_floors: Whether to print floor separators (default is False).
+   :type print_floors: bool, optional
+
+   .. rubric:: Examples
+
+   >>> qprint("Hello, World!", color='GREEN')
+   >>> qprint("Error:", "Something went wrong", color='RED')
+
+
+.. py:function:: warprint(colored_string: str, stuff_to_print='', color='YELLOW', print_floors=False) -> None
+
+   Warning print helper function. Wrapper for qprint with a default color of 'YELLOW'.
+
+   :param colored_string: The main text to be printed with color.
+   :type colored_string: str
+   :param stuff_to_print: Additional information to be printed without color (default is '').
+   :type stuff_to_print: str or any, optional
+   :param color: The color for the main text (default is 'YELLOW').
+   :type color: {'CYAN', 'RED', 'YELLOW', 'GREEN', 'BLUE'}, optional
+   :param print_floors: Whether to print floor separators (default is False).
+   :type print_floors: bool, optional
+
+   .. rubric:: Examples
+
+   >>> warprint("Warning:", "This is a warning")
+
+
+.. py:function:: errprint(colored_string: str, stuff_to_print='', color='RED', print_floors=False) -> None
+
+   Print helper function for printing errors. Wrapper for qprint with a default color of 'RED'.
+
+   :param colored_string: The main text to be printed with color.
+   :type colored_string: str
+   :param stuff_to_print: Additional information to be printed without color (default is '').
+   :type stuff_to_print: str or any, optional
+   :param color: The color for the main text (default is 'RED').
+   :type color: {'CYAN', 'RED', 'YELLOW', 'GREEN', 'BLUE'}, optional
+   :param print_floors: Whether to print floor separators (default is False).
+   :type print_floors: bool, optional
+
+   .. rubric:: Examples
+
+   >>> errprint("Error:", "Something went wrong")
+
+
+.. py:function:: qprint_array(arrray_to_print, rounding_decimal: int = 3)
+
+   Print a human-readable representation of an array.
+
+   :param array_to_print: The array to be printed.
+   :type array_to_print: npt.NDArray
+   :param rounding_decimal: The number of decimal places for rounding (default is 3).
+   :type rounding_decimal: int, optional
+
+   .. rubric:: Examples
+
+   >>> array = np.array([[0.123456, -0.0], [1.2345678, 0.0]])
+   >>> qprint_array(array)
+
+

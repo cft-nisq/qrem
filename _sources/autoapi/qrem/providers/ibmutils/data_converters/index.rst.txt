@@ -1,0 +1,75 @@
+:py:mod:`qrem.providers.ibmutils.data_converters`
+=================================================
+
+.. py:module:: qrem.providers.ibmutils.data_converters
+
+.. autoapi-nested-parse::
+
+   Needs to be refactored into somewhere else,
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.ibmutils.data_converters.get_shots_results_from_qiskit_result
+   qrem.providers.ibmutils.data_converters.get_frequencies_array_from_probabilities_list
+   qrem.providers.ibmutils.data_converters.get_frequencies_array_from_results
+   qrem.providers.ibmutils.data_converters.get_counts_from_result_object
+   qrem.providers.ibmutils.data_converters.get_counts_from_qiskit_jobs
+
+
+
+.. py:function:: get_shots_results_from_qiskit_result(result_object)
+
+
+.. py:function:: get_frequencies_array_from_probabilities_list(frequencies_list: List[Union[List[float], numpy.ndarray]], reverse_order: Optional[bool] = False)
+
+   :param frequencies_list: list of probabilities estimated in experiments
+   :param reverse_order: specify whether probabiltiies lists should be reordered, which corresponds
+                         to changing qubits' ordering
+
+
+
+.. py:function:: get_frequencies_array_from_results(results_list: List[qiskit.result.Result]) -> numpy.ndarray
+
+   Description:
+       Creates an array of frequencies from given qiskit job results. This method is working with
+       qiskit 0.16. The shape of the array is
+           c x 2 ** q,
+       where c denotes circuits number and q denotes number of qubits.
+   :param : param results_list: List of qiskit jobs_list results.
+
+   :returns: np.ndarray with shape=0 if there were no circuits in the job, or with shape c x 2 ** q
+             containing frequencies data for each possible state.
+
+   .. rubric:: Notes
+
+   Possible states are numbered increasingly from |00000 ... 0>, |10000 ... 0> up to |1111 ... 1>.
+
+
+.. py:function:: get_counts_from_result_object(results_object, counts_dictionary_to_update={}, circuit_names_list=None, job_index=0)
+
+   This functions takes a qiskit Result object and returns a dictionary with counts for each Experiment in this object.
+   returns:
+   counts_dictionary_to_update[str, counts]: the key is the name of a circuit, the value is a dictionary of counts,
+   where the key is a string denoting classical outcome and the value the number of its occurrences in given experiment.
+   The circuits are named according to convention from get_circuits in SeparableCircuitsCreator:
+   circuit_name = "experiment name" + "-" + "circuit label" +
+       "no" + "integer identifier for multiple implementations of the same circuit", e.g.: "DDOT-010no3"
+
+
+.. py:function:: get_counts_from_qiskit_jobs(jobs_list, return_job_headers=False) -> Dict[str, Dict[str, int]]
+
+   This function takes a list of qiskit jobs (e.g. what 'run_batches' returns) and returns a dictionary of outcomes of
+   each of the circuits in the list, where keys are circuit names and values are dictionaries of counts (where the key
+   is a string denoting classical outcome and the value the number of its occurrences in given experiment)
+
+
+

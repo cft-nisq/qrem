@@ -1,0 +1,45 @@
+:py:mod:`qrem.ctmp.simulation`
+==============================
+
+.. py:module:: qrem.ctmp.simulation
+
+.. autoapi-nested-parse::
+
+   simulation.py: Quantum State Simulation under CTMP Model
+
+   Part of the CTMP subpackage, this module simulates the evolution of quantum states under the influence of
+   quantum errors as modeled by the CTMP model. It uses Gillespie's algorithm to model state transitions over time.
+
+   Functions
+   ---------
+   generate_sample(CTMP_model: CTMPModelData, input_state: str, t: float=1) -> str
+       Generates a quantum state sample by simulating state transitions based on the CTMP model. It applies
+       Gillespie's algorithm to model these transitions over a specified time period.
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.ctmp.simulation.generate_sample
+
+
+
+.. py:function:: generate_sample(CTMP_model: qrem.qtypes.CTMPModelData, input_state: str, t: float = 1) -> str
+
+   Generates a sample according to the stochastic matrix exp(Gt) of the  CTMP model
+   acting on a classical input state by using Gillespie's algorithm. Default t=1.
+
+

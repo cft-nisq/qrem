@@ -1,0 +1,72 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.mosek_utils`
+=====================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.mosek_utils
+
+.. autoapi-nested-parse::
+
+   The module contains helper functions to work with MOSEK.
+
+   Created on Tue Nov 18 10:51:14 2014
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.mosek_utils.streamprinter
+   qrem.common.external.ncpol2sdpa.mosek_utils.moseksol_to_xmat
+   qrem.common.external.ncpol2sdpa.mosek_utils.parse_mosek_solution
+   qrem.common.external.ncpol2sdpa.mosek_utils.solve_with_mosek
+   qrem.common.external.ncpol2sdpa.mosek_utils.convert_to_mosek_index
+   qrem.common.external.ncpol2sdpa.mosek_utils.convert_to_mosek_matrix
+   qrem.common.external.ncpol2sdpa.mosek_utils.convert_to_mosek
+
+
+
+.. py:function:: streamprinter(text)
+
+   Helper function for printing MOSEK messages in the Python console.
+
+
+
+.. py:function:: moseksol_to_xmat(vec, block_struct)
+
+
+.. py:function:: parse_mosek_solution(sdp, task)
+
+
+.. py:function:: solve_with_mosek(sdp, solverparameters=None)
+
+
+.. py:function:: convert_to_mosek_index(block_struct, row_offsets, block_offsets, row)
+
+   MOSEK requires a specific sparse format to define the lower-triangular
+   part of a symmetric matrix. This function does the conversion from the
+   sparse upper triangular matrix format of Ncpol2SDPA.
+
+
+.. py:function:: convert_to_mosek_matrix(sdp)
+
+   Converts the entire sparse representation of the Fi constraint matrices
+   to sparse MOSEK matrices.
+
+
+.. py:function:: convert_to_mosek(sdp)
+
+   Convert an SDP relaxation to a MOSEK task.
+
+   :param sdp: The SDP relaxation to convert.
+   :type sdp: :class:`ncpol2sdpa.sdp`.
+
+   :returns: :class:`mosek.Task`.
+
+

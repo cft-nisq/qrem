@@ -1,0 +1,125 @@
+:py:mod:`qrem.benchmarks.hamiltonians`
+======================================
+
+.. py:module:: qrem.benchmarks.hamiltonians
+
+.. autoapi-nested-parse::
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.benchmarks.hamiltonians.__get_mapping_2SAT
+   qrem.benchmarks.hamiltonians.__get_local_field_1q
+   qrem.benchmarks.hamiltonians.__get_local_field_2q
+   qrem.benchmarks.hamiltonians.get_random_2SAT_clauses
+   qrem.benchmarks.hamiltonians.get_weights_dictionary_from_weights_matrix
+   qrem.benchmarks.hamiltonians.get_2SAT_hamiltonian_from_clauses
+   qrem.benchmarks.hamiltonians.generate_random_2SAT_hamiltonian
+   qrem.benchmarks.hamiltonians.__change_representation_to_pysat
+   qrem.benchmarks.hamiltonians.__get_state_from_other_format
+   qrem.benchmarks.hamiltonians.get_energy_from_SAT_solution
+   qrem.benchmarks.hamiltonians.__solve_2SAT_Hamiltonian_pysat
+   qrem.benchmarks.hamiltonians.solve_2SAT_hamiltonian
+   qrem.benchmarks.hamiltonians.estimate_energy_from_marginals
+   qrem.benchmarks.hamiltonians.create_hamiltonians_for_benchmarks
+   qrem.benchmarks.hamiltonians.__get_state_from_other_format
+   qrem.benchmarks.hamiltonians.__get_part_bitstring_parity_special
+   qrem.benchmarks.hamiltonians.get_energy_from_bitstring_diagonal_local
+   qrem.benchmarks.hamiltonians.eigenstate_energy_calculation_and_estimation
+   qrem.benchmarks.hamiltonians.create_hamiltonians_and_ground_states
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.benchmarks.hamiltonians._parities__dict2
+
+
+.. py:function:: __get_mapping_2SAT(clause_now, j)
+
+
+.. py:function:: __get_local_field_1q(qubit_index, clauses_list)
+
+
+.. py:function:: __get_local_field_2q(qubits_indices, clauses_list)
+
+
+.. py:function:: get_random_2SAT_clauses(number_of_qubits, clause_density)
+
+
+.. py:function:: get_weights_dictionary_from_weights_matrix(weights_matrix)
+
+
+.. py:function:: get_2SAT_hamiltonian_from_clauses(clauses_list, number_of_qubits)
+
+
+.. py:function:: generate_random_2SAT_hamiltonian(number_of_qubits: int, clause_density: float)
+
+
+.. py:function:: __change_representation_to_pysat(clause)
+
+
+.. py:function:: __get_state_from_other_format(solution)
+
+
+.. py:function:: get_energy_from_SAT_solution(SATS, number_of_clauses)
+
+
+.. py:function:: __solve_2SAT_Hamiltonian_pysat(clauses_list, weights_dictionary, number_of_qubits, clause_density, repetitions=1)
+
+
+.. py:function:: solve_2SAT_hamiltonian(hamiltonian_data, solving_method='pysat')
+
+
+.. py:function:: estimate_energy_from_marginals(weights_dictionary: Dict[Tuple[int], float], marginals_dictionary: Dict[Tuple[int], numpy.ndarray], additional_multipliers=None)
+
+   Compute energy of Hamiltonian from dictionary of marginal distributions.
+
+   :param weights_dictionary:
+   :param marginals_dictionary:
+   :return:
+
+
+.. py:function:: create_hamiltonians_for_benchmarks(number_of_qubits, number_of_hamiltonians, clause_density)
+
+
+.. py:function:: __get_state_from_other_format(solution)
+
+
+.. py:data:: _parities__dict2
+
+   
+
+.. py:function:: __get_part_bitstring_parity_special(bitstring_getitem, qubit_indices)
+
+   Used only in get_energy_from_bitstring_diagonal_local()
+
+
+.. py:function:: get_energy_from_bitstring_diagonal_local(bitstring: str, weights_dictionary: Dict[Tuple[int], float], additional_multipliers=None)
+
+   Calculates the energy corresponding to a state (encoded in bistring) and a Hamiltonian
+   (encoded in weights and additional_multipliers)
+
+
+.. py:function:: eigenstate_energy_calculation_and_estimation(results_dictionary, marginals_dictionary, hamiltonians_data)
+
+
+.. py:function:: create_hamiltonians_and_ground_states(number_of_benchmark_circuits: int, number_of_qubits: int)
+
+

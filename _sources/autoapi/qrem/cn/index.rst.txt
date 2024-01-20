@@ -1,0 +1,36 @@
+:py:mod:`qrem.cn`
+=================
+
+.. py:module:: qrem.cn
+
+.. autoapi-nested-parse::
+
+   QREM Mitigation Module
+   ======================
+
+   This subpackage `qrem.cn` provides a suite of modules for cluster-neighbours based mitigation.
+   Detailed documentation coming soon.
+
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   mitigtools/index.rst
+   modeltools/index.rst
+   simtools/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   mitigation/index.rst
+   simulation/index.rst
+
+

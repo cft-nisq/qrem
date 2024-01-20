@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.povmtools &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.common.printer" href="../printer/index.html" />
+    <link rel="prev" title="qrem.common.math" href="../math/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.povmtools</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/common/povmtools/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.povmtools">
+<span id="qrem-common-povmtools"></span><h1><a class="reference internal" href="#module-qrem.common.povmtools" title="qrem.common.povmtools"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.povmtools</span></code></a><a class="headerlink" href="#module-qrem.common.povmtools" title="Link to this heading"></a></h1>
+<section id="quantum-readout-error-mitigation-qrem-povm-utility-module">
+<p>This module, as part of the QREM package, offers a comprehensive set of functions for dealing with
+Positive Operator-Valued Measures (POVMs) in the context of quantum readout error mitigation. It includes
+methods for analyzing, modifying, and applying various transformations to POVMs. Additionally, the module
+provides utility functions for handling vector and matrix permutations, calculating statistical and
+coherent error bounds, and manipulating frequency data from quantum experiment outcomes.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>F. B. Maciejewski, Z. Zimborás, M. Oszmaniec, “Mitigation of readout noise in near-term quantum devices
+by classical post-processing based on detector tomography”, Quantum 4, 257 (2020).</p></li>
+<li><p>F. B. Maciejewski, F. Baccari, Z. Zimborás, M. Oszmaniec, “Modeling and mitigation of cross-talk effects
+in readout noise with applications to the Quantum Approximate Optimization Algorithm”, Quantum 5, 464 (2021).</p></li>
+<li><p>Z. Puchała, Ł. Pawela, A. Krawiec, R. Kukulski, “Strategies for optimal single-shot discrimination of
+quantum measurements”, Phys. Rev. A 98, 042103 (2018), <a class="reference external" href="https://arxiv.org/abs/1804.05856">https://arxiv.org/abs/1804.05856</a>.</p></li>
+<li><p>T. Weissman, E. Ordentlich, G. Seroussi, S. Verdul, M. J. Weinberger, Technical Report HPL-2003-97R1,
+Hewlett-Packard Labs (2003).</p></li>
+<li><p>J. Smolin, J. M. Gambetta, G. Smith, “Maximum Likelihood, Minimum Effort”, Phys. Rev. Lett. 108, 070502
+(2012), <a class="reference external" href="https://arxiv.org/abs/1106.5458">https://arxiv.org/abs/1106.5458</a>.</p></li>
+</ul>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>euler_angles_1q</p></li>
+<li><p>get_su2_parametrizing_angles</p></li>
+<li><p>get_unitary_change_ket_qubit</p></li>
+<li><p>get_offdiagonal_povm_part</p></li>
+<li><p>get_diagonal_povm_part</p></li>
+<li><p>apply_stochastic_map_to_povm</p></li>
+<li><p>get_stochastic_map_from_povm</p></li>
+<li><p>get_povm_from_stochastic_map</p></li>
+<li><p>get_coherent_part_of_the_noise</p></li>
+<li><p>get_CBT_norm</p></li>
+<li><p>get_choi_from_POVM</p></li>
+<li><p>get_POVM_from_choi</p></li>
+<li><p>check_if_povm</p></li>
+<li><p>get_statistical_error_bound</p></li>
+<li><p>get_coherent_error_bound</p></li>
+<li><p>get_correction_error_bound_from_data_and_statistical_error</p></li>
+<li><p>get_correction_error_bound_from_data</p></li>
+<li><p>get_correction_error_bound_from_parameters</p></li>
+<li><p>get_correction_matrix_from_povm</p></li>
+<li><p>get_averaged_lambda</p></li>
+<li><p>check_if_projector_is_in_computational_basis</p></li>
+<li><p>computational_projectors</p></li>
+<li><p>computational_basis</p></li>
+<li><p>find_closest_prob_vector_l2</p></li>
+<li><p>find_closest_prob_vector_l1</p></li>
+<li><p>reorder_probabilities</p></li>
+<li><p>reorder_classical_register</p></li>
+<li><p>get_enumerated_rev_map_from_indices</p></li>
+<li><p>all_possible_bitstrings_of_length</p></li>
+<li><p>get_classical_register_bitstrings</p></li>
+<li><p>get_possible_n_qubit_outcomes</p></li>
+<li><p>counts_dict_to_frequencies_vector</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>The module is designed to support various operations on POVMs and related quantum measurement data.
+It is an integral part of the Quantum Readout Error Mitigation framework, aiding in the accurate analysis
+and correction of quantum measurement errors.</p>
+<blockquote>
+<div><p>&#64;authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+&#64;contact: <a class="reference external" href="mailto:michal&#46;oszmaniec&#37;&#52;&#48;cft&#46;edu&#46;pl">michal<span>&#46;</span>oszmaniec<span>&#64;</span>cft<span>&#46;</span>edu<span>&#46;</span>pl</a></p>
+</div></blockquote>
+</section>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.check_if_projector_is_in_computational_basis" title="qrem.common.povmtools.check_if_projector_is_in_computational_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_if_projector_is_in_computational_basis</span></code></a>(projector)</p></td>
+<td><p>Check if a given projector is in the computational basis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.computational_projectors" title="qrem.common.povmtools.computational_projectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computational_projectors</span></code></a>(d[, n])</p></td>
+<td><p>Generate projectors for the computational basis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.computational_basis" title="qrem.common.povmtools.computational_basis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">computational_basis</span></code></a>(d[, n])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.euler_angles_1q" title="qrem.common.povmtools.euler_angles_1q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">euler_angles_1q</span></code></a>(unitary_matrix)</p></td>
+<td><p>Compute Euler angles for a single-qubit unitary operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_su2_parametrizing_angles" title="qrem.common.povmtools.get_su2_parametrizing_angles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_su2_parametrizing_angles</span></code></a>(m_a)</p></td>
+<td><p>Get the SU(2) parametrizing angles for a single-qubit unitary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_unitary_change_ket_qubit" title="qrem.common.povmtools.get_unitary_change_ket_qubit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unitary_change_ket_qubit</span></code></a>(ket)</p></td>
+<td><p>Prepare unitary transformation to change the initial state of qubits in the computational basis for a given probe state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_offdiagonal_povm_part" title="qrem.common.povmtools.get_offdiagonal_povm_part"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_offdiagonal_povm_part</span></code></a>(→ List[numpy.ndarray])</p></td>
+<td><p>Extract the off-diagonal part of each matrix in a POVM (Positive Operator-Valued Measure).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_diagonal_povm_part" title="qrem.common.povmtools.get_diagonal_povm_part"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_diagonal_povm_part</span></code></a>(→ List[numpy.ndarray])</p></td>
+<td><p>Extract the diagonal part of each matrix in a POVM (Positive Operator-Valued Measure).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.apply_stochastic_map_to_povm" title="qrem.common.povmtools.apply_stochastic_map_to_povm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_stochastic_map_to_povm</span></code></a>(→ List[numpy.ndarray])</p></td>
+<td><p>Apply a stochastic map to each effect in a POVM.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_stochastic_map_from_povm" title="qrem.common.povmtools.get_stochastic_map_from_povm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stochastic_map_from_povm</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Generate a stochastic map from the diagonal parts of a POVM.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_povm_from_stochastic_map" title="qrem.common.povmtools.get_povm_from_stochastic_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_povm_from_stochastic_map</span></code></a>(→ List[numpy.ndarray])</p></td>
+<td><p>Construct a list of diagonal matrices (POVMs) from a stochastic map.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.establish_POVMs_dictionary_from_noise_matrices_dictionary" title="qrem.common.povmtools.establish_POVMs_dictionary_from_noise_matrices_dictionary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">establish_POVMs_dictionary_from_noise_matrices_dictionary</span></code></a>(...)</p></td>
+<td><p>A wrapaer for get_povm_from_stochastic_map</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_coherent_part_of_the_noise" title="qrem.common.povmtools.get_coherent_part_of_the_noise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_coherent_part_of_the_noise</span></code></a>(→ List[numpy.ndarray])</p></td>
+<td><p>Extract the off-diagonal elements from each matrix in a list of POVMs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_enumerated_rev_map_from_indices" title="qrem.common.povmtools.get_enumerated_rev_map_from_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_enumerated_rev_map_from_indices</span></code></a>(indices)</p></td>
+<td><p>Create a reverse mapping from a list of indices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_classical_register_bitstrings" title="qrem.common.povmtools.get_classical_register_bitstrings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_classical_register_bitstrings</span></code></a>(qubit_indices[, ...])</p></td>
+<td><p>Generate register names for specified qubits. Non specified qubits are excluded from the register names (they will be always 0 in bitstring).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_CBT_norm" title="qrem.common.povmtools.get_CBT_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_CBT_norm</span></code></a>(J, n, m[, rev])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_choi_from_POVM" title="qrem.common.povmtools.get_choi_from_POVM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_choi_from_POVM</span></code></a>(POVM)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_POVM_from_choi" title="qrem.common.povmtools.get_POVM_from_choi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_POVM_from_choi</span></code></a>(povm_choi, number_of_outcomes, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.check_if_povm" title="qrem.common.povmtools.check_if_povm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_if_povm</span></code></a>(povm)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_statistical_error_bound" title="qrem.common.povmtools.get_statistical_error_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_statistical_error_bound</span></code></a>(→ float)</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_coherent_error_bound" title="qrem.common.povmtools.get_coherent_error_bound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_coherent_error_bound</span></code></a>(→ float)</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_correction_error_bound_from_data_and_statistical_error" title="qrem.common.povmtools.get_correction_error_bound_from_data_and_statistical_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_correction_error_bound_from_data_and_statistical_error</span></code></a>(→ float)</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_correction_error_bound_from_data" title="qrem.common.povmtools.get_correction_error_bound_from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_correction_error_bound_from_data</span></code></a>(→ float)</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_correction_error_bound_from_parameters" title="qrem.common.povmtools.get_correction_error_bound_from_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_correction_error_bound_from_parameters</span></code></a>(→ float)</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.counts_dict_to_frequencies_vector" title="qrem.common.povmtools.counts_dict_to_frequencies_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">counts_dict_to_frequencies_vector</span></code></a>(→ list)</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_possible_n_qubit_outcomes" title="qrem.common.povmtools.get_possible_n_qubit_outcomes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_possible_n_qubit_outcomes</span></code></a>(→ list)</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_correction_matrix_from_povm" title="qrem.common.povmtools.get_correction_matrix_from_povm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_correction_matrix_from_povm</span></code></a>(povm)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_averaged_lambda" title="qrem.common.povmtools.get_averaged_lambda"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_averaged_lambda</span></code></a>(big_lambda, bits_of_interest)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.operational_distance_POVMs" title="qrem.common.povmtools.operational_distance_POVMs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">operational_distance_POVMs</span></code></a>(POVM1[, POVM2, method, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.average_distance_POVMs" title="qrem.common.povmtools.average_distance_POVMs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">average_distance_POVMs</span></code></a>(POVM1[, POVM2, classical])</p></td>
+<td><p>Description:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.calculate_distance_between_POVMs" title="qrem.common.povmtools.calculate_distance_between_POVMs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_distance_between_POVMs</span></code></a>(POVM_1, POVM_2[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.__solve_subproblem_average_case" title="qrem.common.povmtools.__solve_subproblem_average_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__solve_subproblem_average_case</span></code></a>(povm_2q_input, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.calculate_correlations_coefficients_average_case" title="qrem.common.povmtools.calculate_correlations_coefficients_average_case"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_correlations_coefficients_average_case</span></code></a>(povm_2q)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools._solve_max_dop_problem_for_fixed_input_state" title="qrem.common.povmtools._solve_max_dop_problem_for_fixed_input_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_solve_max_dop_problem_for_fixed_input_state</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools._cost_function_difference_dac" title="qrem.common.povmtools._cost_function_difference_dac"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_cost_function_difference_dac</span></code></a>(parameters_difference, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools._cost_function_difference_dwc" title="qrem.common.povmtools._cost_function_difference_dwc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_cost_function_difference_dwc</span></code></a>(parameters_difference, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.direct_optimization_difference" title="qrem.common.povmtools.direct_optimization_difference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">direct_optimization_difference</span></code></a>(povm2q, target_qubit, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools._optimization_function_dwc" title="qrem.common.povmtools._optimization_function_dwc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_optimization_function_dwc</span></code></a>(parameters_state, povm_2q, sign)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools._find_maximal_dop_fixed_sign" title="qrem.common.povmtools._find_maximal_dop_fixed_sign"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_find_maximal_dop_fixed_sign</span></code></a>(povm2q, target_qubit, sign)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.find_maximal_dop" title="qrem.common.povmtools.find_maximal_dop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_maximal_dop</span></code></a>(povm2q, target_qubit)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_reduced_noise_matrix_2q" title="qrem.common.povmtools.get_reduced_noise_matrix_2q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reduced_noise_matrix_2q</span></code></a>(stochastic_map2q, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.get_correlation_coefficient_classical" title="qrem.common.povmtools.get_correlation_coefficient_classical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_correlation_coefficient_classical</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.find_correlations_coefficients" title="qrem.common.povmtools.find_correlations_coefficients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_correlations_coefficients</span></code></a>(povm_2q, distance_type)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.__swap_2q_povm" title="qrem.common.povmtools.__swap_2q_povm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__swap_2q_povm</span></code></a>(povm_2q_input)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.__swap_or_not" title="qrem.common.povmtools.__swap_or_not"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__swap_or_not</span></code></a>(povm_2q_input[, target_qubit])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.__construct_local_difference" title="qrem.common.povmtools.__construct_local_difference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__construct_local_difference</span></code></a>(parameters)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.compute_subsets_POVMs_averaged" title="qrem.common.povmtools.compute_subsets_POVMs_averaged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_subsets_POVMs_averaged</span></code></a>(results_dictionary, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.compute_subset_POVM" title="qrem.common.povmtools.compute_subset_POVM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_subset_POVM</span></code></a>(results_dictionary, subset, ...[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.compute_POVM_from_marginals" title="qrem.common.povmtools.compute_POVM_from_marginals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_POVM_from_marginals</span></code></a>(marginals_dictionary, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.compute_noise_matrices_from_POVMs" title="qrem.common.povmtools.compute_noise_matrices_from_POVMs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_noise_matrices_from_POVMs</span></code></a>(→ Dict)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.threshold" title="qrem.common.povmtools.threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">threshold</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.povmtools.__worst_case_distance_names__" title="qrem.common.povmtools.__worst_case_distance_names__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__worst_case_distance_names__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.povmtools.__average_case_distance_names__" title="qrem.common.povmtools.__average_case_distance_names__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__average_case_distance_names__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.povmtools.threshold">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">threshold</span></span><a class="headerlink" href="#qrem.common.povmtools.threshold" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.check_if_projector_is_in_computational_basis">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">check_if_projector_is_in_computational_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.typing.ArrayLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.check_if_projector_is_in_computational_basis" title="Link to this definition"></a></dt>
+<dd><p>Check if a given projector is in the computational basis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>projector</strong> (<em>npt.ArrayLike</em>) – The projector to be checked.</p></li>
+<li><p><strong>d</strong> (<em>int</em><em>, </em><em>optional</em>) – The dimension of the computational basis, default is 2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if the projector is in the computational basis, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.computational_projectors">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">computational_projectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.computational_projectors" title="Link to this definition"></a></dt>
+<dd><p>Generate projectors for the computational basis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>int</em>) – The dimension of the computational basis.</p></li>
+<li><p><strong>n</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of qubits, default is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of projectors for each state in the computational basis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.computational_basis">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">computational_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.computational_basis" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.euler_angles_1q">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">euler_angles_1q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unitary_matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.euler_angles_1q" title="Link to this definition"></a></dt>
+<dd><p>Compute Euler angles for a single-qubit unitary operation.</p>
+<p>Determines the Euler angles (theta, phi, lambda) for the given 2x2 unitary matrix.
+The unitary matrix is decomposed as U = phase * Rz(phi) * Ry(theta) * Rz(lambda),
+following the SU(2) parameterization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unitary_matrix</strong> (<em>np.ndarray</em>) – A 2x2 unitary matrix representing a single-qubit operation.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple (theta, phi, lambda) representing the Euler angles.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the input matrix is not 2x2.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function uses a slightly modified version of a Qiskit implementation and has a cutoff precision of 10^(-7).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_su2_parametrizing_angles">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_su2_parametrizing_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_su2_parametrizing_angles" title="Link to this definition"></a></dt>
+<dd><p>Get the SU(2) parametrizing angles for a single-qubit unitary.</p>
+<p>Determines the parametrizing angles theta, phi, and lambda for a single-qubit
+unitary matrix that belongs to the SU(2) group. Special cases for Pauli-X and
+identity matrices are handled separately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m_a</strong> (<em>np.ndarray</em>) – The single-qubit unitary matrix for which to compute the angles.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the parametrizing angles [‘theta’, ‘phi’, ‘lambda’] or
+special identifiers [‘x’] for Pauli-X and [‘id’] for the identity matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The function uses a threshold of 10^(-7) to round near-zero angles to zero and
+adjusts the global phase of the matrix before decomposition.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_unitary_change_ket_qubit">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_unitary_change_ket_qubit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ket</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_unitary_change_ket_qubit" title="Link to this definition"></a></dt>
+<dd><p>Prepare unitary transformation to change the initial state of qubits in the computational basis for a given probe state.</p>
+<p>This function assumes a perfect qubit initialization in the <a href="#id2"><span class="problematic" id="id3">|</span></a>0000…0&gt; initial state and generates the unitary
+transformation needed to obtain the desired probe state from this initial state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ket</strong> (<em>np.ndarray</em>) – The ket vector representing the desired probe state.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The unitary matrix that transforms the initial state into the desired probe state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the provided state is not in the computational basis or is an invalid state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_offdiagonal_povm_part">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_offdiagonal_povm_part</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_offdiagonal_povm_part" title="Link to this definition"></a></dt>
+<dd><p>Extract the off-diagonal part of each matrix in a POVM (Positive Operator-Valued Measure).</p>
+<p>This function iterates through each matrix (effect) in a given POVM, and extracts its off-diagonal part.
+The off-diagonal part of a matrix consists of all the elements that are not on the main diagonal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>povm</strong> (<em>List</em><em>[</em><em>np.ndarray</em><em>]</em>) – A list of numpy ndarrays representing the effects of a POVM.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of numpy ndarrays where each ndarray is the off-diagonal part of the corresponding POVM effect.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_diagonal_povm_part">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_diagonal_povm_part</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_diagonal_povm_part" title="Link to this definition"></a></dt>
+<dd><p>Extract the diagonal part of each matrix in a POVM (Positive Operator-Valued Measure).</p>
+<p>Each matrix (effect) in the POVM is processed to obtain its diagonal part.
+The diagonal part of a matrix is composed of the elements along its main diagonal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>povm</strong> (<em>List</em><em>[</em><em>np.ndarray</em><em>]</em>) – A list of numpy ndarrays representing the effects of a POVM.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of numpy ndarrays where each ndarray is a diagonal matrix
+formed from the diagonal elements of the corresponding POVM effect.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.apply_stochastic_map_to_povm">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">apply_stochastic_map_to_povm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stochastic_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.povmtools.apply_stochastic_map_to_povm" title="Link to this definition"></a></dt>
+<dd><p>Apply a stochastic map to each effect in a POVM.</p>
+<p>This function computes the transformation of each POVM effect under a given stochastic map.
+A stochastic map is a square matrix where each column represents a probability distribution.
+The transformation is carried out by matrix multiplication of the stochastic map with each POVM effect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>povm</strong> (<em>List</em><em>[</em><em>np.ndarray</em><em>]</em>) – A list of numpy ndarrays representing the effects of a POVM.</p></li>
+<li><p><strong>stochastic_map</strong> (<em>np.ndarray</em>) – A numpy ndarray representing the stochastic map.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of numpy ndarrays representing the transformed POVM effects under the given stochastic map.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_stochastic_map_from_povm">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_stochastic_map_from_povm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_stochastic_map_from_povm" title="Link to this definition"></a></dt>
+<dd><p>Generate a stochastic map from the diagonal parts of a POVM.</p>
+<p>This function constructs a stochastic map based on the diagonal parts of each POVM effect.
+The diagonal elements of each effect are used to form the rows of the stochastic map.
+A stochastic map is a square matrix where each column represents a probability distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>povm</strong> (<em>List</em><em>[</em><em>np.ndarray</em><em>]</em>) – A list of numpy ndarrays representing the effects of a POVM.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A numpy ndarray representing the stochastic map constructed from the POVM.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_povm_from_stochastic_map">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_povm_from_stochastic_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stochastic_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_povm_from_stochastic_map" title="Link to this definition"></a></dt>
+<dd><p>Construct a list of diagonal matrices (POVMs) from a stochastic map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stochastic_map</strong> (<em>np.ndarray</em>) – A square numpy array representing a stochastic map.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of diagonal numpy arrays, each derived from the rows of the input stochastic map.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[np.ndarray]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function generates a list of Positive Operator-Valued Measures (POVMs) by diagonalizing each row of the
+input stochastic map.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.establish_POVMs_dictionary_from_noise_matrices_dictionary">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">establish_POVMs_dictionary_from_noise_matrices_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_matrices_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.array</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.povmtools.establish_POVMs_dictionary_from_noise_matrices_dictionary" title="Link to this definition"></a></dt>
+<dd><p>A wrapaer for get_povm_from_stochastic_map</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_coherent_part_of_the_noise">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_coherent_part_of_the_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_coherent_part_of_the_noise" title="Link to this definition"></a></dt>
+<dd><p>Extract the off-diagonal elements from each matrix in a list of POVMs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>povm</strong> (<em>List</em><em>[</em><em>np.ndarray</em><em>]</em>) – A list of numpy arrays, each representing a POVM effect matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of numpy arrays, each containing the off-diagonal part of the corresponding POVM effect.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[np.ndarray]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function processes a list of POVM (Positive Operator-Valued Measure) effect matrices by extracting the
+off-diagonal elements of each matrix. These elements represent the coherent part of the noise in quantum
+information theory, which is important for understanding the non-classical aspects of quantum measurements.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_enumerated_rev_map_from_indices">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_enumerated_rev_map_from_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_enumerated_rev_map_from_indices" title="Link to this definition"></a></dt>
+<dd><p>Create a reverse mapping from a list of indices.</p>
+<p>Given a list of indices, this function creates a dictionary that maps each index to its position in the list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>indices</strong> (<em>list</em>) – A list of indices to be mapped.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary where keys are indices from the input list and values are their corresponding positions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_classical_register_bitstrings">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_classical_register_bitstrings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantum_register_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rev</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_classical_register_bitstrings" title="Link to this definition"></a></dt>
+<dd><p>Generate register names for specified qubits. Non specified qubits are excluded from the register names (they will be always 0 in bitstring).
+Qubits indices are indexed from right if rev is False.</p>
+<p>This function creates names for qubit registers based on the qubits involved and the desired order. It excludes
+qubits not in use and can reverse the order of the names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qubit_indices</strong> (<em>list</em>) – List of qubits to be included in the register names.</p></li>
+<li><p><strong>quantum_register_size</strong> (<em>int</em>) – The total number of qubits in the register.</p></li>
+<li><p><strong>rev</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the order of qubits in the register names is reversed (default is False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of register names as strings, taking into account the specified qubits and order.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_CBT_norm">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_CBT_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_CBT_norm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_choi_from_POVM">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_choi_from_POVM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POVM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_choi_from_POVM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_POVM_from_choi">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_POVM_from_choi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm_choi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_outcomes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_POVM_from_choi" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.check_if_povm">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">check_if_povm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.check_if_povm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_statistical_error_bound">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_statistical_error_bound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_measurement_outcomes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_error_mistake_probability</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_marginals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_statistical_error_bound" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Get upper bound for tv-distance of estimated probability distribution from ideal one. See Ref. [3] for
+details.</p>
+</dd>
+</dl>
+<p>:param : param number_of_measurement_outcomes: Number of outcomes in probabiility distribution (2^(number_of_qubits) for standard measurement)
+:param : param number_of_samples: Number of samples for experiment for which statistical error bound is being calculated.
+:param : param statistical_error_mistake_probability: Parameter describing infidelity of returned error bound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Statistical error upper bound in total variance distance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_coherent_error_bound">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_coherent_error_bound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_coherent_error_bound" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Get distance between diagonal part of the POVM and the whole POVM. This quantity might be interpreted as a
+measure of “non-classicality” or coherence present in measurement noise. See Ref. [1] for details.</p>
+</dd>
+</dl>
+<p>:param : param povm: POVM for which non-classicality will be determined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Coherent error bound for given POVM.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_correction_error_bound_from_data_and_statistical_error">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_correction_error_bound_from_data_and_statistical_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correction_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_error_bound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_correction_error_bound_from_data_and_statistical_error" title="Link to this definition"></a></dt>
+<dd><dl>
+<dt>Description:</dt><dd><p>Get upper bound for the correction error using classical error-mitigation via “correction matrix”.</p>
+<p>Error arises from three factors - non-classical part of the noise, statistical fluctuations and eventual
+unphysical “first-guess” (quasi-)probability vector after the correction.</p>
+<p>This upper bound tells us quantitatively what is the maximal TV-distance of the corrected probability vector
+from the ideal probability distribution that one would have obtained if there were no noise and the
+infinite-size statistics.</p>
+<p>See Ref. [1] for details.</p>
+</dd>
+</dl>
+<p>:param : param povm: POVM representing measurement device.
+:param : param correction_matrix: Correction matrix obtained via out Error Mitigator object.
+:param : param statistical_error_bound: Statistical error bound (epsilon in paper).
+:param confidence with which we state the upper bound. See Ref. [3] for details.:
+:param : param alpha: distance between eventual unphysical “first-guess” quasiprobability vector and the closest
+:param physical one. default is 0 (which corresponds to situation in which corrected vector was proper probability:
+:param vector).:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Upper bound for correction error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_correction_error_bound_from_data">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_correction_error_bound_from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correction_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_probability</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_correction_error_bound_from_data" title="Link to this definition"></a></dt>
+<dd><dl>
+<dt>Description:</dt><dd><p>Get upper bound for the correction error using classical error-mitigation via “correction matrix”.</p>
+<p>Error arises from three factors - non-classical part of the noise, statistical fluctuations and eventual
+unphysical “first-guess” (quasi-)probability vector after the correction.</p>
+<p>This upper bound tells us quantitatively what is the maximal TV-distance of the corrected probability vector
+from the ideal probability distribution that one would have obtained if there were no noise and the
+infinite-size statistics.</p>
+<p>See Ref. [0] for details.</p>
+</dd>
+</dl>
+<p>:param : param povm: POVM representing measurement device.
+:param : param correction_matrix: Correction matrix obtained via out Error Mitigator object.
+:param : param number_of_samples: number of samples (in qiskit language number of “shots”).
+:param : param error_probability: probability with which statistical upper bound is not correct. In other word, 1-mu is
+:param confidence with which we state the upper bound. See Ref. [3] for details.:
+:param : param alpha: distance between eventual unphysical “first-guess” quasiprobability vector and the closest
+:param physical one. default is 0 (which corresponds to situation in which corrected vector was proper probability:
+:param vector).:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Upper bound for correction error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_correction_error_bound_from_parameters">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_correction_error_bound_from_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">norm_of_correction_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistical_error_bound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coherent_error_bound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_correction_error_bound_from_parameters" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>See description of function “get_correction_error_bound_from_data”. This function can be used if one has the
+proper parameters already calculated and wishes to not repeat it (for example, in case of calculating something
+in the loop).</p>
+</dd>
+</dl>
+<p>:param : param norm_of_correction_matrix : 1-&gt;1 norm of correction matrix (it is not trace norm!), see Ref. [0],
+:param or definition of np.linalg.norm:
+:type or definition of np.linalg.norm: X,ord=1
+:param : param statistical_error_bound: upper bound for statistical errors. Can be calculated using function
+:param get_statistical_error_bound.:
+:param : param coherent_error_bound: magnitude of coherent part of the noise. Can be calculated using function
+:param get_coherent_error_bound.:
+:param : param alpha: distance between eventual unphysical “first-guess” quasi-probability vector and the closest
+:param physical one. default is 0 (which corresponds to situation in which corrected vector was proper probability:
+:param vector):</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Upper bound for correction error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.counts_dict_to_frequencies_vector">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">counts_dict_to_frequencies_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#qrem.common.povmtools.counts_dict_to_frequencies_vector" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Generates and returns vector of frequencies basing on given counts dict. Mostly used with qiskit data.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>count_dict</strong> – Counts dict. Possibly from qiskit job.</p>
+</dd>
+<dt class="field-even">Return frequencies<span class="colon">:</span></dt>
+<dd class="field-even"><p>Frequencies list for possible states in ascending order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_possible_n_qubit_outcomes">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_possible_n_qubit_outcomes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#qrem.common.povmtools.get_possible_n_qubit_outcomes" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>For given number of qubits &lt;n&gt; generates a list of possible outcome states (as strings) and returns them in
+ascending order. All states len is number_of_qubits.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> – Number of qubits.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of possible outcomes as strings.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_correction_matrix_from_povm">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_correction_matrix_from_povm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_correction_matrix_from_povm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_averaged_lambda">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_averaged_lambda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">big_lambda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits_of_interest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_averaged_lambda" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.povmtools.__worst_case_distance_names__">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">__worst_case_distance_names__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['operational',</span> <span class="pre">'worst',</span> <span class="pre">'worst_case',</span> <span class="pre">'worst-case',</span> <span class="pre">'wc']</span></em><a class="headerlink" href="#qrem.common.povmtools.__worst_case_distance_names__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.povmtools.__average_case_distance_names__">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">__average_case_distance_names__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['average',</span> <span class="pre">'average_case',</span> <span class="pre">'average-case',</span> <span class="pre">'ac']</span></em><a class="headerlink" href="#qrem.common.povmtools.__average_case_distance_names__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.operational_distance_POVMs">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">operational_distance_POVMs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POVM1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POVM2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.operational_distance_POVMs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.average_distance_POVMs">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">average_distance_POVMs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POVM1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POVM2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.average_distance_POVMs" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Description:</dt><dd><p>Get average (over all quantum states) operational distance between two povms
+COMMENT: Assuming that both POVMs have the same number of outcomes</p>
+</dd>
+<dt>Parameter:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param POVM1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of arrays representing effects of POVM</p>
+</dd>
+<dt class="field-even">param POVM2<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of arrays representing effects of POVM, if None assuming it’s computational basis</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>average (over all quantum states) operational distance between two povms</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.calculate_distance_between_POVMs">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">calculate_distance_between_POVMs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">POVM_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POVM_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_type_tuple</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('average_case',</span> <span class="pre">'classical')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.calculate_distance_between_POVMs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.__solve_subproblem_average_case">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">__solve_subproblem_average_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm_2q_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signs_bitstring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.__solve_subproblem_average_case" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.calculate_correlations_coefficients_average_case">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">calculate_correlations_coefficients_average_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm_2q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.calculate_correlations_coefficients_average_case" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools._solve_max_dop_problem_for_fixed_input_state">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">_solve_max_dop_problem_for_fixed_input_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">povm_2q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools._solve_max_dop_problem_for_fixed_input_state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools._cost_function_difference_dac">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">_cost_function_difference_dac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters_difference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ms_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools._cost_function_difference_dac" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools._cost_function_difference_dwc">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">_cost_function_difference_dwc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters_difference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ms_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools._cost_function_difference_dwc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.direct_optimization_difference">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">direct_optimization_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm2q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.direct_optimization_difference" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools._optimization_function_dwc">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">_optimization_function_dwc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">povm_2q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools._optimization_function_dwc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools._find_maximal_dop_fixed_sign">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">_find_maximal_dop_fixed_sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm2q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools._find_maximal_dop_fixed_sign" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.find_maximal_dop">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">find_maximal_dop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm2q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.find_maximal_dop" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_reduced_noise_matrix_2q">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_reduced_noise_matrix_2q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stochastic_map2q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectator_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_reduced_noise_matrix_2q" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.get_correlation_coefficient_classical">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">get_correlation_coefficient_classical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stochastic_map_2q_or_povm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.get_correlation_coefficient_classical" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.find_correlations_coefficients">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">find_correlations_coefficients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm_2q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direct_optimization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.find_correlations_coefficients" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.__swap_2q_povm">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">__swap_2q_povm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm_2q_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.__swap_2q_povm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.__swap_or_not">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">__swap_or_not</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">povm_2q_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.__swap_or_not" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.__construct_local_difference">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">__construct_local_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.__construct_local_difference" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.compute_subsets_POVMs_averaged">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">compute_subsets_POVMs_averaged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">averaged_marginals_dictionary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pls'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.compute_subsets_POVMs_averaged" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.compute_subset_POVM">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">compute_subset_POVM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">averaged_marginals_dictionary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimation_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pls'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.compute_subset_POVM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.compute_POVM_from_marginals">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">compute_POVM_from_marginals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimation_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pls'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.povmtools.compute_POVM_from_marginals" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.povmtools.compute_noise_matrices_from_POVMs">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.povmtools.</span></span><span class="sig-name descname"><span class="pre">compute_noise_matrices_from_POVMs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subsets_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">POVM_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#qrem.common.povmtools.compute_noise_matrices_from_POVMs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../math/index.html" class="btn btn-neutral float-left" title="qrem.common.math" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../printer/index.html" class="btn btn-neutral float-right" title="qrem.common.printer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

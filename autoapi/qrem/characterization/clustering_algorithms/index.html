@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.characterization.clustering_algorithms &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.characterization.neighbors_algorithms" href="../neighbors_algorithms/index.html" />
+    <link rel="prev" title="qrem.characterization.characterization_routine" href="../characterization_routine/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-characterisation-module">This subpackage <cite>qrem.characterisation</cite> provides a suite of modules fro quantum error characterisation.
+Detailed documentation coming soon.</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.clustering_algorithms</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/characterization/clustering_algorithms/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.characterization.clustering_algorithms">
+<span id="qrem-characterization-clustering-algorithms"></span><h1><a class="reference internal" href="#module-qrem.characterization.clustering_algorithms" title="qrem.characterization.clustering_algorithms"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization.clustering_algorithms</span></code></a><a class="headerlink" href="#module-qrem.characterization.clustering_algorithms" title="Link to this heading"></a></h1>
+<p>Created on 01.03.2021</p>
+<p>&#64;author: Oskar Słowik
+&#64;contact: <a class="reference external" href="mailto:osslowik&#37;&#52;&#48;gmail&#46;com">osslowik<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.f_clust_sharp" title="qrem.characterization.clustering_algorithms.f_clust_sharp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_clust_sharp</span></code></a>(C_size, C_maxsize)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.f_clust" title="qrem.characterization.clustering_algorithms.f_clust"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_clust</span></code></a>(C_size, C_maxsize)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.f_clust_square_sharp" title="qrem.characterization.clustering_algorithms.f_clust_square_sharp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f_clust_square_sharp</span></code></a>(C_size, C_maxsize)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.get_S_ij_av" title="qrem.characterization.clustering_algorithms.get_S_ij_av"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_S_ij_av</span></code></a>(C_i, C_j, correlations_table)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.get_S_i" title="qrem.characterization.clustering_algorithms.get_S_i"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_S_i</span></code></a>(C_i, correlations_table)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.get_Sc_i" title="qrem.characterization.clustering_algorithms.get_Sc_i"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Sc_i</span></code></a>(C_i, correlations_table)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.cost_function_simple_cummulative" title="qrem.characterization.clustering_algorithms.cost_function_simple_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cost_function_simple_cummulative</span></code></a>(partition, ...)</p></td>
+<td><p>Calculates the value of the objective function phi on partition.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.cost_function_simple" title="qrem.characterization.clustering_algorithms.cost_function_simple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cost_function_simple</span></code></a>(partition, correlations_table, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation_naive_cummulative" title="qrem.characterization.clustering_algorithms.evaluate_move_operation_naive_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_move_operation_naive_cummulative</span></code></a>(partition, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation_naive" title="qrem.characterization.clustering_algorithms.evaluate_move_operation_naive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_move_operation_naive</span></code></a>(partition, index_k, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive_cummulative" title="qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_swap_operation_naive_cummulative</span></code></a>(partition, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive" title="qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_swap_operation_naive</span></code></a>(partition, index_k, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation_cummulative" title="qrem.characterization.clustering_algorithms.evaluate_move_operation_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_move_operation_cummulative</span></code></a>(partition, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation" title="qrem.characterization.clustering_algorithms.evaluate_move_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_move_operation</span></code></a>(partition, index_k, index_C_i, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation_cummulative" title="qrem.characterization.clustering_algorithms.evaluate_swap_operation_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_swap_operation_cummulative</span></code></a>(partition, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation" title="qrem.characterization.clustering_algorithms.evaluate_swap_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_swap_operation</span></code></a>(partition, index_k, index_l, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.get_initial_partition" title="qrem.characterization.clustering_algorithms.get_initial_partition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_initial_partition</span></code></a>(correlations_table)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.return_cluster_index" title="qrem.characterization.clustering_algorithms.return_cluster_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">return_cluster_index</span></code></a>(partition, target_qubit)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.make_move_operation" title="qrem.characterization.clustering_algorithms.make_move_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_move_operation</span></code></a>(partition, index_k, index_C_i, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.make_swap_operation" title="qrem.characterization.clustering_algorithms.make_swap_operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_swap_operation</span></code></a>(partition, index_k, index_l, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.choose_nonpos_op" title="qrem.characterization.clustering_algorithms.choose_nonpos_op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_nonpos_op</span></code></a>(val_of_ops_nonpos, temp)</p></td>
+<td><p>Chooses the cluster index for which to move the qubit among all those resulting in nonpositive change of objective function phi.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v1" title="qrem.characterization.clustering_algorithms.partition_algorithm_v1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition_algorithm_v1</span></code></a>(correlations_table, alpha, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v1_cummulative" title="qrem.characterization.clustering_algorithms.partition_algorithm_v1_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition_algorithm_v1_cummulative</span></code></a>(correlations_table, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v2_cummulative" title="qrem.characterization.clustering_algorithms.partition_algorithm_v2_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition_algorithm_v2_cummulative</span></code></a>(correlations_table, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v3_cummulative" title="qrem.characterization.clustering_algorithms.partition_algorithm_v3_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition_algorithm_v3_cummulative</span></code></a>(correlations_table, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative" title="qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition_algorithm_v4_cummulative</span></code></a>(correlations_table, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative_temp" title="qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition_algorithm_v4_cummulative_temp</span></code></a>(...[, temp])</p></td>
+<td><p>Partition algorithm using move operations on qubits with termination criterion and metropolis-like acceptance condition (regulated by temp).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.characterization.clustering_algorithms.choose_pos_op" title="qrem.characterization.clustering_algorithms.choose_pos_op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choose_pos_op</span></code></a>(val_of_ops_pos, temp)</p></td>
+<td><p>Chooses the cluster index for which to move the qubit among all those resulting in positive change of objective function phi.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py exception">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.InfinityException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">InfinityException</span></span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.InfinityException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Class for handling infinity</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.ClusterSizeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">ClusterSizeError</span></span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.ClusterSizeError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">NameError</span></code></p>
+<p>Class for handling too small max cluster size</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.RejectionException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">RejectionException</span></span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.RejectionException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Class for handling rejection of all operations</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.f_clust_sharp">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">f_clust_sharp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.f_clust_sharp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.f_clust">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">f_clust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.f_clust" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.f_clust_square_sharp">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">f_clust_square_sharp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.f_clust_square_sharp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.get_S_ij_av">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">get_S_ij_av</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.get_S_ij_av" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.get_S_i">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">get_S_i</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.get_S_i" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.get_Sc_i">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">get_Sc_i</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.get_Sc_i" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.cost_function_simple_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">cost_function_simple_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.cost_function_simple_cummulative" title="Link to this definition"></a></dt>
+<dd><p>Calculates the value of the objective function phi on partition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>partition</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – partition</p></li>
+<li><p><strong>correlations_table</strong> (<em>ndarray</em><em>(</em><em>dtype=float</em><em>, </em><em>ndim=2</em><em>)</em>) – table of all 2-qubit correlation coefficients.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – multiplicative parameter of the cluster size penalty function.</p></li>
+<li><p><strong>C_maxsize</strong> (<em>int</em>) – Maximal allowed size of a cluster (threshold).</p></li>
+</ul>
+</dd>
+</dl>
+<p>:return value of phi on partition.
+:rtype: float</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.cost_function_simple">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">cost_function_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.cost_function_simple" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_move_operation_naive_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_move_operation_naive_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation_naive_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_move_operation_naive">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_move_operation_naive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation_naive" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_swap_operation_naive_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_swap_operation_naive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation_naive" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_move_operation_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_move_operation_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_move_operation">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_move_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_move_operation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_swap_operation_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_swap_operation_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.evaluate_swap_operation">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">evaluate_swap_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.evaluate_swap_operation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.get_initial_partition">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">get_initial_partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.get_initial_partition" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.return_cluster_index">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">return_cluster_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.return_cluster_index" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.make_move_operation">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">make_move_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.make_move_operation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.make_swap_operation">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">make_swap_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_C_j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.make_swap_operation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.choose_nonpos_op">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">choose_nonpos_op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_of_ops_nonpos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.choose_nonpos_op" title="Link to this definition"></a></dt>
+<dd><p>Chooses the cluster index for which to move the qubit among all those resulting in nonpositive change of objective function phi.
+Probability of the choice of cluster i is:
+p(i)=exp(change_i/temp)/(no_of_ops_nonpos + epsilon)
+where no_of_ops_nonpos is the number of all operations and epsilon is small number added for numerical stability (here set as 0.001).
+Additionally, no operation can be selected with probability:
+p(reject)= 1- sum_j p(j).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>val_of_ops_nonpos</strong> (<em>dict</em>) – dictionary with keys being cluster indices and values being the changes of phi.</p></li>
+<li><p><strong>temp</strong> (<em>float</em>) – temperature parameter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>chosen cluster index.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.partition_algorithm_v1">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">partition_algorithm_v1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_alg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.partition_algorithm_v1_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">partition_algorithm_v1_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_alg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v1_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.partition_algorithm_v2_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">partition_algorithm_v2_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_alg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_rand</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v2_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.partition_algorithm_v3_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">partition_algorithm_v3_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_alg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_rand</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v3_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">partition_algorithm_v4_cummulative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_alg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative_temp">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">partition_algorithm_v4_cummulative_temp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C_maxsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_alg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">printing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_pb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.partition_algorithm_v4_cummulative_temp" title="Link to this definition"></a></dt>
+<dd><p>Partition algorithm using move operations on qubits with termination criterion and metropolis-like acceptance condition (regulated by temp).
+If C_maxsize &lt; 2 then algorithm terminates with exception raised. If C_maxsize = 2 then the algorithm is not executed and the initial partition is returned.
+The algorith is run N_alg times and the best partition is chosen. In each run, the algorithm traverses qubits in epochs.
+An epoch consists of all qubits that are traversed at random and without repetitions.
+The partition is being updated during each epoch, by executing move operations on qubits.
+The algorithm terminates, if after some epoch the value of objective function phi has not improved compared to the end of a previous epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlations_table</strong> (<em>ndarray</em><em>(</em><em>dtype=float</em><em>, </em><em>ndim=2</em><em>)</em>) – table of all 2-qubit correlation coefficients.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – multiplicative parameter of the cluster size penalty function.</p></li>
+<li><p><strong>C_maxsize</strong> (<em>int</em>) – Maximal allowed size of a cluster (threshold).</p></li>
+<li><p><strong>N_alg</strong> (<em>int</em>) – Number of runs.</p></li>
+<li><p><strong>printing</strong> (<em>bool</em>) – Is printing allowed.</p></li>
+<li><p><strong>drawing</strong> (<em>bool</em>) – Is cluster drawing allowed.</p></li>
+<li><p><strong>disable_pb</strong> (<em>bool</em>) – Is progress bar disabled.</p></li>
+<li><p><strong>temp</strong> (<em>float</em>) – Temperture parameter (default is 1.0).</p></li>
+</ul>
+</dd>
+</dl>
+<p>:return best partition found, value of the objective function for this partition
+:rtype:(List[int], float)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>MaxClusterSizeException</strong> – returned if max allowed cluster size is &lt; 2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.characterization.clustering_algorithms.choose_pos_op">
+<span class="sig-prename descclassname"><span class="pre">qrem.characterization.clustering_algorithms.</span></span><span class="sig-name descname"><span class="pre">choose_pos_op</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_of_ops_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.characterization.clustering_algorithms.choose_pos_op" title="Link to this definition"></a></dt>
+<dd><p>Chooses the cluster index for which to move the qubit among all those resulting in positive change of objective function phi.
+Probability of the choice of cluster i is:
+p(i)=exp((change_i-max_change)/temp)/norm_const
+where norm_const is the normalization constant: sum_j exp((change_j-max_change)/temp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>val_of_ops_pos</strong> (<em>dict</em>) – dictionary with keys being cluster indices and values being the changes of phi.</p></li>
+<li><p><strong>temp</strong> (<em>float</em>) – temperature parameter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>chosen cluster index.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../characterization_routine/index.html" class="btn btn-neutral float-left" title="qrem.characterization.characterization_routine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../neighbors_algorithms/index.html" class="btn btn-neutral float-right" title="qrem.characterization.neighbors_algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

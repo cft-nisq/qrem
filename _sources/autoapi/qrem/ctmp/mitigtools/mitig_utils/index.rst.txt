@@ -1,0 +1,27 @@
+:py:mod:`qrem.ctmp.mitigtools.mitig_utils`
+==========================================
+
+.. py:module:: qrem.ctmp.mitigtools.mitig_utils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.ctmp.mitigtools.mitig_utils._mitigate
+
+
+
+.. py:function:: _mitigate(model: qrem.qtypes.CTMPModelData, output_counts: Dict[str, int], input_obs, T: int, mode: str, proj: bool = False) -> numpy.array
+
+   Mitigate either an observable or marginal, defined by mode.
+
+   :param Input_obs: Input_obs = observable given as list of coefficients  if mode=obs or a tuple of qubits if mode=marginal
+   :type Input_obs: Union[List,Tuple]
+
+

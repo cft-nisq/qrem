@@ -1,0 +1,127 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.rdm_hierarchy`
+=======================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.rdm_hierarchy
+
+.. autoapi-nested-parse::
+
+   Created on Wed Nov  10 11:24:48 2015
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.rdm_hierarchy.RdmHierarchy
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.rdm_hierarchy.generate_block_coords
+
+
+
+.. py:class:: RdmHierarchy(variables, parameters=None, verbose=0, circulant=False, parallel=False)
+
+
+   Bases: :py:obj:`qrem.common.external.ncpol2sdpa.sdp_relaxation.SdpRelaxation`
+
+   Class for obtaining a level in the reduced density matrix method
+   :param variables: Commutative or noncommutative, Hermitian or nonhermiatian
+                     variables, possibly a list of list of variables if the
+                     hierarchy is not NPA.
+   :type variables: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param parameters: Optional symbolic variables for which moments are not
+                      generated.
+   :type parameters: list of :class:`sympy.physics.quantum.operator.Operator`
+                    or
+                    :class:`sympy.physics.quantum.operator.HermitianOperator`
+                    or a list of list.
+   :param verbose: Optional parameter for level of verbosity:
+
+                      * 0: quiet
+                      * 1: verbose
+                      * 2: debug level
+   :type verbose: int.
+   :param normalized: Optional parameter for changing the normalization of
+                      states over which the optimization happens. Turn it off
+                      if further processing is done on the SDP matrix before
+                      solving it.
+   :type normalized: bool.
+   :param ppt: Optional parameter to impose a partial positivity constraint
+               on the moment matrix.
+   :type ppt: bool.
+
+   .. attribute:: - `monomial_sets`
+
+      The monomial sets that generate the moment matrix blocks.
+
+   .. attribute:: - `monomial_index`
+
+      Dictionary that maps monomials to SDP variables.
+
+   .. attribute:: - `constraints`
+
+      The complete set of constraints after preprocesssing.
+
+   .. attribute:: - `primal`
+
+      The primal optimal value.
+
+   .. attribute:: - `dual`
+
+      The dual optimal value.
+
+   .. attribute:: - `x_mat`
+
+      The primal solution matrix.
+
+   .. attribute:: - `y_mat`
+
+      The dual solution matrix.
+
+   .. attribute:: - `solution_time`
+
+      The amount of time taken to solve the relaxation.
+
+   .. attribute:: - `status`
+
+      The solution status of the relaxation.
+
+   .. py:method:: _push_monomials(monomials, n_vars, row_offset, coords, N)
+
+
+   .. py:method:: __second_moments(n_vars, monomialsA, block_index, processed_entries)
+
+
+   .. py:method:: __fourth_moments(n_vars, monomialsA, block_index, processed_entries)
+
+
+   .. py:method:: _generate_moment_matrix(n_vars, block_index, processed_entries, monomialsA, monomialsB, ppt=False)
+
+      Generate the moment matrix of monomials.
+
+      Arguments:
+      n_vars -- current number of variables
+      block_index -- current block index in the SDP matrix
+      monomials -- |W_d| set of words of length up to the relaxation level
+
+
+
+.. py:function:: generate_block_coords(monomialsA, monomialsB, col0, colN, row0, rowN, row_offset, col_offset, row_length)
+
+

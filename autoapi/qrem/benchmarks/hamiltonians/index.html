@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.benchmarks.hamiltonians &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.characterization" href="../../characterization/index.html" />
+    <link rel="prev" title="qrem.benchmarks.benchmarks_functions" href="../benchmarks_functions/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-benchmarks-module">This subpackage <cite>qrem.benchmarks</cite> provides a suite of modules for benchmarking (creating hamiltonians etc.)
+Detailed documentation coming soon.</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../common/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks.hamiltonians</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/benchmarks/hamiltonians/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.benchmarks.hamiltonians">
+<span id="qrem-benchmarks-hamiltonians"></span><h1><a class="reference internal" href="#module-qrem.benchmarks.hamiltonians" title="qrem.benchmarks.hamiltonians"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks.hamiltonians</span></code></a><a class="headerlink" href="#module-qrem.benchmarks.hamiltonians" title="Link to this heading"></a></h1>
+<p class="rubric">Notes</p>
+<p>&#64;authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+&#64;contact: <a class="reference external" href="mailto:michal&#46;oszmaniec&#37;&#52;&#48;cft&#46;edu&#46;pl">michal<span>&#46;</span>oszmaniec<span>&#64;</span>cft<span>&#46;</span>edu<span>&#46;</span>pl</a></p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.__get_mapping_2SAT" title="qrem.benchmarks.hamiltonians.__get_mapping_2SAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__get_mapping_2SAT</span></code></a>(clause_now, j)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.__get_local_field_1q" title="qrem.benchmarks.hamiltonians.__get_local_field_1q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__get_local_field_1q</span></code></a>(qubit_index, clauses_list)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.__get_local_field_2q" title="qrem.benchmarks.hamiltonians.__get_local_field_2q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__get_local_field_2q</span></code></a>(qubits_indices, clauses_list)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.get_random_2SAT_clauses" title="qrem.benchmarks.hamiltonians.get_random_2SAT_clauses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_random_2SAT_clauses</span></code></a>(number_of_qubits, clause_density)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.get_weights_dictionary_from_weights_matrix" title="qrem.benchmarks.hamiltonians.get_weights_dictionary_from_weights_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_weights_dictionary_from_weights_matrix</span></code></a>(weights_matrix)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.get_2SAT_hamiltonian_from_clauses" title="qrem.benchmarks.hamiltonians.get_2SAT_hamiltonian_from_clauses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_2SAT_hamiltonian_from_clauses</span></code></a>(clauses_list, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.generate_random_2SAT_hamiltonian" title="qrem.benchmarks.hamiltonians.generate_random_2SAT_hamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_random_2SAT_hamiltonian</span></code></a>(number_of_qubits, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.__change_representation_to_pysat" title="qrem.benchmarks.hamiltonians.__change_representation_to_pysat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__change_representation_to_pysat</span></code></a>(clause)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="qrem.benchmarks.hamiltonians.__get_state_from_other_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__get_state_from_other_format</span></code></a>(solution)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.get_energy_from_SAT_solution" title="qrem.benchmarks.hamiltonians.get_energy_from_SAT_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_energy_from_SAT_solution</span></code></a>(SATS, number_of_clauses)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.__solve_2SAT_Hamiltonian_pysat" title="qrem.benchmarks.hamiltonians.__solve_2SAT_Hamiltonian_pysat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__solve_2SAT_Hamiltonian_pysat</span></code></a>(clauses_list, ...[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.solve_2SAT_hamiltonian" title="qrem.benchmarks.hamiltonians.solve_2SAT_hamiltonian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve_2SAT_hamiltonian</span></code></a>(hamiltonian_data[, solving_method])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.estimate_energy_from_marginals" title="qrem.benchmarks.hamiltonians.estimate_energy_from_marginals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_energy_from_marginals</span></code></a>(weights_dictionary, ...)</p></td>
+<td><p>Compute energy of Hamiltonian from dictionary of marginal distributions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.create_hamiltonians_for_benchmarks" title="qrem.benchmarks.hamiltonians.create_hamiltonians_for_benchmarks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_hamiltonians_for_benchmarks</span></code></a>(number_of_qubits, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="qrem.benchmarks.hamiltonians.__get_state_from_other_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__get_state_from_other_format</span></code></a>(solution)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.__get_part_bitstring_parity_special" title="qrem.benchmarks.hamiltonians.__get_part_bitstring_parity_special"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__get_part_bitstring_parity_special</span></code></a>(bitstring_getitem, ...)</p></td>
+<td><p>Used only in get_energy_from_bitstring_diagonal_local()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.get_energy_from_bitstring_diagonal_local" title="qrem.benchmarks.hamiltonians.get_energy_from_bitstring_diagonal_local"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_energy_from_bitstring_diagonal_local</span></code></a>(bitstring, ...)</p></td>
+<td><p>Calculates the energy corresponding to a state (encoded in bistring) and a Hamiltonian</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.eigenstate_energy_calculation_and_estimation" title="qrem.benchmarks.hamiltonians.eigenstate_energy_calculation_and_estimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eigenstate_energy_calculation_and_estimation</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians.create_hamiltonians_and_ground_states" title="qrem.benchmarks.hamiltonians.create_hamiltonians_and_ground_states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_hamiltonians_and_ground_states</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.benchmarks.hamiltonians._parities__dict2" title="qrem.benchmarks.hamiltonians._parities__dict2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_parities__dict2</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.__get_mapping_2SAT">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__get_mapping_2SAT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause_now</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.__get_mapping_2SAT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.__get_local_field_1q">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__get_local_field_1q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clauses_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.__get_local_field_1q" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.__get_local_field_2q">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__get_local_field_2q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clauses_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.__get_local_field_2q" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.get_random_2SAT_clauses">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">get_random_2SAT_clauses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clause_density</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.get_random_2SAT_clauses" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.get_weights_dictionary_from_weights_matrix">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">get_weights_dictionary_from_weights_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights_matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.get_weights_dictionary_from_weights_matrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.get_2SAT_hamiltonian_from_clauses">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">get_2SAT_hamiltonian_from_clauses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clauses_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.get_2SAT_hamiltonian_from_clauses" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.generate_random_2SAT_hamiltonian">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">generate_random_2SAT_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clause_density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.generate_random_2SAT_hamiltonian" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.__change_representation_to_pysat">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__change_representation_to_pysat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.__change_representation_to_pysat" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.__get_state_from_other_format">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__get_state_from_other_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.__get_state_from_other_format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.get_energy_from_SAT_solution">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">get_energy_from_SAT_solution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SATS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_clauses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.get_energy_from_SAT_solution" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.__solve_2SAT_Hamiltonian_pysat">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__solve_2SAT_Hamiltonian_pysat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clauses_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clause_density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repetitions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.__solve_2SAT_Hamiltonian_pysat" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.solve_2SAT_hamiltonian">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">solve_2SAT_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonian_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solving_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pysat'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.solve_2SAT_hamiltonian" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.estimate_energy_from_marginals">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">estimate_energy_from_marginals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_multipliers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.estimate_energy_from_marginals" title="Link to this definition"></a></dt>
+<dd><p>Compute energy of Hamiltonian from dictionary of marginal distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights_dictionary</strong> – </p></li>
+<li><p><strong>marginals_dictionary</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.create_hamiltonians_for_benchmarks">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">create_hamiltonians_for_benchmarks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_hamiltonians</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clause_density</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.create_hamiltonians_for_benchmarks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__get_state_from_other_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians._parities__dict2">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">_parities__dict2</span></span><a class="headerlink" href="#qrem.benchmarks.hamiltonians._parities__dict2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.__get_part_bitstring_parity_special">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">__get_part_bitstring_parity_special</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitstring_getitem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubit_indices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.__get_part_bitstring_parity_special" title="Link to this definition"></a></dt>
+<dd><p>Used only in get_energy_from_bitstring_diagonal_local()</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.get_energy_from_bitstring_diagonal_local">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">get_energy_from_bitstring_diagonal_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitstring</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_multipliers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.get_energy_from_bitstring_diagonal_local" title="Link to this definition"></a></dt>
+<dd><p>Calculates the energy corresponding to a state (encoded in bistring) and a Hamiltonian
+(encoded in weights and additional_multipliers)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.eigenstate_energy_calculation_and_estimation">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">eigenstate_energy_calculation_and_estimation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marginals_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonians_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.eigenstate_energy_calculation_and_estimation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.benchmarks.hamiltonians.create_hamiltonians_and_ground_states">
+<span class="sig-prename descclassname"><span class="pre">qrem.benchmarks.hamiltonians.</span></span><span class="sig-name descname"><span class="pre">create_hamiltonians_and_ground_states</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_benchmark_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.benchmarks.hamiltonians.create_hamiltonians_and_ground_states" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../benchmarks_functions/index.html" class="btn btn-neutral float-left" title="qrem.benchmarks.benchmarks_functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../characterization/index.html" class="btn btn-neutral float-right" title="qrem.characterization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

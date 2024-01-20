@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.printer &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.common.probability" href="../probability/index.html" />
+    <link rel="prev" title="qrem.common.povmtools" href="../povmtools/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.printer</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/common/printer/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.printer">
+<span id="qrem-common-printer"></span><h1><a class="reference internal" href="#module-qrem.common.printer" title="qrem.common.printer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.printer</span></code></a><a class="headerlink" href="#module-qrem.common.printer" title="Link to this heading"></a></h1>
+<section id="qrem-printer-module">
+<p>qrem.common.printer module contains helpful functions for logging and console printouts.</p>
+<p>For now, it contains only console printing capabilities. In the future, it may provide options to log output to a specified log path, print on the console, or both.</p>
+<p>Current contents of this module include:
+- <cite>round_matrix_for_print</cite>: Round a matrix with specified decimal precision while handling Python artifacts.
+- <cite>zeros_to_dots_for_print</cite>: Replace zeros with dots in a matrix for printing.
+- <cite>qprint</cite>: Print colored text with optional additional information.
+- <cite>warprint</cite>: Wrapper for <cite>qprint</cite> with a default color of ‘YELLOW’.
+- <cite>errprint</cite>: Wrapper for <cite>qprint</cite> with a default color of ‘RED’.
+- <cite>qprint_array</cite>: Print a human-readable representation of an array.</p>
+<p class="rubric">Notes</p>
+<p>&#64;authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+&#64;contact: <a class="reference external" href="mailto:michal&#46;oszmaniec&#37;&#52;&#48;cft&#46;edu&#46;pl">michal<span>&#46;</span>oszmaniec<span>&#64;</span>cft<span>&#46;</span>edu<span>&#46;</span>pl</a></p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.printer.round_matrix_for_print" title="qrem.common.printer.round_matrix_for_print"><code class="xref py py-obj docutils literal notranslate"><span class="pre">round_matrix_for_print</span></code></a>(→ numpy.typing.NDArray)</p></td>
+<td><p>Round a matrix with specified decimal precision while handling Python artifact ssuch as &quot;-0.&quot;, &quot;0j&quot; etc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.printer.zeros_to_dots_for_print" title="qrem.common.printer.zeros_to_dots_for_print"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zeros_to_dots_for_print</span></code></a>(→ numpy.typing.NDArray)</p></td>
+<td><p>Replace zeros with dots in a matrix for printing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.printer.qprint" title="qrem.common.printer.qprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qprint</span></code></a>(→ None)</p></td>
+<td><p>Print colored text with optional additional information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.printer.warprint" title="qrem.common.printer.warprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warprint</span></code></a>(→ None)</p></td>
+<td><p>Warning print helper function. Wrapper for qprint with a default color of 'YELLOW'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.printer.errprint" title="qrem.common.printer.errprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errprint</span></code></a>(→ None)</p></td>
+<td><p>Print helper function for printing errors. Wrapper for qprint with a default color of 'RED'.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.printer.qprint_array" title="qrem.common.printer.qprint_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qprint_array</span></code></a>(arrray_to_print[, rounding_decimal])</p></td>
+<td><p>Print a human-readable representation of an array.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.printer.round_matrix_for_print">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.printer.</span></span><span class="sig-name descname"><span class="pre">round_matrix_for_print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix_to_be_rounded</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.typing.NDArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.typing.NDArray</span></span></span><a class="headerlink" href="#qrem.common.printer.round_matrix_for_print" title="Link to this definition"></a></dt>
+<dd><p>Round a matrix with specified decimal precision while handling Python artifact ssuch as “-0.”, “0j” etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix_to_be_rounded</strong> (<em>npt.NDArray</em>) – The matrix to be rounded.</p></li>
+<li><p><strong>decimal</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of decimal places to round to (default is 3).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The rounded matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>npt.NDArray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.123456</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2345678</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">round_matrix_for_print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="go">array([[0.123, 0.   ],</span>
+<span class="go">       [1.235, 0.   ]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.printer.zeros_to_dots_for_print">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.printer.</span></span><span class="sig-name descname"><span class="pre">zeros_to_dots_for_print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rounding_decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.typing.NDArray</span></span></span><a class="headerlink" href="#qrem.common.printer.zeros_to_dots_for_print" title="Link to this definition"></a></dt>
+<dd><p>Replace zeros with dots in a matrix for printing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>npt.NDArray</em>) – The matrix to be printed.</p></li>
+<li><p><strong>rounding_decimal</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of decimal places to consider as zero (default is 3).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The matrix with zeros replaced by dots.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>npt.NDArray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zeros_to_dots_for_print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="go">array([[&#39;0.001&#39;, &#39;.&#39;],</span>
+<span class="go">       [&#39;.&#39;, &#39;0.002&#39;]], dtype=&#39;&lt;U32&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.printer.qprint">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.printer.</span></span><span class="sig-name descname"><span class="pre">qprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colored_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stuff_to_print</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CYAN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_floors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qrem.common.printer.qprint" title="Link to this definition"></a></dt>
+<dd><p>Print colored text with optional additional information.
+FUTURE: Should be extended/changed to have also logging capabilities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colored_string</strong> (<em>str</em>) – The main text to be printed with color.</p></li>
+<li><p><strong>stuff_to_print</strong> (<em>str</em><em> or </em><em>any</em><em>, </em><em>optional</em>) – Additional information to be printed without color (default is ‘’).</p></li>
+<li><p><strong>color</strong> (<em>{'CYAN'</em><em>, </em><em>'RED'</em><em>, </em><em>'YELLOW'</em><em>, </em><em>'GREEN'</em><em>, </em><em>'BLUE'}</em><em>, </em><em>optional</em>) – The color for the main text (default is ‘CYAN’).</p></li>
+<li><p><strong>print_floors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print floor separators (default is False).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">qprint</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;GREEN&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qprint</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="s2">&quot;Something went wrong&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;RED&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.printer.warprint">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.printer.</span></span><span class="sig-name descname"><span class="pre">warprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colored_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stuff_to_print</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'YELLOW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_floors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qrem.common.printer.warprint" title="Link to this definition"></a></dt>
+<dd><p>Warning print helper function. Wrapper for qprint with a default color of ‘YELLOW’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colored_string</strong> (<em>str</em>) – The main text to be printed with color.</p></li>
+<li><p><strong>stuff_to_print</strong> (<em>str</em><em> or </em><em>any</em><em>, </em><em>optional</em>) – Additional information to be printed without color (default is ‘’).</p></li>
+<li><p><strong>color</strong> (<em>{'CYAN'</em><em>, </em><em>'RED'</em><em>, </em><em>'YELLOW'</em><em>, </em><em>'GREEN'</em><em>, </em><em>'BLUE'}</em><em>, </em><em>optional</em>) – The color for the main text (default is ‘YELLOW’).</p></li>
+<li><p><strong>print_floors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print floor separators (default is False).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warprint</span><span class="p">(</span><span class="s2">&quot;Warning:&quot;</span><span class="p">,</span> <span class="s2">&quot;This is a warning&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.printer.errprint">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.printer.</span></span><span class="sig-name descname"><span class="pre">errprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colored_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stuff_to_print</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_floors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#qrem.common.printer.errprint" title="Link to this definition"></a></dt>
+<dd><p>Print helper function for printing errors. Wrapper for qprint with a default color of ‘RED’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colored_string</strong> (<em>str</em>) – The main text to be printed with color.</p></li>
+<li><p><strong>stuff_to_print</strong> (<em>str</em><em> or </em><em>any</em><em>, </em><em>optional</em>) – Additional information to be printed without color (default is ‘’).</p></li>
+<li><p><strong>color</strong> (<em>{'CYAN'</em><em>, </em><em>'RED'</em><em>, </em><em>'YELLOW'</em><em>, </em><em>'GREEN'</em><em>, </em><em>'BLUE'}</em><em>, </em><em>optional</em>) – The color for the main text (default is ‘RED’).</p></li>
+<li><p><strong>print_floors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print floor separators (default is False).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">errprint</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span> <span class="s2">&quot;Something went wrong&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.printer.qprint_array">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.printer.</span></span><span class="sig-name descname"><span class="pre">qprint_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrray_to_print</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rounding_decimal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.printer.qprint_array" title="Link to this definition"></a></dt>
+<dd><p>Print a human-readable representation of an array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array_to_print</strong> (<em>npt.NDArray</em>) – The array to be printed.</p></li>
+<li><p><strong>rounding_decimal</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of decimal places for rounding (default is 3).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.123456</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2345678</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qprint_array</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../povmtools/index.html" class="btn btn-neutral float-left" title="qrem.common.povmtools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../probability/index.html" class="btn btn-neutral float-right" title="qrem.common.probability" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

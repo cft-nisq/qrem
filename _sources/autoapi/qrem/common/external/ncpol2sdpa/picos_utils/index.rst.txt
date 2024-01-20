@@ -1,0 +1,56 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.picos_utils`
+=====================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.picos_utils
+
+.. autoapi-nested-parse::
+
+   The module contains helper functions to work with PICOS.
+
+   Created on Wed Dec 10 18:33:34 2014
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.picos_utils.solve_with_cvxopt
+   qrem.common.external.ncpol2sdpa.picos_utils.convert_to_picos
+
+
+
+.. py:function:: solve_with_cvxopt(sdp, solverparameters=None)
+
+   Helper function to convert the SDP problem to PICOS
+   and call CVXOPT solver, and parse the output.
+
+   :param sdp: The SDP relaxation to be solved.
+   :type sdp: :class:`ncpol2sdpa.sdp`.
+
+
+.. py:function:: convert_to_picos(sdp, duplicate_moment_matrix=False)
+
+   Convert an SDP relaxation to a PICOS problem such that the exported
+   .dat-s file is extremely sparse, there is not penalty imposed in terms of
+   SDP variables or number of constraints. This conversion can be used for
+   imposing extra constraints on the moment matrix, such as partial transpose.
+
+   :param sdp: The SDP relaxation to convert.
+   :type sdp: :class:`ncpol2sdpa.sdp`.
+   :param duplicate_moment_matrix: Optional parameter to add an unconstrained
+                                   moment matrix to the problem with the same
+                                   structure as the moment matrix with the PSD
+                                   constraint.
+   :type duplicate_moment_matrix: bool.
+
+   :returns: :class:`picos.Problem`.
+
+

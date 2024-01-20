@@ -1,0 +1,24 @@
+:py:mod:`qrem.mitigation`
+=========================
+
+.. py:module:: qrem.mitigation
+
+.. autoapi-nested-parse::
+
+   QREM Mitigation Module
+   ======================
+
+   This subpackage `qrem.mitigation` provides a suite of modules for readout error mitigation.
+   Detailed documentation coming soon.
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   mitigation_routines/index.rst
+
+

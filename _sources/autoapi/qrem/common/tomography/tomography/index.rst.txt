@@ -1,0 +1,177 @@
+:py:mod:`qrem.common.tomography.tomography`
+===========================================
+
+.. py:module:: qrem.common.tomography.tomography
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.tomography.tomography.QDTFitter
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.tomography.tomography.get_r_operator
+   qrem.common.tomography.tomography.get_lagrange_matrix
+   qrem.common.tomography.tomography.calculate_symmetric_m
+   qrem.common.tomography.tomography.get_maximum_likelihood_povm_estimator
+   qrem.common.tomography.tomography.get_least_squares_povm_estimator_pauli
+   qrem.common.tomography.tomography.get_least_sqaures_povm_choi_estimator_pauli
+   qrem.common.tomography.tomography.get_projected_least_squares_povm_estimator
+   qrem.common.tomography.tomography.get_POVM_estimator
+   qrem.common.tomography.tomography.labels_interpreter_paulis
+   qrem.common.tomography.tomography.get_tensored_ket
+   qrem.common.tomography.tomography.get_tensored_ket_LS
+   qrem.common.tomography.tomography.labels_interpreter_paulis_rigetti_debug
+
+
+
+.. py:class:: QDTFitter(algorithm_convergence_threshold=1e-06)
+
+
+   This class is meant to resemble qiskit's state tomography and process tomography fitters and to calculate the
+   maximum likelihood povm estimator describing a detector basing
+   on QDT job results and used probe states.
+
+   .. py:method:: __get_r_operator(m_m: numpy.ndarray, index_of_povm_effect: int, frequencies_array: numpy.ndarray, probe_states: List[numpy.ndarray]) -> numpy.ndarray
+      :staticmethod:
+
+      Description:
+          This method_name calculates R operator as defined in Ref. [1].
+      :param : param m_m: Effect for which R operator is calculated.
+      :param : param index_of_povm_effect: Index of povm effect for which R is calculated.
+      :param : param frequencies_array: frequencies_array - array with size (m x number_of_qubits), where m means number of probe states,
+      :param number_of_qubits means number of POSSIBLE outcomes.:
+      :param : param probe_states: arrray_to_print list of probe states density matrices.
+
+      :returns: The R operator as described in Ref. [1].
+
+
+   .. py:method:: __get_lagrange_matrix(r_matrices: List[numpy.ndarray], povms: List[numpy.ndarray]) -> numpy.ndarray
+      :staticmethod:
+
+      Description:
+          Calculates Lagrange matrix used in Lagrange multipliers optimization method_name.
+      :param : param r_matrices: arrray_to_print list of R matrices described in a method_name generating them.
+      :param : param povms: arrray_to_print list of effects for which Lagrange matrix will be calculated.
+
+      :returns: Lagrange matrix for given parameters.
+
+
+   .. py:method:: __calculate_symmetric_m(m_lagrange_matrix: numpy.ndarray, m_r: numpy.ndarray, m_m: numpy.ndarray) -> numpy.ndarray
+      :staticmethod:
+
+      Description:
+          arrray_to_print method_name used for calculating symmetric m matrix.
+      :param : param m_m: arrray_to_print matrix of which symmetric method_name will be calculated.
+      :param : param m_r: Previously calculated R operator.
+      :param : param m_lagrange_matrix:
+
+      :returns: Symmetric m matrix.
+
+
+   .. py:method:: _get_maximum_likelihood_povm_estimator(calibration_setup: qrem.qtypes.qunatum_detector_tomography_data.QDTCalibrationSetup) -> List[numpy.ndarray]
+
+      Description:
+          Given results of Quantum Detector Tomography experiments and list of probe states, return the Maximum
+          Likelihood estimation of POVM describing a detector. Uses recursive method_name from [1]. See also [2].
+      :param : param calibration_setup: QDTCalibrationSetup object that consists data upon which maximum likelihood POVM
+      :param estimator should be calculated.:
+
+      Returns
+          Maximum likelihood estimator of POVM describing a detector.
+
+
+   .. py:method:: _get_least_squares_povm_estimator_pauli(calibration_setup: qrem.qtypes.qunatum_detector_tomography_data.QDTCalibrationSetup)
+
+
+   .. py:method:: __get_least_sqaures_povm_choi_estimator_pauli(calibration_setup)
+
+
+   .. py:method:: _get_projected_least_squares_povm_estimator(calibration_setup)
+
+
+   .. py:method:: get_POVM_estimator(calibration_setup, method='pls')
+
+
+
+.. py:function:: get_r_operator(m_m: numpy.ndarray, index_of_povm_effect: int, frequencies_array: numpy.ndarray, probe_states: List[numpy.ndarray]) -> numpy.ndarray
+
+   Description:
+       This method_name calculates R operator as defined in Ref. [1].
+   :param : param m_m: Effect for which R operator is calculated.
+   :param : param index_of_povm_effect: Index of povm effect for which R is calculated.
+   :param : param frequencies_array: frequencies_array - array with size (m x number_of_qubits), where m means number of probe states,
+   :param number_of_qubits means number of POSSIBLE outcomes.:
+   :param : param probe_states: arrray_to_print list of probe states density matrices.
+
+   :returns: The R operator as described in Ref. [1].
+
+
+.. py:function:: get_lagrange_matrix(r_matrices: List[numpy.ndarray], povms: List[numpy.ndarray]) -> numpy.ndarray
+
+   Description:
+       Calculates Lagrange matrix used in Lagrange multipliers optimization method_name.
+   :param : param r_matrices: arrray_to_print list of R matrices described in a method_name generating them.
+   :param : param povms: arrray_to_print list of effects for which Lagrange matrix will be calculated.
+
+   :returns: Lagrange matrix for given parameters.
+
+
+.. py:function:: calculate_symmetric_m(m_lagrange_matrix: numpy.ndarray, m_r: numpy.ndarray, m_m: numpy.ndarray) -> numpy.ndarray
+
+   Description:
+       arrray_to_print method_name used for calculating symmetric m matrix.
+   :param : param m_m: arrray_to_print matrix of which symmetric method_name will be calculated.
+   :param : param m_r: Previously calculated R operator.
+   :param : param m_lagrange_matrix:
+
+   :returns: Symmetric m matrix.
+
+
+.. py:function:: get_maximum_likelihood_povm_estimator(calibration_setup: qrem.qtypes.qunatum_detector_tomography_data.QDTCalibrationSetup) -> List[numpy.ndarray]
+
+   Description:
+       Given results of Quantum Detector Tomography experiments and list of probe states, return the Maximum
+       Likelihood estimation of POVM describing a detector. Uses recursive method_name from [1]. See also [2].
+   :param : param calibration_setup: QDTCalibrationSetup object that consists data upon which maximum likelihood POVM
+   :param estimator should be calculated.:
+
+   Returns
+       Maximum likelihood estimator of POVM describing a detector.
+
+
+.. py:function:: get_least_squares_povm_estimator_pauli(calibration_setup: qrem.qtypes.qunatum_detector_tomography_data.QDTCalibrationSetup)
+
+
+.. py:function:: get_least_sqaures_povm_choi_estimator_pauli(calibration_setup)
+
+
+.. py:function:: get_projected_least_squares_povm_estimator(calibration_setup)
+
+
+.. py:function:: get_POVM_estimator(calibration_setup, method='pls')
+
+
+.. py:function:: labels_interpreter_paulis(label_gate)
+
+
+.. py:function:: get_tensored_ket(self, key_multiple)
+
+
+.. py:function:: get_tensored_ket_LS(key_multiple, labels_interpreter='PAULI')
+
+
+.. py:function:: labels_interpreter_paulis_rigetti_debug(label_gate)
+
+

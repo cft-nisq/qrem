@@ -1,0 +1,41 @@
+:py:mod:`qrem.providers.awsutils.aws_braket_runner`
+===================================================
+
+.. py:module:: qrem.providers.awsutils.aws_braket_runner
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.awsutils.aws_braket_runner.append_new_line
+   qrem.providers.awsutils.aws_braket_runner._circuits_translator
+   qrem.providers.awsutils.aws_braket_runner.run
+
+
+
+.. py:function:: append_new_line(file_name, text_to_append)
+
+   Helper function to store job ids.
+   Append given text as a new line at the end of file
+
+
+.. py:function:: _circuits_translator(eigenstate_index: int, quantum_circuit: braket.circuits.Circuit, qubit_index: int)
+
+   Helper method that creates both DDOT and QDOT circuits in format native to BRAKET and applies to existing (empty) braket_circuit,
+    by applying Pauli eigenstates (formerly _apply_pauli_eigenstate).
+
+
+.. py:function:: run()
+
+   Entrypoint function to run prepared experiment.
+   See https://amazon-braket-sdk-python.readthedocs.io/en/stable/_apidoc/braket.aws.aws_quantum_job.html
+   Write in create  AwsQuantumJob: entry_point="aws_braket_runner:run"
+   Should run until all job/tasks are completed
+
+

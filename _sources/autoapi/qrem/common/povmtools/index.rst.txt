@@ -1,0 +1,589 @@
+:py:mod:`qrem.common.povmtools`
+===============================
+
+.. py:module:: qrem.common.povmtools
+
+.. autoapi-nested-parse::
+
+   Quantum Readout Error Mitigation (QREM) POVM Utility Module
+   ===========================================================
+
+   This module, as part of the QREM package, offers a comprehensive set of functions for dealing with
+   Positive Operator-Valued Measures (POVMs) in the context of quantum readout error mitigation. It includes
+   methods for analyzing, modifying, and applying various transformations to POVMs. Additionally, the module
+   provides utility functions for handling vector and matrix permutations, calculating statistical and
+   coherent error bounds, and manipulating frequency data from quantum experiment outcomes.
+
+
+   .. rubric:: References
+
+   - F. B. Maciejewski, Z. Zimborás, M. Oszmaniec, "Mitigation of readout noise in near-term quantum devices
+     by classical post-processing based on detector tomography", Quantum 4, 257 (2020).
+   - F. B. Maciejewski, F. Baccari, Z. Zimborás, M. Oszmaniec, "Modeling and mitigation of cross-talk effects
+     in readout noise with applications to the Quantum Approximate Optimization Algorithm", Quantum 5, 464 (2021).
+   - Z. Puchała, Ł. Pawela, A. Krawiec, R. Kukulski, "Strategies for optimal single-shot discrimination of
+     quantum measurements", Phys. Rev. A 98, 042103 (2018), https://arxiv.org/abs/1804.05856.
+   - T. Weissman, E. Ordentlich, G. Seroussi, S. Verdul, M. J. Weinberger, Technical Report HPL-2003-97R1,
+     Hewlett-Packard Labs (2003).
+   - J. Smolin, J. M. Gambetta, G. Smith, "Maximum Likelihood, Minimum Effort", Phys. Rev. Lett. 108, 070502
+     (2012), https://arxiv.org/abs/1106.5458.
+
+   Functions
+   ---------
+   - euler_angles_1q
+   - get_su2_parametrizing_angles
+   - get_unitary_change_ket_qubit
+   - get_offdiagonal_povm_part
+   - get_diagonal_povm_part
+   - apply_stochastic_map_to_povm
+   - get_stochastic_map_from_povm
+   - get_povm_from_stochastic_map
+   - get_coherent_part_of_the_noise
+   - get_CBT_norm
+   - get_choi_from_POVM
+   - get_POVM_from_choi
+   - check_if_povm
+   - get_statistical_error_bound
+   - get_coherent_error_bound
+   - get_correction_error_bound_from_data_and_statistical_error
+   - get_correction_error_bound_from_data
+   - get_correction_error_bound_from_parameters
+   - get_correction_matrix_from_povm
+   - get_averaged_lambda
+
+   - check_if_projector_is_in_computational_basis
+   - computational_projectors
+   - computational_basis
+
+   - find_closest_prob_vector_l2
+   - find_closest_prob_vector_l1
+   - reorder_probabilities
+
+   - reorder_classical_register
+   - get_enumerated_rev_map_from_indices
+   - all_possible_bitstrings_of_length
+   - get_classical_register_bitstrings
+   - get_possible_n_qubit_outcomes
+
+   - counts_dict_to_frequencies_vector
+
+   .. rubric:: Notes
+
+   The module is designed to support various operations on POVMs and related quantum measurement data.
+   It is an integral part of the Quantum Readout Error Mitigation framework, aiding in the accurate analysis
+   and correction of quantum measurement errors.
+
+       @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+       @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.povmtools.check_if_projector_is_in_computational_basis
+   qrem.common.povmtools.computational_projectors
+   qrem.common.povmtools.computational_basis
+   qrem.common.povmtools.euler_angles_1q
+   qrem.common.povmtools.get_su2_parametrizing_angles
+   qrem.common.povmtools.get_unitary_change_ket_qubit
+   qrem.common.povmtools.get_offdiagonal_povm_part
+   qrem.common.povmtools.get_diagonal_povm_part
+   qrem.common.povmtools.apply_stochastic_map_to_povm
+   qrem.common.povmtools.get_stochastic_map_from_povm
+   qrem.common.povmtools.get_povm_from_stochastic_map
+   qrem.common.povmtools.establish_POVMs_dictionary_from_noise_matrices_dictionary
+   qrem.common.povmtools.get_coherent_part_of_the_noise
+   qrem.common.povmtools.get_enumerated_rev_map_from_indices
+   qrem.common.povmtools.get_classical_register_bitstrings
+   qrem.common.povmtools.get_CBT_norm
+   qrem.common.povmtools.get_choi_from_POVM
+   qrem.common.povmtools.get_POVM_from_choi
+   qrem.common.povmtools.check_if_povm
+   qrem.common.povmtools.get_statistical_error_bound
+   qrem.common.povmtools.get_coherent_error_bound
+   qrem.common.povmtools.get_correction_error_bound_from_data_and_statistical_error
+   qrem.common.povmtools.get_correction_error_bound_from_data
+   qrem.common.povmtools.get_correction_error_bound_from_parameters
+   qrem.common.povmtools.counts_dict_to_frequencies_vector
+   qrem.common.povmtools.get_possible_n_qubit_outcomes
+   qrem.common.povmtools.get_correction_matrix_from_povm
+   qrem.common.povmtools.get_averaged_lambda
+   qrem.common.povmtools.operational_distance_POVMs
+   qrem.common.povmtools.average_distance_POVMs
+   qrem.common.povmtools.calculate_distance_between_POVMs
+   qrem.common.povmtools.__solve_subproblem_average_case
+   qrem.common.povmtools.calculate_correlations_coefficients_average_case
+   qrem.common.povmtools._solve_max_dop_problem_for_fixed_input_state
+   qrem.common.povmtools._cost_function_difference_dac
+   qrem.common.povmtools._cost_function_difference_dwc
+   qrem.common.povmtools.direct_optimization_difference
+   qrem.common.povmtools._optimization_function_dwc
+   qrem.common.povmtools._find_maximal_dop_fixed_sign
+   qrem.common.povmtools.find_maximal_dop
+   qrem.common.povmtools.get_reduced_noise_matrix_2q
+   qrem.common.povmtools.get_correlation_coefficient_classical
+   qrem.common.povmtools.find_correlations_coefficients
+   qrem.common.povmtools.__swap_2q_povm
+   qrem.common.povmtools.__swap_or_not
+   qrem.common.povmtools.__construct_local_difference
+   qrem.common.povmtools.compute_subsets_POVMs_averaged
+   qrem.common.povmtools.compute_subset_POVM
+   qrem.common.povmtools.compute_POVM_from_marginals
+   qrem.common.povmtools.compute_noise_matrices_from_POVMs
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.povmtools.threshold
+   qrem.common.povmtools.__worst_case_distance_names__
+   qrem.common.povmtools.__average_case_distance_names__
+
+
+.. py:data:: threshold
+
+   
+
+.. py:function:: check_if_projector_is_in_computational_basis(projector: numpy.typing.ArrayLike, d=2)
+
+   Check if a given projector is in the computational basis.
+
+   :param projector: The projector to be checked.
+   :type projector: npt.ArrayLike
+   :param d: The dimension of the computational basis, default is 2.
+   :type d: int, optional
+
+   :returns: Returns True if the projector is in the computational basis, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: computational_projectors(d, n=1)
+
+   Generate projectors for the computational basis.
+
+   :param d: The dimension of the computational basis.
+   :type d: int
+   :param n: The number of qubits, default is 1.
+   :type n: int, optional
+
+   :returns: A list of projectors for each state in the computational basis.
+   :rtype: list
+
+
+.. py:function:: computational_basis(d, n=1)
+
+
+.. py:function:: euler_angles_1q(unitary_matrix)
+
+   Compute Euler angles for a single-qubit unitary operation.
+
+   Determines the Euler angles (theta, phi, lambda) for the given 2x2 unitary matrix.
+   The unitary matrix is decomposed as U = phase * Rz(phi) * Ry(theta) * Rz(lambda),
+   following the SU(2) parameterization.
+
+   :param unitary_matrix: A 2x2 unitary matrix representing a single-qubit operation.
+   :type unitary_matrix: np.ndarray
+
+   :returns: A tuple (theta, phi, lambda) representing the Euler angles.
+   :rtype: tuple
+
+   :raises ValueError: If the input matrix is not 2x2.
+
+   .. rubric:: Notes
+
+   This function uses a slightly modified version of a Qiskit implementation and has a cutoff precision of 10^(-7).
+
+
+.. py:function:: get_su2_parametrizing_angles(m_a)
+
+   Get the SU(2) parametrizing angles for a single-qubit unitary.
+
+   Determines the parametrizing angles theta, phi, and lambda for a single-qubit
+   unitary matrix that belongs to the SU(2) group. Special cases for Pauli-X and
+   identity matrices are handled separately.
+
+   :param m_a: The single-qubit unitary matrix for which to compute the angles.
+   :type m_a: np.ndarray
+
+   :returns: A list containing the parametrizing angles ['theta', 'phi', 'lambda'] or
+             special identifiers ['x'] for Pauli-X and ['id'] for the identity matrix.
+   :rtype: list
+
+   .. rubric:: Notes
+
+   The function uses a threshold of 10^(-7) to round near-zero angles to zero and
+   adjusts the global phase of the matrix before decomposition.
+
+
+.. py:function:: get_unitary_change_ket_qubit(ket)
+
+   Prepare unitary transformation to change the initial state of qubits in the computational basis for a given probe state.
+
+   This function assumes a perfect qubit initialization in the |0000...0> initial state and generates the unitary
+   transformation needed to obtain the desired probe state from this initial state.
+
+   :param ket: The ket vector representing the desired probe state.
+   :type ket: np.ndarray
+
+   :returns: The unitary matrix that transforms the initial state into the desired probe state.
+   :rtype: np.ndarray
+
+   :raises ValueError: If the provided state is not in the computational basis or is an invalid state.
+
+
+.. py:function:: get_offdiagonal_povm_part(povm: List[numpy.ndarray]) -> List[numpy.ndarray]
+
+   Extract the off-diagonal part of each matrix in a POVM (Positive Operator-Valued Measure).
+
+   This function iterates through each matrix (effect) in a given POVM, and extracts its off-diagonal part.
+   The off-diagonal part of a matrix consists of all the elements that are not on the main diagonal.
+
+   :param povm: A list of numpy ndarrays representing the effects of a POVM.
+   :type povm: List[np.ndarray]
+
+   :returns: A list of numpy ndarrays where each ndarray is the off-diagonal part of the corresponding POVM effect.
+   :rtype: List[np.ndarray]
+
+
+.. py:function:: get_diagonal_povm_part(povm: List[numpy.ndarray]) -> List[numpy.ndarray]
+
+   Extract the diagonal part of each matrix in a POVM (Positive Operator-Valued Measure).
+
+   Each matrix (effect) in the POVM is processed to obtain its diagonal part.
+   The diagonal part of a matrix is composed of the elements along its main diagonal.
+
+   :param povm: A list of numpy ndarrays representing the effects of a POVM.
+   :type povm: List[np.ndarray]
+
+   :returns: A list of numpy ndarrays where each ndarray is a diagonal matrix
+             formed from the diagonal elements of the corresponding POVM effect.
+   :rtype: List[np.ndarray]
+
+
+.. py:function:: apply_stochastic_map_to_povm(povm: List[numpy.ndarray], stochastic_map: numpy.ndarray) -> List[numpy.ndarray]
+
+   Apply a stochastic map to each effect in a POVM.
+
+   This function computes the transformation of each POVM effect under a given stochastic map.
+   A stochastic map is a square matrix where each column represents a probability distribution.
+   The transformation is carried out by matrix multiplication of the stochastic map with each POVM effect.
+
+   :param povm: A list of numpy ndarrays representing the effects of a POVM.
+   :type povm: List[np.ndarray]
+   :param stochastic_map: A numpy ndarray representing the stochastic map.
+   :type stochastic_map: np.ndarray
+
+   :returns: A list of numpy ndarrays representing the transformed POVM effects under the given stochastic map.
+   :rtype: List[np.ndarray]
+
+
+.. py:function:: get_stochastic_map_from_povm(povm: List[numpy.ndarray]) -> numpy.ndarray
+
+   Generate a stochastic map from the diagonal parts of a POVM.
+
+   This function constructs a stochastic map based on the diagonal parts of each POVM effect.
+   The diagonal elements of each effect are used to form the rows of the stochastic map.
+   A stochastic map is a square matrix where each column represents a probability distribution.
+
+   :param povm: A list of numpy ndarrays representing the effects of a POVM.
+   :type povm: List[np.ndarray]
+
+   :returns: A numpy ndarray representing the stochastic map constructed from the POVM.
+   :rtype: np.ndarray
+
+
+.. py:function:: get_povm_from_stochastic_map(stochastic_map: numpy.ndarray) -> List[numpy.ndarray]
+
+   Construct a list of diagonal matrices (POVMs) from a stochastic map.
+
+   :param stochastic_map: A square numpy array representing a stochastic map.
+   :type stochastic_map: np.ndarray
+
+   :returns: A list of diagonal numpy arrays, each derived from the rows of the input stochastic map.
+   :rtype: List[np.ndarray]
+
+   .. rubric:: Notes
+
+   This function generates a list of Positive Operator-Valued Measures (POVMs) by diagonalizing each row of the
+   input stochastic map.
+
+
+.. py:function:: establish_POVMs_dictionary_from_noise_matrices_dictionary(noise_matrices_dictionary: Dict[Tuple[int], numpy.array]) -> Dict[Tuple[int], List[numpy.ndarray]]
+
+   A wrapaer for get_povm_from_stochastic_map
+
+
+.. py:function:: get_coherent_part_of_the_noise(povm: List[numpy.ndarray]) -> List[numpy.ndarray]
+
+   Extract the off-diagonal elements from each matrix in a list of POVMs.
+
+   :param povm: A list of numpy arrays, each representing a POVM effect matrix.
+   :type povm: List[np.ndarray]
+
+   :returns: A list of numpy arrays, each containing the off-diagonal part of the corresponding POVM effect.
+   :rtype: List[np.ndarray]
+
+   .. rubric:: Notes
+
+   This function processes a list of POVM (Positive Operator-Valued Measure) effect matrices by extracting the
+   off-diagonal elements of each matrix. These elements represent the coherent part of the noise in quantum
+   information theory, which is important for understanding the non-classical aspects of quantum measurements.
+
+
+.. py:function:: get_enumerated_rev_map_from_indices(indices)
+
+   Create a reverse mapping from a list of indices.
+
+   Given a list of indices, this function creates a dictionary that maps each index to its position in the list.
+
+   :param indices: A list of indices to be mapped.
+   :type indices: list
+
+   :returns: A dictionary where keys are indices from the input list and values are their corresponding positions.
+   :rtype: dict
+
+
+.. py:function:: get_classical_register_bitstrings(qubit_indices: List[int], quantum_register_size: Optional[int] = None, rev: Optional[bool] = False)
+
+   Generate register names for specified qubits. Non specified qubits are excluded from the register names (they will be always 0 in bitstring).
+   Qubits indices are indexed from right if rev is False.
+
+   This function creates names for qubit registers based on the qubits involved and the desired order. It excludes
+   qubits not in use and can reverse the order of the names.
+
+   :param qubit_indices: List of qubits to be included in the register names.
+   :type qubit_indices: list
+   :param quantum_register_size: The total number of qubits in the register.
+   :type quantum_register_size: int
+   :param rev: If True, the order of qubits in the register names is reversed (default is False).
+   :type rev: bool, optional
+
+   :returns: A list of register names as strings, taking into account the specified qubits and order.
+   :rtype: list
+
+
+.. py:function:: get_CBT_norm(J, n, m, rev=False)
+
+
+.. py:function:: get_choi_from_POVM(POVM)
+
+
+.. py:function:: get_POVM_from_choi(povm_choi, number_of_outcomes, dimension)
+
+
+.. py:function:: check_if_povm(povm)
+
+
+.. py:function:: get_statistical_error_bound(number_of_measurement_outcomes: int, number_of_samples: int, statistical_error_mistake_probability: float, number_of_marginals=1) -> float
+
+   Description:
+       Get upper bound for tv-distance of estimated probability distribution from ideal one. See Ref. [3] for
+       details.
+
+   :param : param number_of_measurement_outcomes: Number of outcomes in probabiility distribution (2^(number_of_qubits) for standard measurement)
+   :param : param number_of_samples: Number of samples for experiment for which statistical error bound is being calculated.
+   :param : param statistical_error_mistake_probability: Parameter describing infidelity of returned error bound.
+
+   :returns: Statistical error upper bound in total variance distance.
+
+
+.. py:function:: get_coherent_error_bound(povm: numpy.ndarray) -> float
+
+   Description:
+       Get distance between diagonal part of the POVM and the whole POVM. This quantity might be interpreted as a
+       measure of "non-classicality" or coherence present in measurement noise. See Ref. [1] for details.
+
+   :param : param povm: POVM for which non-classicality will be determined.
+
+   :returns: Coherent error bound for given POVM.
+
+
+.. py:function:: get_correction_error_bound_from_data_and_statistical_error(povm: List[numpy.ndarray], correction_matrix: numpy.ndarray, statistical_error_bound: float, alpha: float = 0) -> float
+
+   Description:
+       Get upper bound for the correction error using classical error-mitigation via "correction matrix".
+
+       Error arises from three factors - non-classical part of the noise, statistical fluctuations and eventual
+       unphysical "first-guess" (quasi-)probability vector after the correction.
+
+       This upper bound tells us quantitatively what is the maximal TV-distance of the corrected probability vector
+       from the ideal probability distribution that one would have obtained if there were no noise and the
+       infinite-size statistics.
+
+       See Ref. [1] for details.
+
+   :param : param povm: POVM representing measurement device.
+   :param : param correction_matrix: Correction matrix obtained via out Error Mitigator object.
+   :param : param statistical_error_bound: Statistical error bound (epsilon in paper).
+   :param confidence with which we state the upper bound. See Ref. [3] for details.:
+   :param : param alpha: distance between eventual unphysical "first-guess" quasiprobability vector and the closest
+   :param physical one. default is 0 (which corresponds to situation in which corrected vector was proper probability:
+   :param vector).:
+
+   :returns: Upper bound for correction error.
+
+
+.. py:function:: get_correction_error_bound_from_data(povm: List[numpy.ndarray], correction_matrix: numpy.ndarray, number_of_samples: int, error_probability: float, alpha: float = 0) -> float
+
+   Description:
+       Get upper bound for the correction error using classical error-mitigation via "correction matrix".
+
+       Error arises from three factors - non-classical part of the noise, statistical fluctuations and eventual
+       unphysical "first-guess" (quasi-)probability vector after the correction.
+
+       This upper bound tells us quantitatively what is the maximal TV-distance of the corrected probability vector
+       from the ideal probability distribution that one would have obtained if there were no noise and the
+       infinite-size statistics.
+
+       See Ref. [0] for details.
+
+   :param : param povm: POVM representing measurement device.
+   :param : param correction_matrix: Correction matrix obtained via out Error Mitigator object.
+   :param : param number_of_samples: number of samples (in qiskit language number of "shots").
+   :param : param error_probability: probability with which statistical upper bound is not correct. In other word, 1-mu is
+   :param confidence with which we state the upper bound. See Ref. [3] for details.:
+   :param : param alpha: distance between eventual unphysical "first-guess" quasiprobability vector and the closest
+   :param physical one. default is 0 (which corresponds to situation in which corrected vector was proper probability:
+   :param vector).:
+
+   :returns: Upper bound for correction error.
+
+
+.. py:function:: get_correction_error_bound_from_parameters(norm_of_correction_matrix: float, statistical_error_bound: float, coherent_error_bound: float, alpha: float = 0) -> float
+
+   Description:
+       See description of function "get_correction_error_bound_from_data". This function can be used if one has the
+       proper parameters already calculated and wishes to not repeat it (for example, in case of calculating something
+       in the loop).
+
+   :param : param norm_of_correction_matrix : 1->1 norm of correction matrix (it is not trace norm!), see Ref. [0],
+   :param or definition of np.linalg.norm:
+   :type or definition of np.linalg.norm: X,ord=1
+   :param : param statistical_error_bound: upper bound for statistical errors. Can be calculated using function
+   :param get_statistical_error_bound.:
+   :param : param coherent_error_bound: magnitude of coherent part of the noise. Can be calculated using function
+   :param get_coherent_error_bound.:
+   :param : param alpha: distance between eventual unphysical "first-guess" quasi-probability vector and the closest
+   :param physical one. default is 0 (which corresponds to situation in which corrected vector was proper probability:
+   :param vector):
+
+   :returns: Upper bound for correction error.
+
+
+.. py:function:: counts_dict_to_frequencies_vector(count_dict: dict, reverse_order=False) -> list
+
+   Description:
+       Generates and returns vector of frequencies basing on given counts dict. Mostly used with qiskit data.
+   :param count_dict: Counts dict. Possibly from qiskit job.
+   :return frequencies: Frequencies list for possible states in ascending order.
+
+
+.. py:function:: get_possible_n_qubit_outcomes(n: int) -> list
+
+   Description:
+       For given number of qubits <n> generates a list of possible outcome states (as strings) and returns them in
+       ascending order. All states len is number_of_qubits.
+   :param n: Number of qubits.
+   :return: List of possible outcomes as strings.
+
+
+.. py:function:: get_correction_matrix_from_povm(povm)
+
+
+.. py:function:: get_averaged_lambda(big_lambda, bits_of_interest)
+
+
+.. py:data:: __worst_case_distance_names__
+   :value: ['operational', 'worst', 'worst_case', 'worst-case', 'wc']
+
+   
+
+.. py:data:: __average_case_distance_names__
+   :value: ['average', 'average_case', 'average-case', 'ac']
+
+   
+
+.. py:function:: operational_distance_POVMs(POVM1, POVM2=None, method='direct', classical=False)
+
+
+.. py:function:: average_distance_POVMs(POVM1, POVM2=None, classical=False)
+
+   Description:
+        Get average (over all quantum states) operational distance between two povms
+        COMMENT: Assuming that both POVMs have the same number of outcomes
+   Parameter:
+       :param POVM1: list of arrays representing effects of POVM
+       :param POVM2: list of arrays representing effects of POVM, if None assuming it's computational basis
+   :returns: average (over all quantum states) operational distance between two povms
+
+
+.. py:function:: calculate_distance_between_POVMs(POVM_1, POVM_2, distance_type_tuple=('average_case', 'classical'))
+
+
+.. py:function:: __solve_subproblem_average_case(povm_2q_input, signs_bitstring, target_qubit)
+
+
+.. py:function:: calculate_correlations_coefficients_average_case(povm_2q)
+
+
+.. py:function:: _solve_max_dop_problem_for_fixed_input_state(input_state, povm_2q, sign)
+
+
+.. py:function:: _cost_function_difference_dac(parameters_difference, Ms_list)
+
+
+.. py:function:: _cost_function_difference_dwc(parameters_difference, Ms_list)
+
+
+.. py:function:: direct_optimization_difference(povm2q, target_qubit, distance_type, printing=False)
+
+
+.. py:function:: _optimization_function_dwc(parameters_state, povm_2q, sign)
+
+
+.. py:function:: _find_maximal_dop_fixed_sign(povm2q, target_qubit, sign, printing=False)
+
+
+.. py:function:: find_maximal_dop(povm2q, target_qubit)
+
+
+.. py:function:: get_reduced_noise_matrix_2q(stochastic_map2q, target_qubit, spectator_state)
+
+
+.. py:function:: get_correlation_coefficient_classical(stochastic_map_2q_or_povm, target_qubit, distance_type)
+
+
+.. py:function:: find_correlations_coefficients(povm_2q, distance_type, classical=False, direct_optimization=True)
+
+
+.. py:function:: __swap_2q_povm(povm_2q_input)
+
+
+.. py:function:: __swap_or_not(povm_2q_input, target_qubit=0)
+
+
+.. py:function:: __construct_local_difference(parameters)
+
+
+.. py:function:: compute_subsets_POVMs_averaged(results_dictionary: Dict, marginals_dictionary: Dict, subsets_of_qubits: List[List[int]], averaged_marginals_dictionary=None, estimation_method: str = 'pls', show_progress_bar: Optional[bool] = True)
+
+
+.. py:function:: compute_subset_POVM(results_dictionary: Dict, subset: Tuple, marginals_dictionary: Dict, averaged_marginals_dictionary=None, estimation_method: str = 'pls', show_progress_bar: Optional[bool] = True)
+
+
+.. py:function:: compute_POVM_from_marginals(marginals_dictionary: Dict[str, numpy.ndarray], qubit_indices: List[int], estimation_method='pls')
+
+
+.. py:function:: compute_noise_matrices_from_POVMs(subsets_of_qubits: List[List[int]], POVM_dictionary: Dict, show_progress_bar: Optional[bool] = True) -> Dict
+
+

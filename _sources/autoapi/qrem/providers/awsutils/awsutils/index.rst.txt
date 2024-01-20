@@ -1,0 +1,48 @@
+:py:mod:`qrem.providers.awsutils.awsutils`
+==========================================
+
+.. py:module:: qrem.providers.awsutils.awsutils
+
+.. autoapi-nested-parse::
+
+   qrem.providers.awsutils module contains helper functions for translating and preparation of circuits for running a characterisation/mitigation/benchmarking experiment
+   on AWS Braket Quantum machines .
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.awsutils.awsutils.download_results
+   qrem.providers.awsutils.awsutils.aws_to_qrem_restults
+
+
+
+.. py:function:: download_results(task_ARNs: List[str], backup: Union[bool, str, pathlib.Path] = False, from_tasks_backup: Union[bool, str, pathlib.Path] = False, overwrite: bool = False)
+
+   Executes circuits prepared in QISKIT format (qiskit_circuits) on the backend provided by a qrem.providers.ibm.connection(...) function.
+
+   :param provider:
+   :type provider: IBMProvider
+   :param job_IDs:
+   :type job_IDs: List[str]
+   :param backup: Should original results be backed up somewhere (mostly for debugging)
+   :type backup: Union[bool,str,Path]=False
+   :param overwrite: Should original results overwrite any existing file
+   :type overwrite: bool
+
+   :returns: **job_id_list** -- Lsit of submitted job IDs
+   :rtype: List[str]
+
+
+.. py:function:: aws_to_qrem_restults(qrem_circuits: qrem.qtypes.CircuitCollection, original_results: List[Dict[str, int]], save_path: Union[bool, str, pathlib.Path] = False, overwrite: bool = False, format: str = 'pkl') -> Dict[str, Tuple[numpy.typing.NDArray[numpy.bool_], numpy.typing.NDArray[numpy.int_]]]
+
+   Loads results from AWS backend frotmat into ExperimentResults object based on CircuitCollection
+
+

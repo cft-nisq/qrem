@@ -1,0 +1,50 @@
+:py:mod:`qrem.providers.simutils.simutils`
+==========================================
+
+.. py:module:: qrem.providers.simutils.simutils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.simutils.simutils.custom_model_creator
+   qrem.providers.simutils.simutils.noise_model_from_file
+   qrem.providers.simutils.simutils.model_specification_from_string
+
+
+
+.. py:function:: custom_model_creator(number_of_qubits: int, model_specification: list[list[int]], directory_to_save: str, name_id: str = '', save_model: bool = True)
+
+   Function generates a random noise model for a given number of qubits and specified division into clusters, optionally saves a generated model
+   to a file for future use
+
+   :param number_of_qubits:
+   :type number_of_qubits: int
+   :param model_specification: list of pairs [[size1, number_of_clusters1],[size2,number_of_clusters_2]...] such that the total of
+                               size_i*number_of_clusters_i matches the total number of qubits
+   :type model_specification: list
+   :param directory_to_save: path to save the noise model
+   :type directory_to_save: str
+   :param name_id: customary name tag for the file with the noise model
+   :type name_id: str
+   :param save_model: if True the model is saved to a file
+   :type save_model: bool
+
+   :returns: **model**
+   :rtype: Type[CNModelData]
+
+   :raises Value Error if the model specification does not match the qubit number:
+
+
+.. py:function:: noise_model_from_file(data_directory: str, file_name: str)
+
+
+.. py:function:: model_specification_from_string(model_spec: str)
+
+

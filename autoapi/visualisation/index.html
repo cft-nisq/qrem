@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>visualisation &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="article_plots_functions" href="../article_plots_functions/index.html" />
+    <link rel="prev" title="device_constants" href="../device_constants/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qrem/index.html">qrem package API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">full code API (+deprecated)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../qrem/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qiskit_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit_utilities</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../QDT_qiskit/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">QDT_qiskit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pyquil_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyquil_utilities</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../QDT_pyquill/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">QDT_pyquill</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions_aws_rigetti/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">functions_aws_rigetti</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting_constants/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plotting_constants</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmark_plots_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">benchmark_plots_functions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device_constants/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">device_constants</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../article_plots_functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">article_plots_functions</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Reference</a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autoapi/visualisation/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-visualisation">
+<span id="visualisation"></span><h1><a class="reference internal" href="#module-visualisation" title="visualisation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualisation</span></code></a><a class="headerlink" href="#module-visualisation" title="Link to this heading"></a></h1>
+<p>Classes for visualisation of detector tomography results.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#visualisation.DrawOnLayout" title="visualisation.DrawOnLayout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DrawOnLayout</span></code></a></p></td>
+<td><p>Class inheriting from manim class Scene (for details on this convention see manim documentation).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#visualisation.DrawClusters" title="visualisation.DrawClusters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DrawClusters</span></code></a></p></td>
+<td><p>Class inheriting from manim class Scene (for details on this convention see manim documentation).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#visualisation.ResultsForPlotting" title="visualisation.ResultsForPlotting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ResultsForPlotting</span></code></a></p></td>
+<td><p>Class whose attributes contain experimental tomography data necessary for plotting. Its method prepare the data in</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="visualisation.DrawOnLayout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">visualisation.</span></span><span class="sig-name descname"><span class="pre">DrawOnLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotting_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.DrawOnLayout" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">manim.Scene</span></code></p>
+<p>Class inheriting from manim class Scene (for details on this convention see manim documentation).
+Images are rendered when this class’ instance is created in the method ‘draw_on_layout’
+of the class ResultsForPlotting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>(</strong><strong>dict</strong><strong>)</strong> (<em>plotting_data</em>) – <p>dictionary with data about the device and processed experimental results, necessary for manim graph
+(for details see manim graph documentation), with values:</p>
+<blockquote>
+<div><p>vertices (list[int]) : list of qubits in device, from 0 to #qubits - 1.
+edges (list[tuple[int, int]]) : list of edges (i, j) to be plotted, where i and j are in vertices.
+labels (bool|dict): dictionary whose keys are the vertices, and whose values are the corresponding</p>
+<blockquote>
+<div><p>vertex labels (rendered via, e.g., Text or manim Tex). Alternatively can be bool -
+if True, vertices are labelled with the integers from the list ‘vertices’.</p>
+</div></blockquote>
+<p>vertex_config (dict): dictionary with keyword arguments which apply to manim mobject used for vertices.
+edge_config (dict): dictionary with keyword arguments which apply to manim mobject used for edges.
+layout (dict[list]): dictionary where keys are vertices and values are list of coordinates [x, y, z].
+(Optional) max_for_legend (float): maximal value to be displayed on the legend bar;</p>
+<blockquote>
+<div><p>if not in keys, no legend is displayed.</p>
+</div></blockquote>
+</div></blockquote>
+</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.DrawOnLayout.construct">
+<span class="sig-name descname"><span class="pre">construct</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.DrawOnLayout.construct" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="visualisation.DrawClusters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">visualisation.</span></span><span class="sig-name descname"><span class="pre">DrawClusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusters_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.DrawClusters" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">manim.Scene</span></code></p>
+<p>Class inheriting from manim class Scene (for details on this convention see manim documentation).
+Images are rendered when this class’ instance is created in the method ‘draw_clusters’
+of the class ResultsForPlotting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>(</strong><strong>list</strong><strong>(</strong><strong>tuples</strong><strong>[</strong><strong>ints</strong><strong>]</strong><strong>)</strong><strong>)</strong> (<em>clusters_list</em>) – list of tuples, each containing indices of qubits assigned to one cluster</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.DrawClusters.construct">
+<span class="sig-name descname"><span class="pre">construct</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.DrawClusters.construct" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">visualisation.</span></span><span class="sig-name descname"><span class="pre">ResultsForPlotting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_data_dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_data_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting" title="Link to this definition"></a></dt>
+<dd><p>Class whose attributes contain experimental tomography data necessary for plotting. Its method prepare the data in
+a format native to manim and create an instance of its class, which results in an image being rendered and saved.
+TODO: add remark about indexing over all vs used qubits</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.__identify_correlations_above_threshold">
+<span class="sig-name descname"><span class="pre">__identify_correlations_above_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.__identify_correlations_above_threshold" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.__prepare_basic_edge_config">
+<span class="sig-name descname"><span class="pre">__prepare_basic_edge_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.__prepare_basic_edge_config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.__prepare_basic_vertex_config">
+<span class="sig-name descname"><span class="pre">__prepare_basic_vertex_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.__prepare_basic_vertex_config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.__prepare_edge_config_for_correlations_above_threshold">
+<span class="sig-name descname"><span class="pre">__prepare_edge_config_for_correlations_above_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations_threshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.__prepare_edge_config_for_correlations_above_threshold" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.__prepare_vertex_config_for_correlations_above_threshold">
+<span class="sig-name descname"><span class="pre">__prepare_vertex_config_for_correlations_above_threshold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.__prepare_vertex_config_for_correlations_above_threshold" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.__prepare_data_for_draw_basic_layout">
+<span class="sig-name descname"><span class="pre">__prepare_data_for_draw_basic_layout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.__prepare_data_for_draw_basic_layout" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.__prepare_data_for_draw_correlations_on_layout">
+<span class="sig-name descname"><span class="pre">__prepare_data_for_draw_correlations_on_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.__prepare_data_for_draw_correlations_on_layout" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.set_clusters_list">
+<span class="sig-name descname"><span class="pre">set_clusters_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clusters_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.set_clusters_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.draw_on_layout">
+<span class="sig-name descname"><span class="pre">draw_on_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">what_to_draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'basic_layout'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'high_quality'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correlations_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CRITICAL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.draw_on_layout" title="Link to this definition"></a></dt>
+<dd><p>Method called by user to plot the experimental data on the device’s layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>verbosity</em>) – <p>‘basic_layout’ : qubits with labels and edges in layout are plotted.
+‘correlations_above_threshold’ : on basic layout also edges with correlations</p>
+<blockquote>
+<div><p>coefficient above a given threshold are plotted and
+colored, with a color legend.</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – [fourk_quality|production_quality|high_quality|medium_quality|low_quality|example_quality].</p></li>
+<li><p><strong>(</strong><strong>bool</strong><strong>)</strong> (<em>preview</em>) – Regardless of this parameter’s value, the image is saved.</p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>float</strong><strong>)</strong> (<em>correlations_threshold</em>) – in range [0, 1].</p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.draw_histogram">
+<span class="sig-name descname"><span class="pre">draw_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'histogram'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Correlations</span> <span class="pre">histogram'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Distance</span> <span class="pre">name'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.draw_histogram" title="Link to this definition"></a></dt>
+<dd><p>Method called by user to plot correlation coefficients on a histogram.
+Saves the plot with ‘file_name’ in ‘directory’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.draw_heatmap">
+<span class="sig-name descname"><span class="pre">draw_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'heatmap'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Correlation</span> <span class="pre">coefficients'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.draw_heatmap" title="Link to this definition"></a></dt>
+<dd><p>Method called by user to plot correlation coefficients on a heatmap.
+Saves the plot with ‘file_name’ in ‘directory’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="visualisation.ResultsForPlotting.draw_clusters">
+<span class="sig-name descname"><span class="pre">draw_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clusters'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'high_quality'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CRITICAL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#visualisation.ResultsForPlotting.draw_clusters" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Method called by user to plot the clusters in abstract form.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>verbosity</em>) – [fourk_quality|production_quality|high_quality|medium_quality|low_quality|example_quality].</p></li>
+<li><p><strong>(</strong><strong>bool</strong><strong>)</strong> (<em>preview</em>) – Regardless of this parameter’s value, the image is saved.</p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../device_constants/index.html" class="btn btn-neutral float-left" title="device_constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../article_plots_functions/index.html" class="btn btn-neutral float-right" title="article_plots_functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

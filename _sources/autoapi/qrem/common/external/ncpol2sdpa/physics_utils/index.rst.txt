@@ -1,0 +1,235 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.physics_utils`
+=======================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.physics_utils
+
+.. autoapi-nested-parse::
+
+   The module contains helper functions for physics applications.
+
+   Created on Fri May 16 14:27:47 2014
+
+   @author: Peter Wittek
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.physics_utils.Probability
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.physics_utils.get_neighbors
+   qrem.common.external.ncpol2sdpa.physics_utils.get_next_neighbors
+   qrem.common.external.ncpol2sdpa.physics_utils.bosonic_constraints
+   qrem.common.external.ncpol2sdpa.physics_utils.fermionic_constraints
+   qrem.common.external.ncpol2sdpa.physics_utils.pauli_constraints
+   qrem.common.external.ncpol2sdpa.physics_utils.generate_measurements
+   qrem.common.external.ncpol2sdpa.physics_utils.projective_measurement_constraints
+   qrem.common.external.ncpol2sdpa.physics_utils.define_objective_with_I
+   qrem.common.external.ncpol2sdpa.physics_utils.correlator
+   qrem.common.external.ncpol2sdpa.physics_utils.maximum_violation
+
+
+
+.. py:function:: get_neighbors(index, lattice_length, width=0, periodic=False)
+
+   Get the forward neighbors of a site in a lattice.
+
+   :param index: Linear index of operator.
+   :type index: int.
+   :param lattice_length: The size of the 2D lattice in either dimension
+   :type lattice_length: int.
+   :param width: Optional parameter to define width.
+   :type width: int.
+   :param periodic: Optional parameter to indicate periodic boundary
+                    conditions.
+   :type periodic: bool
+
+   :returns: list of int -- the neighbors in linear index.
+
+
+.. py:function:: get_next_neighbors(indices, lattice_length, width=0, distance=1, periodic=False)
+
+   Get the forward neighbors at a given distance of a site or set of sites
+   in a lattice.
+
+   :param index: Linear index of operator.
+   :type index: int.
+   :param lattice_length: The size of the 2D lattice in either dimension
+   :type lattice_length: int.
+   :param width: Optional parameter to define width.
+   :type width: int.
+   :param distance: Optional parameter to define distance.
+   :type width: int.
+   :param periodic: Optional parameter to indicate periodic boundary
+                    conditions.
+   :type periodic: bool
+
+   :returns: list of int -- the neighbors at given distance in linear index.
+
+
+.. py:function:: bosonic_constraints(a)
+
+   Return  a set of constraints that define fermionic ladder operators.
+
+   :param a: The non-Hermitian variables.
+   :type a: list of :class:`sympy.physics.quantum.operator.Operator`.
+   :returns: a dict of substitutions.
+
+
+.. py:function:: fermionic_constraints(a)
+
+   Return  a set of constraints that define fermionic ladder operators.
+
+   :param a: The non-Hermitian variables.
+   :type a: list of :class:`sympy.physics.quantum.operator.Operator`.
+   :returns: a dict of substitutions.
+
+
+.. py:function:: pauli_constraints(X, Y, Z)
+
+   Return  a set of constraints that define Pauli spin operators.
+
+   :param X: List of Pauli X operator on sites.
+   :type X: list of :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param Y: List of Pauli Y operator on sites.
+   :type Y: list of :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param Z: List of Pauli Z operator on sites.
+   :type Z: list of :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+   :returns: tuple of substitutions and equalities.
+
+
+.. py:function:: generate_measurements(party, label)
+
+   Generate variables that behave like measurements.
+
+   :param party: The list of number of measurement outputs a party has.
+   :type party: list of int.
+   :param label: The label to be given to the symbolic variables.
+   :type label: str.
+
+   :returns: list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+
+.. py:function:: projective_measurement_constraints(*parties)
+
+   Return a set of constraints that define projective measurements.
+
+   :param parties: Measurements of different parties.
+   :type A: list or tuple of list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+   :returns: substitutions containing idempotency, orthogonality and
+             commutation relations.
+
+
+.. py:function:: define_objective_with_I(I, *args)
+
+   Define a polynomial using measurements and an I matrix describing a Bell
+   inequality.
+
+   :param I: The I matrix of a Bell inequality in the Collins-Gisin notation.
+   :type I: list of list of int.
+   :param args: Either the measurements of Alice and Bob or a `Probability`
+                class describing their measurement operators.
+   :type A: tuple of list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator` or
+            :class:`ncpol2sdpa.Probability`
+
+   :returns: :class:`sympy.core.expr.Expr` -- the objective function to be
+             solved as a minimization problem to find the maximum quantum
+             violation. Note that the sign is flipped compared to the Bell
+             inequality.
+
+
+.. py:function:: correlator(A, B)
+
+   Correlators between the probabilities of two parties.
+
+   :param A: Measurements of Alice.
+   :type A: list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+   :param B: Measurements of Bob.
+   :type B: list of list of
+            :class:`sympy.physics.quantum.operator.HermitianOperator`.
+
+   :returns: list of correlators.
+
+
+.. py:function:: maximum_violation(A_configuration, B_configuration, I, level, extra=None)
+
+   Get the maximum violation of a two-party Bell inequality.
+
+   :param A_configuration: Measurement settings of Alice.
+   :type A_configuration: list of int.
+   :param B_configuration: Measurement settings of Bob.
+   :type B_configuration: list of int.
+   :param I: The I matrix of a Bell inequality in the Collins-Gisin notation.
+   :type I: list of list of int.
+   :param level: Level of relaxation.
+   :type level: int.
+
+   :returns: tuple of primal and dual solutions of the SDP relaxation.
+
+
+.. py:class:: Probability(*args, **kwargs)
+
+
+   Bases: :py:obj:`object`
+
+   .. py:method:: get_all_operators()
+
+      Return all operators across all parties and measurements to supply
+      them to the `ncpol2sdpa.SdpRelaxation` class.
+
+
+
+   .. py:method:: _monomial_generator(monomials, label_indices)
+
+
+   .. py:method:: get_extra_monomials(*args)
+
+
+   .. py:method:: _convert_marginal_index(marginal)
+
+
+   .. py:method:: __call__(output_, input_, marginal=None)
+
+      Obtain your probabilities in the p(ab...|xy...) notation.
+
+      :param output_: Conditional output as [a, b, ...]
+      :type output_: list of ints.
+      :param input_: The input to condition on as [x, y, ...]
+      :type input_: list of ints.
+      :param marginal: Optional parameter. If it is a marginal, then you can
+                       define which party or parties it belongs to.
+      :type marginal: list of str.
+      :returns: polynomial of `sympy.physics.quantum.HermitianOperator`.
+
+      :Example:
+
+      For the CHSH scenario, to get p(10|01), write
+
+          P([1,0], [0,1])
+
+      To get the marginal p_A(0|1), write
+
+          P([0], [1], ['A'])
+
+
+
+

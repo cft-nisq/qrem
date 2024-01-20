@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.convert &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="qrem.common.io" href="../io/index.html" />
+    <link rel="prev" title="qrem.common.constants" href="../constants/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.convert</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/qrem/common/convert/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.convert">
+<span id="qrem-common-convert"></span><h1><a class="reference internal" href="#module-qrem.common.convert" title="qrem.common.convert"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.convert</span></code></a><a class="headerlink" href="#module-qrem.common.convert" title="Link to this heading"></a></h1>
+<section id="convert-module-for-qrem">
+<p>qrem.common.convert module contains helper functions, that allow to convert between various formats used to describe circuit labels,
+bitstrings, quantum registers etc.</p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.bitstring_to_integer" title="qrem.common.convert.bitstring_to_integer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bitstring_to_integer</span></code></a>(→ int)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.integer_to_bitstring" title="qrem.common.convert.integer_to_bitstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">integer_to_bitstring</span></code></a>(→ str)</p></td>
+<td><p>Return binary representation of an integer in a string form</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.bitstring_to_ndarray" title="qrem.common.convert.bitstring_to_ndarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bitstring_to_ndarray</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Return numpy array  representation of a bitstring</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.ndarray_to_bitstring" title="qrem.common.convert.ndarray_to_bitstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray_to_bitstring</span></code></a>(→ str)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.integer_to_ditstring" title="qrem.common.convert.integer_to_ditstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">integer_to_ditstring</span></code></a>(integer, base, number_of_dits)</p></td>
+<td><p>Return nnary representation of an integer in a string form</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.negate_bitstring" title="qrem.common.convert.negate_bitstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">negate_bitstring</span></code></a>(bitstring)</p></td>
+<td><p>This function creates a negation of a bitstring (assuming it is in string format)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.sort_bitstring" title="qrem.common.convert.sort_bitstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_bitstring</span></code></a>(→ str)</p></td>
+<td><p>Sort bits in string according to new_order</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.sort_bitarray" title="qrem.common.convert.sort_bitarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort_bitarray</span></code></a>(→ numpy.ndarray)</p></td>
+<td><p>Sort bits in string according to new_order</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.get_ditstrings_register" title="qrem.common.convert.get_ditstrings_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ditstrings_register</span></code></a>(base, number_of_dits)</p></td>
+<td><p>Return a list of natural numbers fitting in number_of_dits with base dit-representation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.keystring_to_qubit_indices" title="qrem.common.convert.keystring_to_qubit_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keystring_to_qubit_indices</span></code></a>(→ List[int])</p></td>
+<td><p>Return list of qubit indices from the string of the form &quot;q0q1q22q31&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.qubit_indices_to_keystring" title="qrem.common.convert.qubit_indices_to_keystring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qubit_indices_to_keystring</span></code></a>(→ str)</p></td>
+<td><p>from subset of qubit indices get the string that labels this subset</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.qubits_keystring_to_tuple" title="qrem.common.convert.qubits_keystring_to_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qubits_keystring_to_tuple</span></code></a>(qubits_string)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="qrem.common.convert.change_state_dependent_noise_matrix_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_state_dependent_noise_matrix_format</span></code></a>(→ Dict)</p></td>
+<td><p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deprecated in QREM 0.1.5</p>
+</div>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id1" title="qrem.common.convert.change_state_dependent_noise_matrices_dictionary_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_state_dependent_noise_matrices_dictionary_format</span></code></a>(→ Dict)</p></td>
+<td><p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deprecated in QREM 0.1.5</p>
+</div>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.change_format_of_cn_dictionary" title="qrem.common.convert.change_format_of_cn_dictionary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_format_of_cn_dictionary</span></code></a>(→ Dict)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.divide_data_into_characterization_benchmark_coherence_witness_data" title="qrem.common.convert.divide_data_into_characterization_benchmark_coherence_witness_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">divide_data_into_characterization_benchmark_coherence_witness_data</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.reverse_bitstrings_in_counts_dictionary" title="qrem.common.convert.reverse_bitstrings_in_counts_dictionary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse_bitstrings_in_counts_dictionary</span></code></a>(counts_dictionary)</p></td>
+<td><p>Used only by convert_counts_overlapping_tomography()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.merge_multiple_counts_dictionaries" title="qrem.common.convert.merge_multiple_counts_dictionaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_multiple_counts_dictionaries</span></code></a>(→ Dict[str, int])</p></td>
+<td><p>Merge multiple counts dictionaries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.convert_counts_overlapping_tomography" title="qrem.common.convert.convert_counts_overlapping_tomography"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_counts_overlapping_tomography</span></code></a>(...[, ...])</p></td>
+<td><p>This function converts unprocessed dictionary of experiment results, where multiple keys can describe identical</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id0" title="qrem.common.convert.change_state_dependent_noise_matrix_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_state_dependent_noise_matrix_format</span></code></a>(→ Dict)</p></td>
+<td><p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deprecated in QREM 0.1.5</p>
+</div>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id1" title="qrem.common.convert.change_state_dependent_noise_matrices_dictionary_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_state_dependent_noise_matrices_dictionary_format</span></code></a>(→ Dict)</p></td>
+<td><p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deprecated in QREM 0.1.5</p>
+</div>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.reorder_classical_register" title="qrem.common.convert.reorder_classical_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reorder_classical_register</span></code></a>(→ List)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.reorder_probabilities" title="qrem.common.convert.reorder_probabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reorder_probabilities</span></code></a>(probabilities, new_order)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.convert.convert_results_dictionary_to_new_format" title="qrem.common.convert.convert_results_dictionary_to_new_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_results_dictionary_to_new_format</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.convert.a" title="qrem.common.convert.a"><code class="xref py py-obj docutils literal notranslate"><span class="pre">a</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.bitstring_to_integer">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">bitstring_to_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitstring</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#qrem.common.convert.bitstring_to_integer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.integer_to_bitstring">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">integer_to_bitstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">integer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_bits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qrem.common.convert.integer_to_bitstring" title="Link to this definition"></a></dt>
+<dd><p>Return binary representation of an integer in a string form</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>integer</strong> (<em>int</em>) – input integer which bytes will be interpreted as bitstring</p></li>
+<li><p><strong>number_of_bits</strong> (<em>int</em>) – Number of bits.It  can be greater than minimal needed to represent integer (but if the input number of bits
+is smaller then the minimal one, the latter one will be executed )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.bitstring_to_ndarray">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">bitstring_to_ndarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitstring</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.convert.bitstring_to_ndarray" title="Link to this definition"></a></dt>
+<dd><p>Return numpy array  representation of a bitstring</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bitstring</strong> (<em>string</em>) – input bitstring</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em>) – The output array can be reversed in order. Default is False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.ndarray_to_bitstring">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">ndarray_to_bitstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitarray</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qrem.common.convert.ndarray_to_bitstring" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.integer_to_ditstring">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">integer_to_ditstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">integer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_dits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.integer_to_ditstring" title="Link to this definition"></a></dt>
+<dd><p>Return nnary representation of an integer in a string form
+based on
+<a class="reference external" href="https://stackoverflow.com/questions/2267362/how-to-convert-an-integer-to-a-string-in-any-base">https://stackoverflow.com/questions/2267362/how-to-convert-an-integer-to-a-string-in-any-base</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>integer</strong> (<em>int</em>) – input integer value</p></li>
+<li><p><strong>base</strong> (<em>int</em>) – base for the ditstring</p></li>
+<li><p><strong>number_of_dits</strong> (<em>int</em>) – Number of bits.It  can be greater than minimal needed to represent integer (but if the input number of bits
+is smaller then the minimal one, the latter one will be executed )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.negate_bitstring">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">negate_bitstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitstring</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.negate_bitstring" title="Link to this definition"></a></dt>
+<dd><p>This function creates a negation of a bitstring (assuming it is in string format)
+:param bitstring: input bitstring
+:type bitstring: int</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.sort_bitstring">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">sort_bitstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qrem.common.convert.sort_bitstring" title="Link to this definition"></a></dt>
+<dd><p>Sort bits in string according to new_order</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.sort_bitarray">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">sort_bitarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitarray</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#qrem.common.convert.sort_bitarray" title="Link to this definition"></a></dt>
+<dd><p>Sort bits in string according to new_order</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.get_ditstrings_register">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">get_ditstrings_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_dits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.get_ditstrings_register" title="Link to this definition"></a></dt>
+<dd><p>Return a list of natural numbers fitting in number_of_dits with base dit-representation</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="qrem.common.convert.a">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#qrem.common.convert.a" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.keystring_to_qubit_indices">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">keystring_to_qubit_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../qtypes/datastructure_base/index.html#qrem.qtypes.datastructure_base.DataStructureBase.None" title="qrem.qtypes.datastructure_base.DataStructureBase.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.convert.keystring_to_qubit_indices" title="Link to this definition"></a></dt>
+<dd><p>Return list of qubit indices from the string of the form “q0q1q22q31”
+:param qubits_string (string): string which has the form of “q” followed by qubit index
+:param (optional) with_q (Boolean): specify whether returned indices</p>
+<blockquote>
+<div><p>should be in form of string with letter</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of qubit indices:</p>
+</dd>
+</dl>
+<p>depending on value of parameter “with_q” the mapping will be one of the following:</p>
+<dl class="simple">
+<dt>if with_q:</dt><dd><p>‘q1q5q13’ -&gt; [‘q1’,’q5’,’q13’]</p>
+</dd>
+<dt>else:</dt><dd><p>‘q1q5q13’ -&gt; [1,5,13]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.qubit_indices_to_keystring">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">qubit_indices_to_keystring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#qrem.common.convert.qubit_indices_to_keystring" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>from subset of qubit indices get the string that labels this subset</dt><dd><p>using convention ‘q5q6q12…’ etc.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>list_of_qubits</strong> – labels of qubits</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>string label for qubits</p>
+<p>NOTE: this function is “inverse operation” to keystring_to_qubit_indices.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.qubits_keystring_to_tuple">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">qubits_keystring_to_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.qubits_keystring_to_tuple" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.change_state_dependent_noise_matrix_format">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">change_state_dependent_noise_matrix_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#qrem.common.convert.change_state_dependent_noise_matrix_format" title="Link to this definition"></a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deprecated in QREM 0.1.5
+Function transforming representation of noise matrices. Used to translate results obtained with QREM versions &lt; 0.1.5</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.change_state_dependent_noise_matrices_dictionary_format">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">change_state_dependent_noise_matrices_dictionary_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_matrices_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#qrem.common.convert.change_state_dependent_noise_matrices_dictionary_format" title="Link to this definition"></a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deprecated in QREM 0.1.5
+Function transforming representation of noise matrices. Used to translate results obtained with QREM versions &lt; 0.1.5</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.change_format_of_cn_dictionary">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">change_format_of_cn_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cn_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#qrem.common.convert.change_format_of_cn_dictionary" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.divide_data_into_characterization_benchmark_coherence_witness_data">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">divide_data_into_characterization_benchmark_coherence_witness_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">characterization_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../qtypes/characterization_data/index.html#qrem.qtypes.characterization_data.CharacterizationData" title="qrem.qtypes.characterization_data.CharacterizationData"><span class="pre">qrem.qtypes.characterization_data.CharacterizationData</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../qtypes/characterization_data/index.html#qrem.qtypes.characterization_data.CharacterizationData" title="qrem.qtypes.characterization_data.CharacterizationData"><span class="pre">qrem.qtypes.characterization_data.CharacterizationData</span></a></span></span><a class="headerlink" href="#qrem.common.convert.divide_data_into_characterization_benchmark_coherence_witness_data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.reverse_bitstrings_in_counts_dictionary">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">reverse_bitstrings_in_counts_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.reverse_bitstrings_in_counts_dictionary" title="Link to this definition"></a></dt>
+<dd><p>Used only by convert_counts_overlapping_tomography()</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.merge_multiple_counts_dictionaries">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">merge_multiple_counts_dictionaries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts_dictionaries_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#qrem.common.convert.merge_multiple_counts_dictionaries" title="Link to this definition"></a></dt>
+<dd><p>Merge multiple counts dictionaries.
+This is useful when you have results of multiple implementations of the same experiment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>counts_dictionaries_list</strong> – list of results of counts dictionaries of the form:
+{‘bitstring”:number of measurements}</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.convert_counts_overlapping_tomography">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">convert_counts_overlapping_tomography</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse_bitstrings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_send_procedure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.convert_counts_overlapping_tomography" title="Link to this definition"></a></dt>
+<dd><p>This function converts unprocessed dictionary of experiment results, where multiple keys can describe identical
+circuits (eg. “DDOT-010no0”, “DDOT-010no1”, see description of string_cutter below), to a dictionary where a key
+uniquely corresponds to a circuit and value is the combined counts from all such circuits in the unprocessed
+dictionary. In resulting dictionary outcome bit strings and circuit names are in big-endian order.</p>
+<dl class="simple">
+<dt>param counts_dictionary: dictionary where the key is circuit name (e.g. “DDOT-010no3”, described in inner</dt><dd><p>string_cutter function below) and value is dictionary of counts, where the key is a string
+denoting classical outcome and the value the number of its occurrences in given experiment.</p>
+</dd>
+<dt>param experiment_name: string denoting the type of experiment whose results counts_dictionary contains, e.g. ‘QDOT’;</dt><dd><p>the valid names are specified in SeparableCircuitsCreator.__valid_experiments_names__</p>
+</dd>
+<dt>param reverse_bitstrings: bool; if False, the bitstring denoting classical outcome in counts_dictionary will be</dt><dd><p>interpreted as big-endian (qubit 0 on the left); if True it will be interpreted as
+little-endian (qubit 0 on the right) and will be reversed to conform to QREM convention.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>big_counts_dictionary: dictionary where key is string describing circuit (e.g. ‘010’ means gates:
+iden, X, iden on qubits 0, 1, 2 respectively) and value is
+dictionary where key is bitstring describing outcome (e.g. ‘100’) and value is
+number of occurences of that outcome in the experiment; these strings are big-endian.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">change_state_dependent_noise_matrix_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Function transforming old to new format of state dependent matrix</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">change_state_dependent_noise_matrices_dictionary_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_matrices_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Function transforming old to new format of state dependent matrix</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.reorder_classical_register">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">reorder_classical_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#qrem.common.convert.reorder_classical_register" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.reorder_probabilities">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">reorder_probabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probabilities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.reorder_probabilities" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.convert.convert_results_dictionary_to_new_format">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.convert.</span></span><span class="sig-name descname"><span class="pre">convert_results_dictionary_to_new_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noisy_results_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.convert.convert_results_dictionary_to_new_format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../constants/index.html" class="btn btn-neutral float-left" title="qrem.common.constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../io/index.html" class="btn btn-neutral float-right" title="qrem.common.io" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

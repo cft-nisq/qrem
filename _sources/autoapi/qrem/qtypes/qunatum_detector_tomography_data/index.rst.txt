@@ -1,0 +1,84 @@
+:py:mod:`qrem.qtypes.qunatum_detector_tomography_data`
+======================================================
+
+.. py:module:: qrem.qtypes.qunatum_detector_tomography_data
+
+.. autoapi-nested-parse::
+
+   @authors: Filip Maciejewski, Oskar Słowik, Tomek Rybotycki
+   @contact: filip.b.maciejewski@gmail.com
+
+   REFERENCES:
+   [0] Filip B. Maciejewski, Zoltán Zimborás, Michał Oszmaniec,
+   "Mitigation of readout noise in near-term quantum devices
+   by classical post-processing based on detector tomography",
+   Quantum 4, 257 (2020)
+
+   [1] Z. Hradil, J. Řeháček, J. Fiurášek, and M. Ježek, “3 maximum-likelihood methods in quantum mechanics,” in Quantum
+   State Estimation, edited by M. Paris and J. Řeháček (Springer Berlin Heidelberg, Berlin, Heidelberg, 2004) pp. 59–112.
+   [2] J. Fiurášek, Physical Review arrray_to_print 64, 024102 (2001), arXiv:quant-ph/0101027 [quant-ph].
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.qunatum_detector_tomography_data.QDTCalibrationSetup
+
+
+
+
+.. py:class:: QDTCalibrationSetup(qubits_number: int, probe_kets: List[numpy.array], frequencies_array: numpy.ndarray, states_labels: List[str] = None, initial_ml_povm_guess=None)
+
+
+   This class contains information required by DetectorTomographyFitter object to properly calculate
+   maximum-likelihood POVM. This class shouldn't have any accessible methods and should only store and transfer
+   data to the DetectorTomographyFitter class instances.
+
+   .. py:method:: from_qiskit_results(results_list: List[qiskit.result.Result], probe_kets: List[numpy.array])
+      :classmethod:
+
+      Description:
+          This method_name generates Calibration setup objects directly from qiskit job results and probe kets used
+          to generate circuits for these jobs_list. This method_name should be interpreted as sort of additional constructor
+          for qiskit users.
+      :param results_list: List of qiskit jobs_list results. In case of single job result it should still be a list.
+      :param probe_kets: Prove kets (in form of list of np.arrays) used to generate calibration circuits.
+      :return: Instance of QDT calibration setup from given job.
+
+
+   .. py:method:: from_frequencies_list(frequencies_list: List[Union[List[float], numpy.ndarray]], probe_kets: List[numpy.array], reverse_order: Optional[bool] = True)
+      :classmethod:
+
+      Description:
+          This method_name generates Calibration setup objects directly from qiskit job results and probe kets used
+          to generate circuits for these jobs_list. This method_name should be interpreted as sort of additional constructor
+          for qiskit users.
+      :param frequencies_list: list of probabilities estimated in experiments
+
+      :param probe_kets: Prove kets (in form of list of np.arrays) used to generate calibration circuits.
+      :param reverse_order: specify whether probabiltiies lists should be reordered, which corresponds
+                        to changing qubits' ordering
+      :return: Instance of QDT calibration setup from given job.
+
+
+   .. py:method:: __get_probe_states(qubits_number: int, probe_kets: List[numpy.array]) -> List[numpy.ndarray]
+      :staticmethod:
+
+      Description:
+          This method_name generates probe states (density matrix) from results and kets
+          passed to maximum likelihood POVM counting object.
+      :param : param qubits_number: Number of qubits used in the calibration experiments.
+      :param : param probe_kets: Kets on which job circuits were based.
+
+      :returns: List of probe states. These are supposed to have dimension equal to the size of Hilbert space, hence if one
+                have used tensor products of single-qubit states, then one needs to give here those tensor products. Order
+                needs to fit this of results.results.
+
+
+

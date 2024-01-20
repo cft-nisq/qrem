@@ -1,0 +1,68 @@
+:py:mod:`qrem.common.external.ncpol2sdpa.faacets_relaxation`
+============================================================
+
+.. py:module:: qrem.common.external.ncpol2sdpa.faacets_relaxation
+
+.. autoapi-nested-parse::
+
+   Created on Tue Jan 27 11:41:52 2015
+
+   @author: wittek
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.faacets_relaxation.FaacetsRelaxation
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.external.ncpol2sdpa.faacets_relaxation.collinsgisin_to_faacets
+   qrem.common.external.ncpol2sdpa.faacets_relaxation.configuration_to_faacets
+   qrem.common.external.ncpol2sdpa.faacets_relaxation.get_faacets_moment_matrix
+
+
+
+.. py:function:: collinsgisin_to_faacets(I)
+
+
+.. py:function:: configuration_to_faacets(A_configuration, B_configuration)
+
+
+.. py:function:: get_faacets_moment_matrix(A_configuration, B_configuration, coefficients)
+
+
+.. py:class:: FaacetsRelaxation
+
+
+   Bases: :py:obj:`qrem.common.external.ncpol2sdpa.sdp_relaxation.Relaxation`
+
+   Class for wrapping around a Faacets relaxation.
+
+
+
+   .. py:method:: get_relaxation(A_configuration, B_configuration, I)
+
+      Get the sparse SDP relaxation of a Bell inequality.
+
+      :param A_configuration: The definition of measurements of Alice.
+      :type A_configuration: list of list of int.
+      :param B_configuration: The definition of measurements of Bob.
+      :type B_configuration: list of list of int.
+      :param I: The matrix describing the Bell inequality in the
+                Collins-Gisin picture.
+      :type I: list of list of int.
+
+
+

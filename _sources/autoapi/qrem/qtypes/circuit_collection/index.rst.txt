@@ -1,0 +1,177 @@
+:py:mod:`qrem.qtypes.circuit_collection`
+========================================
+
+.. py:module:: qrem.qtypes.circuit_collection
+
+.. autoapi-nested-parse::
+
+   qrem.qtypes.circuit_collection module contains CircuitCollection class, which serves as the base class that contains all information
+   about a set of circuits to be sent to a quantum machine for characterization, mitigation, or benchmarking purposes.
+   It inherits from DataStructureBase and is extended by ExperimentResults, a class that contains results of experiments performed on a given circuit collection.
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.circuit_collection.CircuitCollection
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.circuit_collection._test_collection
+
+
+.. py:class:: CircuitCollection
+
+
+   Bases: :py:obj:`qrem.qtypes.datastructure_base.DataStructureBase`
+
+   CircuitCollection class contains data about circuits to be prepared on a certain device for a specified experiment.
+
+   :param device: Name of the device on which the circuits will be run.
+   :type device: str
+   :param experiment_type: Type of experiment, DDOT (Diagonal Detector Overlapping Tomography) or QDOT (Quantum Detector Overlapping Tomography).
+   :type experiment_type: str
+   :param circuits_list: List of circuits, where each circuit is a string of symbols (0-1 for DDOT, 0-5 for QDOT).
+   :type circuits_list: list[str]
+   :param qubit_indices: List of sorted indices of qubits on which the circuits are to be executed.
+   :type qubit_indices: list[int]
+   :param gate_error_threshold: Gate error on a qubit above which qubits are disregarded (circuits are not executed there).
+   :type gate_error_threshold: float
+   :param locality: The degree of marginals we wish to characterize.
+   :type locality: int
+   :param no_shots: How many times each circuit is executed.
+   :type no_shots: int
+   :param datetime_created_utc: When the circuit collection was created.
+   :type datetime_created_utc: datetime
+   :param author: Creator of the collection.
+   :type author: str
+
+   .. attribute:: device
+
+      Name of the device on which the circuits will be run.
+
+      :type: str
+
+   .. attribute:: experiment_type
+
+      Type of experiment, DDOT (Diagonal Detector Overlapping Tomography) or QDOT (Quantum Detector Overlapping Tomography).
+
+      :type: str
+
+   .. attribute:: circuits_labels
+
+      List of circuits where each circuit is a string of symbols (0-1 for DDOT, 0-5 for QDOT).
+
+      :type: list[str]
+
+   .. attribute:: circuits
+
+      Matrix representing circuits (shape: number_of_qubits x number_of_circuits, dtype: uint8).
+
+      :type: numpy.ndarray
+
+   .. attribute:: job_IDs
+
+      After experiment is executed, it will be filled with relevant job_IDs (ibm) / task_ARNs (aws).
+
+      :type: list[str]
+
+   .. attribute:: qubit_indices
+
+      List of sorted indices of qubits on which the circuits are to be executed.
+
+      :type: list[int]
+
+   .. attribute:: random_circuits_count
+
+      Number of random circuits to be generated.
+
+      :type: int
+
+   .. attribute:: total_circuits_count
+
+      Total number of circuits (random + predefined).
+
+      :type: int
+
+   .. attribute:: gate_error_threshold
+
+      Gate error on a qubit above which qubits are disregarded (circuits are not executed there).
+
+      :type: float
+
+   .. attribute:: locality
+
+      The degree of marginals we wish to characterize.
+
+      :type: int
+
+   .. attribute:: no_shots
+
+      How many times each circuit is executed.
+
+      :type: int
+
+   .. attribute:: datetime_created_utc
+
+      When the circuit collection was created.
+
+      :type: datetime
+
+   .. attribute:: experiment_name
+
+      Name of the experiment.
+
+      :type: str
+
+   .. attribute:: author
+
+      Creator of the collection.
+
+      :type: str
+
+   .. attribute:: metadata
+
+      Additional metadata information.
+
+      :type: list
+
+   .. py:method:: load_config(config: qrem.common.config.QremConfigLoader)
+
+      Load configuration settings into the CircuitCollection object.
+
+      :param config: Configuration settings to load.
+      :type config: QremConfigLoader
+
+
+   .. py:method:: load_from_dict(dictionary)
+
+      Load data from a dictionary into the CircuitCollection object.
+
+      :param dictionary: Dictionary containing data to load into the object.
+      :type dictionary: dict
+
+
+
+.. py:data:: _test_collection
+
+   
+

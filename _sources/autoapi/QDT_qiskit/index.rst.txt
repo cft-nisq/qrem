@@ -1,0 +1,118 @@
+:py:mod:`QDT_qiskit`
+====================
+
+.. py:module:: QDT_qiskit
+
+.. autoapi-nested-parse::
+
+   This code is used for Quantum Detector Tomography (QDOT) and not Quantum/Diagonal Detector Overlapping Tomography (QDOT/DDOT).
+   In the current version of QREM (2023.01.12) it only appears in tutorials in OldStuff
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   QDT_qiskit.get_list_of_lists_indices_qdt
+   QDT_qiskit.QDT_circuits_qiskit
+   QDT_qiskit.detector_tomography_circuits_rigetti
+   QDT_qiskit.gtc_tensor_calculating_function
+   QDT_qiskit.detector_tomography_circuits_pymali
+
+
+
+.. py:function:: get_list_of_lists_indices_qdt(qubits_indices, unitaries_amount)
+
+   Description:
+   From list of qubit indices and number of unitaries, prepare set of names for circuits for tomography of
+   detectors.
+
+   # FBM: Maybe GeneralTensor could be used for it?
+   # TR: It now is -- check it out ;)
+
+   :param qubits_indices: (list of ints) labels of qubits for QDT
+   :param unitaries_amount: (int) number of unitaries you want to implement.
+
+   :return: (list of lists of pairs of number [qubit_label, unitary_label]) of length
+   unitaries_amount**len(qubits_indices)
+
+   For example, let's assume we have three qubits [0,2,4] and we have 4 unitaries. For concreteness, if those unitaries
+   are [id, X, H, SH] for creation of [|0>, |1>, |+x>, |+y>] states, the circuits will be:
+
+   id x id x id,
+   -------------
+   id x id x X,
+   -------------
+   id x id x H,
+   -------------
+   id x id x SH,
+   -------------
+
+   id x X x id
+   -------------
+   id x X x X
+   -------------
+   id x X x H
+   -------------
+   id x X x SH
+   -------------
+
+   etc....
+
+   SH x SH x id
+   -------------
+   SH x SH x X
+   -------------
+   SH x SH x H
+   -------------
+   SH x SH x SH
+
+   If unitaries are ordered as [id, X, H, SH], the code will identify id: 0, X: 1, H: 2, SH:3, and it will return a
+   list of lists. Each list correspond to single line in the above exemplary description of tensor product, e.g.,
+   second list corresponds to line id x id x X. Each of such lists consists of len(qubits_indices) pairs, saying which
+   gate shall be applied to which qubit. In this example, first list will have following elements:
+   (0, 0), (2, 0), (4, 1), i_index.e., apply unitary number 0 to qubits 0,2 and apply unitary number 1 to qubit 4.
+
+
+.. py:function:: QDT_circuits_qiskit(qubit_indices, probe_kets, number_of_repetitions=1, qrs=None, crs=None, add_measurements=True)
+
+   From list of probe kets and qubit data return quantum circuits which will be implemented to perform
+   Quantum Detector Tomography (QDT).
+
+   :param probe_kets: (list of numpy arrays) the list of ket representations of qubit pure quantum states which are to
+   be used in QDT. For multi-qubit QDT, the combinations of tensor products of name_appendix will be taken.
+   :param qubit_indices: (list of ints) labels of qubits for QDT
+   :param number_of_repetitions: (int) parameter specifying how many copies of whole QDT experiment should be created
+   (for larger statistics collection or comparision of results)
+
+   :return: (list of QuantumCircuit objects) of length len(probe_states)**(number_of_qubits)
+
+
+.. py:function:: detector_tomography_circuits_rigetti(qubit_indices, probe_kets, shots=10**5)
+
+   From list of probe kets and qubit data return quantum circuits which will be implemented to perform
+   Quantum Detector Tomography (QDT).
+
+   :param probe_kets: (list of numpy arrays) the list of ket representations of qubit pure quantum states which are to
+   be used in QDT. For multi-qubit QDT, the combinations of tensor products of name_appendix will be taken.
+   :param qubit_indices: (list of ints) labels of qubits for QDT
+   :param number_of_repetitions: (int) parameter specifying how many copies of whole QDT experiment should be created
+   (for larger statistics collection or comparision of results)
+
+   :return: (list of QuantumCircuit objects) of length len(probe_states)**(number_of_qubits)
+
+
+.. py:function:: gtc_tensor_calculating_function(arguments: list)
+
+
+.. py:function:: detector_tomography_circuits_pymali(qubit_indices, probe_kets)
+
+   Analogical method_name of the circuits preparing method_name utilizing pymali general tensor calculator.
+
+

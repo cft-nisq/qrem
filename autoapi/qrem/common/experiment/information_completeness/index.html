@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrem.common.experiment.information_completeness &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="qrem.common.experiment.tomography" href="../tomography/index.html" />
+    <link rel="prev" title="qrem.common.experiment.tomoutils.algortithmic_circuits" href="../tomoutils/algortithmic_circuits/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">qrem package API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.benchmarks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../characterization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.characterization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cn/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.cn</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#qrem-quantum-research-environment-manager-common-utilities">This subpackage <cite>qrem.common</cite> provides a suite of utility modules specifically tailored for the QREM project.
+It encompasses a range of functionalities from configuration loading to mathematical computations and file operations
+in the context of Quantum Error Mitigation (QEM).</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ctmp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.ctmp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mitigation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.mitigation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pipelines/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.pipelines</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../providers/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.providers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../qtypes/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.qtypes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/2.%20Noise%20Characterisation.html">2. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorials/complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common</span></code></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.information_completeness</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/autoapi/qrem/common/experiment/information_completeness/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-qrem.common.experiment.information_completeness">
+<span id="qrem-common-experiment-information-completeness"></span><h1><a class="reference internal" href="#module-qrem.common.experiment.information_completeness" title="qrem.common.experiment.information_completeness"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qrem.common.experiment.information_completeness</span></code></a><a class="headerlink" href="#module-qrem.common.experiment.information_completeness" title="Link to this heading"></a></h1>
+<section id="information-completeness">
+<p>This helper module provides functions for checking the completeness of a set of circuits.</p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.experiment.information_completeness.log_coefficient" title="qrem.common.experiment.information_completeness.log_coefficient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_coefficient</span></code></a>(number_of_symbols, locality)</p></td>
+<td><p>A helper function needed to compute probabilistic bound on number of circuits, for which all combinations of tomographic settings are realized for all subsets of locality k</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.experiment.information_completeness.circuits_number_estimation" title="qrem.common.experiment.information_completeness.circuits_number_estimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circuits_number_estimation</span></code></a>(number_of_symbols, ...)</p></td>
+<td><p>Function cacluclating a probabilitic bound on number of circuits, for which all combinations of tomographic settings are realized for all subsets of locality k</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qrem.common.experiment.information_completeness.information_completeness_verification_quantitative" title="qrem.common.experiment.information_completeness.information_completeness_verification_quantitative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">information_completeness_verification_quantitative</span></code></a>(...)</p></td>
+<td><p>Function checking how many times a particular input setting to measurement tomography protocol is realized in a</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qrem.common.experiment.information_completeness.information_completeness_verification_qualitative" title="qrem.common.experiment.information_completeness.information_completeness_verification_qualitative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">information_completeness_verification_qualitative</span></code></a>(...)</p></td>
+<td><p>Function reports fraction of missing tomography settings in a given set of circuits for all subsets of qubits of a</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.experiment.information_completeness.log_coefficient">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.information_completeness.</span></span><span class="sig-name descname"><span class="pre">log_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_symbols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locality</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.experiment.information_completeness.log_coefficient" title="Link to this definition"></a></dt>
+<dd><p>A helper function needed to compute probabilistic bound on number of circuits, for which all combinations of tomographic settings are realized for all subsets of locality k
+:param number_of_symbols: number of different symbols used to construct tomographic circuits: 2 for DDOT circuits, 6 for QDOT circuits (overcomplete Pauli basis)
+:type number_of_symbols: int
+:param locality: locality of sets for which all the symbols should appear
+:type locality: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A particular expression needed to calculate probabilistic bound on number of informationally (over)complete set of circuits</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.experiment.information_completeness.circuits_number_estimation">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.information_completeness.</span></span><span class="sig-name descname"><span class="pre">circuits_number_estimation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_symbols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probability</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.experiment.information_completeness.circuits_number_estimation" title="Link to this definition"></a></dt>
+<dd><p>Function cacluclating a probabilitic bound on number of circuits, for which all combinations of tomographic settings are realized for all subsets of locality k
+:param number_of_symbols: number of different symbols used to construct tomographic circuits: 2 for DDOT circuits, 6 for QDOT circuits (overcomplete Pauli basis)
+:type number_of_symbols: int
+:param locality: locality of sets for which all tomographic settings should appear
+:type locality: int
+:param number_of_qubits: number of qubits for which tomographic circuits are realizeed
+:param probability: accepted probability of bound failiure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of circuits needed to realize all combinations of tomographic settings for all subsets of given locality</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.experiment.information_completeness.information_completeness_verification_quantitative">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.information_completeness.</span></span><span class="sig-name descname"><span class="pre">information_completeness_verification_quantitative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tomographic_circuits_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol_string_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsets_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.experiment.information_completeness.information_completeness_verification_quantitative" title="Link to this definition"></a></dt>
+<dd><p>Function checking how many times a particular input setting to measurement tomography protocol is realized in a
+given set of circuits for all subsets of qubits of a fixed locality</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tomographic_circuits_list</strong> (<em>list</em>) – the list of circuits that are used for measurement tomography protocol</p></li>
+<li><p><strong>locality</strong> (<em>int</em>) – number corresponding to locality of subsets for which information completness check is performed</p></li>
+<li><p><strong>symbol_string</strong> (<em>string</em>) – </p></li>
+<li><p><strong>settings</strong> (<em>list</em><em> of </em><em>strings</em><em> of </em><em>symbols used to encode input</em>) – <dl class="simple">
+<dt>subsets_list<span class="classifier">list of tuples</span></dt><dd><p>list of qubits subsets for which check is performed, by defult set to None</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>[</strong><strong>'0'</strong> (<em>e.g. for 6 state overcomplete Pauli basis it's</em>) – <dl class="simple">
+<dt>subsets_list<span class="classifier">list of tuples</span></dt><dd><p>list of qubits subsets for which check is performed, by defult set to None</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>'1'</strong> – <dl class="simple">
+<dt>subsets_list<span class="classifier">list of tuples</span></dt><dd><p>list of qubits subsets for which check is performed, by defult set to None</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>'2'</strong> – <dl class="simple">
+<dt>subsets_list<span class="classifier">list of tuples</span></dt><dd><p>list of qubits subsets for which check is performed, by defult set to None</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>'3'</strong> – <dl class="simple">
+<dt>subsets_list<span class="classifier">list of tuples</span></dt><dd><p>list of qubits subsets for which check is performed, by defult set to None</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>'4'</strong> – <dl class="simple">
+<dt>subsets_list<span class="classifier">list of tuples</span></dt><dd><p>list of qubits subsets for which check is performed, by defult set to None</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>'5'</strong><strong>]</strong> – <dl class="simple">
+<dt>subsets_list<span class="classifier">list of tuples</span></dt><dd><p>list of qubits subsets for which check is performed, by defult set to None</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>symbols_subset_dictionary</strong> (<em>dictionary a dictionary with keys of a form ((subset_of_qubits), input_setting)</em>)</p></li>
+<li><p><em>(e.g. ((0,1),’50’)  and values corresponding to the number of times that a given input_setting is</em></p></li>
+<li><p><em>realized for this particular subset</em></p></li>
+<li><p><strong>missing_symbols</strong> (<em>dictionary a dictionary with keys corresponding to qubit_subsets (e.g. (0,1)) and values</em>)</p></li>
+<li><p><em>corresponding to list of settings that don’t appear for a given subset e.g. [‘00’,’15’]</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qrem.common.experiment.information_completeness.information_completeness_verification_qualitative">
+<span class="sig-prename descclassname"><span class="pre">qrem.common.experiment.information_completeness.</span></span><span class="sig-name descname"><span class="pre">information_completeness_verification_qualitative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tomographic_circuits_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol_string_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qrem.common.experiment.information_completeness.information_completeness_verification_qualitative" title="Link to this definition"></a></dt>
+<dd><p>Function reports fraction of missing tomography settings in a given set of circuits for all subsets of qubits of a
+fixed locality
+:param tomographic_circuits_list: the list of circuits that are used for measurement tomography protocol
+:type tomographic_circuits_list: list
+:param locality: number corresponding to locality of subsets for which information completeness check is performed
+:type locality: int
+:param symbol_string_list: list of strings of symbols used to encode input settings, e.g. for 6 state overcomplete Pauli basis it’s</p>
+<blockquote>
+<div><p>[‘0’,’1’,’2’,’3’,’4’,’5’]</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>missing_symbols_fraction</strong> – a fraction of missing symbols for given subset structure</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>real</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tomoutils/algortithmic_circuits/index.html" class="btn btn-neutral float-left" title="qrem.common.experiment.tomoutils.algortithmic_circuits" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tomography/index.html" class="btn btn-neutral float-right" title="qrem.common.experiment.tomography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

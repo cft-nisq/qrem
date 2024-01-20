@@ -1,0 +1,227 @@
+:py:mod:`qrem.common.config`
+============================
+
+.. py:module:: qrem.common.config
+
+.. autoapi-nested-parse::
+
+   QREM Configuration Loader Module
+   --------------------------------
+
+   This module provides functionality for parsing configuration files and command-line arguments
+   specifically tailored for the Quantum Research Environment Manager (QREM) project.
+   The module includes helper functions for parsing various data types and a class `QremConfigLoader`
+   that facilitates loading and managing configuration settings.
+
+   The config file is designed to help in preparation and documenting the configuration of each QREM execution on quantum computers.
+   It is an ini file, that contains all the parameters necessary to configure an experiment. Parameters can also be passed as a command line arguments.
+
+   Example config files can be found in the qrem/configs folder of the package and accessed through followint variables:
+   - qrem.common.config.example_config_ibm_path
+   - qrem.common.config.example_config_aws_path
+
+   Sections
+   --------
+   The configuration is organized into sections: 'general', 'data', 'experiment', 'characterization' and 'mitigation'.
+       general
+           Contains general settings for the experiment, such as the experiment's name, author, and logging level.
+
+       data
+           Manages settings related to data handling, including backups of circuits, job IDs, and circuit metadata.
+
+       experiment
+           Specifies various parameters and settings directly related to the quantum experiment, including device information, provider details, experiment type, and quantum circuit configuration.
+
+       characterization
+           Contains settings for characterization of the quantum device.
+
+       mitigation
+           Contains settings for mitigation of the quantum device.
+
+
+   Configuration Parameters
+   ------------------------
+
+
+   [general]
+       experiment_name : str
+           The name of the experiment, used for bookkeeping in all files.
+       author : str
+           The name or nickname of the author, saved in all files for tracking.
+       verbose_log : bool
+           Enables verbose logging for additional information during execution.
+
+   [data]
+       backup_circuits : bool
+           Indicates whether to save the original list of circuits in the QREM definition to a file.
+       backup_job_ids : bool
+           Specifies whether to save job IDs to a file after submitting data to a backend.
+       backup_circuits_metadata : bool
+           Determines whether to add additional information (like qubit readout errors, list of bad qubits) to the saved circuits list.
+
+   [experiment]
+       experiment_path : str
+           The file path for storing experiment-related files.
+       device_name : str
+           The name of the quantum device (e.g., 'ibm_seattle', 'Aspen-M-3').
+       provider : str
+           The quantum computing provider (e.g., 'IBM', 'AWS-BRAKET').
+       ibm_connection_method : str
+           Specific to IBM, defines the connection method to the quantum machine (e.g., 'RUNTIME_SESSIONS', 'RUNTIME').
+       provider_instance : str
+           For IBM, specifies the provider instance, such as 'ibm-q/open/main'.
+       aws_pickle_results : bool
+           Specifies if results should be pickled when using AWS Braket.
+       aws_braket_task_retries : int
+           The number of retries for AWS Braket tasks.
+       experiment_type : str
+           The type of experiment, such as 'QDoT', 'DDoT', 'QDT', 'RFE'.
+       k_locality : int
+           The locality of the experiment, with values ranging from 2 to 5.
+       gate_threshold : float
+           Gate error threshold, if crossed - qubits will be excluded from calculations. ranging from 0 to 1. A value of 0 or Null includes all qubits.
+       ground_state_circuits : bool
+           Determines if ground state circuits should be included.
+       ground_state_circuits_path : str
+           File path to the pickle file containing ground state circuits information.
+       ground_states_count : int
+           The number of ground states to be considered in the experiment.
+       limited_circuit_randomness : bool
+           Indicates if limitations should be imposed on number of random circuits (e.g., number of random circuits).
+       random_circuits_count : int
+           Total count of random circuits to be sent, relevant when 'limited_circuit_randomness' is True.
+       shots_per_circuit : int
+           Number of shots (repetitions) per circuit, relevant when 'limited_circuit_randomness' is True.
+       job_tags : tuple
+           Tags used for identifying jobs sent to the backend.
+       qbits_of_interest : list or None
+           List of qubits to be used, following the device's native indexing convention. Not yet implemented.
+       ensure_completnes_on_pairs : bool
+           Ensures completeness of the experiment on qubit pairs (currently always true).
+
+   Usage
+   -----
+       The configuration file is used by the QREM module to set up and manage quantum experiments.
+       Users can modify the file to customize various aspects of their experiments,
+       including experimental parameters, data backup options, and device-specific settings.
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.config.QremConfigLoader
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.config.parse_str
+   qrem.common.config.parse_literal
+   qrem.common.config.parse_boolean
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.common.config.example_config_ibm_path
+   qrem.common.config.example_config_aws_path
+   qrem.common.config.aa
+
+
+.. py:data:: example_config_ibm_path
+
+   Example configuration file path for execution on IBM Quantum devices.
+
+.. py:data:: example_config_aws_path
+
+   Example configuration file path for execution on AWS Braket Quantum devices.
+
+.. py:function:: parse_str(in_str)
+
+   Helper function to evaluate a string in the config file.
+
+   :param in_str: The input string to be evaluated.
+   :type in_str: str
+
+   :returns: The evaluated string.
+   :rtype: str
+
+
+.. py:function:: parse_literal(instr)
+
+   Converts a string specifying a list or tuple.
+
+   :param instr: The input string specifying a list.
+   :type instr: str
+
+   :returns: The converted list.
+   :rtype: any
+
+
+.. py:function:: parse_boolean(b)
+
+   Interpret config parameter as a boolean values.
+
+   :param b: The input string representing a boolean value.
+   :type b: str
+
+   :returns: The interpreted boolean value.
+   :rtype: bool
+
+   :raises ValueError: If the input string cannot be interpreted as a boolean.
+
+
+.. py:class:: QremConfigLoader
+
+
+   .. py:attribute:: config_parser
+
+      
+
+   .. py:method:: load(default_path=str(example_config_ibm_path), as_dict=False)
+
+      Processes a config file specific for QREM.
+
+      :param cmd_args: Command line arguments (default is None).
+      :type cmd_args: list, optional
+      :param default_path: Path to the default config file (default is 'default.ini' located within "qrem/config" path of the module ).
+      :type default_path: str, optional
+      :param as_dict: If True, returns the configuration as a dictionary (default is False).
+      :type as_dict: bool, optional
+
+      :returns: The parsed configuration.
+      :rtype: configargparse.Namespace or dict
+
+
+   .. py:method:: values()
+
+      Return summary of configuration values
+
+
+   .. py:method:: help()
+
+      Print help for preparation of the config file
+
+
+
+.. py:data:: aa
+
+   
+

@@ -1,0 +1,79 @@
+:py:mod:`qrem.qtypes.experiment_results`
+========================================
+
+.. py:module:: qrem.qtypes.experiment_results
+
+.. autoapi-nested-parse::
+
+   qrem.qtypes.experiment_results module contains ExperimentResults class, which contains results of an experiment.
+   The class contains results of an experiment in the counts variable. Qubit and classical outcome ordering is set to BigEndian format.
+   Extends qrem.qtypes.CircuitCollection, so it contains description of circuits ran in the experiment (type of
+   experiment, prepared states, used qubits, date etc.). Can be initialized based on existing CircuitCollection object.
+
+
+   .. rubric:: Notes
+
+   @authors: Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec
+   @contact: michal.oszmaniec@cft.edu.pl
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   qrem.qtypes.experiment_results.ExperimentResults
+
+
+
+
+.. py:class:: ExperimentResults(source=None)
+
+
+   Bases: :py:obj:`qrem.qtypes.circuit_collection.CircuitCollection`
+
+   The class contains results of an experiment in the counts variable. Qubit and classical outcome ordering is set to BigEndian format.
+   Extends qrem.qtypes.CircuitCollection, so it contains description of circuits ran in the experiment (type of
+   experiment, prepared states, used qubits, date etc.). Can be initialized based on existing CircuitCollection object.
+
+
+   :param counts: The key is the label of a circuit (str), the value is a tuple containing all information about counts, according to following schematic:
+
+                  counts = {"<circuit_label>": tuple(<RESTULS_MATRIX>, <COUNTS_VECTOR>)}
+
+                  <circuit_label>: str, BigEndian-0 on left
+                  <RESTULS_MATRIX>: np.array(m x n),dtype=bool, "BigEndian-like" -first on left )
+                  <COUNTS_VECTOR>: np.array(m x 1),dtype=int)
+   :type counts: dict
+
+   frequencies (np.ndarray(c, 2^q)): array, where c is # of circuits, q is # of qubits, each entry contains
+           frequency of a given state occurring in experiment result for given circuit.
+           Possible states in a row are numbered increasingly from |00000 ... 0>, |10000 ... 0> up to |1111 ... 1>,
+           Example: [[0.25, 0.00, 0.30, 0.45] ,
+                     [0.00, 0.50, 0.50, 0.00]] is a result of 2 circuits on 2 qubits,
+                     where in the first circuit outcome |00> occurred in 25% of shots, |10> in 0%, |01> in 0.30 etc.#TODO check if this is how we've used it so far
+
+   original_counts: dict
+       The key is the name of a circuit (str), the value is a dictionary of counts, where the key is a
+       string denoting classical outcome and the value the number of its occurrences in given experiment.
+       The circuits are named according to convention:
+       circuit_name = "experiment name" + "-" + "circuit label" +
+       "no" + "integer identifier for multiple implementations of the same circuit", e.g.: "DDOT-010no3"
+
+
+
+
+   probabilities_list (List): TODO: find in code and comment what this is
+   shots_results (List[List[str]] or np.ndarray(c, s, q)): measured outcome for each shot in each circuit, where
+           c is # of circuits, s is # of shots in each circuit, q is # of qubits. Outcome saved as bitstring.
+           Example: [['01001', '00100', '10101'],
+                     ['01011', '11101', '01100']] is a result of 2 circuits on 5 qubits, 3 shots each circuit.
+   tasks_IDs (str): device-specific ID for each circuit in the experiment, ordered #TODO - order how?
+   datetime_obtained_utc: date of obtaining experiment results
+
+
+

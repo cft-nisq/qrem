@@ -1,0 +1,26 @@
+:py:mod:`qrem.ctmp.simtools.sampling_utils`
+===========================================
+
+.. py:module:: qrem.ctmp.simtools.sampling_utils
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.ctmp.simtools.sampling_utils.check_transition
+   qrem.ctmp.simtools.sampling_utils.apply_transition
+
+
+
+.. py:function:: check_transition(input_state: str, transition: Tuple) -> bool
+
+
+.. py:function:: apply_transition(input_state: str, transition: Tuple) -> str
+
+

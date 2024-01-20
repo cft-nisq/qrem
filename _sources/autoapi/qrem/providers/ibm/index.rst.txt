@@ -1,0 +1,206 @@
+:py:mod:`qrem.providers.ibm`
+============================
+
+.. py:module:: qrem.providers.ibm
+
+.. autoapi-nested-parse::
+
+   IBM Provider Module
+   ===================
+
+   This module (`qrem.providers.ibm`) provides functionalities essential for running characterisation,
+   mitigation, and benchmarking experiments on IBM Quantum machines. It enables interactions
+   with IBM Quantum services through QiskitRuntimeService and/or IBMServiceBackend. Key functionalities
+   include methods for connecting to IBM quantum backends, querying backend properties, translating
+   and executing quantum circuits in Qiskit format, and retrieving experiment results.
+
+   Functions
+   ---------
+   connect :
+       Establishes a connection to an IBM Quantum backend.
+   get_valid_qubits_properties :
+       Retrieves properties of valid qubits from the backend.
+   translate_circuits_to_qiskit_format :
+       Translates circuit collections to Qiskit QuantumCircuit objects.
+   execute_circuits :
+       Executes a list of Qiskit QuantumCircuits on an IBM Quantum backend.
+   retrieve_results :
+       Retrieves and processes experiment results from the IBM Quantum backend.
+
+   Internal Helper Functions
+   -------------------------
+   _connect_via_runtime :
+       Connects to IBM Quantum services using QiskitRuntimeService.
+   _connect_via_provider :
+       Connects to IBM Quantum services using IBMProvider.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.ibm.connect
+   qrem.providers.ibm._connect_via_runtime
+   qrem.providers.ibm._connect_via_provider
+   qrem.providers.ibm.get_valid_qubits_properties
+   qrem.providers.ibm.translate_circuits_to_qiskit_format
+   qrem.providers.ibm.execute_circuits
+   qrem.providers.ibm.retrieve_results
+   qrem.providers.ibm._test_results
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.ibm.QISKIT_IBM_TOKEN
+   qrem.providers.ibm.QISKIT_IBM_CHANNEL
+   qrem.providers.ibm.JOB_PAYLOD_SIZE_LIMIT
+
+
+.. py:data:: QISKIT_IBM_TOKEN
+
+   
+
+.. py:data:: QISKIT_IBM_CHANNEL
+
+   
+
+.. py:data:: JOB_PAYLOD_SIZE_LIMIT
+   :value: 15
+
+   
+
+.. py:function:: connect(name: str = '', channel: Optional[str] = QISKIT_IBM_CHANNEL, method: str = 'RUNTIME', instance: Optional[str] = 'ibm-q/open/main', verbose_log=False) -> Tuple[Union[qiskit_ibm_runtime.IBMBackend, qiskit_ibm_provider.IBMBackend], Optional[qiskit_ibm_runtime.QiskitRuntimeService], Optional[qiskit_ibm_provider.IBMProvider]]
+
+   Initializes connection to the IBM Quantum backend based on the API_TOKEN defined in the environment variables (.env file).
+   Depending on the <method> parameter will start either QiskitRuntimeService object or IBMProvider object
+
+   :param name: Name of the backend to connect to.
+   :type name: str
+   :param channel: Channel used for the connection (e.g., 'ibm_quantum' or 'ibm_cloud'). Defaults to `QISKIT_IBM_CHANNEL`.
+   :type channel: str, default='ibm_quantum'
+   :param method: Method of connection, choices are 'RUNTIME', 'PROVIDER', 'RUNTIME SESSIONS', 'JOB EXECUTE'. Defaults to 'RUNTIME'.
+   :type method: str, default='RUNTIME'
+   :param instance: sSpecific instance for the connection, e.g., 'ibm-q/open/main'. Defaults to 'ibm-q/open/main'.
+   :type instance: str, default='ibm-q/open/main'
+   :param verbose_log: If True, enables verbose logging. Defaults to False.
+   :type verbose_log: bool, default=False
+
+   :returns: A tuple containing:
+             - the connected backend object returned by QiskitRuntimeService (IBMServiceBackend) or IBMProvider (IBMBackend),
+             - Connected Instance of QiskitRuntimeService (if applicable),
+             - Connected Instance of IBMProvider (if applicable).
+   :rtype: Tuple[Union[IBMServiceBackend, IBMBackend], Optional[QiskitRuntimeService], Optional[IBMProvider]]
+
+
+.. py:function:: _connect_via_runtime(backend_name: str = '', channel: Optional[str] = 'ibm_quantum', instance: Optional[str] = 'ibm-q/open/main', verbose_log=False)
+
+   Helper function for qrem.providers.ibm.connect(...) to connect via QiskitRuntimeService
+
+
+.. py:function:: _connect_via_provider(backend_name: str = '', channel: Optional[str] = 'ibm_quantum', instance: Optional[str] = 'ibm-q/open/main', verbose_log=False)
+
+   Helper function for qrem.providers.ibm.connect(...) to connect via IBMProvider
+
+
+.. py:function:: get_valid_qubits_properties(backend: Union[qiskit_ibm_provider.IBMBackend, qiskit_ibm_runtime.IBMBackend], threshold: Optional[float] = 0, verbose_log=False)
+
+   Queries the backend for properties of valid qubits, identifying qubits that are operational and below a given error threshold (not flagged faulty by IBM and below given sx gate error treshold ).
+
+   :param backend: The IBM backend instance from which to retrieve qubit properties returned during connection by QiskitRuntimeService (IBMServiceBackend) or IBMProvider (IBMBackend)
+   :type backend: Union[IBMBackend, IBMServiceBackend]
+   :param threshold: Gate error threshold for qualifying a qubit as valid. Defaults to 0 (no threshold). If 0, will not discard qubits based on gate error tresholding
+   :type threshold: float, optional
+   :param verbose_log: Enables verbose logging if set to True. Defaults to False.
+   :type verbose_log: bool, optional
+
+   :returns: Dictionary describing valid qubits for experiment.
+             {"good_qubits_indices": list of valid qubit indices,
+             "number_of_good_qubits": count of valid qubits,
+             "original_quantum_register_size": orginal number of available qubits,
+             "faulty_qubits": list of qubits indices marked faulty by IBM at the time of connection,
+             "non_operational_qubits": list of qubit indices above sx gate error treshold,
+             "readout_errors": list of returned readout errors on each of the qubit}
+   :rtype: dict
+
+
+.. py:function:: translate_circuits_to_qiskit_format(circuit_collection: qrem.qtypes.CircuitCollection) -> List[qiskit.QuantumCircuit]
+
+   Translates circuits defined as ndarray of unit8s with QREM internal circuit labelling (labels defined in qrem.common.constants.EXPERIMENT_TYPE_SYMBLOS)
+   into a list of Qiskit Circuits (not yet transpiled)
+
+   :param circuit_collection: A collection of circuits to be translated, structured as a CircuitCollection object.
+   :type circuit_collection: CircuitCollection
+
+   :returns: A list of Qiskit QuantumCircuits, with barrier between each of the qubit (read more on qiskit docs about QuantumCircuits)
+   :rtype: List[QuantumCircuit]
+
+
+.. py:function:: execute_circuits(qiskit_circuits: List[qiskit.QuantumCircuit], method: str = 'RUNTIME', job_tags: List[str] = ['QREM_JOB'], instance: str = 'ibm-q/open/main', service: qiskit_ibm_runtime.QiskitRuntimeService = None, backend: Union[qiskit_ibm_runtime.IBMBackend, qiskit_ibm_provider.IBMBackend] = None, number_of_repetitions: int = 1024, log_level: str = 'WARNING', verbose_log: bool = False)
+
+   Executes a list of  QuantumCircuits (qiskit-formatted) on an IBM Quantum backend using the specified method.
+
+   :param qiskit_circuits: List of QuantumCircuits, not yet transpiled, to be executed on chosen IBM machine
+   :type qiskit_circuits: List[QuantumCircuit]
+   :param method: The connection/execution method to use, e.g., 'RUNTIME', 'RUNTIME_SESSIONS', 'JOB_EXECUTE', 'PROVIDER'. Defaults to 'RUNTIME'.
+                  Determined by the execution of qrem.providers.ibm.connection(...) (should be same as there)
+   :type method: str, default = "RUNTIME"
+   :param job_tags: Tags to be applied to each job. Defaults to ['QREM_JOB'].
+   :type job_tags: List[str] default=["QREM_JOB"]
+   :param instance: The instance to use for execution. Defaults to 'ibm-q/open/main'.
+   :type instance: str, optional
+   :param service: Connected Instance of QiskitRuntimeService. Can be None if connecting via IBMProvider
+   :type service: QiskitRuntimeService, default=None
+   :param backend: The backend on which to execute the circuits. Defaults to None.
+   :type backend: Union[IBMServiceBackend,IBMBackend]
+   :param number_of_repetitions: The number of times each circuit should be repeated (shots). Defaults to 1024.
+   :type number_of_repetitions: int, default=1024
+   :param log_level: Log level for the execution, e.g., 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'. Defaults to 'WARNING'.
+                     look https://qiskit.org/ecosystem/ibm-runtime/stubs/qiskit_ibm_runtime.RuntimeOptions.html#qiskit_ibm_runtime.RuntimeOptions for more information
+   :type log_level: str, default = "WARNING"
+   :param verbose_log: Enables verbose logging if True. Defaults to False.
+   :type verbose_log: bool, optional
+
+   :returns: List of job IDs from the executed jobs.
+   :rtype: List[str]
+
+
+.. py:function:: retrieve_results(device_name: str = 'ibm_sherbrooke', provider_instance: str = 'ibm-q/open/main', job_IDs: List[str] = [], original_circuits: Union[qrem.qtypes.CircuitCollection, bool] = False, original_circuits_path: Union[bool, str, pathlib.Path] = False, save_experiment_results: Union[bool, str, pathlib.Path] = False, backup_original_job_results: Union[bool, str, pathlib.Path] = False, from_jobs_backup: Union[bool, str, pathlib.Path] = False, overwrite=False, verbose_log=False) -> qrem.qtypes.ExperimentResults
+
+   Retrieves and processes results from an IBM Quantum backend based on provided job IDs.
+
+   :param provider: The IBMProvider instance used to retrieve results.
+   :type provider: IBMProvider
+   :param job_IDs: List of job IDs for which results are to be retrieved.
+   :type job_IDs: List[str]
+   :param original_circuits: The original circuits used in the jobs. Set to False if not provided. Defaults to False.
+   :type original_circuits: Union[CircuitCollection, bool], optional
+   :param original_circuits_path: Path to the file containing the original circuits. Defaults to False.
+   :type original_circuits_path: Union[bool, str, Path], optional
+   :param config_file_path: Path to the file containing the original submission config. Defaults to False.
+   :type config_file_path: Union[bool, str, Path], optional
+   :param save_experiment_results: Path to save the processed experiment results. Defaults to False.
+   :type save_experiment_results: Union[bool, str, Path], optional
+   :param backup_original: Path to backup the original results. Defaults to False.
+   :type backup_original: Union[bool, str, Path], optional
+   :param from_tasks_backup: Read from pickled backed-up task files. Useful mostly for debugging.
+   :type from_tasks_backup: Union[bool, str, Path], optional
+   :param overwrite: If True, overwrites existing files at the specified paths. Defaults to False.
+   :type overwrite: bool, optional
+
+   :returns: results of an experiment held in ExperimentResults.counts object of format {"<circuit_label>": tuple(<RESTULS_MATRIX>, <COUNTS_VECTOR>)}
+   :rtype: ExperimentResults
+
+
+.. py:function:: _test_results()
+
+

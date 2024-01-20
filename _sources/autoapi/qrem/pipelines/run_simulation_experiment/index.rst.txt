@@ -1,0 +1,47 @@
+:py:mod:`qrem.pipelines.run_simulation_experiment`
+==================================================
+
+.. py:module:: qrem.pipelines.run_simulation_experiment
+
+.. autoapi-nested-parse::
+
+   4. napisać funkcję run_simulation_experiment.py, która (1) stworzy przykladowy model(e), (2) zwróci nam jakąś przykladową symulację.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.pipelines.run_simulation_experiment.run_simulation_experiment
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.pipelines.run_simulation_experiment.CONFIG_PATH
+   qrem.pipelines.run_simulation_experiment.argv
+
+
+.. py:data:: CONFIG_PATH
+   :value: ['--config_file', 'C:\\Users\\Kasia\\QREM_SECRET_DEVELOPMENT\\src\\qrem\\common\\default_simulation.ini']
+
+   
+
+.. py:function:: run_simulation_experiment(cmd_args=CONFIG_PATH, verbose_log=True)
+
+   Function which runs the simulation
+
+
+.. py:data:: argv
+
+   
+

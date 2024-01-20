@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noise Characterisation Tutorial &mdash; qrem  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error mitigation tutorial" href="3.%20Error%20mitigation%20tutorial.html" />
+    <link rel="prev" title="Tutorial 1: Preparation and Execution of Readout Noise Characterization Circuits on IBM Quantum Systems and Amazon Braket Systems" href="1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            qrem
+          </a>
+              <div class="version">
+                0.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/qrem/index.html">qrem package API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">full code API (+deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/cft-nisq/qrem/tree/article-eff">GitHub: original article codebase</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/qrem/">PyPI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial0.html">0. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html">1. Run Characterisation Experiment (IBM/Amazon Braket)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Noise Characterisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-generation-for-characterization-routine">Data generation for characterization routine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#characterization-routine">Characterization Routine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initial-steps">Initial steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#marginals-coputation">Marginals coputation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computation-of-reduced-povms-and-nosie-matrices">Computation of reduced POVMs and nosie matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computation-of-povms-errors">Computation of POVMs errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computation-of-correlation-coefficients">Computation of correlation coefficients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cn-noise-models-reconstruction">CN noise models reconstruction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3.%20Error%20mitigation%20tutorial.html">3. Noise Characterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complete_workflow.html">4. Complete workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ABOUT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Apache License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">qrem</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Noise Characterisation Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/2. Noise Characterisation.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="noise-characterisation-tutorial">
+<h1>Noise Characterisation Tutorial<a class="headerlink" href="#noise-characterisation-tutorial" title="Link to this heading"></a></h1>
+<p>The purpose of this tutorial is to demonstrate the basic workflow of the QREM characterization module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">qrem.qtypes.characterization_data</span> <span class="kn">import</span> <span class="n">CharacterizationData</span> 
+<span class="kn">from</span> <span class="nn">qrem.characterization</span> <span class="kn">import</span> <span class="n">characterization</span>
+<span class="kn">from</span>  <span class="nn">qrem.common</span> <span class="kn">import</span> <span class="n">probability</span><span class="p">,</span> <span class="n">math</span> <span class="k">as</span> <span class="n">qrem_math</span>
+<span class="kn">from</span> <span class="nn">qrem.cn</span> <span class="kn">import</span> <span class="n">simulation</span> <span class="k">as</span> <span class="n">cnsimulation</span> 
+<span class="kn">from</span> <span class="nn">qrem.providers</span> <span class="kn">import</span> <span class="n">simulation</span> <span class="k">as</span> <span class="n">simulate_experiment</span>
+<span class="kn">from</span> <span class="nn">qrem.common.printer</span> <span class="kn">import</span> <span class="n">qprint</span><span class="p">,</span> <span class="n">qprint_array</span>
+<span class="kn">from</span> <span class="nn">qrem.qtypes</span> <span class="kn">import</span> <span class="n">CNModelData</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span> 
+<span class="kn">from</span> <span class="nn">qrem.common.printer</span> <span class="kn">import</span> <span class="n">qprint</span>
+<span class="kn">from</span> <span class="nn">qrem.visualisation</span> <span class="kn">import</span> <span class="n">benchmark_plots_functions</span> <span class="k">as</span> <span class="n">plot_functions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>###List of contents</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="#Setup"><span class="xref myst">Data generation for characterization routine</span></a></p></li>
+<li><p><a class="reference internal" href="#Characterization"><span class="xref myst">Analysis of the experimental data</span></a></p>
+<p>2.1 <a class="reference internal" href="#Characterization"><span class="xref myst">Initial steps</span></a></p>
+<p>2.2 <a class="reference internal" href="#Marginals"><span class="xref myst">Marginals computation</span></a></p>
+<p>2.3 <a class="reference internal" href="#RPOVMs"><span class="xref myst">Calculation of reduced POVMs and noise matrices</span></a></p>
+<p>2.4 <a class="reference internal" href="#POVMsDistances"><span class="xref myst">Calculation of POVM distances</span></a></p>
+<p>2.5 <a class="reference internal" href="#CorrelationCoefficients"><span class="xref myst">Calculation of correlation coefficients</span></a></p>
+<p>2.6 <a class="reference internal" href="#CNnoisereconstruction"><span class="xref myst">CN noise model reconstruction</span></a></p>
+</li>
+</ol>
+<p><a id='Setup'></a></p>
+<section id="data-generation-for-characterization-routine">
+<h2>Data generation for characterization routine<a class="headerlink" href="#data-generation-for-characterization-routine" title="Link to this heading"></a></h2>
+<p>This part of code is used to generate data for the characterization workflow. It uses QREM simulator of the readout noise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_qubits</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">experiment_type</span> <span class="o">=</span> <span class="s2">&quot;DDOT&quot;</span>
+
+<span class="n">number_of_circuits</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="n">number_of_shots</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="n">include_benchmark_circuits</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">number_of_benchmark_circuits</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">number_of_3_qubit_clusters</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">number_of_2_qubit_clusters</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">number_of_1_qubit_clusters</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">noise_model_simulation</span><span class="o">=</span><span class="n">cnsimulation</span><span class="o">.</span><span class="n">create_random_noise_model</span><span class="p">(</span><span class="n">number_of_qubits</span><span class="o">=</span><span class="n">number_of_qubits</span><span class="p">,</span><span class="n">clusters_specification</span><span class="o">=</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="n">number_of_3_qubit_clusters</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">number_of_2_qubit_clusters</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_1_qubit_clusters</span><span class="p">]])</span>
+
+<span class="n">characterization_data_container</span> <span class="o">=</span> <span class="n">CharacterizationData</span><span class="p">()</span>
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">experiment_type</span> <span class="o">=</span> <span class="s1">&#39;DDOT&#39;</span> 
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">results_dictionary</span> <span class="o">=</span> <span class="n">simulate_experiment</span><span class="o">.</span><span class="n">simulate_noisy_experiment</span><span class="p">(</span><span class="n">noise_model</span><span class="o">=</span><span class="n">noise_model_simulation</span><span class="p">,</span><span class="n">number_of_circuits</span><span class="o">=</span><span class="n">number_of_circuits</span><span class="p">,</span><span class="n">number_of_shots</span><span class="o">=</span><span class="n">number_of_shots</span><span class="p">)</span><span class="o">.</span><span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Possible count of random circuits (200) is lower than desired total circuit count (1315).
+10
+completeness: True
+Adding 190 random circuits to a 10-element set
+Set of 200 circuits, completeness: True
+noisy results generated in: 8.549237251281738 seconds
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Characterization'></a></p>
+</section>
+<section id="characterization-routine">
+<h2>Characterization Routine<a class="headerlink" href="#characterization-routine" title="Link to this heading"></a></h2>
+<section id="initial-steps">
+<h3>Initial steps<a class="headerlink" href="#initial-steps" title="Link to this heading"></a></h3>
+<p>To perform characterization one needs to specify:</p>
+<ol class="arabic simple">
+<li><p>qubit_indices - a list of indices of qubits of interest (one might be interested in a subset of all qubits of a device). Here we are interested in all qubits.</p></li>
+<li><p>marginals_to_compute - a list of tuples encoding qubit marginals for which relevant noise quantifiers are computed. Here the focus is on at most two qubit quantities and the list is as composition of single- and two-qubit marginals.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qubit_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_qubits</span><span class="p">)]</span>
+
+<span class="n">single_qubit_marginals</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_qubits</span><span class="p">)]</span>
+
+<span class="n">two_qubit_marginals</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_qubits</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">number_of_qubits</span><span class="p">)]</span>
+
+<span class="n">marginals_to_compute</span><span class="o">=</span> <span class="n">single_qubit_marginals</span> <span class="o">+</span> <span class="n">two_qubit_marginals</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='Marginals'></a></p>
+</section>
+<section id="marginals-coputation">
+<h3>Marginals coputation<a class="headerlink" href="#marginals-coputation" title="Link to this heading"></a></h3>
+<p>Marginals computation is performed using compute_marginals_single function of probability submodule. One needs to specify:</p>
+<ol class="arabic simple">
+<li><p>results_dictionary - dictionary storing experimental results. Here it is characterization_data_container.results_dictionary.</p></li>
+<li><p>subsets_list - a list of tuples encoding marginals of interest. Here set to marginals_to_compute.</p></li>
+<li><p>normalization - a bool specifying whether marginals are normalized. Here set to True.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">marginals_dictionary</span> <span class="o">=</span> <span class="n">probability</span><span class="o">.</span><span class="n">compute_marginals_single</span><span class="p">(</span><span class="n">results_dictionary</span><span class="o">=</span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">results_dictionary</span><span class="p">,</span><span class="n">subsets_list</span><span class="o">=</span><span class="n">marginals_to_compute</span><span class="p">,</span><span class="n">normalization</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='RPOVMs'></a></p>
+</section>
+<section id="computation-of-reduced-povms-and-nosie-matrices">
+<h3>Computation of reduced POVMs and nosie matrices<a class="headerlink" href="#computation-of-reduced-povms-and-nosie-matrices" title="Link to this heading"></a></h3>
+<p>Computation of the reduced POVMs and noise matrices is performed using compute_reduced_POVMs_and_noise_matrices. One needs to specify:</p>
+<ol class="arabic simple">
+<li><p>characterization_data - results and marginals data stored in an object of the CharacterizationData class, here characterization_data_container</p></li>
+<li><p>subset_of_qubits - list of marginals of interest, here marginals_to_compute</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>   
+<span class="n">noise_matrices_dictionary</span><span class="p">,</span> <span class="n">POVMs_dictionary</span> <span class="o">=</span> <span class="n">characterization</span><span class="o">.</span><span class="n">compute_reduced_POVMs_and_noise_matrices</span><span class="p">(</span><span class="n">characterization_data</span><span class="o">=</span><span class="n">characterization_data_container</span><span class="p">,</span><span class="n">subset_of_qubits</span><span class="o">=</span><span class="n">marginals_to_compute</span><span class="p">)</span>
+
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">POVMs_dictionary</span> <span class="o">=</span> <span class="n">POVMs_dictionary</span>
+
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">noise_matrices_dictionary</span> <span class="o">=</span> <span class="n">noise_matrices_dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 55/55 [00:00&lt;00:00, 3993.54it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='POVMsDistances'></a></p>
+</section>
+<section id="computation-of-povms-errors">
+<h3>Computation of POVMs errors<a class="headerlink" href="#computation-of-povms-errors" title="Link to this heading"></a></h3>
+<p>Distance computation between ideal projectors in the computational basis and reconstructed noisy reduced POVMs is computed by compute_errors_POVMs function. One needs to specify:</p>
+<ol class="arabic">
+<li><p>POVMs_dictionary - dictionary with reconstructed POVMs, here characterization_data_container.POVMs_dictionary</p></li>
+<li><p>qubits_subsets - list of tuples encoding marginals of interest, here set to single_qubit_marginals</p></li>
+<li><p>distances_types - a list of tuples encoding distances of interest. Possible choices</p>
+<p>first position:  “worst_case” and “averaged_case”</p>
+<p>second position: “classical” and “quantum”</p>
+<p>Here set to (‘worst_case’,’classical’)</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distances_types</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;worst_case&#39;</span><span class="p">,</span><span class="s1">&#39;classical&#39;</span><span class="p">)]</span> 
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">POMVs_errors_dictionary</span> <span class="o">=</span> <span class="n">characterization</span><span class="o">.</span><span class="n">compute_errors_POVMs</span><span class="p">(</span><span class="n">POVMs_dictionary</span><span class="o">=</span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">POVMs_dictionary</span><span class="p">,</span><span class="n">qubits_subsets</span><span class="o">=</span><span class="n">single_qubit_marginals</span><span class="p">,</span><span class="n">distances_types</span><span class="o">=</span><span class="n">distances_types</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">Calculating errors of type:</span> (&#39;worst_case&#39;, &#39;classical&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10/10 [00:00&lt;00:00, 12756.40it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">DONE</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results can be plotted using built-in visualization function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_functions</span><span class="o">.</span><span class="n">create_POVMs_distance_histogram</span><span class="p">(</span><span class="n">POVMs_errors</span><span class="o">=</span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">POMVs_errors_dictionary</span><span class="p">,</span><span class="n">number_of_qubits</span><span class="o">=</span><span class="n">number_of_qubits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/tuzjan/Documents/QREM_DEVELOPMENT/QREM_SECRET_DEVELOPMENT/venv_jtdev/lib/python3.10/site-packages/matplotlib/axes/_axes.py:6805: RuntimeWarning: invalid value encountered in multiply
+  tops = (tops * np.diff(bins))[:, slc].cumsum(axis=1)[:, slc]
+</pre></div>
+</div>
+<img alt="../_images/e445985eeef7a465ffada4a0fead8a085cc10a1ce17e1288705038d8bf80138e.png" src="../_images/e445985eeef7a465ffada4a0fead8a085cc10a1ce17e1288705038d8bf80138e.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='CorrelationCoefficients'></a></p>
+</section>
+<section id="computation-of-correlation-coefficients">
+<h3>Computation of correlation coefficients<a class="headerlink" href="#computation-of-correlation-coefficients" title="Link to this heading"></a></h3>
+<p>Correlation coefficients, which quantify pairwise correlations in the readout noise, are computed using compute_correlations_data_pairs function. One needs to specify:</p>
+<ol class="arabic">
+<li><p>qubit_indices - a list of qubits of interest. Here set to qubit_indices, this is all qubits</p></li>
+<li><p>POVMs_dictionary - dictionary with reconstructed POVMs, here characterization_data_container.POVMs_dictionary</p></li>
+<li><p>distances_types - a list of tuples encoding distances of interest. Possible choices described above</p>
+<p>Here set to (‘worst_case’,’classical’)</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">correlation_coefficients_dictionary</span>  <span class="o">=</span> <span class="n">characterization</span><span class="o">.</span><span class="n">compute_correlations_data_pairs</span><span class="p">(</span><span class="n">qubit_indices</span><span class="o">=</span><span class="n">qubit_indices</span><span class="p">,</span><span class="n">POVMs_dictionary</span><span class="o">=</span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">POVMs_dictionary</span><span class="p">,</span><span class="n">distances_types</span><span class="o">=</span><span class="n">distances_types</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">Calculating correlations of type:</span> (&#39;worst_case&#39;, &#39;classical&#39;)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 45/45 [00:00&lt;00:00, 2477.44it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">DONE</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results can be plotted using built-in visualization function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_functions</span><span class="o">.</span><span class="n">create_correlations_distance_histogram</span><span class="p">(</span><span class="n">correlations_coefficients_matrix</span><span class="o">=</span><span class="n">characterization_data_container</span><span class="o">.</span><span class="n">correlation_coefficients_dictionary</span><span class="p">[</span><span class="n">distances_types</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]][</span><span class="n">distances_types</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4a132d4a3ae7208651598312a4aa57b6b0da04265ff223c0ba3d3909311919ae.png" src="../_images/4a132d4a3ae7208651598312a4aa57b6b0da04265ff223c0ba3d3909311919ae.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='CNnoisereconstruction)'></a></p>
+</section>
+<section id="cn-noise-models-reconstruction">
+<h3>CN noise models reconstruction<a class="headerlink" href="#cn-noise-models-reconstruction" title="Link to this heading"></a></h3>
+<p>Clustering algorithm is run to reconstruct CN noise models from experimental data. Function perform_clustering_routine returns a list of object, which store all relevant parameters of the reconstructed CN noise models. One needs to specify:</p>
+<ol class="arabic">
+<li><p>characterization_data - characterization_data - results and marginals data stored in an object of the CharacterizationData class, here characterization_data_container</p></li>
+<li><p>number_of_qubits - integer encoding number of qubits involved</p></li>
+<li><p>clustering_functions_parameters  - a dictionary specifying parameters of the clustering algorithm with keys:</p>
+<p>‘sizes_clusters’ - a list of integers specifying allowed localities of the CN noise models, here set to [2,3,4]</p>
+<p>‘distance_type’ and ‘correlations_type’  - string encoding distance type used to compute correlation coefficients, here  ‘worst_case’ and ‘classical’</p>
+<p>‘alpha_hyperparameters’ - a list of floats encoding parameter entering optimization involved in clustering, here and by default set [0] }</p>
+</li>
+<li><p>find_neighbors - bool specifying whether neighborhoods of clusters are established, here set to False</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering_functions_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;sizes_clusters&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="s1">&#39;distance_type&#39;</span><span class="p">:</span><span class="s1">&#39;worst_case&#39;</span><span class="p">,</span><span class="s1">&#39;correlations_type&#39;</span><span class="p">:</span> <span class="s1">&#39;classical&#39;</span><span class="p">,</span><span class="s1">&#39;alpha_hyperparameters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">}</span>
+
+<span class="n">find_neighbors</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">characterization_data_container</span><span class="o">.</span><span class="n">clusters_neighbors_sets_dictionary</span> <span class="o">=</span> <span class="n">characterization</span><span class="o">.</span><span class="n">perform_clustering_routine</span><span class="p">(</span><span class="n">characterization_data</span> <span class="o">=</span> <span class="n">characterization_data_container</span><span class="p">,</span> <span class="n">number_of_qubits</span><span class="o">=</span><span class="n">number_of_qubits</span><span class="p">,</span><span class="n">clustering_functions_parameters</span> <span class="o">=</span> <span class="n">clustering_functions_parameters</span><span class="p">,</span><span class="n">perform_neighbors_search</span><span class="o">=</span><span class="n">find_neighbors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">Current max cluster size:</span> 2
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">Current max cluster size:</span> 3
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">Current max cluster size:</span> 4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="1.%20Run%20Characterisation%20Experiment%20on%20IBM%20or%20Amazon%20Backend.html" class="btn btn-neutral float-left" title="Tutorial 1: Preparation and Execution of Readout Noise Characterization Circuits on IBM Quantum Systems and Amazon Braket Systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3.%20Error%20mitigation%20tutorial.html" class="btn btn-neutral float-right" title="Error mitigation tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Jan Tuziemski, Filip Maciejewski, Joanna Majsak, Oskar Słowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Paweł Przewłocki, Piotr Podziemski, Michał Oszmaniec.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

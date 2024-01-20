@@ -1,0 +1,78 @@
+:py:mod:`qrem.providers.ibmutils.ibmutils`
+==========================================
+
+.. py:module:: qrem.providers.ibmutils.ibmutils
+
+.. autoapi-nested-parse::
+
+   qrem.providers.ibmutils module contains helper functions for translating and preparation of circuits for running a characterisation/mitigation/benchmarking experiment
+   on IBM Quantum machines via QiskitRuntimeService or IBMServiceBackend.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   qrem.providers.ibmutils.ibmutils.add_measurements
+   qrem.providers.ibmutils.ibmutils.circuits_translator_DDOT
+   qrem.providers.ibmutils.ibmutils.circuits_translator_QDOT
+   qrem.providers.ibmutils.ibmutils.transpile_circuits
+   qrem.providers.ibmutils.ibmutils.download_results
+   qrem.providers.ibmutils.ibmutils.compare_circuits
+   qrem.providers.ibmutils.ibmutils.ibm_to_qrem_restults
+
+
+
+.. py:function:: add_measurements(qiskit_circuit: qiskit.QuantumCircuit, q_reg: qiskit.QuantumRegister, c_reg: qiskit.ClassicalRegister, valid_qubit_indices: List[int])
+
+   Helper function that adds a measurement for every valid qubit defined in valid_qubit_indices list on existing qiskit_circuit (QuantumCircuit).
+
+
+.. py:function:: circuits_translator_DDOT(circuit: numpy.ndarray, qiskit_circuit: qiskit.QuantumCircuit, valid_qubit_indices: list) -> qiskit.QuantumCircuit
+
+   Helper method that creates DDOT circuits in format native to QISKIT and applies to existing (empty) qiskit_circuit,
+   based on the passed circuits and valid_qubit_indices, specifying what gates should be applied to what qubits.
+
+
+.. py:function:: circuits_translator_QDOT(circuit: numpy.ndarray, qiskit_circuit: qiskit.QuantumCircuit, valid_qubit_indices: list) -> qiskit.QuantumCircuit
+
+   Helper method that creates QDOT circuits in format native to QISKIT and applies to existing (empty) qiskit_circuit,
+   based on the passed circuits and valid_qubit_indices, specifying what gates should be applied to what qubits.
+
+
+.. py:function:: transpile_circuits(qiskit_circuits: List[qiskit.QuantumCircuit], backend)
+
+   Helper method that transpiles circuits for the device. Optimization methodd set now to 0
+
+
+.. py:function:: download_results(backend: Union[qiskit_ibm_runtime.IBMBackend, qiskit_ibm_provider.IBMBackend], job_IDs: List[str], backup: Union[bool, str, pathlib.Path] = False, from_jobs_backup: Union[bool, str, pathlib.Path] = False, overwrite: bool = False)
+
+   Executes circuits prepared in QISKIT format (qiskit_circuits) on the backend provided by a qrem.providers.ibm.connection(...) function.
+
+   :param provider:
+   :type provider: IBMProvider
+   :param job_IDs:
+   :type job_IDs: List[str]
+   :param backup: Should original results be backed up somewhere (mostly for debugging)
+   :type backup: Union[bool,str,Path]=False
+   :param overwrite: Should original results overwrite any existing file
+   :type overwrite: bool
+
+   :returns: **job_id_list** -- Lsit of submitted job IDs
+   :rtype: List[str]
+
+
+.. py:function:: compare_circuits(circuit_labels: List[str], original_circuits_path: Union[str, pathlib.Path, bool] = False, original_circuits: Union[qrem.qtypes.CircuitCollection, bool] = False)
+
+
+.. py:function:: ibm_to_qrem_restults(qrem_circuits: qrem.qtypes.CircuitCollection, original_results: List[Dict[str, int]], save_path: Union[bool, str, pathlib.Path] = False, overwrite: bool = False, format: str = 'pkl') -> Dict[str, Tuple[numpy.typing.NDArray[numpy.bool_], numpy.typing.NDArray[numpy.int_]]]
+
+   Loads results from IBM backend into ExperimentResults object based on CircuitCollection
+
+
