@@ -25,6 +25,8 @@ PyPI <https://pypi.org/project/qrem/>
 Tutorial0.md
 1. Run Characterisation Experiment (IBM/Amazon Braket)<tutorials/1. Run Characterisation Experiment on IBM or Amazon Backend>
 2. Noise Characterisation<tutorials/2. Noise Characterisation>
+3. Noise Characterisation<tutorials/3. Error mitigation tutorial>
+4. Complete workflow<tutorials/complete_workflow>
 ```
 
 ```{toctree}
